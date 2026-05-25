@@ -1,0 +1,66 @@
+{
+  "general": {
+    "accessibility": {
+      "skip_to_content": "Aller au contenu",
+      "close": "Fermer",
+      "menu": "Menu",
+      "search": "Rechercher",
+      "cart": "Panier",
+      "account": "Compte"
+    },
+    "currency": {
+      "symbol": "€"
+    }
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Ajouter au panier",
+      "buy_now": "Commander maintenant",
+      "sold_out": "Rupture de stock",
+      "unavailable": "Indisponible",
+      "quantity": "Quantite",
+      "price": "Prix",
+      "regular_price": "Prix normal",
+      "sale_price": "Prix promo",
+      "save": "Economise {{ savings }}",
+      "shipping_calculated": "Livraison calculee a l'etape suivante"
+    }
+  },
+  "cart": {
+    "general": {
+      "title": "Ton panier",
+      "subtotal": "Sous-total",
+      "checkout": "Passer commande",
+      "continue_shopping": "Continuer mes achats",
+      "empty": "Ton panier est vide.",
+      "remove": "Retirer",
+      "increase": "Augmenter",
+      "decrease": "Diminuer",
+      "items_count": {
+        "one": "{{ count }} article",
+        "other": "{{ count }} articles"
+      },
+      "shipping_taxes_note": "Livraison et taxes calculees a l'etape suivante.",
+      "express_checkout": "Paiement express",
+      "or": "ou",
+      "shop_pay": "Payer avec Shop Pay"
+    }
+  },
+  "header": {
+    "home": "Accueil",
+    "faq": "FAQ",
+    "story": "Notre histoire",
+    "contact": "Contact",
+    "track_order": "Suivre ma commande"
+  },
+  "newsletter": {
+    "title": "Reste dans la nuit",
+    "subtitle": "Conseils sommeil, nouveautes, offres VIP. Un email par mois max.",
+    "email_placeholder": "ton@email.com",
+    "submit": "S'inscrire",
+    "success": "Merci ! On te contacte bientot."
+  },
+  "footer": {
+    "copyright": "© {{ year }} {{ shop_name }}. Tous droits reserves."
+  }
+}

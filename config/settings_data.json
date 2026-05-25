@@ -1,0 +1,49 @@
+{
+  "current": {
+    "color_primary": "#2D1B69",
+    "color_primary_foreground": "#ffffff",
+    "color_accent": "#B79CFF",
+    "color_accent_foreground": "#1E1245",
+    "color_background": "#FFFBF5",
+    "color_foreground": "#1E1245",
+    "color_muted": "#F5F0FF",
+    "color_muted_foreground": "#6B6380",
+    "color_border": "#E8E0F0",
+    "color_footer_bg": "#0B0F1E",
+    "color_footer_fg": "#E8E0F0",
+    "font_family": "poppins",
+    "logo_max_width": 140,
+    "brand_text": "hushly",
+    "brand_text_highlight": "ly",
+    "meta_pixel_id": "",
+    "meta_domain_verification": "",
+    "clarity_id": "",
+    "container_max_width": 1400,
+    "border_radius": 12,
+    "content_for_index": []
+  },
+  "presets": {
+    "Default": {
+      "color_primary": "#2D1B69",
+      "color_primary_foreground": "#ffffff",
+      "color_accent": "#B79CFF",
+      "color_accent_foreground": "#1E1245",
+      "color_background": "#FFFBF5",
+      "color_foreground": "#1E1245",
+      "color_muted": "#F5F0FF",
+      "color_muted_foreground": "#6B6380",
+      "color_border": "#E8E0F0",
+      "color_footer_bg": "#0B0F1E",
+      "color_footer_fg": "#E8E0F0",
+      "font_family": "poppins",
+      "logo_max_width": 140,
+      "brand_text": "hushly",
+      "brand_text_highlight": "ly",
+      "meta_pixel_id": "",
+      "meta_domain_verification": "",
+      "clarity_id": "",
+      "container_max_width": 1400,
+      "border_radius": 12
+    }
+  }
+}

@@ -1,0 +1,49 @@
+<div class="social-proof-toast" data-social-proof-toast aria-live="polite">
+  <div class="flex items-start gap-3 rounded-xl border bg-background shadow-lg" style="border-color: var(--color-border); padding: 1rem;">
+    <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary/10">
+      <span style="font-size: 1.1rem;">🌙</span>
+    </div>
+    <div class="flex-1 min-w-0">
+      <p class="text-sm font-medium" data-toast-name>&mdash;</p>
+      <p class="text-xs text-muted-foreground" data-toast-message>&mdash;</p>
+    </div>
+    <button type="button" class="shrink-0 text-muted-foreground" data-toast-close aria-label="Fermer">&times;</button>
+  </div>
+</div>
+
+<script>
+(function() {
+  const buyers = [
+    { name: 'Sophie L.', city: 'Paris', time: 'il y a 2 min' },
+    { name: 'Lucas P.', city: 'Lyon', time: 'il y a 5 min' },
+    { name: 'Emma G.', city: 'Bruxelles', time: 'il y a 8 min' },
+    { name: 'Antoine R.', city: 'Marseille', time: 'il y a 12 min' },
+    { name: 'Julie D.', city: 'Bordeaux', time: 'il y a 15 min' },
+    { name: 'Thomas M.', city: 'Lille', time: 'il y a 18 min' },
+    { name: 'Clara B.', city: 'Geneve', time: 'il y a 22 min' },
+    { name: 'Hugo T.', city: 'Toulouse', time: 'il y a 25 min' }
+  ];
+  const toast = document.querySelector('[data-social-proof-toast]');
+  if (!toast) return;
+  const nameEl = toast.querySelector('[data-toast-name]');
+  const msgEl = toast.querySelector('[data-toast-message]');
+  const closeBtn = toast.querySelector('[data-toast-close]');
+  let current = 0;
+
+  function show(b) {
+    nameEl.textContent = b.name + ' — ' + b.city;
+    msgEl.textContent = 'vient de commander un Hushly · ' + b.time;
+    toast.dataset.visible = 'true';
+  }
+  function hide() { toast.dataset.visible = 'false'; }
+  if (closeBtn) closeBtn.addEventListener('click', hide);
+
+  setTimeout(() => show(buyers[0]), 8000);
+  setTimeout(hide, 12000);
+  setInterval(() => {
+    current = (current + 1) % buyers.length;
+    show(buyers[current]);
+    setTimeout(hide, 4000);
+  }, 15000);
+})();
+</script>

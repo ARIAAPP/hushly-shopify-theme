@@ -1,0 +1,58 @@
+<div class="exit-popup" data-exit-popup>
+  <div class="exit-popup-card">
+    <button type="button" class="exit-popup-close" aria-label="Fermer" data-exit-close>&times;</button>
+    <div class="exit-popup-emoji">🌙</div>
+    <h3>Tu pars deja ?</h3>
+    <p>Profite de <strong style="color:var(--color-primary); font-size:1.05em;">-10% sur ton 1er Hushly</strong><br><span style="font-size:0.9em;">avec le code <strong>NUIT10</strong></span></p>
+    <div class="exit-gift-badge">
+      <span style="font-size:1.5rem;">🎧</span>
+      <span style="font-weight:700;">-10% sur ta commande</span>
+    </div>
+    <a href="/discount/NUIT10?redirect=/" class="btn btn-block btn-lg" data-exit-cta>J'en profite</a>
+    <button type="button" class="exit-popup-close-link" data-exit-close style="background:none; border:0; color:var(--color-muted-fg); font-size:0.75rem; margin-top:0.75rem; cursor:pointer; text-decoration:underline;">Non merci</button>
+  </div>
+</div>
+
+<script>
+(function() {
+  const popup = document.querySelector('[data-exit-popup]');
+  if (!popup) return;
+  const STORAGE_KEY = 'hushly-exit-popup-shown';
+  const closeBtns = popup.querySelectorAll('[data-exit-close]');
+
+  // Don't show if already shown this session
+  if (sessionStorage.getItem(STORAGE_KEY)) return;
+
+  let shown = false;
+
+  function show() {
+    if (shown) return;
+    shown = true;
+    popup.dataset.open = 'true';
+    sessionStorage.setItem(STORAGE_KEY, '1');
+    if (window.fbq) window.fbq('trackCustom', 'ExitIntentShown', {});
+  }
+  function hide() { popup.dataset.open = 'false'; }
+
+  closeBtns.forEach(b => b.addEventListener('click', hide));
+  popup.addEventListener('click', (e) => { if (e.target === popup) hide(); });
+
+  // Desktop only: exit intent after 8s dwell time
+  const isMobile = !window.matchMedia('(min-width: 768px)').matches;
+  if (isMobile) return;
+
+  const pageEnter = Date.now();
+  const DWELL_MS = 8000;
+
+  document.addEventListener('mouseleave', (e) => {
+    if (e.clientY <= 0 && (Date.now() - pageEnter) >= DWELL_MS) {
+      show();
+    }
+  });
+
+  // Escape closes
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') hide();
+  });
+})();
+</script>

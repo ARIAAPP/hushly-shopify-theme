@@ -1,0 +1,26 @@
+{%- comment -%}
+  The cart is a drawer (snippets/cart-drawer.liquid) opened from the header.
+  This template just opens the drawer if user lands on /cart directly.
+{%- endcomment -%}
+
+<section class="py-20" style="text-align:center;">
+  <div class="container">
+    <h1 class="text-2xl font-bold" style="margin-bottom:1rem;">Ton panier</h1>
+    {%- if cart.item_count == 0 -%}
+      <p class="text-muted-foreground" style="margin-bottom:2rem;">Ton panier est vide. 🌙</p>
+      <a class="btn btn-lg" href="{{ routes.root_url }}">Continuer mes achats</a>
+    {%- else -%}
+      <p class="text-muted-foreground" style="margin-bottom:2rem;">{{ cart.item_count }} article(s) — {{ cart.total_price | money }}</p>
+      <a class="btn btn-lg" href="/checkout">Passer commande</a>
+    {%- endif -%}
+  </div>
+</section>
+
+<script>
+  // Auto-open drawer if items exist
+  document.addEventListener('DOMContentLoaded', function() {
+    if ({{ cart.item_count }} > 0 && window.HushlyCart) {
+      window.HushlyCart.open();
+    }
+  });
+</script>

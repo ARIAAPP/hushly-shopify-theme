@@ -1,0 +1,733 @@
+{%- comment -%}
+  ============================================================
+  ProductSection — Hero / Bundles / Upsells / Countdown
+  Hushly — Bandeau sommeil Bluetooth 3-en-1
+  ============================================================
+{%- endcomment -%}
+
+{%- liquid
+  assign ph_video_setting = section.settings.hero_video
+  if ph_video_setting != blank
+    assign ph_video = ph_video_setting
+  else
+    assign ph_video = 'hushly-hero.mp4' | asset_url
+  endif
+  assign ph_poster_setting = section.settings.hero_poster
+  if ph_poster_setting != blank
+    assign ph_poster = ph_poster_setting | image_url: width: 800
+  else
+    assign ph_poster = 'hushly-hero-poster.jpg' | asset_url
+  endif
+
+  assign primary_image = 'hushly-product-1.webp'
+  assign default_galleries = 'hushly-product-2.webp,hushly-product-3.webp,hushly-product-4.webp' | split: ','
+-%}
+
+<section id="product" class="py-8 md:py-14">
+  <div class="container grid lg:grid-cols-2 gap-10 items-start">
+
+    {%- comment -%} Product Images {%- endcomment -%}
+    <div class="space-y-4">
+      <div class="hero-gallery-container bg-secondary rounded-2xl overflow-hidden flex items-center justify-center relative" data-product-gallery-main>
+        <img
+          data-gallery-slide="0"
+          src="{{ primary_image | asset_url }}"
+          alt="{{ shop.name }}"
+          class="w-full h-full object-cover"
+          width="800" height="800"
+          decoding="async">
+        <video
+          data-gallery-slide="1"
+          data-gallery-video
+          src="{{ ph_video }}"
+          poster="{{ ph_poster }}"
+          muted playsinline preload="metadata"
+          width="720" height="1280"
+          aria-label="Video Hushly"
+          style="display:none;">
+        </video>
+        {%- assign gallery_count = 0 -%}
+        {%- for img in section.settings.gallery_images -%}
+          {%- assign gallery_count = gallery_count | plus: 1 -%}
+          <img
+            data-gallery-slide="{{ forloop.index | plus: 1 }}"
+            src="{{ img | image_url: width: 800 }}"
+            srcset="{{ img | image_url: width: 400 }} 400w, {{ img | image_url: width: 800 }} 800w, {{ img | image_url: width: 1200 }} 1200w"
+            sizes="(max-width: 640px) 400px, 800px"
+            alt="{{ shop.name }}"
+            class="w-full h-full object-cover"
+            width="800" height="800"
+            loading="lazy" decoding="async"
+            style="display:none;">
+        {%- endfor -%}
+        {%- if gallery_count == 0 -%}
+          {%- for img in default_galleries -%}
+            <img
+              data-gallery-slide="{{ forloop.index | plus: 1 }}"
+              src="{{ img | asset_url }}"
+              alt="{{ shop.name }}"
+              class="w-full h-full object-cover"
+              width="800" height="800"
+              loading="lazy" decoding="async"
+              style="display:none;">
+          {%- endfor -%}
+        {%- endif -%}
+      </div>
+
+      <div class="flex gap-3 justify-center flex-wrap">
+        <button type="button" class="relative h-20 w-20 rounded-lg overflow-hidden border-2 cursor-pointer transition-colors gallery-thumb is-active" data-gallery-thumb="0" aria-label="Image principale" style="border-color: var(--color-primary);">
+          <img src="{{ primary_image | asset_url }}" alt="" class="h-full w-full object-cover" width="80" height="80" loading="lazy">
+        </button>
+        <button type="button" class="relative h-20 w-20 rounded-lg overflow-hidden border-2 border-transparent cursor-pointer transition-colors gallery-thumb" data-gallery-thumb="1" aria-label="Voir la video">
+          <img src="{{ ph_poster }}" alt="" class="h-full w-full object-cover" width="80" height="80" loading="lazy">
+          <span class="absolute inset-0 flex items-center justify-center" style="background:rgba(0,0,0,0.3);">
+            <span class="flex h-7 w-7 items-center justify-center rounded-full text-foreground text-[10px] font-bold" style="background:rgba(255,255,255,0.9);">&#9654;</span>
+          </span>
+        </button>
+        {%- if gallery_count > 0 -%}
+          {%- for img in section.settings.gallery_images -%}
+            <button type="button" class="relative h-20 w-20 rounded-lg overflow-hidden border-2 border-transparent cursor-pointer transition-colors gallery-thumb" data-gallery-thumb="{{ forloop.index | plus: 1 }}" aria-label="Image {{ forloop.index | plus: 1 }}">
+              <img src="{{ img | image_url: width: 160 }}" alt="" class="h-full w-full object-cover" width="80" height="80" loading="lazy">
+            </button>
+          {%- endfor -%}
+        {%- else -%}
+          {%- for img in default_galleries -%}
+            <button type="button" class="relative h-20 w-20 rounded-lg overflow-hidden border-2 border-transparent cursor-pointer transition-colors gallery-thumb" data-gallery-thumb="{{ forloop.index | plus: 1 }}" aria-label="Image {{ forloop.index | plus: 1 }}">
+              <img src="{{ img | asset_url }}" alt="" class="h-full w-full object-cover" width="80" height="80" loading="lazy">
+            </button>
+          {%- endfor -%}
+        {%- endif -%}
+      </div>
+    </div>
+
+    {%- comment -%} Product Details {%- endcomment -%}
+    <div class="space-y-5">
+
+      {%- comment -%} Social proof badge {%- endcomment -%}
+      {%- if section.settings.orders_label != blank -%}
+        <span class="rounded-full bg-primary px-3 py-1 text-xs font-bold text-primary-foreground">{{ section.settings.orders_label }}</span>
+      {%- endif -%}
+
+      {%- comment -%} Star rating {%- endcomment -%}
+      <a href="#ugc-gallery" class="flex items-center gap-2" style="text-decoration:none;color:inherit;">
+        <span class="star-rating text-xl" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        <span class="text-base font-bold" style="border-bottom:1px dashed currentColor;">4,9/5 — 312 avis verifies</span>
+      </a>
+
+      <h1 class="text-2xl md:text-3xl font-bold" style="word-wrap:break-word; overflow-wrap:break-word; hyphens:auto;">{{ section.settings.product_title }}</h1>
+
+      {%- comment -%} Dynamic price {%- endcomment -%}
+      <div class="flex items-center gap-3 flex-wrap" data-price-row>
+        <p class="text-2xl font-bold text-primary" data-price-current>{{ section.settings.default_price }}</p>
+        <p class="text-sm font-medium" data-price-discount style="color:#DC2626;">{{ section.settings.launch_offer_label }}</p>
+      </div>
+
+      {%- comment -%} Bullet benefits {%- endcomment -%}
+      <div class="space-y-1.5">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'bullet' -%}
+            <p class="text-sm text-muted-foreground" {{ block.shopify_attributes }}>{{ block.settings.text }}</p>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+
+      {%- comment -%} Divider {%- endcomment -%}
+      <div class="flex items-center gap-4">
+        <div class="h-px flex-1" style="background:var(--color-border);"></div>
+        <span class="text-sm font-bold">{{ section.settings.bundle_section_title }}</span>
+        <div class="h-px flex-1" style="background:var(--color-border);"></div>
+      </div>
+
+      {%- comment -%} Countdown timer {%- endcomment -%}
+      {%- if section.settings.show_countdown -%}
+        <div class="w-full rounded-lg text-center" style="background: color-mix(in srgb, var(--color-accent) 15%, transparent); padding: 0.6rem 0.75rem;" data-countdown>
+          <span class="font-semibold" style="color: var(--color-primary); font-size: 0.85rem; line-height: 1.25;" data-countdown-text>
+            {{ section.settings.countdown_label_default }}
+          </span>
+        </div>
+      {%- endif -%}
+
+      {%- comment -%} Bundle cards {%- endcomment -%}
+      {%- liquid
+        assign default_idx = section.settings.default_bundle_index | default: 2
+        assign bundle_counter = 0
+      -%}
+      <div class="space-y-3" data-bundles>
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'bundle' -%}
+            {%- liquid
+              assign bundle_counter = bundle_counter | plus: 1
+              assign is_default = false
+              if bundle_counter == default_idx
+                assign is_default = true
+              endif
+            -%}
+            <div>
+              <button
+                type="button"
+                class="bundle-card"
+                aria-pressed="{% if is_default %}true{% else %}false{% endif %}"
+                data-bundle
+                data-bundle-id="{{ block.id }}"
+                data-bundle-variant="{{ block.settings.variant_id }}"
+                data-bundle-quantity="{{ block.settings.quantity }}"
+                data-bundle-price="{{ block.settings.price | divided_by: 100.0 }}"
+                data-bundle-original="{{ block.settings.original_price | divided_by: 100.0 }}"
+                data-bundle-title="{{ block.settings.label | escape }}"
+                data-bundle-image="{% if block.settings.image != blank %}{{ block.settings.image | image_url: width: 200 }}{% endif %}"
+                {{ block.shopify_attributes }}>
+
+                {%- if block.settings.badge == 'popular' -%}
+                  <span class="bundle-badge bundle-badge--popular">{{ block.settings.badge_text | default: 'Choix populaire' }}</span>
+                {%- elsif block.settings.badge == 'best' -%}
+                  <span class="bundle-badge bundle-badge--best">{{ block.settings.badge_text | default: 'Le plus avantageux' }}</span>
+                {%- endif -%}
+
+                <div class="bundle-row">
+                  <div class="bundle-info">
+                    <div class="bundle-radio"></div>
+                    <div class="bundle-label-group">
+                      <div class="bundle-label-line">
+                        <span class="font-semibold">{{ block.settings.label }}</span>
+                        {%- if block.settings.save_amount > 0 -%}
+                          <span class="bundle-save text-xs font-semibold text-primary">ECONOMISEZ {{ block.settings.save_amount | money_without_currency }}€</span>
+                        {%- endif -%}
+                      </div>
+                      <p class="text-xs text-muted-foreground">{{ block.settings.description }}</p>
+                    </div>
+                  </div>
+                  <div class="bundle-price">
+                    <span class="font-bold text-lg">{{ block.settings.price | divided_by: 100.0 | money_without_currency }}€</span>
+                    {%- if block.settings.save_amount > 0 -%}
+                      <p class="text-xs line-through text-muted-foreground">{{ block.settings.original_price | divided_by: 100.0 | money_without_currency }}€</p>
+                    {%- endif -%}
+                  </div>
+                </div>
+
+                {%- comment -%} Upsells {%- endcomment -%}
+                <div class="bundle-upsells">
+                  {%- for upsell in section.blocks -%}
+                    {%- if upsell.type == 'upsell' -%}
+                      <label class="flex items-center justify-between cursor-pointer" style="padding: 0.25rem 0;" onclick="event.stopPropagation();" {{ upsell.shopify_attributes }}>
+                        <div class="flex items-center gap-2">
+                          <input type="checkbox" data-upsell data-upsell-id="{{ upsell.id }}" data-upsell-variant="{{ upsell.settings.variant_id }}" data-upsell-price="{{ upsell.settings.price | divided_by: 100.0 }}" data-upsell-title="{{ upsell.settings.label | escape }}" style="width: 1rem; height: 1rem;">
+                          <span style="font-size: 0.95rem;">{{ upsell.settings.icon }}</span>
+                          <span class="text-sm">+ {{ upsell.settings.label }}</span>
+                        </div>
+                        <span class="text-sm font-medium">{{ upsell.settings.price | divided_by: 100.0 | money_without_currency }}€</span>
+                      </label>
+                    {%- endif -%}
+                  {%- endfor -%}
+                </div>
+              </button>
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+
+      {%- comment -%} Add to cart {%- endcomment -%}
+      <button type="button" class="btn btn-block btn-lg" data-add-to-cart>
+        {{ section.settings.cta_label | default: 'Commander maintenant' }}
+      </button>
+
+      {%- comment -%} Trust badges {%- endcomment -%}
+      <div class="trust-badges">
+        <div class="trust-badge">
+          <span class="trust-icon">🛡️</span>
+          <span class="trust-label">Satisfait ou<br>rembourse 30j</span>
+        </div>
+        <div class="trust-badge">
+          <span class="trust-icon">🚚</span>
+          <span class="trust-label">Livraison<br>gratuite</span>
+        </div>
+        <div class="trust-badge">
+          <span class="trust-icon">🔒</span>
+          <span class="trust-label">Paiement<br>100% securise</span>
+        </div>
+        <div class="trust-badge">
+          <span class="trust-icon" style="color: #facc15;">&#9733;</span>
+          <span class="trust-label">4,9/5<br>312+ avis</span>
+        </div>
+      </div>
+
+      {%- comment -%} Payment icons {%- endcomment -%}
+      <div class="pt-1">{% render 'payment-icons' %}</div>
+
+      {%- comment -%} Shipping reassurance {%- endcomment -%}
+      {%- if section.settings.show_delivery_timeline -%}
+        <div class="flex items-center justify-center gap-6 flex-wrap text-center" style="padding: 0.85rem 0;">
+          <div class="flex items-center gap-2">
+            <span style="color:var(--color-primary);">📦</span>
+            <span class="text-xs font-semibold">Expedition sous 48h</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span style="color:var(--color-primary);">📧</span>
+            <span class="text-xs font-semibold">Suivi par email inclus</span>
+          </div>
+        </div>
+      {%- endif -%}
+
+      {%- comment -%} Featured review {%- endcomment -%}
+      {%- if section.settings.show_featured_review -%}
+        <div class="flex items-start gap-3 rounded-xl border p-4" style="border-color: var(--color-border);">
+          <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">{{ section.settings.review_initials }}</div>
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center gap-2">
+              <span class="text-sm font-semibold">{{ section.settings.review_author }}</span>
+              <span class="text-xs star-rating" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            </div>
+            <p class="text-xs text-muted-foreground mt-1">{{ section.settings.review_text }}</p>
+          </div>
+        </div>
+      {%- endif -%}
+
+      {%- comment -%} Collapsible info blocks {%- endcomment -%}
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'collapsible' -%}
+          <details class="faq-item" {{ block.shopify_attributes }} style="border-top: 1px solid var(--color-border); border-bottom: 0;">
+            <summary class="flex items-center justify-between" style="padding: 0.75rem 0;">
+              <span class="flex items-center gap-2">
+                <span>{{ block.settings.emoji }}</span>
+                <span class="text-sm font-bold">{{ block.settings.title }}</span>
+              </span>
+            </summary>
+            <div class="text-sm text-muted-foreground" style="padding: 0 0 0.75rem;">
+              {{ block.settings.content }}
+            </div>
+          </details>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+<script>
+(function() {
+  var section = document.currentScript.closest('section') || document.getElementById('product');
+  if (!section) return;
+
+  // Gallery
+  var slides = section.querySelectorAll('[data-gallery-slide]');
+  var thumbs = section.querySelectorAll('[data-gallery-thumb]');
+  var galleryVideo = section.querySelector('[data-gallery-video]');
+  var galleryAutoTimer = null;
+  var galleryUserInteracted = false;
+
+  function showSlide(idx) {
+    slides.forEach(function(s) { s.style.display = (s.dataset.gallerySlide === String(idx)) ? '' : 'none'; });
+    thumbs.forEach(function(tb) {
+      var active = tb.dataset.galleryThumb === String(idx);
+      tb.classList.toggle('is-active', active);
+      tb.style.borderColor = active ? 'var(--color-primary)' : 'transparent';
+    });
+  }
+
+  thumbs.forEach(function(t) {
+    t.addEventListener('click', function() {
+      galleryUserInteracted = true;
+      if (galleryAutoTimer) { clearInterval(galleryAutoTimer); galleryAutoTimer = null; }
+      var idx = parseInt(t.dataset.galleryThumb, 10);
+      if (galleryVideo) {
+        if (idx === 1) {
+          try { galleryVideo.currentTime = 0; galleryVideo.play(); } catch (e) {}
+        } else {
+          galleryVideo.pause();
+        }
+      }
+      showSlide(idx);
+    });
+  });
+
+  if (slides[0]) slides[0].style.display = '';
+
+  // Bundle selection + price update
+  var bundles = section.querySelectorAll('[data-bundle]');
+  var priceCurrent = section.querySelector('[data-price-current]');
+
+  function selectBundle(card) {
+    bundles.forEach(function(b) { b.setAttribute('aria-pressed', 'false'); });
+    card.setAttribute('aria-pressed', 'true');
+    var p = parseFloat(card.dataset.bundlePrice);
+    if (priceCurrent) priceCurrent.textContent = p.toFixed(2).replace('.', ',') + '€';
+  }
+  bundles.forEach(function(b) {
+    b.addEventListener('click', function(e) {
+      if (e.target.closest('[data-upsell]')) return;
+      selectBundle(b);
+    });
+  });
+
+  // Countdown
+  var countdownText = section.querySelector('[data-countdown-text]');
+  if (countdownText) {
+    var KEY = 'hushly-countdown-end';
+    var INITIAL = 60 * 60 * 1000;
+    var EXTENSION = 60 * 60 * 1000;
+    var stored = 0, extended = false;
+    try {
+      var raw = localStorage.getItem(KEY);
+      if (raw) { var p = JSON.parse(raw); stored = p.end || 0; extended = !!p.extended; }
+    } catch (e) {}
+    var endTime = stored;
+    if (!endTime || endTime < Date.now() - 86400000) {
+      endTime = Date.now() + INITIAL;
+      extended = false;
+      try { localStorage.setItem(KEY, JSON.stringify({ end: endTime, extended: extended })); } catch (e) {}
+    }
+    var pad = function(n) { return String(n).padStart(2, '0'); };
+    var tick = function() {
+      var remaining = Math.max(0, endTime - Date.now());
+      if (remaining === 0) {
+        endTime = Date.now() + EXTENSION;
+        extended = true;
+        try { localStorage.setItem(KEY, JSON.stringify({ end: endTime, extended: extended })); } catch (e) {}
+      }
+      var m = Math.floor(remaining / 60000);
+      var s = Math.floor((remaining % 60000) / 1000);
+      var prefix = extended ? '⚡ Offre prolongee' : 'Offre de lancement';
+      countdownText.textContent = prefix + ' — se termine dans ' + pad(m) + ':' + pad(s);
+    };
+    tick();
+    setInterval(tick, 1000);
+  }
+
+  // Add to cart
+  var atc = section.querySelector('[data-add-to-cart]');
+  if (atc) {
+    atc.addEventListener('click', function() {
+      var selected = section.querySelector('[data-bundle][aria-pressed="true"]') || bundles[0];
+      if (!selected) return;
+      var variantId = selected.dataset.bundleVariant;
+      var qty = parseInt(selected.dataset.bundleQuantity || '1', 10);
+      var totalPrice = parseFloat(selected.dataset.bundlePrice);
+      var unitPrice = +(totalPrice / qty).toFixed(2);
+      var items = [{
+        id: 'main-product',
+        variantId: variantId,
+        title: selected.dataset.bundleTitle || 'Hushly',
+        price: unitPrice,
+        quantity: qty,
+        image: selected.dataset.bundleImage || ''
+      }];
+      var upsells = section.querySelectorAll('[data-upsell]:checked');
+      upsells.forEach(function(u) {
+        items.push({
+          id: u.dataset.upsellId,
+          variantId: u.dataset.upsellVariant,
+          title: u.dataset.upsellTitle,
+          price: parseFloat(u.dataset.upsellPrice),
+          quantity: 1
+        });
+      });
+      if (window.HushlyCart) {
+        window.HushlyCart.openWith(items);
+      }
+      if (window.fbq) {
+        var cartValue = items.reduce(function(s, i) { return s + i.price * i.quantity; }, 0);
+        window.fbq('track', 'AddToCart', {
+          value: +cartValue.toFixed(2),
+          currency: 'EUR',
+          content_ids: items.map(function(i) { return i.variantId; }),
+          content_type: 'product',
+          num_items: items.reduce(function(s, i) { return s + i.quantity; }, 0)
+        });
+      }
+    });
+  }
+
+  // Fire ViewContent
+  if (window.fbq) {
+    setTimeout(function() {
+      window.fbq('track', 'ViewContent', {
+        content_ids: [section.dataset.productId || ''],
+        content_type: 'product',
+        value: parseFloat(section.dataset.defaultPrice || '0'),
+        currency: 'EUR'
+      });
+    }, 800);
+  }
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Hero Produit",
+  "tag": "section",
+  "class": "product-hero-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Galerie media"
+    },
+    {
+      "type": "url",
+      "id": "hero_video",
+      "label": "URL video hero (.mp4)"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_poster",
+      "label": "Poster video"
+    },
+    {
+      "type": "header",
+      "content": "Social proof"
+    },
+    {
+      "type": "text",
+      "id": "orders_label",
+      "label": "Texte compteur",
+      "default": "🌙 +2 400 dormeurs sereins"
+    },
+    {
+      "type": "header",
+      "content": "Titre et prix"
+    },
+    {
+      "type": "text",
+      "id": "product_title",
+      "label": "Titre produit",
+      "default": "Le bandeau sommeil 3-en-1 qui te fait t'endormir en 5 min"
+    },
+    {
+      "type": "text",
+      "id": "default_price",
+      "label": "Prix affiche par defaut",
+      "default": "34,90€"
+    },
+    {
+      "type": "text",
+      "id": "launch_offer_label",
+      "label": "Label promo",
+      "default": "Offre de lancement — prix special"
+    },
+    {
+      "type": "header",
+      "content": "Selection de pack"
+    },
+    {
+      "type": "text",
+      "id": "bundle_section_title",
+      "label": "Titre du selecteur",
+      "default": "🌙 Choisis ton pack"
+    },
+    {
+      "type": "range",
+      "id": "default_bundle_index",
+      "label": "Bundle selectionne par defaut",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 2
+    },
+    {
+      "type": "header",
+      "content": "Countdown"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_countdown",
+      "label": "Afficher le countdown",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "countdown_label_default",
+      "label": "Texte par defaut",
+      "default": "⏰ Offre de lancement — se termine bientot"
+    },
+    {
+      "type": "header",
+      "content": "Bouton CTA"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "Libelle du bouton",
+      "default": "Commander maintenant"
+    },
+    {
+      "type": "header",
+      "content": "Livraison"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_delivery_timeline",
+      "label": "Afficher la timeline de livraison",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Mini-review featured"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_featured_review",
+      "label": "Afficher la mini-review",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "review_initials",
+      "label": "Initiales",
+      "default": "SM"
+    },
+    {
+      "type": "text",
+      "id": "review_author",
+      "label": "Auteur",
+      "default": "Sarah M., 28 ans — Paris"
+    },
+    {
+      "type": "textarea",
+      "id": "review_text",
+      "label": "Texte de l'avis",
+      "default": "J'ai teste pendant 2 semaines. Je m'endors en 5 min sur mon podcast. Game-changer."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "bullet",
+      "name": "Bullet benefice",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Texte",
+          "default": "🎧 Annulation active du bruit"
+        }
+      ]
+    },
+    {
+      "type": "bundle",
+      "name": "Bundle",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Nom du pack",
+          "default": "1 × Hushly"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description courte",
+          "default": "Pour t'endormir en douceur"
+        },
+        {
+          "type": "text",
+          "id": "variant_id",
+          "label": "Shopify Variant ID",
+          "default": ""
+        },
+        {
+          "type": "number",
+          "id": "quantity",
+          "label": "Quantite",
+          "default": 1
+        },
+        {
+          "type": "number",
+          "id": "price",
+          "label": "Prix total (centimes)",
+          "default": 1995,
+          "info": "En centimes (1995 = 19,95€)"
+        },
+        {
+          "type": "number",
+          "id": "original_price",
+          "label": "Prix barre (centimes)",
+          "default": 1995
+        },
+        {
+          "type": "number",
+          "id": "save_amount",
+          "label": "Economies (centimes)",
+          "default": 0
+        },
+        {
+          "type": "select",
+          "id": "badge",
+          "label": "Badge",
+          "options": [
+            { "value": "none", "label": "Aucun" },
+            { "value": "popular", "label": "Choix populaire" },
+            { "value": "best", "label": "Le plus avantageux" }
+          ],
+          "default": "none"
+        },
+        {
+          "type": "text",
+          "id": "badge_text",
+          "label": "Texte du badge (override)"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image (pour le panier)"
+        }
+      ]
+    },
+    {
+      "type": "upsell",
+      "name": "Add-on / Upsell",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Nom",
+          "default": "Assurance colis"
+        },
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Emoji icone",
+          "default": "📦"
+        },
+        {
+          "type": "text",
+          "id": "variant_id",
+          "label": "Shopify Variant ID",
+          "default": ""
+        },
+        {
+          "type": "number",
+          "id": "price",
+          "label": "Prix (centimes)",
+          "default": 595,
+          "info": "En centimes (595 = 5,95€)"
+        }
+      ]
+    },
+    {
+      "type": "collapsible",
+      "name": "Section depliante",
+      "settings": [
+        {
+          "type": "text",
+          "id": "emoji",
+          "label": "Emoji",
+          "default": "🛡️"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Titre",
+          "default": "Garantie satisfait ou rembourse 30 jours"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Contenu",
+          "default": "<p>Si Hushly ne te convient pas dans les 30 jours, on te rembourse integralement.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Produit"
+    }
+  ]
+}
+{% endschema %}

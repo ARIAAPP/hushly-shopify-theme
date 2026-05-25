@@ -1,0 +1,156 @@
+{
+  "sections": {
+    "product_hero": {
+      "type": "product-hero",
+      "settings": {
+        "product_title": "Le bandeau sommeil 3-en-1 qui te fait t'endormir en 5 min",
+        "default_price": "34,90",
+        "launch_offer_label": "Offre de lancement — prix special",
+        "default_bundle_index": 1,
+        "show_countdown": true,
+        "show_delivery_timeline": true,
+        "show_featured_review": true,
+        "review_initials": "SM",
+        "review_author": "Sarah M., 28 ans — Paris",
+        "review_text": "J'ai teste pendant 2 semaines. Je m'endors en 5 min sur mon podcast. Game-changer.",
+        "orders_label": "",
+        "rating_label": "Avis clients",
+        "bundle_section_title": "Choisis ton pack",
+        "countdown_label_default": "Offre de lancement — se termine bientot",
+        "cta_label": "Commander maintenant"
+      },
+      "blocks": {
+        "bullet_1": { "type": "bullet", "settings": { "text": "Annulation active du bruit — coupe les ronflements, la pluie, la rue" } },
+        "bullet_2": { "type": "bullet", "settings": { "text": "3-en-1 : bandeau, ecouteurs et masque pour les yeux" } },
+        "bullet_3": { "type": "bullet", "settings": { "text": "Une charge tient toute la nuit (USB-C, cable standard)" } },
+        "bullet_4": { "type": "bullet", "settings": { "text": "3 boutons physiques — volume et pause sans rallumer ton telephone" } },
+        "bundle_1": { "type": "bundle", "settings": { "label": "1 x Hushly", "description": "Pour t'endormir en douceur", "variant_id": "", "quantity": 1, "price": 1995, "original_price": 3990, "save_amount": 0, "badge": "none" } },
+        "bundle_2": { "type": "bundle", "settings": { "label": "2 x Hushly", "description": "Un pour toi, un pour offrir", "variant_id": "", "quantity": 2, "price": 3490, "original_price": 7980, "save_amount": 500, "badge": "popular", "badge_text": "Choix populaire" } },
+        "bundle_3": { "type": "bundle", "settings": { "label": "3 x Hushly", "description": "Pack famille / cadeaux", "variant_id": "", "quantity": 3, "price": 4990, "original_price": 11970, "save_amount": 1000, "badge": "best", "badge_text": "Le plus avantageux" } },
+        "upsell_1": { "type": "upsell", "settings": { "label": "Assurance colis (perte/vol)", "icon": "📦", "variant_id": "", "price": 595 } },
+        "upsell_2": { "type": "upsell", "settings": { "label": "Garantie etendue 90 jours", "icon": "🛡️", "variant_id": "", "price": 995 } },
+        "upsell_3": { "type": "upsell", "settings": { "label": "Traitement prioritaire (24h ship)", "icon": "🚚", "variant_id": "", "price": 795 } },
+        "collap_1": { "type": "collapsible", "settings": { "emoji": "🛡️", "title": "Garantie satisfait ou rembourse 30 jours", "content": "<p>Si Hushly ne te convient pas dans les 30 jours suivant la reception, on te rembourse integralement. Pas de question, pas de justification — retour offert.</p>" } },
+        "collap_2": { "type": "collapsible", "settings": { "emoji": "🚚", "title": "Livraison gratuite worldwide", "content": "<p>Livraison offerte partout dans le monde. Expedition sous 48h depuis nos entrepots. Delai de reception : 5 a 10 jours ouvres selon ton pays. Tu recois un lien de suivi par email.</p>" } }
+      },
+      "block_order": ["bullet_1","bullet_2","bullet_3","bullet_4","bundle_1","bundle_2","bundle_3","upsell_1","upsell_2","upsell_3","collap_1","collap_2"]
+    },
+    "facebook_community": {
+      "type": "facebook-community",
+      "settings": { "title": "Ils en parlent dans nos groupes Facebook" },
+      "blocks": {
+        "post_1": { "type": "post", "settings": { "name": "Lea Martinez", "time": "il y a 3 jours · 🌍", "text": "Je dormais avec mes AirPods, je me reveillais avec des douleurs aux oreilles tous les matins. Avec Hushly, ZERO inconfort + ma playlist sommeil joue toute la nuit. L'ANC coupe le bruit de mon coloc. Game-changer.", "likes": "127", "comments": "34" } },
+        "post_2": { "type": "post", "settings": { "name": "Marc D.", "time": "il y a 1 semaine · 🌍", "text": "Ma femme ronfle. Hushly + brown noise + ANC = relation sauvee. La batterie tient vraiment toute la nuit, j'ai dormi avec sans m'en rendre compte.", "likes": "298", "comments": "67" } },
+        "post_3": { "type": "post", "settings": { "name": "Camille R.", "time": "il y a 2 semaines · 🌍", "text": "Je l'utilise pour mes meditations guidees le soir. Le bandeau couvre les yeux aussi = masque sommeil integre, genial. Les boutons physiques sur le cote permettent de baisser le son sans toucher mon tel.", "likes": "189", "comments": "42" } }
+      },
+      "block_order": ["post_1","post_2","post_3"]
+    },
+    "comparison": {
+      "type": "comparison-table",
+      "settings": {
+        "title": "Pourquoi Hushly, et pas autre chose ?",
+        "subtitle": "On compare, tu decides.",
+        "col_a": "Hushly",
+        "col_b": "Ecouteurs classiques",
+        "col_c": "Bouchons d'oreilles",
+        "cta_label": "Decouvrir Hushly",
+        "cta_url": "/#product"
+      },
+      "blocks": {
+        "r1": { "type": "row", "settings": { "criteria": "Confortable pour dormir sur le cote", "col_a": "yes", "col_b": "no", "col_c": "mid" } },
+        "r2": { "type": "row", "settings": { "criteria": "Annulation active du bruit (ANC)", "col_a": "yes", "col_b": "mid", "col_c": "mid" } },
+        "r3": { "type": "row", "settings": { "criteria": "Bluetooth pour audio (musique/podcast)", "col_a": "yes", "col_b": "yes", "col_c": "no" } },
+        "r4": { "type": "row", "settings": { "criteria": "Couvre les yeux (masque sommeil integre)", "col_a": "yes", "col_b": "no", "col_c": "no" } },
+        "r5": { "type": "row", "settings": { "criteria": "Pas de douleur dans l'oreille", "col_a": "yes", "col_b": "no", "col_c": "mid" } },
+        "r6": { "type": "row", "settings": { "criteria": "Pas de risque de chute la nuit", "col_a": "yes", "col_b": "no", "col_c": "yes" } },
+        "r7": { "type": "row", "settings": { "criteria": "Boutons physiques (sans toucher telephone)", "col_a": "yes", "col_b": "mid", "col_c": "na" } }
+      },
+      "block_order": ["r1","r2","r3","r4","r5","r6","r7"]
+    },
+    "why": {
+      "type": "why",
+      "settings": {
+        "title": "Pourquoi des milliers de dormeurs choisissent Hushly",
+        "subtitle": "Concu pour disparaitre. Pense pour t'endormir.",
+        "cta_label": "Je veux essayer Hushly",
+        "cta_url": "/#product"
+      },
+      "blocks": {
+        "b1": { "type": "benefit", "settings": { "icon": "🎧", "title": "Annulation active du bruit", "description": "Coupe les ronflements, la pluie, la rue." } },
+        "b2": { "type": "benefit", "settings": { "icon": "🌙", "title": "Masque sommeil integre", "description": "Le bandeau couvre aussi tes yeux." } },
+        "b3": { "type": "benefit", "settings": { "icon": "🔘", "title": "3 boutons physiques", "description": "Volume et pause sans rallumer l'ecran." } },
+        "b4": { "type": "benefit", "settings": { "icon": "🔌", "title": "USB-C universel", "description": "Charge avec le cable que tu as deja." } },
+        "b5": { "type": "benefit", "settings": { "icon": "🔋", "title": "Toute la nuit", "description": "Une charge tient une nuit complete." } },
+        "b6": { "type": "benefit", "settings": { "icon": "👫", "title": "Unisexe & ajustable", "description": "Taille unique, tissu elastique." } },
+        "b7": { "type": "benefit", "settings": { "icon": "📱", "title": "Compatible tout device", "description": "iOS, Android, PC, Mac — sans app." } },
+        "b8": { "type": "benefit", "settings": { "icon": "🚚", "title": "Livraison offerte", "description": "Worldwide, expedie sous 48h." } }
+      },
+      "block_order": ["b1","b2","b3","b4","b5","b6","b7","b8"]
+    },
+    "reviews": {
+      "type": "reviews",
+      "settings": {
+        "show_ugc_gallery": true,
+        "ugc_eyebrow": "Photos clients",
+        "ugc_title": "Ils l'ont adopte",
+        "ugc_subtitle": "Des vraies photos, postees par nos clients sur Instagram.",
+        "title": "312 avis verifies - 4,9/5",
+        "subtitle": "Tous (312) - 5 etoiles (287) - 4 etoiles (21) - Avec photo (94)"
+      },
+      "blocks": {
+        "ug1": { "type": "ugc_photo", "settings": { "caption": "@sarah.m_ - Best sleep ever" } },
+        "ug2": { "type": "ugc_photo", "settings": { "caption": "@marc.dubois - 10h ca tient vraiment" } },
+        "ug3": { "type": "ugc_photo", "settings": { "caption": "@cam.rouge - ma routine sommeil" } },
+        "ug4": { "type": "ugc_photo", "settings": { "caption": "@nomade.life - indispensable en avion" } },
+        "ug5": { "type": "ugc_photo", "settings": { "caption": "@lit.de.livres - audiobooks > comptage moutons" } },
+        "ug6": { "type": "ugc_photo", "settings": { "caption": "@couple.story - il dort, je dors, plus de drama" } },
+        "ug7": { "type": "ugc_photo", "settings": { "caption": "@morning.routine - fini les AirPods qui tombent" } },
+        "ug8": { "type": "ugc_photo", "settings": { "caption": "@asmr.lover - ASMR 4ever" } },
+        "r1": { "type": "review", "settings": { "name": "Sarah M., 28 ans — Paris", "rating": 5, "text": "J'ai teste pendant 2 semaines. Je m'endors en 5 min sur mon podcast de true crime. La batterie tient toute la nuit sans souci. Je ne reviens pas en arriere.", "verified": true } },
+        "rp1": { "type": "review_photo" },
+        "r2": { "type": "review", "settings": { "name": "Marc D., 34 ans — Lyon", "rating": 5, "text": "Ma femme ronfle. Hushly + brown noise sur Spotify = sleep saved. Ultra fin, je dors sur le cote sans gene.", "verified": true } },
+        "rp2": { "type": "review_photo" },
+        "r3": { "type": "review", "settings": { "name": "Camille R., 24 ans — Bordeaux", "rating": 5, "text": "Je l'utilise pour mes meditations guidees du soir. Ultra fin, on l'oublie totalement. Le tissu est doux.", "verified": true } },
+        "rp3": { "type": "review_photo" },
+        "r4": { "type": "review", "settings": { "name": "Thomas L., 31 ans — Nantes", "rating": 4, "text": "Le produit est top, vraiment confortable. J'enleve une etoile parce que le cable USB-C est un peu court. Sinon RAS, je recommande.", "verified": true } },
+        "rp4": { "type": "review_photo" },
+        "r5": { "type": "review", "settings": { "name": "Anna F., 27 ans — London", "rating": 5, "text": "Comfortable, washable, simple. Just works. Shipping to UK was fast (7 days). The headband disappears under my head.", "verified": true } },
+        "rp5": { "type": "review_photo" },
+        "r6": { "type": "review", "settings": { "name": "Julien B., 36 ans — Marseille", "rating": 5, "text": "Mon kine m'a interdit les AirPods pour dormir (douleurs cervicales). Hushly a remplace. Plus aucune douleur, et je peux toujours ecouter mes audiobooks. Pack famille achete.", "verified": true } },
+        "rp6": { "type": "review_photo" }
+      },
+      "block_order": ["ug1","ug2","ug3","ug4","ug5","ug6","ug7","ug8","r1","rp1","r2","rp2","r3","rp3","r4","rp4","r5","rp5","r6","rp6"]
+    },
+    "story": {
+      "type": "story",
+      "settings": {
+        "kicker": "Notre histoire",
+        "title": "Pourquoi on a cree Hushly",
+        "text": "<p>Tout a commence un soir d'hiver, vers 2h du matin.</p><p>Notre fondateur n'arrivait plus a s'endormir sans son podcast prefere. Le probleme ? Ses AirPods tombaient toutes les 20 minutes, lui faisaient mal aux oreilles, et il se reveillait avec des douleurs cervicales en se retournant dessus.</p><p>Il a cherche une alternative. Aucune marque ne combinait a la fois bandeau confortable pour dormir sur le cote, ecouteurs Bluetooth de qualite, ET — surtout — annulation active du bruit pour couper les ronflements et la rue.</p><p>Alors on l'a cree. On a passe 18 mois a tester 12 prototypes, a ecouter plus de 800 personnes nous dire ce qui les empechait de dormir. Le resultat : un bandeau 3-en-1 avec ANC, qui sert aussi de masque pour les yeux, avec 3 boutons physiques pour ne plus jamais avoir a rallumer ton telephone en pleine nuit.</p><p>Aujourd'hui, plus de 2 400 dormeurs utilisent Hushly chaque nuit. Pour leurs playlists, leurs podcasts, leurs meditations, leur ASMR. Pour s'endormir en douceur. Sans douleur.</p>",
+        "italic_text": "Bienvenue chez les Hushlies.",
+        "signoff": "— L'equipe Hushly"
+      }
+    },
+    "faq": {
+      "type": "faq",
+      "settings": {
+        "title": "Questions frequentes",
+        "cta_text": "Toujours des doutes ? Ecris-nous.",
+        "cta_label": "Commander Hushly"
+      },
+      "blocks": {
+        "q1": { "type": "faq", "settings": { "question": "🎧 C'est quoi l'annulation active du bruit (ANC) ?", "answer": "<p>Le bandeau Hushly integre un systeme ANC qui reduit activement les bruits ambiants (ronflements, pluie, voisin du dessus). Combine a ta musique ou tes podcasts, c'est ce qui te permet de t'endormir meme quand l'environnement n'est pas ideal.</p>" } },
+        "q2": { "type": "faq", "settings": { "question": "🌙 Pourquoi tu dis '3-en-1' ?", "answer": "<p>Parce que le bandeau remplit 3 fonctions a la fois : (1) bandeau confortable pour dormir sur le cote, (2) ecouteurs Bluetooth integres, (3) masque pour les yeux (le tissu couvre les yeux et bloque la lumiere). Trois produits, un seul achat.</p>" } },
+        "q3": { "type": "faq", "settings": { "question": "🔋 Combien de temps tient la batterie ?", "answer": "<p>Une charge complete tient une nuit entiere en usage normal. Recharge via USB-C en ~2h.</p>" } },
+        "q4": { "type": "faq", "settings": { "question": "🔌 Le cable USB-C est-il fourni ?", "answer": "<p>Non — pour reduire les dechets et le prix, on a fait le choix de ne pas inclure un enieme cable USB-C. Tu utilises celui de ton telephone (Android ou iPhone 15+). Si tu n'en as pas, on en propose un tresse branded Hushly en option a l'achat.</p>" } },
+        "q5": { "type": "faq", "settings": { "question": "🔘 A quoi servent les 3 boutons sur le cote ?", "answer": "<p>Power (allumer/eteindre + play/pause) et volume −/+. Tu peux regler le son ou mettre en pause sans avoir a attraper ton telephone et rallumer l'ecran au milieu de la nuit.</p>" } },
+        "q6": { "type": "faq", "settings": { "question": "📱 Compatible avec quels appareils ?", "answer": "<p>Tout appareil Bluetooth : iOS, Android, Mac, PC, tablette. Pas d'app a installer, ca se connecte comme n'importe quel casque.</p>" } },
+        "q7": { "type": "faq", "settings": { "question": "🚚 Combien de temps de livraison ?", "answer": "<p>5 a 10 jours ouvres worldwide. Expedition sous 48h. Livraison offerte. Tu recois un suivi par email.</p>" } },
+        "q8": { "type": "faq", "settings": { "question": "↩️ Quelle est la politique de retour ?", "answer": "<p>30 jours satisfait ou rembourse. Pas de question, pas de justification. Retour offert (etiquette pre-payee).</p>" } },
+        "q9": { "type": "faq", "settings": { "question": "😴 Est-ce que je peux dormir sur le cote avec ?", "answer": "<p>Oui, c'est precisement pour ca qu'on l'a concu. Le tissu et les haut-parleurs integres sont plats et ne creent pas de pression douloureuse.</p>" } }
+      },
+      "block_order": ["q1","q2","q3","q4","q5","q6","q7","q8","q9"]
+    }
+  },
+  "order": ["product_hero","facebook_community","comparison","why","reviews","story","faq"]
+}
