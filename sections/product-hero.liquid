@@ -92,17 +92,16 @@
         </span>
       </div>
 
-      {%- comment -%} 5. Bullet points with checkmarks {%- endcomment -%}
+      {%- comment -%} 5. Bullet points with checkmarks (hardcoded — legacy mode has no blocks) {%- endcomment -%}
       <div class="space-y-2" style="margin-top:0.5rem;">
-        {%- for block in section.blocks -%}
-          {%- if block.type == 'bullet' -%}
-            <div class="flex items-start gap-2" {{ block.shopify_attributes }}>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; margin-top:2px;">
-                <path d="M20 6 9 17l-5-5"/>
-              </svg>
-              <span class="text-sm" style="color:var(--color-fg);">{{ block.settings.text }}</span>
-            </div>
-          {%- endif -%}
+        {%- assign bullet_texts = "Se visse dans n'importe quelle douille E27 — 10 secondes|3 vitesses de ventilation silencieuse|LED dimmable — 3 temperatures (chaud / naturel / froid)|Telecommande incluse — controle depuis le canape" | split: "|" -%}
+        {%- for bullet_text in bullet_texts -%}
+          <div class="flex items-start gap-2">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; margin-top:2px;">
+              <path d="M20 6 9 17l-5-5"/>
+            </svg>
+            <span class="text-sm" style="color:var(--color-fg);">{{ bullet_text }}</span>
+          </div>
         {%- endfor -%}
       </div>
 
@@ -122,104 +121,114 @@
         <div class="h-px flex-1" style="background:var(--color-border);"></div>
       </div>
 
-      {%- comment -%} ===== 7. BUNDLE PICKER ===== {%- endcomment -%}
-      {%- liquid
-        assign default_idx = section.settings.default_bundle_index | default: 2
-        assign bundle_counter = 0
-      -%}
+      {%- comment -%} ===== 7. BUNDLE PICKER (hardcoded — legacy mode) ===== {%- endcomment -%}
       <div class="space-y-3" data-bundles>
-        {%- for block in section.blocks -%}
-          {%- if block.type == 'bundle' -%}
-            {%- liquid
-              assign bundle_counter = bundle_counter | plus: 1
-              assign is_default = false
-              if bundle_counter == default_idx
-                assign is_default = true
-              endif
-            -%}
-            <div>
-              <button
-                type="button"
-                class="bundle-card"
-                aria-pressed="{% if is_default %}true{% else %}false{% endif %}"
-                data-bundle
-                data-bundle-id="{{ block.id }}"
-                data-bundle-variant="{{ block.settings.variant_id }}"
-                data-bundle-quantity="{{ block.settings.quantity }}"
-                data-bundle-price="{{ block.settings.price | divided_by: 100.0 }}"
-                data-bundle-original="{{ block.settings.original_price | divided_by: 100.0 }}"
-                data-bundle-label="{{ block.settings.label | escape }}"
-                {{ block.shopify_attributes }}>
 
-                {%- if block.settings.badge == 'popular' -%}
-                  <span class="bundle-badge bundle-badge--popular">{{ block.settings.badge_text | default: 'Populaire' }}</span>
-                {%- elsif block.settings.badge == 'best' -%}
-                  <span class="bundle-badge bundle-badge--best">{{ block.settings.badge_text | default: 'Meilleure offre' }}</span>
-                {%- endif -%}
-
-                <div class="bundle-row">
-                  <div class="bundle-info">
-                    <div class="bundle-radio"></div>
-                    <div class="bundle-label-group">
-                      <div class="bundle-label-line">
-                        <span class="font-semibold">{{ block.settings.label }}</span>
-                        {%- if block.settings.save_amount > 0 -%}
-                          <span class="bundle-save text-xs font-semibold text-primary">
-                            ECONOMISEZ {{ block.settings.save_amount | divided_by: 100.0 }}€
-                          </span>
-                        {%- endif -%}
-                      </div>
-                      <p class="text-xs text-muted-foreground">{{ block.settings.description }}</p>
-                    </div>
+        {%- comment -%} --- Pack Essentiel (1x) --- {%- endcomment -%}
+        <div>
+          <button type="button" class="bundle-card" aria-pressed="false"
+            data-bundle data-bundle-id="bundle-1" data-bundle-variant="54010409353557"
+            data-bundle-quantity="1" data-bundle-price="34.9"
+            data-bundle-original="34.9" data-bundle-label="Pack Essentiel">
+            <div class="bundle-row">
+              <div class="bundle-info">
+                <div class="bundle-radio"></div>
+                <div class="bundle-label-group">
+                  <div class="bundle-label-line">
+                    <span class="font-semibold">Pack Essentiel</span>
                   </div>
-                  <div class="bundle-price">
-                    <span class="font-bold text-lg">{{ block.settings.price | divided_by: 100.0 }}€</span>
-                    {%- if block.settings.original_price > block.settings.price -%}
-                      <p class="text-xs line-through text-muted-foreground">{{ block.settings.original_price | divided_by: 100.0 }}€</p>
-                    {%- endif -%}
-                  </div>
+                  <p class="text-xs text-muted-foreground">1 ventilateur</p>
                 </div>
-              </button>
+              </div>
+              <div class="bundle-price">
+                <span class="font-bold text-lg">34,90€</span>
+              </div>
             </div>
-          {%- endif -%}
-        {%- endfor -%}
+          </button>
+        </div>
+
+        {%- comment -%} --- Pack Duo (2x) — default selected --- {%- endcomment -%}
+        <div>
+          <button type="button" class="bundle-card" aria-pressed="true"
+            data-bundle data-bundle-id="bundle-2" data-bundle-variant="54010409386325"
+            data-bundle-quantity="2" data-bundle-price="59.9"
+            data-bundle-original="69.8" data-bundle-label="Pack Duo">
+            <span class="bundle-badge bundle-badge--popular">Populaire</span>
+            <div class="bundle-row">
+              <div class="bundle-info">
+                <div class="bundle-radio"></div>
+                <div class="bundle-label-group">
+                  <div class="bundle-label-line">
+                    <span class="font-semibold">Pack Duo</span>
+                    <span class="bundle-save text-xs font-semibold text-primary">ECONOMISEZ 9,90€</span>
+                  </div>
+                  <p class="text-xs text-muted-foreground">2 ventilateurs</p>
+                </div>
+              </div>
+              <div class="bundle-price">
+                <span class="font-bold text-lg">59,90€</span>
+                <p class="text-xs line-through text-muted-foreground">69,80€</p>
+              </div>
+            </div>
+          </button>
+        </div>
+
+        {%- comment -%} --- Pack Maison (3x) --- {%- endcomment -%}
+        <div>
+          <button type="button" class="bundle-card" aria-pressed="false"
+            data-bundle data-bundle-id="bundle-3" data-bundle-variant="54010409419093"
+            data-bundle-quantity="3" data-bundle-price="79.9"
+            data-bundle-original="104.7" data-bundle-label="Pack Maison">
+            <span class="bundle-badge bundle-badge--best">Meilleure offre</span>
+            <div class="bundle-row">
+              <div class="bundle-info">
+                <div class="bundle-radio"></div>
+                <div class="bundle-label-group">
+                  <div class="bundle-label-line">
+                    <span class="font-semibold">Pack Maison</span>
+                    <span class="bundle-save text-xs font-semibold text-primary">ECONOMISEZ 24,80€</span>
+                  </div>
+                  <p class="text-xs text-muted-foreground">3 ventilateurs</p>
+                </div>
+              </div>
+              <div class="bundle-price">
+                <span class="font-bold text-lg">79,90€</span>
+                <p class="text-xs line-through text-muted-foreground">104,70€</p>
+              </div>
+            </div>
+          </button>
+        </div>
+
       </div>
 
-      {%- comment -%} ===== 8. UPSELLS (checkboxes) ===== {%- endcomment -%}
-      {%- assign has_upsells = false -%}
-      {%- for block in section.blocks -%}
-        {%- if block.type == 'upsell' -%}
-          {%- assign has_upsells = true -%}
-          {%- break -%}
-        {%- endif -%}
-      {%- endfor -%}
+      {%- comment -%} ===== 8. UPSELLS (hardcoded — legacy mode) ===== {%- endcomment -%}
+      <div style="border:1px solid var(--color-border); border-radius:var(--radius); padding:0.75rem 1rem;" data-upsells-container>
+        <p class="text-xs font-semibold text-muted-foreground" style="margin-bottom:0.5rem; text-transform:uppercase; letter-spacing:0.05em;">Ajoutez a votre commande</p>
 
-      {%- if has_upsells -%}
-        <div style="border:1px solid var(--color-border); border-radius:var(--radius); padding:0.75rem 1rem;" data-upsells-container>
-          <p class="text-xs font-semibold text-muted-foreground" style="margin-bottom:0.5rem; text-transform:uppercase; letter-spacing:0.05em;">Ajoutez a votre commande</p>
-          {%- for block in section.blocks -%}
-            {%- if block.type == 'upsell' -%}
-              <label class="flex items-center justify-between cursor-pointer" style="padding:0.4rem 0;{%- unless forloop.last -%}border-bottom:1px solid var(--color-border);{%- endunless -%}" {{ block.shopify_attributes }}>
-                <div class="flex items-center gap-2 min-w-0 flex-1">
-                  <input
-                    type="checkbox"
-                    data-upsell
-                    data-upsell-id="{{ block.id }}"
-                    data-upsell-variant="{{ block.settings.variant_id }}"
-                    data-upsell-price="{{ block.settings.price | divided_by: 100.0 }}"
-                    data-upsell-label="{{ block.settings.label | escape }}"
-                    style="width:1rem; height:1rem; accent-color:var(--color-primary); cursor:pointer;">
-                  <span class="text-sm">{{ block.settings.label }}</span>
-                  {%- if block.settings.description != blank -%}
-                    <span class="text-xs text-muted-foreground hidden" style="display:none;">{{ block.settings.description }}</span>
-                  {%- endif -%}
-                </div>
-                <span class="text-sm font-semibold whitespace-nowrap" style="margin-left:0.5rem;">+{{ block.settings.price | divided_by: 100.0 }}€</span>
-              </label>
-            {%- endif -%}
-          {%- endfor -%}
-        </div>
-      {%- endif -%}
+        <label class="flex items-center justify-between cursor-pointer" style="padding:0.4rem 0; border-bottom:1px solid var(--color-border);">
+          <div class="flex items-center gap-2 min-w-0 flex-1">
+            <input type="checkbox" data-upsell data-upsell-id="upsell-1" data-upsell-variant="54003242795349" data-upsell-price="4.95" data-upsell-label="Assurance colis (perte ou casse)" style="width:1rem; height:1rem; accent-color:var(--color-primary); cursor:pointer;">
+            <span class="text-sm">Assurance colis (perte ou casse)</span>
+          </div>
+          <span class="text-sm font-semibold whitespace-nowrap" style="margin-left:0.5rem;">+4,95€</span>
+        </label>
+
+        <label class="flex items-center justify-between cursor-pointer" style="padding:0.4rem 0; border-bottom:1px solid var(--color-border);">
+          <div class="flex items-center gap-2 min-w-0 flex-1">
+            <input type="checkbox" data-upsell data-upsell-id="upsell-2" data-upsell-variant="54003255869781" data-upsell-price="7.95" data-upsell-label="Extension garantie 24 mois" style="width:1rem; height:1rem; accent-color:var(--color-primary); cursor:pointer;">
+            <span class="text-sm">Extension garantie 24 mois</span>
+          </div>
+          <span class="text-sm font-semibold whitespace-nowrap" style="margin-left:0.5rem;">+7,95€</span>
+        </label>
+
+        <label class="flex items-center justify-between cursor-pointer" style="padding:0.4rem 0;">
+          <div class="flex items-center gap-2 min-w-0 flex-1">
+            <input type="checkbox" data-upsell data-upsell-id="upsell-3" data-upsell-variant="54003273662805" data-upsell-price="5.95" data-upsell-label="Expedition express 48h" style="width:1rem; height:1rem; accent-color:var(--color-primary); cursor:pointer;">
+            <span class="text-sm">Expedition express 48h</span>
+          </div>
+          <span class="text-sm font-semibold whitespace-nowrap" style="margin-left:0.5rem;">+5,95€</span>
+        </label>
+      </div>
 
       {%- comment -%} ===== 9. CTA BUTTON ===== {%- endcomment -%}
       <button type="button" class="btn btn-block btn-lg" data-add-to-cart style="position:relative; overflow:hidden;">
@@ -267,22 +276,30 @@
         </div>
       {%- endif -%}
 
-      {%- comment -%} ===== 13. COLLAPSIBLES ===== {%- endcomment -%}
-      {%- for block in section.blocks -%}
-        {%- if block.type == 'collapsible' -%}
-          <details class="faq-item" {{ block.shopify_attributes }} style="border-top:1px solid var(--color-border); border-bottom:0;">
-            <summary class="flex items-center justify-between" style="padding:0.75rem 0;">
-              <span class="flex items-center gap-2">
-                <span>{{ block.settings.emoji }}</span>
-                <span class="text-sm font-bold">{{ block.settings.title }}</span>
-              </span>
-            </summary>
-            <div class="text-sm text-muted-foreground" style="padding:0 0 0.75rem;">
-              {{ block.settings.content }}
-            </div>
-          </details>
-        {%- endif -%}
-      {%- endfor -%}
+      {%- comment -%} ===== 13. COLLAPSIBLES (hardcoded — legacy mode) ===== {%- endcomment -%}
+      <details class="faq-item" style="border-top:1px solid var(--color-border); border-bottom:0;">
+        <summary class="flex items-center justify-between" style="padding:0.75rem 0;">
+          <span class="flex items-center gap-2">
+            <span>&#128737;&#65039;</span>
+            <span class="text-sm font-bold">Satisfait ou rembourse 30 jours</span>
+          </span>
+        </summary>
+        <div class="text-sm text-muted-foreground" style="padding:0 0 0.75rem;">
+          <p>Si le ventilateur ne vous convient pas dans les 30 jours suivant la reception, nous vous remboursons integralement. Pas de question, pas de justification — retour offert.</p>
+        </div>
+      </details>
+
+      <details class="faq-item" style="border-top:1px solid var(--color-border); border-bottom:0;">
+        <summary class="flex items-center justify-between" style="padding:0.75rem 0;">
+          <span class="flex items-center gap-2">
+            <span>&#128666;</span>
+            <span class="text-sm font-bold">Livraison offerte en France metropolitaine</span>
+          </span>
+        </summary>
+        <div class="text-sm text-muted-foreground" style="padding:0 0 0.75rem;">
+          <p>Livraison offerte en France metropolitaine. Vous recevez un lien de suivi par email des l'expedition de votre commande.</p>
+        </div>
+      </details>
 
       {%- comment -%} ===== 14. SOCIAL COUNTER ===== {%- endcomment -%}
       <div style="text-align:center; padding:0.6rem 0;">
