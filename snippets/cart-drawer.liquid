@@ -1,7 +1,7 @@
 {%- comment -%}
   ============================================================
   Cart Drawer — Slide-in from right
-  Soufflo — overlay backdrop, empty state, footer with CTA
+  Soufflo — Shopify AJAX Cart API
   ============================================================
 {%- endcomment -%}
 
@@ -12,59 +12,171 @@
 <aside class="cart-drawer" data-cart-drawer aria-hidden="true" aria-label="Panier">
 
   {%- comment -%} Header {%- endcomment -%}
-  <header class="border-b" style="border-color: var(--color-border); padding: 1rem 1.25rem;">
-    <div class="flex items-center justify-between">
-      <h2 class="flex items-center gap-2 text-base font-semibold">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-        <span>Votre panier (<span data-cart-item-count>0</span>)</span>
-      </h2>
-      <button type="button" aria-label="Fermer" data-cart-close style="font-size: 1.5rem; line-height: 1; padding: 0.25rem;">&times;</button>
-    </div>
-  </header>
+  <div class="cart-drawer__header">
+    <h2>Votre panier</h2>
+    <button type="button" aria-label="Fermer" data-cart-close>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
 
-  {%- comment -%} Body {%- endcomment -%}
-  <div class="flex-1 overflow-y-auto" style="padding: 1rem 1.25rem;" data-cart-body>
-    <p class="text-sm text-muted-foreground text-center" data-cart-empty style="padding: 2.5rem 0;">Votre panier est vide.</p>
-    <div data-cart-items class="space-y-4"></div>
-
-    {%- comment -%} Cross-sell upsells area {%- endcomment -%}
-    <div data-cart-upsells class="rounded-xl border" style="border-color: var(--color-border); padding: 1rem; margin-top: 1rem; background: color-mix(in srgb, var(--color-muted) 30%, transparent); display: none;">
-      <p class="text-sm font-bold">&#128161; Compl&eacute;tez votre commande</p>
-      <p class="text-xs text-muted-foreground" style="margin-top: 0.125rem;">Ajoutez en 1 clic</p>
-      <div class="space-y-2" style="margin-top: 0.75rem;" data-cart-upsells-list></div>
-    </div>
+  {%- comment -%} Items {%- endcomment -%}
+  <div class="cart-drawer__items" data-cart-items>
+    <p class="cart-drawer__empty" data-cart-empty>Votre panier est vide.</p>
   </div>
 
   {%- comment -%} Footer {%- endcomment -%}
-  <footer class="border-t bg-background space-y-3" style="border-color: var(--color-border); padding: 1rem 1.25rem;" data-cart-footer hidden>
-    <div class="flex items-center justify-between">
-      <span class="text-sm text-muted-foreground">Sous-total</span>
-      <span class="text-lg font-bold" data-cart-subtotal>&euro;0,00</span>
+  <div class="cart-drawer__footer" data-cart-footer style="display: none;">
+    <div class="cart-drawer__row">
+      <span>Sous-total</span>
+      <span data-cart-subtotal>0,00 &euro;</span>
     </div>
-    <p class="text-xs text-muted-foreground">Livraison et taxes calcul&eacute;es &agrave; l'&eacute;tape suivante.</p>
-
-    {%- comment -%} Reassurance badges {%- endcomment -%}
-    <div class="rounded-lg space-y-1.5" style="background: color-mix(in srgb, var(--color-muted) 50%, transparent); padding: 0.625rem 0.75rem;">
-      <div class="flex items-center gap-2 text-sm"><span style="color: var(--color-primary);">&#128666;</span> Livraison offerte</div>
-      <div class="flex items-center gap-2 text-sm"><span style="color: var(--color-primary);">&#128274;</span> Paiement 100% s&eacute;curis&eacute;</div>
-      <div class="flex items-center gap-2 text-sm"><span style="color: var(--color-primary);">&#8617;&#65039;</span> Satisfait ou rembours&eacute; 30 jours</div>
-      <div class="flex items-center gap-2 text-sm"><span style="color: var(--color-primary);">&#9733;</span> 4,8/5 &mdash; 150+ avis clients</div>
+    <div class="cart-drawer__row">
+      <span>Livraison</span>
+      <span class="cart-drawer__free-shipping">Offerte</span>
     </div>
-
-    {%- comment -%} Express checkout {%- endcomment -%}
-    <div class="space-y-2">
-      <p class="text-[11px] font-semibold uppercase tracking-wide text-muted-foreground text-center">Paiement express</p>
-      <button type="button" class="btn-shop-pay btn-block" data-shop-pay style="display: flex; align-items: center; justify-content: center; min-height: 48px;">
-        <span style="font-weight: 700; letter-spacing: -0.02em;">shop<span style="font-weight: 800;">Pay</span></span>
-      </button>
-      <div class="flex items-center gap-3" style="padding: 0.25rem 0;">
-        <div class="h-px flex-1" style="background: var(--color-border);"></div>
-        <span class="text-[10px] uppercase tracking-wider text-muted-foreground">ou</span>
-        <div class="h-px flex-1" style="background: var(--color-border);"></div>
-      </div>
+    <div class="cart-drawer__row cart-drawer__row--total">
+      <span>Total</span>
+      <span data-cart-total>0,00 &euro;</span>
     </div>
+    <a href="/checkout" class="cart-drawer__checkout" data-checkout>Passer commande</a>
+    <p class="cart-drawer__reassurance">&#128274; Paiement 100% s&eacute;curis&eacute; &middot; 30j satisfait ou rembours&eacute;</p>
+    {% render 'payment-icons' %}
+  </div>
 
-    <button type="button" class="btn btn-block btn-lg" data-checkout>Passer commande</button>
-    <button type="button" class="text-center text-xs text-muted-foreground" data-cart-close style="display: block; width: 100%; background: none; border: 0; cursor: pointer; padding: 0.25rem;">Continuer mes achats</button>
-  </footer>
 </aside>
+
+<script>
+(function() {
+  var overlay = document.querySelector('[data-cart-overlay]');
+  var drawer = document.querySelector('[data-cart-drawer]');
+  var itemsContainer = document.querySelector('[data-cart-items]');
+  var emptyMsg = document.querySelector('[data-cart-empty]');
+  var footer = document.querySelector('[data-cart-footer]');
+  var subtotalEl = document.querySelector('[data-cart-subtotal]');
+  var totalEl = document.querySelector('[data-cart-total]');
+
+  if (!overlay || !drawer) return;
+
+  /* ---- Open / Close ---- */
+  function openCart() {
+    overlay.dataset.open = 'true';
+    drawer.dataset.open = 'true';
+    drawer.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    fetchCart();
+  }
+
+  function closeCart() {
+    overlay.dataset.open = 'false';
+    drawer.dataset.open = 'false';
+    drawer.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  /* Close buttons */
+  document.querySelectorAll('[data-cart-close]').forEach(function(btn) {
+    btn.addEventListener('click', closeCart);
+  });
+  overlay.addEventListener('click', closeCart);
+
+  /* Listen for custom event */
+  document.addEventListener('cart:open', openCart);
+
+  /* ---- Format money ---- */
+  function formatMoney(cents) {
+    var euros = (cents / 100).toFixed(2).replace('.', ',');
+    return euros + ' €';
+  }
+
+  /* ---- Fetch & render cart ---- */
+  function fetchCart() {
+    fetch('/cart.js', { credentials: 'same-origin' })
+      .then(function(r) { return r.json(); })
+      .then(renderCart)
+      .catch(function(err) { console.error('Cart fetch error:', err); });
+  }
+
+  function renderCart(cart) {
+    /* Update header badge */
+    updateCartCount(cart.item_count);
+
+    if (cart.item_count === 0) {
+      emptyMsg.style.display = '';
+      footer.style.display = 'none';
+      /* Clear items but keep empty message */
+      var items = itemsContainer.querySelectorAll('.cart-item');
+      items.forEach(function(el) { el.remove(); });
+      return;
+    }
+
+    emptyMsg.style.display = 'none';
+    footer.style.display = '';
+
+    /* Clear existing items */
+    var existing = itemsContainer.querySelectorAll('.cart-item');
+    existing.forEach(function(el) { el.remove(); });
+
+    /* Render each item */
+    cart.items.forEach(function(item) {
+      var div = document.createElement('div');
+      div.className = 'cart-item';
+      div.innerHTML =
+        '<div class="cart-item__image"></div>' +
+        '<div class="cart-item__details">' +
+          '<p class="cart-item__name">' + item.product_title + '</p>' +
+          (item.variant_title ? '<p class="cart-item__variant">' + item.variant_title + '</p>' : '') +
+          '<p class="cart-item__price">' + formatMoney(item.final_line_price) + '</p>' +
+        '</div>' +
+        '<button type="button" class="cart-item__remove" data-remove-key="' + item.key + '" aria-label="Supprimer">' +
+          '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>' +
+        '</button>';
+      itemsContainer.appendChild(div);
+    });
+
+    /* Bind remove buttons */
+    itemsContainer.querySelectorAll('[data-remove-key]').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        removeItem(btn.getAttribute('data-remove-key'));
+      });
+    });
+
+    /* Update totals */
+    subtotalEl.textContent = formatMoney(cart.total_price);
+    totalEl.textContent = formatMoney(cart.total_price);
+  }
+
+  /* ---- Remove item ---- */
+  function removeItem(key) {
+    fetch('/cart/change.js', {
+      method: 'POST',
+      credentials: 'same-origin',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id: key, quantity: 0 })
+    })
+      .then(function(r) { return r.json(); })
+      .then(function(cart) {
+        renderCart(cart);
+      })
+      .catch(function(err) { console.error('Remove item error:', err); });
+  }
+
+  /* ---- Update cart count badge ---- */
+  function updateCartCount(count) {
+    document.querySelectorAll('[data-cart-count]').forEach(function(el) {
+      el.textContent = count;
+      if (count > 0) {
+        el.style.display = '';
+      } else {
+        el.style.display = 'none';
+      }
+    });
+  }
+
+  /* Expose globally */
+  window.openCart = openCart;
+  window.closeCart = closeCart;
+
+  /* Initial fetch for count badge */
+  fetchCart();
+})();
+</script>

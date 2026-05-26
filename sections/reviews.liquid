@@ -1,357 +1,170 @@
 {%- comment -%}
   ============================================================
-  Reviews Section — Soufflo Ventilateur Plafonnier LED E27
-  ID: "avis" — 6 hardcoded reviews + filter tabs + CTA
+  Reviews Section — Customer reviews with stars, avatars, photos
+  Soufflo — Ventilateur LED E27
   ============================================================
 {%- endcomment -%}
 
-<section id="avis" class="py-16 md:py-20" style="background: var(--color-muted);">
-  <div class="container space-y-10">
+<section id="reviews" class="section-padding bg-surface">
+  <div class="container">
 
-    {%- comment -%} Header {%- endcomment -%}
-    <div class="text-center space-y-3">
-      <div class="flex items-center justify-center gap-2">
-        <span class="star-rating text-2xl" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-      </div>
-      <h2 class="text-3xl md:text-4xl font-bold">{{ section.settings.title }}</h2>
-      <p class="text-muted-foreground text-sm">{{ section.settings.subtitle }}</p>
+    {%- comment -%} Heading {%- endcomment -%}
+    <div class="text-center mb-2">
+      <h2 style="color:#0C4A6E;" class="text-3xl font-bold">4,8/5 &mdash; 150 avis v&eacute;rifi&eacute;s <span style="color:#38BDF8;">&#9733;&#9733;&#9733;&#9733;&#9733;</span></h2>
     </div>
 
-    {%- comment -%} Filter tabs {%- endcomment -%}
-    <div class="flex items-center justify-center gap-2 flex-wrap">
-      <button type="button" class="review-filter-tab is-active" data-filter="all" style="padding: 0.4rem 1rem; border-radius: 9999px; font-size: 0.8rem; font-weight: 600; border: 1px solid var(--color-border); background: var(--color-primary); color: var(--color-primary-fg); cursor: pointer; transition: all 0.15s;">
-        Tous (150)
-      </button>
-      <button type="button" class="review-filter-tab" data-filter="5" style="padding: 0.4rem 1rem; border-radius: 9999px; font-size: 0.8rem; font-weight: 600; border: 1px solid var(--color-border); background: var(--color-bg); color: var(--color-fg); cursor: pointer; transition: all 0.15s;">
-        5&#9733; (128)
-      </button>
-      <button type="button" class="review-filter-tab" data-filter="4" style="padding: 0.4rem 1rem; border-radius: 9999px; font-size: 0.8rem; font-weight: 600; border: 1px solid var(--color-border); background: var(--color-bg); color: var(--color-fg); cursor: pointer; transition: all 0.15s;">
-        4&#9733; (18)
-      </button>
-      <button type="button" class="review-filter-tab" data-filter="photo" style="padding: 0.4rem 1rem; border-radius: 9999px; font-size: 0.8rem; font-weight: 600; border: 1px solid var(--color-border); background: var(--color-bg); color: var(--color-fg); cursor: pointer; transition: all 0.15s;">
-        Avec photo (42)
-      </button>
-    </div>
+    {%- comment -%} Filter text {%- endcomment -%}
+    <p class="text-center text-sm text-muted-foreground mb-0">Tous (150) &middot; 5&#9733; (128) &middot; 4&#9733; (18) &middot; Avec photo (42)</p>
 
     {%- comment -%} Reviews grid {%- endcomment -%}
-    <div class="grid lg:grid-cols-2 gap-6" data-reviews-grid>
+    <div class="reviews__grid" style="margin-top:2.5rem; max-width:64rem; margin-left:auto; margin-right:auto;">
 
-      {%- comment -%} Review 1 — Marie T. {%- endcomment -%}
-      <div class="rounded-2xl bg-background p-6 shadow-sm space-y-3" data-review data-stars="5">
-        <div class="flex items-center gap-3">
-          <img src="{{ 'soufflo-7A-avatar-marie.jpg' | asset_url }}" alt="Marie T." class="h-12 w-12 shrink-0 rounded-full object-cover" width="48" height="48" loading="lazy">
-          <div class="flex-1 min-w-0">
-            <div class="flex items-center gap-2 flex-wrap">
-              <span class="text-sm font-semibold">Marie T.</span>
-              <span class="text-xs text-muted-foreground">Lyon</span>
-              <span class="inline-flex items-center gap-1 text-xs font-medium text-primary" style="background: color-mix(in srgb, var(--color-primary) 10%, transparent); padding: 0.15rem 0.5rem; border-radius: 9999px;">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                Achat v&eacute;rifi&eacute;
-              </span>
+      {%- comment -%} Review 1 — Marie T. — 5★ — 1 photo {%- endcomment -%}
+      <div class="review-card soft-shadow">
+        <div class="flex items-center justify-between mb-3">
+          <div class="flex items-center gap-3">
+            <div style="width:40px; height:40px; border-radius:50%; background:#38BDF8; color:#fff; display:flex; align-items:center; justify-content:center; font-size:0.875rem; font-weight:700; flex-shrink:0;">MT</div>
+            <div>
+              <div class="flex items-center gap-2 flex-wrap">
+                <span class="text-sm font-semibold">Marie T.</span>
+                <span class="text-xs text-muted-foreground">&middot; Lyon</span>
+              </div>
+              <span class="inline-flex items-center gap-1 text-xs font-medium" style="background:#F0FDF4; color:#16A34A; padding:0.125rem 0.5rem; border-radius:9999px;">&#10003; Achat v&eacute;rifi&eacute;</span>
             </div>
-            <div class="star-rating text-xs" aria-label="5 sur 5">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          </div>
+          <div class="text-right">
+            <div style="color:#38BDF8; font-size:0.875rem;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p class="text-xs text-muted-foreground mb-0" style="opacity:0.6;">il y a 2 jours</p>
           </div>
         </div>
-        <p class="text-sm leading-relaxed text-muted-foreground">&laquo;&nbsp;Incroyable, je l'ai viss&eacute; en 10 secondes et &ccedil;a change la vie en &eacute;t&eacute;&nbsp;! La lumi&egrave;re est douce et le ventilo super silencieux.&nbsp;&raquo;</p>
-        <p class="text-xs text-muted-foreground" style="opacity: 0.6;">il y a 2 jours</p>
+        <p class="text-sm leading-relaxed text-muted-foreground mb-3">Incroyable, je l'ai viss&eacute; en 10 secondes et &ccedil;a change la vie en &eacute;t&eacute;&nbsp;! La lumi&egrave;re est douce et le ventilo super silencieux.</p>
+        <div class="flex gap-2">
+          <div class="lavender-gradient" style="width:64px; height:64px; border-radius:0.5rem; flex-shrink:0;"></div>
+        </div>
       </div>
 
-      {%- comment -%} Review 2 — Jean-Pierre L. {%- endcomment -%}
-      <div class="rounded-2xl bg-background p-6 shadow-sm space-y-3" data-review data-stars="5">
-        <div class="flex items-center gap-3">
-          <img src="{{ 'soufflo-7C-avatar-laurent.jpg' | asset_url }}" alt="Jean-Pierre L." class="h-12 w-12 shrink-0 rounded-full object-cover" width="48" height="48" loading="lazy">
-          <div class="flex-1 min-w-0">
-            <div class="flex items-center gap-2 flex-wrap">
-              <span class="text-sm font-semibold">Jean-Pierre L.</span>
-              <span class="text-xs text-muted-foreground">Marseille</span>
-              <span class="inline-flex items-center gap-1 text-xs font-medium text-primary" style="background: color-mix(in srgb, var(--color-primary) 10%, transparent); padding: 0.15rem 0.5rem; border-radius: 9999px;">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                Achat v&eacute;rifi&eacute;
-              </span>
+      {%- comment -%} Review 2 — Jean-Pierre L. — 5★ — 0 photos {%- endcomment -%}
+      <div class="review-card soft-shadow">
+        <div class="flex items-center justify-between mb-3">
+          <div class="flex items-center gap-3">
+            <div style="width:40px; height:40px; border-radius:50%; background:#38BDF8; color:#fff; display:flex; align-items:center; justify-content:center; font-size:0.875rem; font-weight:700; flex-shrink:0;">JL</div>
+            <div>
+              <div class="flex items-center gap-2 flex-wrap">
+                <span class="text-sm font-semibold">Jean-Pierre L.</span>
+                <span class="text-xs text-muted-foreground">&middot; Marseille</span>
+              </div>
+              <span class="inline-flex items-center gap-1 text-xs font-medium" style="background:#F0FDF4; color:#16A34A; padding:0.125rem 0.5rem; border-radius:9999px;">&#10003; Achat v&eacute;rifi&eacute;</span>
             </div>
-            <div class="star-rating text-xs" aria-label="5 sur 5">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          </div>
+          <div class="text-right">
+            <div style="color:#38BDF8; font-size:0.875rem;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p class="text-xs text-muted-foreground mb-0" style="opacity:0.6;">il y a 5 jours</p>
           </div>
         </div>
-        <p class="text-sm leading-relaxed text-muted-foreground">&laquo;&nbsp;J'en ai command&eacute; un pour tester, j'en ai rachet&eacute; 2 de plus dans la foul&eacute;e. Toute la maison est &eacute;quip&eacute;e maintenant.&nbsp;&raquo;</p>
-        <p class="text-xs text-muted-foreground" style="opacity: 0.6;">il y a 5 jours</p>
+        <p class="text-sm leading-relaxed text-muted-foreground mb-0">J'en ai command&eacute; un pour tester, j'en ai rachet&eacute; 2 de plus dans la foul&eacute;e. Toute la maison est &eacute;quip&eacute;e maintenant.</p>
       </div>
 
-      {%- comment -%} Review 3 — Camille B. {%- endcomment -%}
-      <div class="rounded-2xl bg-background p-6 shadow-sm space-y-3" data-review data-stars="4">
-        <div class="flex items-center gap-3">
-          <img src="{{ 'soufflo-8B-avatar-camille.jpg' | asset_url }}" alt="Camille B." class="h-12 w-12 shrink-0 rounded-full object-cover" width="48" height="48" loading="lazy">
-          <div class="flex-1 min-w-0">
-            <div class="flex items-center gap-2 flex-wrap">
-              <span class="text-sm font-semibold">Camille B.</span>
-              <span class="text-xs text-muted-foreground">Paris</span>
-              <span class="inline-flex items-center gap-1 text-xs font-medium text-primary" style="background: color-mix(in srgb, var(--color-primary) 10%, transparent); padding: 0.15rem 0.5rem; border-radius: 9999px;">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                Achat v&eacute;rifi&eacute;
-              </span>
+      {%- comment -%} Review 3 — Camille B. — 4★ — 0 photos {%- endcomment -%}
+      <div class="review-card soft-shadow">
+        <div class="flex items-center justify-between mb-3">
+          <div class="flex items-center gap-3">
+            <div style="width:40px; height:40px; border-radius:50%; background:#38BDF8; color:#fff; display:flex; align-items:center; justify-content:center; font-size:0.875rem; font-weight:700; flex-shrink:0;">CB</div>
+            <div>
+              <div class="flex items-center gap-2 flex-wrap">
+                <span class="text-sm font-semibold">Camille B.</span>
+                <span class="text-xs text-muted-foreground">&middot; Paris</span>
+              </div>
+              <span class="inline-flex items-center gap-1 text-xs font-medium" style="background:#F0FDF4; color:#16A34A; padding:0.125rem 0.5rem; border-radius:9999px;">&#10003; Achat v&eacute;rifi&eacute;</span>
             </div>
-            <div class="star-rating text-xs" aria-label="4 sur 5">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
+          </div>
+          <div class="text-right">
+            <div style="color:#38BDF8; font-size:0.875rem;">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
+            <p class="text-xs text-muted-foreground mb-0" style="opacity:0.6;">il y a 1 semaine</p>
           </div>
         </div>
-        <p class="text-sm leading-relaxed text-muted-foreground">&laquo;&nbsp;Produit top, la t&eacute;l&eacute;commande est pratique. Un point : pr&eacute;voir une douille E27, pas une E14 (v&eacute;rifiez avant).&nbsp;&raquo;</p>
-        <p class="text-xs text-muted-foreground" style="opacity: 0.6;">il y a 1 semaine</p>
+        <p class="text-sm leading-relaxed text-muted-foreground mb-0">Produit top, la t&eacute;l&eacute;commande est pratique. Un point : pr&eacute;voir une douille E27, pas une E14 (v&eacute;rifiez avant).</p>
       </div>
 
-      {%- comment -%} Review 4 — Antoine D. {%- endcomment -%}
-      <div class="rounded-2xl bg-background p-6 shadow-sm space-y-3" data-review data-stars="5">
-        <div class="flex items-center gap-3">
-          <img src="{{ 'soufflo-8A-avatar-thomas.jpg' | asset_url }}" alt="Antoine D." class="h-12 w-12 shrink-0 rounded-full object-cover" width="48" height="48" loading="lazy">
-          <div class="flex-1 min-w-0">
-            <div class="flex items-center gap-2 flex-wrap">
-              <span class="text-sm font-semibold">Antoine D.</span>
-              <span class="text-xs text-muted-foreground">Bordeaux</span>
-              <span class="inline-flex items-center gap-1 text-xs font-medium text-primary" style="background: color-mix(in srgb, var(--color-primary) 10%, transparent); padding: 0.15rem 0.5rem; border-radius: 9999px;">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                Achat v&eacute;rifi&eacute;
-              </span>
+      {%- comment -%} Review 4 — Antoine D. — 5★ — 1 photo {%- endcomment -%}
+      <div class="review-card soft-shadow">
+        <div class="flex items-center justify-between mb-3">
+          <div class="flex items-center gap-3">
+            <div style="width:40px; height:40px; border-radius:50%; background:#38BDF8; color:#fff; display:flex; align-items:center; justify-content:center; font-size:0.875rem; font-weight:700; flex-shrink:0;">AD</div>
+            <div>
+              <div class="flex items-center gap-2 flex-wrap">
+                <span class="text-sm font-semibold">Antoine D.</span>
+                <span class="text-xs text-muted-foreground">&middot; Bordeaux</span>
+              </div>
+              <span class="inline-flex items-center gap-1 text-xs font-medium" style="background:#F0FDF4; color:#16A34A; padding:0.125rem 0.5rem; border-radius:9999px;">&#10003; Achat v&eacute;rifi&eacute;</span>
             </div>
-            <div class="star-rating text-xs" aria-label="5 sur 5">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          </div>
+          <div class="text-right">
+            <div style="color:#38BDF8; font-size:0.875rem;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p class="text-xs text-muted-foreground mb-0" style="opacity:0.6;">il y a 2 semaines</p>
           </div>
         </div>
-        <p class="text-sm leading-relaxed text-muted-foreground">&laquo;&nbsp;Ma femme trouvait le ventilo sur pied moche dans le salon. Celui-ci est discret au plafond et fait aussi lampe. Parfait.&nbsp;&raquo;</p>
-        <p class="text-xs text-muted-foreground" style="opacity: 0.6;">il y a 2 semaines</p>
+        <p class="text-sm leading-relaxed text-muted-foreground mb-3">Ma femme trouvait le ventilo sur pied moche dans le salon. Celui-ci est discret au plafond et fait aussi lampe. Parfait.</p>
+        <div class="flex gap-2">
+          <div class="lavender-gradient" style="width:64px; height:64px; border-radius:0.5rem; flex-shrink:0;"></div>
+        </div>
       </div>
 
-      {%- comment -%} Review 5 — Lea R. {%- endcomment -%}
-      <div class="rounded-2xl bg-background p-6 shadow-sm space-y-3" data-review data-stars="5">
-        <div class="flex items-center gap-3">
-          <img src="{{ 'soufflo-7E-avatar-sophie.jpg' | asset_url }}" alt="Lea R." class="h-12 w-12 shrink-0 rounded-full object-cover" width="48" height="48" loading="lazy">
-          <div class="flex-1 min-w-0">
-            <div class="flex items-center gap-2 flex-wrap">
-              <span class="text-sm font-semibold">L&eacute;a R.</span>
-              <span class="text-xs text-muted-foreground">Toulouse</span>
-              <span class="inline-flex items-center gap-1 text-xs font-medium text-primary" style="background: color-mix(in srgb, var(--color-primary) 10%, transparent); padding: 0.15rem 0.5rem; border-radius: 9999px;">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                Achat v&eacute;rifi&eacute;
-              </span>
+      {%- comment -%} Review 5 — Lea R. — 5★ — 0 photos {%- endcomment -%}
+      <div class="review-card soft-shadow">
+        <div class="flex items-center justify-between mb-3">
+          <div class="flex items-center gap-3">
+            <div style="width:40px; height:40px; border-radius:50%; background:#38BDF8; color:#fff; display:flex; align-items:center; justify-content:center; font-size:0.875rem; font-weight:700; flex-shrink:0;">LR</div>
+            <div>
+              <div class="flex items-center gap-2 flex-wrap">
+                <span class="text-sm font-semibold">L&eacute;a R.</span>
+                <span class="text-xs text-muted-foreground">&middot; Toulouse</span>
+              </div>
+              <span class="inline-flex items-center gap-1 text-xs font-medium" style="background:#F0FDF4; color:#16A34A; padding:0.125rem 0.5rem; border-radius:9999px;">&#10003; Achat v&eacute;rifi&eacute;</span>
             </div>
-            <div class="star-rating text-xs" aria-label="5 sur 5">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          </div>
+          <div class="text-right">
+            <div style="color:#38BDF8; font-size:0.875rem;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p class="text-xs text-muted-foreground mb-0" style="opacity:0.6;">il y a 3 semaines</p>
           </div>
         </div>
-        <p class="text-sm leading-relaxed text-muted-foreground">&laquo;&nbsp;La fonction lumi&egrave;re dimmable c'est le gros plus. On l'utilise comme veilleuse la nuit en mode chaud.&nbsp;&raquo;</p>
-        <p class="text-xs text-muted-foreground" style="opacity: 0.6;">il y a 3 semaines</p>
+        <p class="text-sm leading-relaxed text-muted-foreground mb-0">La fonction lumi&egrave;re dimmable c'est le gros plus. On l'utilise comme veilleuse la nuit en mode chaud.</p>
       </div>
 
-      {%- comment -%} Review 6 — Marc V. {%- endcomment -%}
-      <div class="rounded-2xl bg-background p-6 shadow-sm space-y-3" data-review data-stars="5">
-        <div class="flex items-center gap-3">
-          <img src="{{ 'soufflo-8C-avatar-marc.jpg' | asset_url }}" alt="Marc V." class="h-12 w-12 shrink-0 rounded-full object-cover" width="48" height="48" loading="lazy">
-          <div class="flex-1 min-w-0">
-            <div class="flex items-center gap-2 flex-wrap">
-              <span class="text-sm font-semibold">Marc V.</span>
-              <span class="text-xs text-muted-foreground">Nantes</span>
-              <span class="inline-flex items-center gap-1 text-xs font-medium text-primary" style="background: color-mix(in srgb, var(--color-primary) 10%, transparent); padding: 0.15rem 0.5rem; border-radius: 9999px;">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                Achat v&eacute;rifi&eacute;
-              </span>
+      {%- comment -%} Review 6 — Marc V. — 5★ — 0 photos {%- endcomment -%}
+      <div class="review-card soft-shadow">
+        <div class="flex items-center justify-between mb-3">
+          <div class="flex items-center gap-3">
+            <div style="width:40px; height:40px; border-radius:50%; background:#38BDF8; color:#fff; display:flex; align-items:center; justify-content:center; font-size:0.875rem; font-weight:700; flex-shrink:0;">MV</div>
+            <div>
+              <div class="flex items-center gap-2 flex-wrap">
+                <span class="text-sm font-semibold">Marc V.</span>
+                <span class="text-xs text-muted-foreground">&middot; Nantes</span>
+              </div>
+              <span class="inline-flex items-center gap-1 text-xs font-medium" style="background:#F0FDF4; color:#16A34A; padding:0.125rem 0.5rem; border-radius:9999px;">&#10003; Achat v&eacute;rifi&eacute;</span>
             </div>
-            <div class="star-rating text-xs" aria-label="5 sur 5">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          </div>
+          <div class="text-right">
+            <div style="color:#38BDF8; font-size:0.875rem;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p class="text-xs text-muted-foreground mb-0" style="opacity:0.6;">il y a 1 mois</p>
           </div>
         </div>
-        <p class="text-sm leading-relaxed text-muted-foreground">&laquo;&nbsp;Rapport qualit&eacute;/prix imbattable. J'ai compar&eacute; avec des ventilateurs plafond &agrave; 200&euro;, franchement c'est le m&ecirc;me r&eacute;sultat.&nbsp;&raquo;</p>
-        <p class="text-xs text-muted-foreground" style="opacity: 0.6;">il y a 1 mois</p>
+        <p class="text-sm leading-relaxed text-muted-foreground mb-0">Rapport qualit&eacute;/prix imbattable. J'ai compar&eacute; avec des ventilateurs plafond &agrave; 200&nbsp;&euro;, franchement c'est le m&ecirc;me r&eacute;sultat.</p>
       </div>
 
     </div>
 
-    {%- comment -%} CTA {%- endcomment -%}
-    <div class="text-center" style="padding-top: 1rem;">
-      <a href="#product-hero" class="btn btn-lg" style="min-width: 220px;">{{ section.settings.cta_label }}</a>
+    {%- comment -%} CTA button {%- endcomment -%}
+    <div class="text-center" style="margin-top:2.5rem;">
+      <a href="#reviews" class="btn-outline" style="border:2px solid #38BDF8; color:#38BDF8; border-radius:9999px; padding:0.875rem 2rem; font-weight:700; font-size:0.9375rem; display:inline-flex; align-items:center; justify-content:center; transition:all 0.2s ease; text-decoration:none;">Voir tous les avis</a>
     </div>
 
   </div>
 </section>
 
-{%- comment -%} Filter tab interaction {%- endcomment -%}
-<script>
-(function() {
-  var tabs = document.querySelectorAll('.review-filter-tab');
-  var reviews = document.querySelectorAll('[data-review]');
-  if (!tabs.length) return;
-
-  tabs.forEach(function(tab) {
-    tab.addEventListener('click', function() {
-      tabs.forEach(function(t) {
-        t.style.background = 'var(--color-bg)';
-        t.style.color = 'var(--color-fg)';
-        t.classList.remove('is-active');
-      });
-      tab.style.background = 'var(--color-primary)';
-      tab.style.color = 'var(--color-primary-fg)';
-      tab.classList.add('is-active');
-
-      var filter = tab.dataset.filter;
-      reviews.forEach(function(r) {
-        if (filter === 'all' || filter === 'photo') {
-          r.style.display = '';
-        } else {
-          r.style.display = (r.dataset.stars === filter) ? '' : 'none';
-        }
-      });
-    });
-  });
-})();
-</script>
-
 {% schema %}
 {
   "name": "Avis clients",
-  "tag": "section",
-  "class": "reviews-section",
-  "settings": [
-    {
-      "type": "text",
-      "id": "title",
-      "label": "Titre",
-      "default": "4,8/5 — 150 avis vérifiés"
-    },
-    {
-      "type": "text",
-      "id": "subtitle",
-      "label": "Sous-titre",
-      "default": "Ce que nos clients pensent du ventilateur plafonnier Soufflo."
-    },
-    {
-      "type": "text",
-      "id": "cta_label",
-      "label": "Libellé du bouton CTA",
-      "default": "Voir tous les avis"
-    }
-  ],
-  "blocks": [
-    {
-      "type": "review",
-      "name": "Avis client",
-      "settings": [
-        {
-          "type": "text",
-          "id": "name",
-          "label": "Nom",
-          "default": "Marie T."
-        },
-        {
-          "type": "text",
-          "id": "city",
-          "label": "Ville",
-          "default": "Lyon"
-        },
-        {
-          "type": "text",
-          "id": "initials",
-          "label": "Initiales avatar",
-          "default": "MT"
-        },
-        {
-          "type": "color",
-          "id": "avatar_color",
-          "label": "Couleur avatar",
-          "default": "#38BDF8"
-        },
-        {
-          "type": "range",
-          "id": "rating",
-          "label": "Note (étoiles)",
-          "min": 1,
-          "max": 5,
-          "step": 1,
-          "default": 5
-        },
-        {
-          "type": "textarea",
-          "id": "text",
-          "label": "Texte de l'avis",
-          "default": "Incroyable, je l'ai vissé en 10 secondes et ça change la vie en été !"
-        },
-        {
-          "type": "text",
-          "id": "date",
-          "label": "Date relative",
-          "default": "il y a 2 jours"
-        },
-        {
-          "type": "image_picker",
-          "id": "photo",
-          "label": "Photo (optionnel)"
-        }
-      ]
-    }
-  ],
-  "presets": [
-    {
-      "name": "Avis clients",
-      "blocks": [
-        {
-          "type": "review",
-          "settings": {
-            "name": "Marie T.",
-            "city": "Lyon",
-            "initials": "MT",
-            "rating": 5,
-            "text": "Incroyable, je l'ai vissé en 10 secondes et ça change la vie en été ! La lumière est douce et le ventilo super silencieux.",
-            "date": "il y a 2 jours"
-          }
-        },
-        {
-          "type": "review",
-          "settings": {
-            "name": "Jean-Pierre L.",
-            "city": "Marseille",
-            "initials": "JL",
-            "rating": 5,
-            "text": "J'en ai commandé un pour tester, j'en ai racheté 2 de plus dans la foulée. Toute la maison est équipée maintenant.",
-            "date": "il y a 5 jours"
-          }
-        },
-        {
-          "type": "review",
-          "settings": {
-            "name": "Camille B.",
-            "city": "Paris",
-            "initials": "CB",
-            "rating": 4,
-            "text": "Produit top, la télécommande est pratique. Un point : prévoir une douille E27, pas une E14 (vérifiez avant).",
-            "date": "il y a 1 semaine"
-          }
-        },
-        {
-          "type": "review",
-          "settings": {
-            "name": "Antoine D.",
-            "city": "Bordeaux",
-            "initials": "AD",
-            "rating": 5,
-            "text": "Ma femme trouvait le ventilo sur pied moche dans le salon. Celui-ci est discret au plafond et fait aussi lampe. Parfait.",
-            "date": "il y a 2 semaines"
-          }
-        },
-        {
-          "type": "review",
-          "settings": {
-            "name": "Léa R.",
-            "city": "Toulouse",
-            "initials": "LR",
-            "rating": 5,
-            "text": "La fonction lumière dimmable c'est le gros plus. On l'utilise comme veilleuse la nuit en mode chaud.",
-            "date": "il y a 3 semaines"
-          }
-        },
-        {
-          "type": "review",
-          "settings": {
-            "name": "Marc V.",
-            "city": "Nantes",
-            "initials": "MV",
-            "rating": 5,
-            "text": "Rapport qualité/prix imbattable. J'ai comparé avec des ventilateurs plafond à 200€, franchement c'est le même résultat.",
-            "date": "il y a 1 mois"
-          }
-        }
-      ]
-    }
-  ]
+  "settings": [],
+  "presets": [{ "name": "Avis clients" }]
 }
 {% endschema %}

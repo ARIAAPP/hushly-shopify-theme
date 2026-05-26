@@ -1,96 +1,31 @@
-<section class="story-section py-16 md:py-24" style="background: var(--color-muted);">
+<section class="section-padding" style="background: #fff;">
   <div class="container">
-    <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center" style="max-width: 960px; margin: 0 auto;">
-      {%- comment -%} Text column {%- endcomment -%}
-      <div>
-        <p class="text-xs font-semibold uppercase tracking-wider" style="color: var(--color-primary, #0B0F1E); margin-bottom: 0.75rem; letter-spacing: 0.1em;">{{ section.settings.kicker }}</p>
-        <h2 class="text-2xl md:text-3xl font-bold" style="margin-bottom: 1.5rem;">{{ section.settings.title }}</h2>
+    <div class="story-card" style="text-align: center;">
 
-        <div class="text-sm leading-relaxed text-muted-foreground space-y-4">
-          {{ section.settings.text }}
-        </div>
-
-        {%- if section.settings.signoff != blank -%}
-          <div style="margin-top: 1.5rem; display: flex; align-items: center; gap: 0.5rem;">
-            <span style="font-size: 1.5rem;">🌀</span>
-            <div>
-              <div class="text-sm font-bold">{{ section.settings.signoff }}</div>
-            </div>
-          </div>
-        {%- endif -%}
+      {%- comment -%} Header {%- endcomment -%}
+      <div style="margin-bottom: 2rem;">
+        <p class="uppercase tracking-widest text-xs font-bold" style="color: #38BDF8; margin-bottom: 0.75rem;">Notre histoire</p>
+        <h2 class="text-3xl md:text-4xl font-bold" style="margin-bottom: 0;">Pourquoi Soufflo ?</h2>
       </div>
 
-      {%- comment -%} Image column {%- endcomment -%}
-      <div class="rounded-2xl overflow-hidden" style="aspect-ratio: 4/3;">
-        {%- if section.settings.image != blank -%}
-          <img
-            src="{{ section.settings.image | image_url: width: 800 }}"
-            alt="{{ section.settings.title }}"
-            class="w-full h-full object-cover"
-            width="800" height="600"
-            loading="lazy" decoding="async"
-          >
-        {%- else -%}
-          <img
-            src="{{ 'soufflo-4A-salon-moderne.jpg' | asset_url }}"
-            alt="Ventilateur LED Soufflo installe dans un salon moderne"
-            class="w-full h-full object-cover"
-            width="800" height="600"
-            loading="lazy" decoding="async"
-          >
-        {%- endif -%}
+      {%- comment -%} Content {%- endcomment -%}
+      <div style="margin-top: 2rem;" class="space-y-5">
+        <p class="text-base leading-relaxed" style="color: rgba(0,0,0,0.9); margin-bottom: 0;">On en avait marre des ventilateurs sur pied bruyants et encombrants.</p>
+        <p class="text-base leading-relaxed" style="color: rgba(0,0,0,0.9); margin-bottom: 0;">Et installer un vrai ventilateur au plafond ? Trop cher, trop compliqu&eacute;. Devis &agrave; 400 &euro;, prises de t&ecirc;te avec l'&eacute;lectricien, un trou dans le plafond.</p>
+        <p class="text-base leading-relaxed" style="color: rgba(0,0,0,0.9); margin-bottom: 0;">Alors on a trouv&eacute; LA solution : un ventilateur qui se visse simplement dans votre douille d'ampoule existante. Pas de travaux, pas d'&eacute;lectricien, pas de prise de t&ecirc;te.</p>
+        <p class="text-base leading-relaxed" style="color: rgba(0,0,0,0.9); margin-bottom: 0;">Juste de l'air frais et une lumi&egrave;re agr&eacute;able, contr&ocirc;l&eacute;s depuis votre canap&eacute;. C'est &ccedil;a, Soufflo.</p>
+        <p class="italic text-base leading-relaxed" style="color: rgba(0,0,0,0.9); margin-bottom: 0;">Bienvenue chez les fans de Soufflo.</p>
+        <p class="font-display" style="color: #38BDF8; margin-bottom: 0;">&mdash; L'&eacute;quipe Soufflo</p>
       </div>
+
     </div>
   </div>
 </section>
 
-<style>
-  @media (max-width: 767px) {
-    .story-section .grid {
-      grid-template-columns: 1fr;
-    }
-    .story-section .grid > div:last-child {
-      order: -1;
-    }
-  }
-</style>
-
 {% schema %}
 {
   "name": "Notre histoire",
-  "tag": "section",
-  "class": "story-section-wrapper",
-  "settings": [
-    {
-      "type": "text",
-      "id": "kicker",
-      "label": "Sur-titre",
-      "default": "NOTRE HISTOIRE"
-    },
-    {
-      "type": "text",
-      "id": "title",
-      "label": "Titre",
-      "default": "Pourquoi Soufflo ?"
-    },
-    {
-      "type": "richtext",
-      "id": "text",
-      "label": "Texte",
-      "default": "<p>Tout a commence un ete caniculaire. Ventilateur sur pied bruyant qui pousse de l'air tiede, impossible de dormir. L'idee d'installer un vrai ventilateur de plafond ? Trop cher, trop complique — electricien, percage, demi-journee de travaux.</p><p>On s'est dit : et si la solution existait deja dans chaque piece ? Chaque plafond a une douille d'ampoule. Il suffisait de creer un ventilateur qui s'y visse directement — comme une ampoule classique.</p><p>C'est exactement ce qu'est Soufflo : un ventilateur de plafond avec eclairage LED integre qui se visse en 10 secondes dans n'importe quelle douille E27. Pas de travaux. Pas d'electricien. Pas de fil. Juste de l'air frais et un bel eclairage, pilotes depuis votre canape avec la telecommande incluse.</p>"
-    },
-    {
-      "type": "text",
-      "id": "signoff",
-      "label": "Signature",
-      "default": "— L'equipe Soufflo"
-    },
-    {
-      "type": "image_picker",
-      "id": "image",
-      "label": "Image"
-    }
-  ],
+  "settings": [],
   "presets": [
     {
       "name": "Notre histoire"

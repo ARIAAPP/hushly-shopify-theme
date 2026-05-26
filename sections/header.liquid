@@ -1,41 +1,163 @@
-<header class="header" data-header>
-  <div class="header__inner">
-    <a href="/" class="header__brand" aria-label="Soufflo — accueil">
-      <img src="{{ 'soufflo-1A-logo-wordmark.jpg' | asset_url }}" alt="Soufflo" width="160" height="40" loading="lazy" style="max-width: {{ settings.logo_max_width | default: 160 }}px; height: auto;">
+{%- liquid
+  assign has_blocks = false
+  if section.blocks.size > 0
+    assign has_blocks = true
+  endif
+-%}
+
+<header class="site-header" data-header>
+  <div class="header__inner container">
+
+    {%- comment -%} Left: Brand name {%- endcomment -%}
+    <a href="/" class="header__logo" aria-label="Soufflo — accueil">
+      <span class="header__logo-text">Soufflo</span>
     </a>
 
-    <nav class="header__nav">
-      {%- for block in section.blocks -%}
-        {%- if block.type == 'nav_link' -%}
-          <a href="{{ block.settings.url }}">{{ block.settings.label }}</a>
-        {%- endif -%}
-      {%- endfor -%}
+    {%- comment -%} Center: Desktop navigation {%- endcomment -%}
+    <nav class="header__nav" aria-label="Navigation principale">
+      {%- if has_blocks -%}
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'nav_link' -%}
+            <a href="{{ block.settings.url }}" class="header__nav-link" {{ block.shopify_attributes }}>{{ block.settings.label }}</a>
+          {%- endif -%}
+        {%- endfor -%}
+      {%- else -%}
+        <a href="#product-hero" class="header__nav-link">Le produit</a>
+        <a href="#how" class="header__nav-link">Comment &ccedil;a marche</a>
+        <a href="#reviews" class="header__nav-link">Avis clients</a>
+        <a href="#faq" class="header__nav-link">FAQ</a>
+        <a href="mailto:support@soufflo.fr" class="header__nav-link">Contact</a>
+      {%- endif -%}
     </nav>
 
+    {%- comment -%} Right: Actions {%- endcomment -%}
     <div class="header__actions">
+      {%- comment -%} Cart button {%- endcomment -%}
       <button class="header__cart-btn" data-cart-open aria-label="Panier">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg>
-        <span class="header__cart-count" data-cart-count style="display:none">0</span>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <path d="M16 10a4 4 0 01-8 0"/>
+        </svg>
+        <span class="header__cart-badge" data-cart-count="{{ cart.item_count }}" {% if cart.item_count == 0 %}style="display:none"{% endif %}>{{ cart.item_count }}</span>
       </button>
+
+      {%- comment -%} Desktop CTA {%- endcomment -%}
       <a href="#product-hero" class="header__cta">Commander</a>
-      <button class="header__menu-btn" data-menu-toggle aria-label="Menu" aria-expanded="false">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-icon-menu><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+
+      {%- comment -%} Mobile hamburger {%- endcomment -%}
+      <button class="header__hamburger" aria-label="Menu" aria-expanded="false" data-hamburger>
+        <span></span>
+        <span></span>
+        <span></span>
       </button>
     </div>
-  </div>
 
-  <nav class="header__mobile-nav" data-mobile-nav style="display:none">
-    {%- for block in section.blocks -%}
-      {%- if block.type == 'nav_link' -%}
-        <a href="{{ block.settings.url }}">{{ block.settings.label }}</a>
-      {%- endif -%}
-    {%- endfor -%}
-  </nav>
+  </div>
 </header>
+
+{%- comment -%} Mobile navigation overlay {%- endcomment -%}
+<div class="mobile-nav" data-mobile-nav>
+  <div class="mobile-nav__panel">
+    {%- if has_blocks -%}
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'nav_link' -%}
+          <a href="{{ block.settings.url }}" class="mobile-nav__link" {{ block.shopify_attributes }}>{{ block.settings.label }}</a>
+        {%- endif -%}
+      {%- endfor -%}
+    {%- else -%}
+      <a href="#product-hero" class="mobile-nav__link">Le produit</a>
+      <a href="#how" class="mobile-nav__link">Comment &ccedil;a marche</a>
+      <a href="#reviews" class="mobile-nav__link">Avis clients</a>
+      <a href="#faq" class="mobile-nav__link">FAQ</a>
+      <a href="mailto:support@soufflo.fr" class="mobile-nav__link">Contact</a>
+    {%- endif -%}
+    <a href="#product-hero" class="mobile-nav__cta">Commander</a>
+  </div>
+</div>
+
+<script>
+  (function() {
+    var header = document.querySelector('[data-header]');
+    var hamburger = document.querySelector('[data-hamburger]');
+    var mobileNav = document.querySelector('[data-mobile-nav]');
+
+    if (!header || !hamburger || !mobileNav) return;
+
+    /* Hamburger toggle */
+    hamburger.addEventListener('click', function() {
+      var isOpen = hamburger.classList.toggle('is-open');
+      mobileNav.classList.toggle('is-open', isOpen);
+      hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+
+    /* Close mobile nav on link click */
+    var mobileLinks = mobileNav.querySelectorAll('.mobile-nav__link, .mobile-nav__cta');
+    mobileLinks.forEach(function(link) {
+      link.addEventListener('click', function() {
+        hamburger.classList.remove('is-open');
+        mobileNav.classList.remove('is-open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      });
+    });
+
+    /* Close mobile nav on overlay click (outside panel) */
+    mobileNav.addEventListener('click', function(e) {
+      if (e.target === mobileNav) {
+        hamburger.classList.remove('is-open');
+        mobileNav.classList.remove('is-open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+    });
+
+    /* Scroll detection: add .is-scrolled */
+    var lastScrollY = 0;
+    function onScroll() {
+      var scrolled = window.scrollY > 20;
+      if (scrolled !== header.classList.contains('is-scrolled')) {
+        header.classList.toggle('is-scrolled', scrolled);
+      }
+      lastScrollY = window.scrollY;
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    /* Cart count: update from Shopify or window.souffloTheme */
+    function updateCartCount() {
+      var badge = document.querySelector('[data-cart-count]');
+      if (!badge) return;
+      var count = 0;
+      if (window.souffloTheme && typeof window.souffloTheme.cartCount !== 'undefined') {
+        count = window.souffloTheme.cartCount;
+      } else {
+        count = parseInt(badge.getAttribute('data-cart-count'), 10) || 0;
+      }
+      badge.textContent = count;
+      badge.style.display = count > 0 ? '' : 'none';
+      badge.setAttribute('data-cart-count', count);
+    }
+    updateCartCount();
+
+    /* Listen for cart updates */
+    document.addEventListener('cart:updated', function(e) {
+      if (e.detail && typeof e.detail.item_count !== 'undefined') {
+        var badge = document.querySelector('[data-cart-count]');
+        if (badge) {
+          badge.textContent = e.detail.item_count;
+          badge.style.display = e.detail.item_count > 0 ? '' : 'none';
+          badge.setAttribute('data-cart-count', e.detail.item_count);
+        }
+      }
+    });
+  })();
+</script>
 
 {% schema %}
 {
-  "name": "En-tête",
+  "name": "Header",
   "class": "header-section",
   "settings": [],
   "blocks": [
@@ -43,21 +165,22 @@
       "type": "nav_link",
       "name": "Lien navigation",
       "settings": [
-        { "type": "text", "id": "label", "label": "Texte", "default": "Lien" },
-        { "type": "url", "id": "url", "label": "URL", "default": "#" }
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label"
+        },
+        {
+          "type": "text",
+          "id": "url",
+          "label": "URL"
+        }
       ]
     }
   ],
   "presets": [
     {
-      "name": "En-tête",
-      "blocks": [
-        { "type": "nav_link", "settings": { "label": "Le produit", "url": "#product-hero" } },
-        { "type": "nav_link", "settings": { "label": "Comment ça marche", "url": "#how" } },
-        { "type": "nav_link", "settings": { "label": "Avis clients", "url": "#avis" } },
-        { "type": "nav_link", "settings": { "label": "FAQ", "url": "#faq" } },
-        { "type": "nav_link", "settings": { "label": "Contact", "url": "#contact" } }
-      ]
+      "name": "Header"
     }
   ]
 }

@@ -1,107 +1,87 @@
-﻿{%- comment -%}
+{%- comment -%}
   ============================================================
-  UGC Gallery — Client photos grid
+  UGC Gallery — Masonry-style customer photos
   Soufflo — Ventilateur LED E27
   ============================================================
 {%- endcomment -%}
 
-<section id="ugc-gallery" class="py-16 md:py-20">
-  <div class="container space-y-8">
+<section id="ugc-gallery" class="section-padding" style="background:#fff;">
+  <div class="container">
 
-    <div class="text-center space-y-2">
-      {%- if section.settings.eyebrow != blank -%}
-        <p class="text-xs font-semibold uppercase tracking-wider" style="color: var(--color-primary); letter-spacing: 0.1em;">{{ section.settings.eyebrow }}</p>
-      {%- endif -%}
-      <h2 class="text-3xl md:text-4xl font-bold">{{ section.settings.title }}</h2>
-      <p class="text-muted-foreground">{{ section.settings.subtitle }}</p>
+    {%- comment -%} Header {%- endcomment -%}
+    <div style="max-width:36rem; margin-left:auto; margin-right:auto; text-align:center; margin-bottom:2.5rem;">
+      <h2 style="color:#0C4A6E;" class="text-3xl font-bold mb-2">Chez nos clients</h2>
+      <p class="text-muted-foreground">Ils ont &eacute;quip&eacute; leur int&eacute;rieur avec Soufflo.</p>
     </div>
 
-    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3">
-      {%- for block in section.blocks -%}
-        <div class="rounded-xl overflow-hidden" {{ block.shopify_attributes }} style="aspect-ratio: 1; position: relative;">
-          {%- if block.settings.image != blank -%}
-            <img
-              src="{{ block.settings.image | image_url: width: 400 }}"
-              alt="{{ block.settings.caption | default: 'Photo client' | escape }}"
-              class="w-full h-full object-cover"
-              width="200" height="200"
-              loading="lazy" decoding="async">
-          {%- elsif forloop.index == 1 -%}
-            <img src="{{ 'soufflo-11A-ugc-femme-ravie.jpg' | asset_url }}" alt="{{ block.settings.caption | default: 'Photo client' | escape }}" class="w-full h-full object-cover" width="200" height="200" loading="lazy" decoding="async">
-          {%- elsif forloop.index == 2 -%}
-            <img src="{{ 'soufflo-11B-ugc-homme-installation.jpg' | asset_url }}" alt="{{ block.settings.caption | default: 'Photo client' | escape }}" class="w-full h-full object-cover" width="200" height="200" loading="lazy" decoding="async">
-          {%- elsif forloop.index == 3 -%}
-            <img src="{{ 'soufflo-11C-ugc-couple-canape.jpg' | asset_url }}" alt="{{ block.settings.caption | default: 'Photo client' | escape }}" class="w-full h-full object-cover" width="200" height="200" loading="lazy" decoding="async">
-          {%- elsif forloop.index == 4 -%}
-            <img src="{{ 'soufflo-11D-ugc-comparaison-split.jpg' | asset_url }}" alt="{{ block.settings.caption | default: 'Photo client' | escape }}" class="w-full h-full object-cover" width="200" height="200" loading="lazy" decoding="async">
-          {%- elsif forloop.index == 5 -%}
-            <img src="{{ 'soufflo-11E-ugc-temoignage-v1.jpg' | asset_url }}" alt="{{ block.settings.caption | default: 'Photo client' | escape }}" class="w-full h-full object-cover" width="200" height="200" loading="lazy" decoding="async">
-          {%- elsif forloop.index == 6 -%}
-            <img src="{{ 'soufflo-11F-ugc-unboxing.jpg' | asset_url }}" alt="{{ block.settings.caption | default: 'Photo client' | escape }}" class="w-full h-full object-cover" width="200" height="200" loading="lazy" decoding="async">
-          {%- else -%}
-            <div class="w-full h-full flex flex-col items-center justify-center" style="background: var(--color-muted);">
-              <span style="font-size: 2rem;">🌀</span>
-            </div>
-          {%- endif -%}
+    {%- comment -%} Masonry grid {%- endcomment -%}
+    <div class="ugc-masonry" style="column-count:2; column-gap:1rem;">
 
-          {%- if block.settings.caption != blank -%}
-            <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 0.5rem; background: linear-gradient(transparent, rgba(0,0,0,0.6));">
-              <p style="color: #fff; font-size: 0.65rem; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ block.settings.caption }}</p>
-            </div>
-          {%- endif -%}
+      {%- comment -%} 1 — Sophie (square) {%- endcomment -%}
+      <div style="border-radius:1rem; overflow:hidden; margin-bottom:1rem; position:relative; break-inside:avoid;" class="bg-surface">
+        <div class="lavender-gradient" style="width:100%; aspect-ratio:1/1;"></div>
+        <div style="position:absolute; bottom:0; left:0; right:0; padding:0.75rem 1rem; background:linear-gradient(to top, rgba(0,0,0,0.7), transparent);">
+          <p style="color:#fff; font-size:0.8125rem; font-style:italic; margin:0;">@sophie.deco &middot; &laquo; Mon salon a chang&eacute; &raquo;</p>
         </div>
-      {%- endfor -%}
-    </div>
+      </div>
 
+      {%- comment -%} 2 — Maman Lulu (tall 3/4) {%- endcomment -%}
+      <div style="border-radius:1rem; overflow:hidden; margin-bottom:1rem; position:relative; break-inside:avoid;" class="bg-surface">
+        <div class="lavender-gradient" style="width:100%; aspect-ratio:3/4;"></div>
+        <div style="position:absolute; bottom:0; left:0; right:0; padding:0.75rem 1rem; background:linear-gradient(to top, rgba(0,0,0,0.7), transparent);">
+          <p style="color:#fff; font-size:0.8125rem; font-style:italic; margin:0;">@maman.lulu &middot; &laquo; B&eacute;b&eacute; dort enfin &raquo;</p>
+        </div>
+      </div>
+
+      {%- comment -%} 3 — Thomas (square) {%- endcomment -%}
+      <div style="border-radius:1rem; overflow:hidden; margin-bottom:1rem; position:relative; break-inside:avoid;" class="bg-surface">
+        <div class="lavender-gradient" style="width:100%; aspect-ratio:1/1;"></div>
+        <div style="position:absolute; bottom:0; left:0; right:0; padding:0.75rem 1rem; background:linear-gradient(to top, rgba(0,0,0,0.7), transparent);">
+          <p style="color:#fff; font-size:0.8125rem; font-style:italic; margin:0;">@thomas.r &middot; &laquo; 10 sec chrono &raquo;</p>
+        </div>
+      </div>
+
+      {%- comment -%} 4 — Cocooning (tall 3/4) {%- endcomment -%}
+      <div style="border-radius:1rem; overflow:hidden; margin-bottom:1rem; position:relative; break-inside:avoid;" class="bg-surface">
+        <div class="lavender-gradient" style="width:100%; aspect-ratio:3/4;"></div>
+        <div style="position:absolute; bottom:0; left:0; right:0; padding:0.75rem 1rem; background:linear-gradient(to top, rgba(0,0,0,0.7), transparent);">
+          <p style="color:#fff; font-size:0.8125rem; font-style:italic; margin:0;">@cocooning.fr &middot; &laquo; Lumi&egrave;re douce parfaite &raquo;</p>
+        </div>
+      </div>
+
+      {%- comment -%} 5 — Nathalie (square) {%- endcomment -%}
+      <div style="border-radius:1rem; overflow:hidden; margin-bottom:1rem; position:relative; break-inside:avoid;" class="bg-surface">
+        <div class="lavender-gradient" style="width:100%; aspect-ratio:1/1;"></div>
+        <div style="position:absolute; bottom:0; left:0; right:0; padding:0.75rem 1rem; background:linear-gradient(to top, rgba(0,0,0,0.7), transparent);">
+          <p style="color:#fff; font-size:0.8125rem; font-style:italic; margin:0;">@nathalie.d &middot; &laquo; Tout depuis le canap&eacute; &raquo;</p>
+        </div>
+      </div>
+
+      {%- comment -%} 6 — Maison Moderne (square) {%- endcomment -%}
+      <div style="border-radius:1rem; overflow:hidden; margin-bottom:1rem; position:relative; break-inside:avoid;" class="bg-surface">
+        <div class="lavender-gradient" style="width:100%; aspect-ratio:1/1;"></div>
+        <div style="position:absolute; bottom:0; left:0; right:0; padding:0.75rem 1rem; background:linear-gradient(to top, rgba(0,0,0,0.7), transparent);">
+          <p style="color:#fff; font-size:0.8125rem; font-style:italic; margin:0;">@maison.moderne &middot; &laquo; Discret au plafond &raquo;</p>
+        </div>
+      </div>
+
+    </div>
   </div>
 </section>
 
 <style>
-  #ugc-gallery .grid > div {
-    transition: transform 0.2s ease;
+  @media (min-width: 768px) {
+    .ugc-masonry { column-count: 3 !important; }
   }
-  #ugc-gallery .grid > div:hover {
-    transform: scale(1.03);
-  }
-  @media (max-width: 639px) {
-    #ugc-gallery .grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
+  @media (min-width: 1024px) {
+    .ugc-masonry { column-count: 4 !important; }
   }
 </style>
 
 {% schema %}
 {
   "name": "Galerie UGC",
-  "tag": "section",
-  "class": "ugc-gallery-section",
-  "settings": [
-    { "type": "text", "id": "eyebrow", "label": "Sur-titre", "default": "Photos clients" },
-    { "type": "text", "id": "title", "label": "Titre", "default": "Ils l'ont installe chez eux" },
-    { "type": "text", "id": "subtitle", "label": "Sous-titre", "default": "Des vraies photos, postees par nos clients." }
-  ],
-  "blocks": [
-    {
-      "type": "ugc_photo",
-      "name": "Photo",
-      "settings": [
-        { "type": "image_picker", "id": "image", "label": "Photo" },
-        { "type": "text", "id": "caption", "label": "Legende", "default": "@client — installe chez moi" }
-      ]
-    }
-  ],
-  "presets": [
-    {
-      "name": "Galerie UGC",
-      "blocks": [
-        { "type": "ugc_photo", "settings": { "caption": "@marie.l_ — installe dans ma cuisine" } },
-        { "type": "ugc_photo", "settings": { "caption": "@thomas.b — la lumiere est parfaite" } },
-        { "type": "ugc_photo", "settings": { "caption": "@sophie.d — salon rafraichi" } },
-        { "type": "ugc_photo", "settings": { "caption": "@julien.p — chambre fraiche cet ete" } },
-        { "type": "ugc_photo", "settings": { "caption": "@camille.r — design approuve" } },
-        { "type": "ugc_photo", "settings": { "caption": "@nicolas.m — 3 pieces equipees" } }
-      ]
-    }
-  ]
+  "settings": [],
+  "presets": [{ "name": "Galerie UGC" }]
 }
 {% endschema %}

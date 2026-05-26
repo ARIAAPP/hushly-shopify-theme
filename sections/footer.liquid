@@ -1,106 +1,79 @@
-{%- comment -%}
-  ============================================================
-  Footer — Soufflo
-  ID: "contact" — 4 columns, payment icons, copyright
-  Dark blue background via --color-footer-bg
-  ============================================================
-{%- endcomment -%}
-
-<footer id="contact" class="bg-footer" style="padding: 3.5rem 0 1.5rem;">
+<footer id="contact" class="site-footer section-padding">
   <div class="container">
 
     {%- comment -%} 4-column grid {%- endcomment -%}
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2.5rem 2rem; margin-bottom: 2.5rem;">
+    <div class="footer__grid">
 
-      {%- comment -%} Col 1 — Brand {%- endcomment -%}
+      {%- comment -%} Column 1: Brand {%- endcomment -%}
       <div>
-        <p style="font-size: 1.25rem; font-weight: 800; letter-spacing: -0.02em; margin: 0 0 0.75rem;">
-          <span style="color: var(--color-primary);">Soufflo</span>
-        </p>
-        <p style="font-size: 0.875rem; opacity: 0.8; margin: 0 0 1rem; line-height: 1.5;">{{ section.settings.tagline }}</p>
-        <a href="mailto:{{ section.settings.email }}" style="font-size: 0.875rem; opacity: 0.8; text-decoration: underline; display: block; margin-bottom: 1rem;">{{ section.settings.email }}</a>
-
-        {%- comment -%} Social icons {%- endcomment -%}
-        <div style="display: flex; gap: 0.75rem; align-items: center;">
-          {%- if section.settings.social_instagram != blank -%}
-            <a href="{{ section.settings.social_instagram }}" target="_blank" rel="noopener noreferrer" aria-label="Instagram" style="opacity: 0.7; transition: opacity 0.15s;">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-            </a>
-          {%- endif -%}
-          {%- if section.settings.social_facebook != blank -%}
-            <a href="{{ section.settings.social_facebook }}" target="_blank" rel="noopener noreferrer" aria-label="Facebook" style="opacity: 0.7; transition: opacity 0.15s;">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385h-3.047v-3.47h3.047v-2.642c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953h-1.514c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385c5.737-.9 10.125-5.864 10.125-11.854z"/></svg>
-            </a>
-          {%- endif -%}
-          {%- if section.settings.social_tiktok != blank -%}
-            <a href="{{ section.settings.social_tiktok }}" target="_blank" rel="noopener noreferrer" aria-label="TikTok" style="opacity: 0.7; transition: opacity 0.15s;">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.51a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 0010.86 4.48V13a8.28 8.28 0 005.58 2.17V11.7a4.83 4.83 0 01-3.77-1.78V6.69h3.77z"/></svg>
-            </a>
-          {%- endif -%}
+        <p class="footer__brand-name">Soufflo</p>
+        <p class="footer__brand-text">Fra&icirc;cheur &amp; lumi&egrave;re, en un clic.</p>
+        <a href="mailto:support@soufflo.fr" class="footer__link" style="display:block; margin-bottom:0.25rem;">support@soufflo.fr</a>
+        <p class="footer__brand-text" style="margin-bottom:1rem;">R&eacute;ponse sous 24-48h ouvr&eacute;es</p>
+        <div class="footer__social">
+          {%- comment -%} Facebook {%- endcomment -%}
+          <a href="#" class="footer__social-link" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385h-3.047v-3.47h3.047v-2.642c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953h-1.514c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+            </svg>
+          </a>
+          {%- comment -%} Instagram {%- endcomment -%}
+          <a href="#" class="footer__social-link" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12s.014 3.668.072 4.948c.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24s3.668-.014 4.948-.072c4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948s-.014-3.667-.072-4.947c-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+            </svg>
+          </a>
+          {%- comment -%} YouTube {%- endcomment -%}
+          <a href="#" class="footer__social-link" aria-label="YouTube" target="_blank" rel="noopener noreferrer">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+            </svg>
+          </a>
         </div>
       </div>
 
-      {%- comment -%} Col 2 — Boutique {%- endcomment -%}
+      {%- comment -%} Column 2: Boutique {%- endcomment -%}
       <div>
-        <h4 style="font-size: 0.875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin: 0 0 1rem;">Boutique</h4>
-        <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.875rem;">
-          <li><a href="/" style="opacity: 0.8; transition: opacity 0.15s;">Accueil</a></li>
-          <li><a href="#product-hero" style="opacity: 0.8; transition: opacity 0.15s;">Le produit</a></li>
-          <li><a href="#avis" style="opacity: 0.8; transition: opacity 0.15s;">Avis clients</a></li>
-          <li><a href="#faq" style="opacity: 0.8; transition: opacity 0.15s;">FAQ</a></li>
-        </ul>
+        <h4 class="footer__heading" style="color:#7DD3FC;">Boutique</h4>
+        <div class="footer__links">
+          <a href="/" class="footer__link">Accueil</a>
+          <a href="/#product" class="footer__link">Le produit</a>
+          <a href="/#reviews" class="footer__link">Avis clients</a>
+          <a href="/#faq" class="footer__link">FAQ</a>
+        </div>
       </div>
 
-      {%- comment -%} Col 3 — Informations {%- endcomment -%}
+      {%- comment -%} Column 3: Informations {%- endcomment -%}
       <div>
-        <h4 style="font-size: 0.875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin: 0 0 1rem;">Informations</h4>
-        <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.875rem;">
-          {%- if shop.refund_policy -%}
-            <li><a href="{{ shop.refund_policy.url }}" style="opacity: 0.8; transition: opacity 0.15s;">Politique de retour</a></li>
-          {%- else -%}
-            <li><a href="/policies/refund-policy" style="opacity: 0.8; transition: opacity 0.15s;">Politique de retour</a></li>
-          {%- endif -%}
-          {%- if shop.shipping_policy -%}
-            <li><a href="{{ shop.shipping_policy.url }}" style="opacity: 0.8; transition: opacity 0.15s;">Politique de livraison</a></li>
-          {%- else -%}
-            <li><a href="/policies/shipping-policy" style="opacity: 0.8; transition: opacity 0.15s;">Politique de livraison</a></li>
-          {%- endif -%}
-          <li><a href="/pages/contact" style="opacity: 0.8; transition: opacity 0.15s;">Contact</a></li>
-          <li><a href="mailto:{{ section.settings.email }}" style="opacity: 0.8; transition: opacity 0.15s;">{{ section.settings.email }}</a></li>
-        </ul>
+        <h4 class="footer__heading" style="color:#7DD3FC;">Informations</h4>
+        <div class="footer__links">
+          <a href="/pages/retours" class="footer__link">Politique de retour</a>
+          <a href="/pages/livraison" class="footer__link">Politique de livraison</a>
+          <a href="mailto:support@soufflo.fr" class="footer__link">Contact</a>
+        </div>
       </div>
 
-      {%- comment -%} Col 4 — Legal {%- endcomment -%}
+      {%- comment -%} Column 4: Legal {%- endcomment -%}
       <div>
-        <h4 style="font-size: 0.875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin: 0 0 1rem;">L&eacute;gal</h4>
-        <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.875rem;">
-          <li><a href="/policies/legal-notice" style="opacity: 0.8; transition: opacity 0.15s;">Mentions l&eacute;gales</a></li>
-          {%- if shop.terms_of_service -%}
-            <li><a href="{{ shop.terms_of_service.url }}" style="opacity: 0.8; transition: opacity 0.15s;">CGV</a></li>
-          {%- else -%}
-            <li><a href="/policies/terms-of-service" style="opacity: 0.8; transition: opacity 0.15s;">CGV</a></li>
-          {%- endif -%}
-          {%- if shop.privacy_policy -%}
-            <li><a href="{{ shop.privacy_policy.url }}" style="opacity: 0.8; transition: opacity 0.15s;">Confidentialit&eacute;</a></li>
-          {%- else -%}
-            <li><a href="/policies/privacy-policy" style="opacity: 0.8; transition: opacity 0.15s;">Confidentialit&eacute;</a></li>
-          {%- endif -%}
-          <li><a href="/policies/cookie-policy" style="opacity: 0.8; transition: opacity 0.15s;">Cookies</a></li>
-          <li><a href="/pages/a-propos" style="opacity: 0.8; transition: opacity 0.15s;">&Agrave; propos</a></li>
-        </ul>
+        <h4 class="footer__heading" style="color:#7DD3FC;">L&eacute;gal</h4>
+        <div class="footer__links">
+          <a href="/pages/mentions-legales" class="footer__link">Mentions l&eacute;gales</a>
+          <a href="/pages/cgv" class="footer__link">CGV</a>
+          <a href="/pages/confidentialite" class="footer__link">Confidentialit&eacute;</a>
+          <a href="/pages/cookies" class="footer__link">Cookies</a>
+          <a href="/pages/a-propos" class="footer__link">&Agrave; propos</a>
+        </div>
       </div>
 
     </div>
 
-    {%- comment -%} Payment icons {%- endcomment -%}
-    <div style="border-top: 1px solid color-mix(in srgb, currentColor 15%, transparent); padding-top: 1.5rem;">
-      {% render 'payment-icons' %}
-    </div>
-
-    {%- comment -%} Copyright + Address {%- endcomment -%}
-    <div class="text-center" style="margin-top: 1.25rem;">
-      <p style="font-size: 0.75rem; opacity: 0.6; margin: 0;">&copy; {{ 'now' | date: '%Y' }} Soufflo. Tous droits r&eacute;serv&eacute;s.</p>
-      <p style="font-size: 0.7rem; opacity: 0.45; margin: 0.35rem 0 0;">Soufflo &middot; 42 rue des Mousses, 13008 Marseille, France</p>
+    {%- comment -%} Bottom bar {%- endcomment -%}
+    <div class="footer__bottom">
+      <span class="footer__copyright">Soufflo &middot; 42 rue des Mousses, 13008 Marseille, France</span>
+      <div class="footer__payments">
+        {% render 'payment-icons' %}
+      </div>
+      <span class="footer__copyright">&copy; {{ 'now' | date: '%Y' }} Soufflo. Tous droits r&eacute;serv&eacute;s.</span>
     </div>
 
   </div>
@@ -109,37 +82,8 @@
 {% schema %}
 {
   "name": "Footer",
-  "tag": "footer",
   "class": "footer-section",
-  "settings": [
-    {
-      "type": "text",
-      "id": "tagline",
-      "label": "Tagline",
-      "default": "Fraîcheur & lumière, en un clic."
-    },
-    {
-      "type": "text",
-      "id": "email",
-      "label": "Email support",
-      "default": "support@soufflo.fr"
-    },
-    {
-      "type": "url",
-      "id": "social_instagram",
-      "label": "Instagram URL"
-    },
-    {
-      "type": "url",
-      "id": "social_facebook",
-      "label": "Facebook URL"
-    },
-    {
-      "type": "url",
-      "id": "social_tiktok",
-      "label": "TikTok URL"
-    }
-  ],
+  "settings": [],
   "presets": [
     {
       "name": "Footer"

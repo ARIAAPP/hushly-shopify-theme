@@ -1,12 +1,12 @@
 {%- comment -%}
   ============================================================
   Scroll to Top — Floating button, bottom-right
-  Appears after 800px scroll. Up arrow icon.
+  Appears after 800px scroll
   ============================================================
 {%- endcomment -%}
 
-<button type="button" class="scroll-to-top" data-scroll-top aria-label="Retour en haut" hidden style="position: fixed; right: 1rem; z-index: 40; height: 2.75rem; width: 2.75rem; border-radius: 9999px; background: var(--color-primary); color: var(--color-primary-fg); box-shadow: 0 10px 15px rgba(0,0,0,0.1); display: none; align-items: center; justify-content: center; border: 0; cursor: pointer; transition: transform 0.15s, opacity 0.15s;">
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="18 15 12 9 6 15"></polyline></svg>
+<button type="button" class="scroll-to-top" data-scroll-top aria-label="Retour en haut">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
 </button>
 
 <script>
@@ -16,21 +16,17 @@
 
   function update() {
     if (window.scrollY > 800) {
-      btn.style.display = 'flex';
-      btn.removeAttribute('hidden');
+      btn.classList.add('is-visible');
     } else {
-      btn.style.display = 'none';
-      btn.setAttribute('hidden', '');
+      btn.classList.remove('is-visible');
     }
   }
 
   window.addEventListener('scroll', update, { passive: true });
+  update();
+
   btn.addEventListener('click', function() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
-
-  /* Hover effect */
-  btn.addEventListener('mouseenter', function() { btn.style.transform = 'translateY(-2px)'; });
-  btn.addEventListener('mouseleave', function() { btn.style.transform = 'translateY(0)'; });
 })();
 </script>

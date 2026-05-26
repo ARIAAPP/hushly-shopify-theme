@@ -1,57 +1,86 @@
 {%- comment -%}
   ============================================================
   Social Proof Toast — Bottom-left notification popup
-  Soufflo — rotating buyer notifications, initially hidden
+  Soufflo — periodic fake recent order notifications
+  Desktop only (hidden on mobile via CSS)
   ============================================================
 {%- endcomment -%}
 
 <div class="social-proof-toast" data-social-proof-toast aria-live="polite">
-  <div class="flex items-start gap-3 rounded-xl border bg-background shadow-lg" style="border-color: var(--color-border); padding: 1rem;">
-    <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full" style="background: color-mix(in srgb, var(--color-primary) 10%, transparent);">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+  <div class="social-proof-toast__inner">
+    <div class="social-proof-toast__avatar"></div>
+    <div class="social-proof-toast__content">
+      <p class="social-proof-toast__name" data-toast-name></p>
+      <p class="social-proof-toast__message" data-toast-message></p>
     </div>
-    <div class="flex-1 min-w-0">
-      <p class="text-sm font-medium" data-toast-name>&mdash;</p>
-      <p class="text-xs text-muted-foreground" data-toast-message>&mdash;</p>
-    </div>
-    <button type="button" class="shrink-0 text-muted-foreground" data-toast-close aria-label="Fermer" style="font-size: 1.2rem; line-height: 1; background: none; border: 0; cursor: pointer;">&times;</button>
+    <button type="button" class="social-proof-toast__close" data-toast-close aria-label="Fermer">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
   </div>
 </div>
 
 <script>
 (function() {
-  var buyers = [
-    { name: 'Sophie L.', city: 'Paris', time: 'il y a 2 min' },
-    { name: 'Lucas P.', city: 'Lyon', time: 'il y a 5 min' },
-    { name: 'Emma G.', city: 'Bruxelles', time: 'il y a 8 min' },
-    { name: 'Antoine R.', city: 'Marseille', time: 'il y a 12 min' },
-    { name: 'Julie D.', city: 'Bordeaux', time: 'il y a 15 min' },
-    { name: 'Thomas M.', city: 'Lille', time: 'il y a 18 min' },
-    { name: 'Clara B.', city: 'Geneve', time: 'il y a 22 min' },
-    { name: 'Hugo T.', city: 'Toulouse', time: 'il y a 25 min' }
+  var proofs = [
+    { name: 'Sophie', city: 'Lyon', pack: 'Pack Duo', timeAgo: '2 min' },
+    { name: 'Marc', city: 'Paris', pack: 'Pack Essentiel', timeAgo: '5 min' },
+    { name: 'Camille', city: 'Marseille', pack: 'Pack Maison', timeAgo: '8 min' },
+    { name: 'Thomas', city: 'Bordeaux', pack: 'Pack Duo', timeAgo: '11 min' },
+    { name: 'Léa', city: 'Toulouse', pack: 'Pack Essentiel', timeAgo: '14 min' },
+    { name: 'Antoine', city: 'Nice', pack: 'Pack Duo', timeAgo: '17 min' },
+    { name: 'Julie', city: 'Nantes', pack: 'Pack Maison', timeAgo: '20 min' },
+    { name: 'Maxime', city: 'Strasbourg', pack: 'Pack Essentiel', timeAgo: '24 min' },
+    { name: 'Nathalie', city: 'Lille', pack: 'Pack Duo', timeAgo: '28 min' },
+    { name: 'Pierre', city: 'Montpellier', pack: 'Pack Maison', timeAgo: '32 min' }
   ];
+
   var toast = document.querySelector('[data-social-proof-toast]');
   if (!toast) return;
+
   var nameEl = toast.querySelector('[data-toast-name]');
   var msgEl = toast.querySelector('[data-toast-message]');
   var closeBtn = toast.querySelector('[data-toast-close]');
   var current = 0;
+  var dismissed = false;
+  var showTimer = null;
+  var hideTimer = null;
 
-  function show(b) {
-    nameEl.textContent = b.name + ' — ' + b.city;
-    msgEl.textContent = 'vient de commander un Soufflo · ' + b.time;
-    toast.dataset.visible = 'true';
+  function show(item) {
+    if (dismissed) return;
+    nameEl.textContent = item.name + ' — ' + item.city;
+    msgEl.textContent = 'vient de commander le ' + item.pack + ' · il y a ' + item.timeAgo;
+    toast.classList.add('is-visible');
   }
-  function hide() { toast.dataset.visible = 'false'; }
-  if (closeBtn) closeBtn.addEventListener('click', hide);
 
-  /* First toast after 8s, then every 15s */
-  setTimeout(function() { show(buyers[0]); }, 8000);
-  setTimeout(hide, 12000);
-  setInterval(function() {
-    current = (current + 1) % buyers.length;
-    show(buyers[current]);
-    setTimeout(hide, 4000);
-  }, 15000);
+  function hide() {
+    toast.classList.remove('is-visible');
+  }
+
+  function scheduleNext() {
+    var delay = 30000 + Math.floor(Math.random() * 15000); /* 30-45s */
+    showTimer = setTimeout(function() {
+      current = (current + 1) % proofs.length;
+      show(proofs[current]);
+      hideTimer = setTimeout(hide, 4000);
+      scheduleNext();
+    }, delay);
+  }
+
+  /* Close permanently */
+  if (closeBtn) {
+    closeBtn.addEventListener('click', function() {
+      dismissed = true;
+      hide();
+      clearTimeout(showTimer);
+      clearTimeout(hideTimer);
+    });
+  }
+
+  /* First show after 12s */
+  setTimeout(function() {
+    show(proofs[0]);
+    hideTimer = setTimeout(hide, 4000);
+    scheduleNext();
+  }, 12000);
 })();
 </script>

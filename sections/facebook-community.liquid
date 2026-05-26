@@ -1,192 +1,86 @@
-<section class="facebook-community-section py-16 md:py-24">
-  <div class="container space-y-10">
-    <h2 class="text-3xl md:text-4xl font-bold text-center">{{ section.settings.title }}</h2>
+<section class="fb-community section-padding">
+  <div class="container">
+    <h2 class="section-title" style="color:#0C4A6E; margin-bottom: 3rem;">Ce qu'ils en disent sur Facebook</h2>
 
-    <div class="grid md:grid-cols-3 gap-6">
-      {%- for block in section.blocks -%}
-        <div class="fb-post-card rounded-2xl border bg-background overflow-hidden" {{ block.shopify_attributes }} style="border-color: var(--color-border);">
-          {%- comment -%} Header {%- endcomment -%}
-          <div class="flex items-center justify-between p-4 pb-2">
-            <div class="flex items-center gap-3">
-              <div class="h-10 w-10 overflow-hidden rounded-full border bg-secondary" style="border-color: var(--color-border);">
-                {%- if block.settings.avatar != blank -%}
-                  <img src="{{ block.settings.avatar | image_url: width: 80 }}" alt="Photo de profil de {{ block.settings.name }}" width="40" height="40" loading="lazy" decoding="async" class="h-full w-full object-cover">
-                {%- elsif forloop.index == 1 -%}
-                  <img src="{{ 'soufflo-7A-avatar-marie.jpg' | asset_url }}" alt="Photo de profil de {{ block.settings.name }}" width="40" height="40" loading="lazy" decoding="async" class="h-full w-full object-cover">
-                {%- elsif forloop.index == 2 -%}
-                  <img src="{{ 'soufflo-7C-avatar-laurent.jpg' | asset_url }}" alt="Photo de profil de {{ block.settings.name }}" width="40" height="40" loading="lazy" decoding="async" class="h-full w-full object-cover">
-                {%- elsif forloop.index == 3 -%}
-                  <img src="{{ 'soufflo-7E-avatar-sophie.jpg' | asset_url }}" alt="Photo de profil de {{ block.settings.name }}" width="40" height="40" loading="lazy" decoding="async" class="h-full w-full object-cover">
-                {%- else -%}
-                  <div class="h-full w-full flex items-center justify-center text-sm font-bold" style="background: var(--color-accent); color: var(--color-accent-fg);">{{ block.settings.name | slice: 0 }}</div>
-                {%- endif -%}
-              </div>
-              <div>
-                <div class="flex items-center gap-1.5">
-                  <p class="text-sm font-semibold">{{ block.settings.name }}</p>
-                  {%- comment -%} Verified badge {%- endcomment -%}
-                  <svg width="14" height="14" viewBox="0 0 16 16" fill="none" style="flex-shrink: 0;">
-                    <circle cx="8" cy="8" r="8" fill="#1877F2"/>
-                    <path d="M6.5 11L4 8.5L5 7.5L6.5 9L11 4.5L12 5.5L6.5 11Z" fill="white"/>
-                  </svg>
-                </div>
-                <p class="text-[10px] text-muted-foreground">{{ block.settings.time }}</p>
-              </div>
-            </div>
-            <span class="text-muted-foreground" style="font-size: 1.2rem; line-height: 1;">&#x22EF;</span>
+    <div class="fb-community__grid">
+
+      {%- comment -%} Post 1 — Sophie M. {%- endcomment -%}
+      <article class="fb-card">
+        <div class="fb-card__header">
+          <div class="lavender-gradient rounded-full" style="width:40px;height:40px;flex-shrink:0;"></div>
+          <div class="fb-card__meta">
+            <span class="fb-card__name">Sophie M.</span>
+            <span class="fb-card__time">il y a 3 jours &middot; &#x1F30D;</span>
           </div>
-
-          {%- comment -%} Post text {%- endcomment -%}
-          <p class="px-4 pb-3 text-sm" style="line-height: 1.55;">{{ block.settings.text }}</p>
-
-          {%- comment -%} Post image {%- endcomment -%}
-          <div class="bg-secondary" style="aspect-ratio: 4/3;">
-            {%- if block.settings.image != blank -%}
-              <img src="{{ block.settings.image | image_url: width: 800 }}" alt="{{ shop.name }}" class="w-full h-full object-cover" width="400" height="300" loading="lazy" decoding="async">
-            {%- elsif forloop.index == 1 -%}
-              <img src="{{ 'soufflo-7B-post-marie-cuisine.jpg' | asset_url }}" alt="Soufflo installe en cuisine" class="w-full h-full object-cover" width="400" height="300" loading="lazy" decoding="async">
-            {%- elsif forloop.index == 2 -%}
-              <img src="{{ 'soufflo-7D-post-laurent-enfant.jpg' | asset_url }}" alt="Soufflo dans chambre enfant" class="w-full h-full object-cover" width="400" height="300" loading="lazy" decoding="async">
-            {%- elsif forloop.index == 3 -%}
-              <img src="{{ 'soufflo-7F-post-sophie-bureau.jpg' | asset_url }}" alt="Soufflo dans bureau" class="w-full h-full object-cover" width="400" height="300" loading="lazy" decoding="async">
-            {%- else -%}
-              <div class="w-full h-full flex items-center justify-center" style="background: var(--color-muted);">
-                <span style="font-size: 3rem;">🌀</span>
-              </div>
-            {%- endif -%}
-          </div>
-
-          {%- comment -%} Reactions bar {%- endcomment -%}
-          <div class="px-4 py-2 flex items-center justify-between text-xs text-muted-foreground border-b" style="border-color: var(--color-border);">
-            <span>&#x1F44D;&#x2764;&#xFE0F;&#x1F62E; {{ block.settings.likes }}</span>
-            <span>{{ block.settings.comments }} commentaires</span>
-          </div>
-
-          {%- comment -%} Action buttons {%- endcomment -%}
-          <div class="flex items-center justify-around text-xs font-medium text-muted-foreground" style="padding: 0.5rem 0;">
-            <span class="flex items-center gap-1.5">&#x1F44D; J'aime</span>
-            <span class="flex items-center gap-1.5">&#x1F4AC; Commenter</span>
-            <span class="flex items-center gap-1.5">&#x2197;&#xFE0F; Partager</span>
-          </div>
+          <span style="margin-left:auto;font-size:1.25rem;color:var(--color-muted-fg);line-height:1;">&#x22EF;</span>
         </div>
-      {%- endfor -%}
+        <p class="fb-card__text">Mon mari ne voulait pas installer un ventilo au plafond (trop de travaux). J'ai command&eacute; le Soufflo, je l'ai viss&eacute; moi-m&ecirc;me en 10 sec. Il est bluff&eacute;.</p>
+        <div class="lavender-gradient" style="width:100%;aspect-ratio:1/1;"></div>
+        <div style="border-top:1px solid var(--color-border);border-bottom:1px solid var(--color-border);padding:0.5rem 1rem;font-size:0.8125rem;color:var(--color-muted-fg);">
+          &#x1F44D;&#x2764;&#xFE0F;&#x1F62E; 47 &middot; 12 commentaires
+        </div>
+        <div class="flex justify-around" style="padding:0.5rem 0;font-size:0.8125rem;color:var(--color-muted-fg);">
+          <span>&#x1F44D; J'aime</span>
+          <span>&#x1F4AC; Commenter</span>
+          <span>&#x2197;&#xFE0F; Partager</span>
+        </div>
+      </article>
+
+      {%- comment -%} Post 2 — Thomas R. {%- endcomment -%}
+      <article class="fb-card">
+        <div class="fb-card__header">
+          <div class="lavender-gradient rounded-full" style="width:40px;height:40px;flex-shrink:0;"></div>
+          <div class="fb-card__meta">
+            <span class="fb-card__name">Thomas R.</span>
+            <span class="fb-card__time">il y a 1 semaine &middot; &#x1F30D;</span>
+          </div>
+          <span style="margin-left:auto;font-size:1.25rem;color:var(--color-muted-fg);line-height:1;">&#x22EF;</span>
+        </div>
+        <p class="fb-card__text">J'en ai mis 3 dans l'appart, salon + 2 chambres. Avec la canicule de l'&eacute;t&eacute; dernier c'est devenu indispensable. Et la lumi&egrave;re est top.</p>
+        <div class="lavender-gradient" style="width:100%;aspect-ratio:1/1;"></div>
+        <div style="border-top:1px solid var(--color-border);border-bottom:1px solid var(--color-border);padding:0.5rem 1rem;font-size:0.8125rem;color:var(--color-muted-fg);">
+          &#x1F44D;&#x2764;&#xFE0F;&#x1F62E; 83 &middot; 24 commentaires
+        </div>
+        <div class="flex justify-around" style="padding:0.5rem 0;font-size:0.8125rem;color:var(--color-muted-fg);">
+          <span>&#x1F44D; J'aime</span>
+          <span>&#x1F4AC; Commenter</span>
+          <span>&#x2197;&#xFE0F; Partager</span>
+        </div>
+      </article>
+
+      {%- comment -%} Post 3 — Nathalie D. {%- endcomment -%}
+      <article class="fb-card">
+        <div class="fb-card__header">
+          <div class="lavender-gradient rounded-full" style="width:40px;height:40px;flex-shrink:0;"></div>
+          <div class="fb-card__meta">
+            <span class="fb-card__name">Nathalie D.</span>
+            <span class="fb-card__time">il y a 2 semaines &middot; &#x1F30D;</span>
+          </div>
+          <span style="margin-left:auto;font-size:1.25rem;color:var(--color-muted-fg);line-height:1;">&#x22EF;</span>
+        </div>
+        <p class="fb-card__text">Le rapport qualit&eacute;-prix est dingue. Mieux qu'un ventilateur sur pied qui prend de la place, et en plus &ccedil;a fait lampe. Je recommande &agrave; 100%.</p>
+        <div class="lavender-gradient" style="width:100%;aspect-ratio:1/1;"></div>
+        <div style="border-top:1px solid var(--color-border);border-bottom:1px solid var(--color-border);padding:0.5rem 1rem;font-size:0.8125rem;color:var(--color-muted-fg);">
+          &#x1F44D;&#x2764;&#xFE0F;&#x1F62E; 61 &middot; 18 commentaires
+        </div>
+        <div class="flex justify-around" style="padding:0.5rem 0;font-size:0.8125rem;color:var(--color-muted-fg);">
+          <span>&#x1F44D; J'aime</span>
+          <span>&#x1F4AC; Commenter</span>
+          <span>&#x2197;&#xFE0F; Partager</span>
+        </div>
+      </article>
+
     </div>
   </div>
 </section>
 
-<style>
-  .facebook-community-section .fb-post-card {
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-  .facebook-community-section .fb-post-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.07);
-  }
-  @media (max-width: 767px) {
-    .facebook-community-section .grid {
-      grid-template-columns: 1fr;
-      max-width: 420px;
-      margin: 0 auto;
-    }
-  }
-</style>
-
 {% schema %}
 {
-  "name": "Communaute Facebook",
-  "tag": "section",
-  "class": "facebook-community-wrapper",
-  "settings": [
-    {
-      "type": "text",
-      "id": "title",
-      "label": "Titre",
-      "default": "Ce qu'ils en disent sur Facebook"
-    }
-  ],
-  "blocks": [
-    {
-      "type": "post",
-      "name": "Post Facebook",
-      "settings": [
-        {
-          "type": "text",
-          "id": "name",
-          "label": "Nom",
-          "default": "Sophie M."
-        },
-        {
-          "type": "text",
-          "id": "time",
-          "label": "Temps ecoule",
-          "default": "il y a 2 jours"
-        },
-        {
-          "type": "textarea",
-          "id": "text",
-          "label": "Texte du post",
-          "default": "Mon mari ne voulait pas installer un ventilo au plafond (trop de travaux). J'ai commande le Soufflo, je l'ai visse moi-meme en 10 sec. Il est bluffe."
-        },
-        {
-          "type": "image_picker",
-          "id": "avatar",
-          "label": "Avatar"
-        },
-        {
-          "type": "image_picker",
-          "id": "image",
-          "label": "Image du post"
-        },
-        {
-          "type": "text",
-          "id": "likes",
-          "label": "Nombre de likes",
-          "default": "47"
-        },
-        {
-          "type": "text",
-          "id": "comments",
-          "label": "Nombre de commentaires",
-          "default": "12"
-        }
-      ]
-    }
-  ],
+  "name": "Facebook Community",
+  "settings": [],
   "presets": [
     {
-      "name": "Communaute Facebook",
-      "blocks": [
-        {
-          "type": "post",
-          "settings": {
-            "name": "Sophie M.",
-            "time": "il y a 2 jours",
-            "text": "Mon mari ne voulait pas installer un ventilo au plafond (trop de travaux). J'ai commande le Soufflo, je l'ai visse moi-meme en 10 sec. Il est bluffe.",
-            "likes": "47",
-            "comments": "12"
-          }
-        },
-        {
-          "type": "post",
-          "settings": {
-            "name": "Thomas R.",
-            "time": "il y a 5 jours",
-            "text": "J'en ai mis 3 dans l'appart, salon + 2 chambres. Avec la canicule de l'ete dernier c'est devenu indispensable. Et la lumiere est top.",
-            "likes": "83",
-            "comments": "24"
-          }
-        },
-        {
-          "type": "post",
-          "settings": {
-            "name": "Nathalie D.",
-            "time": "il y a 1 semaine",
-            "text": "Le rapport qualite-prix est dingue. Mieux qu'un ventilateur sur pied qui prend de la place, et en plus ca fait lampe. Je recommande a 100%.",
-            "likes": "61",
-            "comments": "18"
-          }
-        }
-      ]
+      "name": "Facebook Community"
     }
   ]
 }

@@ -1,40 +1,47 @@
-{%- comment -%}
-  ============================================================
-  Newsletter Signup — Soufflo
-  Sky blue background (#38BDF8), "5 EUR offerts" hook
-  ============================================================
-{%- endcomment -%}
+<section class="newsletter-block-primary section-padding">
+  <div class="container" style="max-width: 42rem; text-align: center;">
 
-<section class="newsletter-block" style="background: var(--color-primary); padding: 3.5rem 0;">
-  <div class="max-w-md text-center space-y-4 px-6" style="margin-left: auto; margin-right: auto;">
+    <h3 class="text-2xl md:text-4xl font-extrabold" style="color: #fff;">5 &euro; offerts sur votre 1&egrave;re commande</h3>
+    <p class="text-sm" style="color: rgba(255,255,255,0.9); margin-top: 0.75rem;">Inscrivez-vous et recevez votre code par email.</p>
 
-    <h3 class="text-2xl font-bold" style="color: var(--color-primary-fg);">{{ section.settings.title }}</h3>
-    <p class="text-sm" style="color: color-mix(in srgb, var(--color-primary-fg) 80%, transparent);">{{ section.settings.subtitle }}</p>
-
-    {%- form 'customer', class: 'space-y-3', data-newsletter-form: '' -%}
+    {%- form 'customer', class: 'newsletter-form', data-newsletter-form: '' -%}
       <input type="hidden" name="contact[tags]" value="newsletter">
-      <input
-        type="email"
-        name="contact[email]"
-        required
-        placeholder="{{ section.settings.placeholder }}"
-        aria-label="Adresse email"
-        autocomplete="email"
-        style="background: color-mix(in srgb, var(--color-primary-fg) 15%, transparent); border: 1px solid color-mix(in srgb, var(--color-primary-fg) 30%, transparent); color: var(--color-primary-fg); border-radius: var(--radius); padding: 0.85rem 1rem; width: 100%; font-size: 0.95rem;"
-      >
-      <button type="submit" class="btn btn-block" style="background: var(--color-primary-fg); color: var(--color-primary); font-weight: 700;">
-        {{ section.settings.button_label }}
-      </button>
+      <div style="margin-top: 1.5rem; max-width: 28rem; margin-left: auto; margin-right: auto; display: flex; flex-direction: column; gap: 0.5rem;">
+        <div class="newsletter-form__row" style="display: flex; flex-direction: column; gap: 0.5rem;">
+          <input
+            type="email"
+            name="contact[email]"
+            required
+            placeholder="votre@email.com"
+            aria-label="Adresse email"
+            autocomplete="email"
+            style="background: #fff; border: 1px solid rgba(255,255,255,0.3); border-radius: 9999px; padding: 0.75rem 1.25rem; flex: 1; font-size: 0.875rem; color: #1a1a1a; outline: none;"
+          >
+          <button type="submit" class="newsletter-submit-btn" style="background: #fff; color: #0C4A6E; border-radius: 9999px; padding: 0.75rem 1.5rem; font-weight: 700; font-size: 0.875rem; border: none; cursor: pointer; transition: background-color 0.2s ease, color 0.2s ease;">Recevoir mon code</button>
+        </div>
+      </div>
 
       {%- if form.posted_successfully? -%}
-        <p class="text-sm font-medium" style="color: var(--color-primary-fg);">{{ section.settings.success_message }}</p>
+        <p class="text-sm font-bold" style="color: #fff; margin-top: 1rem;">Merci ! V&eacute;rifiez votre bo&icirc;te mail.</p>
       {%- endif -%}
     {%- endform -%}
 
-    <p class="text-xs" style="color: color-mix(in srgb, var(--color-primary-fg) 55%, transparent);">{{ section.settings.gdpr_note }}</p>
+    <p style="font-size: 10px; color: rgba(255,255,255,0.7); margin-top: 0.75rem;">En vous inscrivant vous acceptez notre politique de confidentialit&eacute;.</p>
 
   </div>
 </section>
+
+<style>
+  @media (min-width: 640px) {
+    .newsletter-form__row {
+      flex-direction: row !important;
+    }
+  }
+  .newsletter-submit-btn:hover {
+    background-color: #0C4A6E !important;
+    color: #fff !important;
+  }
+</style>
 
 <script>
 (function() {
@@ -56,46 +63,7 @@
 {% schema %}
 {
   "name": "Newsletter",
-  "tag": "section",
-  "class": "newsletter-section",
-  "settings": [
-    {
-      "type": "text",
-      "id": "title",
-      "label": "Titre",
-      "default": "5€ offerts sur votre 1ère commande"
-    },
-    {
-      "type": "text",
-      "id": "subtitle",
-      "label": "Sous-titre",
-      "default": "Inscrivez-vous et recevez votre code par email."
-    },
-    {
-      "type": "text",
-      "id": "placeholder",
-      "label": "Placeholder email",
-      "default": "votre@email.com"
-    },
-    {
-      "type": "text",
-      "id": "button_label",
-      "label": "Texte du bouton",
-      "default": "Recevoir mon code"
-    },
-    {
-      "type": "text",
-      "id": "success_message",
-      "label": "Message succès",
-      "default": "Merci ! Vérifiez votre boîte mail."
-    },
-    {
-      "type": "text",
-      "id": "gdpr_note",
-      "label": "Note RGPD",
-      "default": "En vous inscrivant vous acceptez notre politique de confidentialité."
-    }
-  ],
+  "settings": [],
   "presets": [
     {
       "name": "Newsletter"

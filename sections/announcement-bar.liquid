@@ -1,13 +1,110 @@
-<div class="announcement-bar" aria-label="Informations boutique">
-  <div class="announcement-bar__track">
-    {%- for block in section.blocks -%}
-      <span class="announcement-bar__item">{{ block.settings.text }}</span>
-    {%- endfor -%}
-    {%- for block in section.blocks -%}
-      <span class="announcement-bar__item">{{ block.settings.text }}</span>
-    {%- endfor -%}
-  </div>
+{%- liquid
+  assign messages = section.blocks
+  assign has_blocks = false
+  if messages.size > 0
+    assign has_blocks = true
+  endif
+-%}
+
+<div class="announcement-bar" data-section-id="{{ section.id }}" aria-label="Informations boutique">
+
+  {%- if has_blocks -%}
+
+    {%- comment -%} Desktop: marquee track with duplicated messages for seamless scroll {%- endcomment -%}
+    <div class="announcement-bar__desktop hide-mobile">
+      <div class="announcement-bar__track">
+        {%- for block in messages -%}
+          <span class="announcement-bar__item" {{ block.shopify_attributes }}>{{ block.settings.text }}</span>
+        {%- endfor -%}
+        {%- for block in messages -%}
+          <span class="announcement-bar__item" aria-hidden="true">{{ block.settings.text }}</span>
+        {%- endfor -%}
+      </div>
+    </div>
+
+    {%- comment -%} Mobile: single rotating message {%- endcomment -%}
+    <div class="announcement-bar__mobile hide-desktop hide-tablet">
+      {%- for block in messages -%}
+        <span class="announcement-bar__item{% if forloop.first %} is-active{% endif %}" data-index="{{ forloop.index0 }}" {{ block.shopify_attributes }}>{{ block.settings.text }}</span>
+      {%- endfor -%}
+    </div>
+
+  {%- else -%}
+
+    {%- comment -%} Fallback: hardcoded content when no blocks configured {%- endcomment -%}
+    <div class="announcement-bar__desktop hide-mobile">
+      <div class="announcement-bar__track">
+        <span class="announcement-bar__item">&#x1F69A; Livraison offerte en France</span>
+        <span class="announcement-bar__item">&#x21A9;&#xFE0F; Satisfait ou rembours&eacute; 30 jours</span>
+        <span class="announcement-bar__item">&#x26A1; Installation en 10 secondes</span>
+        <span class="announcement-bar__item">&#x1F39B;&#xFE0F; T&eacute;l&eacute;commande incluse</span>
+        <span class="announcement-bar__item">&#x1F4E6; Exp&eacute;dition sous 24-48h</span>
+        <span class="announcement-bar__item" aria-hidden="true">&#x1F69A; Livraison offerte en France</span>
+        <span class="announcement-bar__item" aria-hidden="true">&#x21A9;&#xFE0F; Satisfait ou rembours&eacute; 30 jours</span>
+        <span class="announcement-bar__item" aria-hidden="true">&#x26A1; Installation en 10 secondes</span>
+        <span class="announcement-bar__item" aria-hidden="true">&#x1F39B;&#xFE0F; T&eacute;l&eacute;commande incluse</span>
+        <span class="announcement-bar__item" aria-hidden="true">&#x1F4E6; Exp&eacute;dition sous 24-48h</span>
+      </div>
+    </div>
+    <div class="announcement-bar__mobile hide-desktop hide-tablet">
+      <span class="announcement-bar__item is-active" data-index="0">&#x1F69A; Livraison offerte en France</span>
+      <span class="announcement-bar__item" data-index="1">&#x21A9;&#xFE0F; Satisfait ou rembours&eacute; 30 jours</span>
+      <span class="announcement-bar__item" data-index="2">&#x26A1; Installation en 10 secondes</span>
+      <span class="announcement-bar__item" data-index="3">&#x1F39B;&#xFE0F; T&eacute;l&eacute;commande incluse</span>
+      <span class="announcement-bar__item" data-index="4">&#x1F4E6; Exp&eacute;dition sous 24-48h</span>
+    </div>
+
+  {%- endif -%}
+
 </div>
+
+<style>
+  .announcement-bar__desktop {
+    width: 100%;
+    overflow: hidden;
+  }
+  .announcement-bar__mobile {
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+  .announcement-bar__mobile .announcement-bar__item {
+    position: absolute;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    white-space: nowrap;
+  }
+  .announcement-bar__mobile .announcement-bar__item::after {
+    display: none;
+  }
+  .announcement-bar__mobile .announcement-bar__item.is-active {
+    opacity: 1;
+    position: relative;
+  }
+</style>
+
+<script>
+  (function() {
+    var section = document.querySelector('[data-section-id="{{ section.id }}"]');
+    if (!section) return;
+
+    var mobileWrap = section.querySelector('.announcement-bar__mobile');
+    if (!mobileWrap) return;
+
+    var items = mobileWrap.querySelectorAll('.announcement-bar__item');
+    if (items.length < 2) return;
+
+    var current = 0;
+    setInterval(function() {
+      items[current].classList.remove('is-active');
+      current = (current + 1) % items.length;
+      items[current].classList.add('is-active');
+    }, 4000);
+  })();
+</script>
 
 {% schema %}
 {
@@ -20,7 +117,12 @@
       "name": "Message",
       "limit": 8,
       "settings": [
-        { "type": "text", "id": "text", "label": "Texte", "default": "Message" }
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Texte",
+          "default": "Message"
+        }
       ]
     }
   ],
@@ -29,10 +131,10 @@
       "name": "Barre d'annonce",
       "blocks": [
         { "type": "message", "settings": { "text": "🚚 Livraison offerte en France" } },
-        { "type": "message", "settings": { "text": "✅ Satisfait ou remboursé 30 jours" } },
+        { "type": "message", "settings": { "text": "↩️ Satisfait ou remboursé 30 jours" } },
         { "type": "message", "settings": { "text": "⚡ Installation en 10 secondes" } },
-        { "type": "message", "settings": { "text": "🎮 Télécommande incluse" } },
-        { "type": "message", "settings": { "text": "📦 Expédition rapide + suivi" } }
+        { "type": "message", "settings": { "text": "🎛️ Télécommande incluse" } },
+        { "type": "message", "settings": { "text": "📦 Expédition sous 24-48h" } }
       ]
     }
   ]
