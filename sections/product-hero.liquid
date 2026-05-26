@@ -1,48 +1,38 @@
 {%- comment -%}
   ============================================================
-  ProductSection — Hero / Bundles / Upsells / Countdown
-  Soufflo — Ventilateur de plafond LED 30W E27 avec telecommande
+  ProductHero — Converted from Lovable ProductHero.tsx
+  Soufflo — Ventilateur LED 30W E27 avec telecommande
   ============================================================
 {%- endcomment -%}
 
 <section id="product" class="py-8 md:py-14">
-  <div class="container" style="display:grid; grid-template-columns:1fr; gap:2.5rem; align-items:start;">
-
-    {%- comment -%} ===== DESKTOP 2-COL LAYOUT ===== {%- endcomment -%}
+  <div class="container mx-auto px-4" style="display:grid; grid-template-columns:1fr; gap:2.5rem; align-items:start;">
     <div class="product-hero-grid" style="display:grid; grid-template-columns:1fr; gap:2.5rem; align-items:start;">
 
     {%- comment -%} ========== LEFT: IMAGE GALLERY ========== {%- endcomment -%}
-    <div class="space-y-4" style="position:relative;">
-
-      {%- comment -%} Badge Nouveau {%- endcomment -%}
-      <div style="position:absolute; top:1rem; left:1rem; z-index:10; background:var(--color-accent); color:var(--color-accent-fg); font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; padding:0.3rem 0.75rem; border-radius:9999px; box-shadow:0 2px 8px rgba(0,0,0,0.15);">
-        Nouveau
+    <div>
+      <div class="rounded-2xl overflow-hidden relative" style="aspect-ratio:1/1; background:linear-gradient(135deg, #e0f2fe 0%, #bae6fd 50%, #e0f7fa 100%); display:flex; align-items:center; justify-content:center;">
+        <img data-gallery-slide="0" src="{{ 'soufflo-3A-hero-product.jpg' | asset_url }}" alt="Ventilateur LED Soufflo — vue principale" class="w-full h-full object-cover" width="800" height="800" decoding="async" style="position:absolute;inset:0;">
+        <img data-gallery-slide="1" src="{{ 'soufflo-3C-telecommande.jpg' | asset_url }}" alt="Telecommande incluse" class="w-full h-full object-cover" width="800" height="800" loading="lazy" decoding="async" style="display:none;position:absolute;inset:0;">
+        <img data-gallery-slide="2" src="{{ 'soufflo-3D-chambre-nuit.jpg' | asset_url }}" alt="Ambiance chambre" class="w-full h-full object-cover" width="800" height="800" loading="lazy" decoding="async" style="display:none;position:absolute;inset:0;">
+        <img data-gallery-slide="3" src="{{ 'soufflo-10D-vue-dessous.jpg' | asset_url }}" alt="Vue de dessous" class="w-full h-full object-cover" width="800" height="800" loading="lazy" decoding="async" style="display:none;position:absolute;inset:0;">
+        <img data-gallery-slide="4" src="{{ 'soufflo-10E-produit-telecommande.jpg' | asset_url }}" alt="Produit et telecommande" class="w-full h-full object-cover" width="800" height="800" loading="lazy" decoding="async" style="display:none;position:absolute;inset:0;">
       </div>
 
-      {%- comment -%} Main image display — hardcoded from theme assets {%- endcomment -%}
-      <div class="hero-gallery-container bg-secondary rounded-2xl overflow-hidden flex items-center justify-center relative" data-product-gallery-main>
-        <img data-gallery-slide="0" src="{{ 'soufflo-3A-hero-product.jpg' | asset_url }}" alt="Ventilateur LED Soufflo — vue principale" class="w-full h-full object-cover" width="800" height="800" decoding="async">
-        <img data-gallery-slide="1" src="{{ 'soufflo-3C-telecommande.jpg' | asset_url }}" alt="Ventilateur LED Soufflo — telecommande incluse" class="w-full h-full object-cover" width="800" height="800" loading="lazy" decoding="async" style="display:none;">
-        <img data-gallery-slide="2" src="{{ 'soufflo-3D-chambre-nuit.jpg' | asset_url }}" alt="Ventilateur LED Soufflo — ambiance chambre" class="w-full h-full object-cover" width="800" height="800" loading="lazy" decoding="async" style="display:none;">
-        <img data-gallery-slide="3" src="{{ 'soufflo-10D-vue-dessous.jpg' | asset_url }}" alt="Ventilateur LED Soufflo — vue de dessous pales" class="w-full h-full object-cover" width="800" height="800" loading="lazy" decoding="async" style="display:none;">
-        <img data-gallery-slide="4" src="{{ 'soufflo-10E-produit-telecommande.jpg' | asset_url }}" alt="Ventilateur LED Soufflo — produit et telecommande" class="w-full h-full object-cover" width="800" height="800" loading="lazy" decoding="async" style="display:none;">
-      </div>
-
-      {%- comment -%} Thumbnails row — 5 slots {%- endcomment -%}
-      <div class="flex gap-3 justify-center flex-wrap">
-        <button type="button" class="gallery-thumb is-active" data-gallery-thumb="0" aria-label="Image principale" style="position:relative; height:5rem; width:5rem; border-radius:var(--radius); overflow:hidden; border:2px solid var(--color-primary); cursor:pointer; transition:border-color 0.15s; flex-shrink:0;">
+      <div class="flex gap-3 flex-wrap justify-center mt-4">
+        <button type="button" data-gallery-thumb="0" aria-label="Image 1" class="gallery-thumb" style="height:5rem;width:5rem;border-radius:0.5rem;border:2px solid var(--color-primary);overflow:hidden;position:relative;background:linear-gradient(135deg,#e0f2fe,#bae6fd);cursor:pointer;flex-shrink:0;">
           <img src="{{ 'soufflo-3A-hero-product.jpg' | asset_url }}" alt="" class="h-full w-full object-cover" width="80" height="80" loading="lazy">
         </button>
-        <button type="button" class="gallery-thumb" data-gallery-thumb="1" aria-label="Telecommande" style="position:relative; height:5rem; width:5rem; border-radius:var(--radius); overflow:hidden; border:2px solid transparent; cursor:pointer; transition:border-color 0.15s; flex-shrink:0;">
+        <button type="button" data-gallery-thumb="1" aria-label="Image 2" class="gallery-thumb" style="height:5rem;width:5rem;border-radius:0.5rem;border:2px solid transparent;overflow:hidden;position:relative;background:linear-gradient(135deg,#e0f2fe,#bae6fd);cursor:pointer;flex-shrink:0;">
           <img src="{{ 'soufflo-3C-telecommande.jpg' | asset_url }}" alt="" class="h-full w-full object-cover" width="80" height="80" loading="lazy">
         </button>
-        <button type="button" class="gallery-thumb" data-gallery-thumb="2" aria-label="Ambiance chambre" style="position:relative; height:5rem; width:5rem; border-radius:var(--radius); overflow:hidden; border:2px solid transparent; cursor:pointer; transition:border-color 0.15s; flex-shrink:0;">
+        <button type="button" data-gallery-thumb="2" aria-label="Image 3" class="gallery-thumb" style="height:5rem;width:5rem;border-radius:0.5rem;border:2px solid transparent;overflow:hidden;position:relative;background:linear-gradient(135deg,#e0f2fe,#bae6fd);cursor:pointer;flex-shrink:0;">
           <img src="{{ 'soufflo-3D-chambre-nuit.jpg' | asset_url }}" alt="" class="h-full w-full object-cover" width="80" height="80" loading="lazy">
         </button>
-        <button type="button" class="gallery-thumb" data-gallery-thumb="3" aria-label="Vue de dessous" style="position:relative; height:5rem; width:5rem; border-radius:var(--radius); overflow:hidden; border:2px solid transparent; cursor:pointer; transition:border-color 0.15s; flex-shrink:0;">
+        <button type="button" data-gallery-thumb="3" aria-label="Image 4" class="gallery-thumb" style="height:5rem;width:5rem;border-radius:0.5rem;border:2px solid transparent;overflow:hidden;position:relative;background:linear-gradient(135deg,#e0f2fe,#bae6fd);cursor:pointer;flex-shrink:0;">
           <img src="{{ 'soufflo-10D-vue-dessous.jpg' | asset_url }}" alt="" class="h-full w-full object-cover" width="80" height="80" loading="lazy">
         </button>
-        <button type="button" class="gallery-thumb" data-gallery-thumb="4" aria-label="Produit et telecommande" style="position:relative; height:5rem; width:5rem; border-radius:var(--radius); overflow:hidden; border:2px solid transparent; cursor:pointer; transition:border-color 0.15s; flex-shrink:0;">
+        <button type="button" data-gallery-thumb="4" aria-label="Image 5" class="gallery-thumb" style="height:5rem;width:5rem;border-radius:0.5rem;border:2px solid transparent;overflow:hidden;position:relative;background:linear-gradient(135deg,#e0f2fe,#bae6fd);cursor:pointer;flex-shrink:0;">
           <img src="{{ 'soufflo-10E-produit-telecommande.jpg' | asset_url }}" alt="" class="h-full w-full object-cover" width="80" height="80" loading="lazy">
         </button>
       </div>
@@ -51,262 +41,280 @@
     {%- comment -%} ========== RIGHT: PRODUCT INFO ========== {%- endcomment -%}
     <div class="space-y-5">
 
-      {%- comment -%} 1. Avatar stack + rating {%- endcomment -%}
-      <div class="flex items-center gap-3 flex-wrap">
-        <div class="flex items-center -space-x-2">
-          <img src="{{ 'soufflo-7A-avatar-marie.jpg' | asset_url }}" alt="" width="28" height="28" loading="lazy" style="width:28px; height:28px; border-radius:9999px; border:2px solid var(--color-bg); object-fit:cover;">
-          <img src="{{ 'soufflo-7C-avatar-laurent.jpg' | asset_url }}" alt="" width="28" height="28" loading="lazy" style="width:28px; height:28px; border-radius:9999px; border:2px solid var(--color-bg); object-fit:cover;">
-          <img src="{{ 'soufflo-8B-avatar-camille.jpg' | asset_url }}" alt="" width="28" height="28" loading="lazy" style="width:28px; height:28px; border-radius:9999px; border:2px solid var(--color-bg); object-fit:cover;">
-          <img src="{{ 'soufflo-8A-avatar-thomas.jpg' | asset_url }}" alt="" width="28" height="28" loading="lazy" style="width:28px; height:28px; border-radius:9999px; border:2px solid var(--color-bg); object-fit:cover;">
-          <img src="{{ 'soufflo-8C-avatar-marc.jpg' | asset_url }}" alt="" width="28" height="28" loading="lazy" style="width:28px; height:28px; border-radius:9999px; border:2px solid var(--color-bg); object-fit:cover;">
-        </div>
-        <a href="#reviews" class="flex items-center gap-1.5" style="text-decoration:none; color:inherit;">
-          <span class="star-rating text-base" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-          <span class="text-sm font-semibold" style="border-bottom:1px dashed currentColor;">4,8/5 &mdash; 150 avis</span>
-        </a>
-      </div>
-
-      {%- comment -%} 2. Title {%- endcomment -%}
-      <h1 class="text-2xl md:text-3xl font-bold leading-tight" style="word-wrap:break-word; overflow-wrap:break-word;">
-        {{ section.settings.headline | default: 'Ventilateur LED Soufflo' }}
-      </h1>
-
-      {%- comment -%} 3. Subtitle {%- endcomment -%}
-      <p class="text-base text-muted-foreground" style="margin-top:-0.5rem;">
-        {{ section.settings.subtitle | default: 'Fraicheur & lumiere — en un clic.' }}
-      </p>
-
-      {%- comment -%} 4. Small tags {%- endcomment -%}
-      <div class="flex flex-wrap gap-2" style="margin-top:0.25rem;">
-        <span style="display:inline-flex; align-items:center; gap:0.3rem; background:color-mix(in srgb, var(--color-primary) 8%, transparent); color:var(--color-primary); font-size:0.75rem; font-weight:600; padding:0.3rem 0.7rem; border-radius:9999px;">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
-          LED 30W dimmable
-        </span>
-        <span style="display:inline-flex; align-items:center; gap:0.3rem; background:color-mix(in srgb, var(--color-primary) 8%, transparent); color:var(--color-primary); font-size:0.75rem; font-weight:600; padding:0.3rem 0.7rem; border-radius:9999px;">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2"/></svg>
-          3 vitesses silencieuses
-        </span>
-        <span style="display:inline-flex; align-items:center; gap:0.3rem; background:color-mix(in srgb, var(--color-primary) 8%, transparent); color:var(--color-primary); font-size:0.75rem; font-weight:600; padding:0.3rem 0.7rem; border-radius:9999px;">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="7" width="20" height="10" rx="2"/><path d="M12 7v10M7 12h10"/></svg>
-          Telecommande incluse
-        </span>
-      </div>
-
-      {%- comment -%} 5. Bullet points with checkmarks (hardcoded — legacy mode has no blocks) {%- endcomment -%}
-      <div class="space-y-2" style="margin-top:0.5rem;">
-        {%- assign bullet_texts = "Se visse dans n'importe quelle douille E27 — 10 secondes|3 vitesses de ventilation silencieuse|LED dimmable — 3 temperatures (chaud / naturel / froid)|Telecommande incluse — controle depuis le canape" | split: "|" -%}
-        {%- for bullet_text in bullet_texts -%}
-          <div class="flex items-start gap-2">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; margin-top:2px;">
-              <path d="M20 6 9 17l-5-5"/>
-            </svg>
-            <span class="text-sm" style="color:var(--color-fg);">{{ bullet_text }}</span>
+      {%- comment -%} 1. Avatar stack + Nouveau badge {%- endcomment -%}
+      <div class="flex items-center justify-between flex-wrap gap-3">
+        <div class="flex -space-x-2">
+          <div style="height:2.5rem;width:2.5rem;border-radius:9999px;border:2px solid var(--color-bg);background:linear-gradient(135deg,#e0f2fe,#bae6fd);position:relative;">
+            <span style="position:absolute;top:-4px;left:-4px;background:#facc15;color:#fff;font-size:10px;border-radius:9999px;height:1rem;width:1rem;display:flex;align-items:center;justify-content:center;font-weight:700;">&#10003;</span>
           </div>
-        {%- endfor -%}
-      </div>
-
-      {%- comment -%} ===== 6. COUNTDOWN TIMER ===== {%- endcomment -%}
-      {%- if section.settings.show_countdown -%}
-        <div style="background:color-mix(in srgb, var(--color-accent) 12%, transparent); border:1px solid color-mix(in srgb, var(--color-accent) 25%, transparent); border-radius:var(--radius); padding:0.65rem 1rem; text-align:center;" data-countdown>
-          <span style="font-size:0.85rem; font-weight:600; color:var(--color-accent);" data-countdown-text>
-            Offre de lancement &mdash; se termine dans 00:00:00
-          </span>
+          <div style="height:2.5rem;width:2.5rem;border-radius:9999px;border:2px solid var(--color-bg);background:linear-gradient(135deg,#e0f2fe,#bae6fd);position:relative;">
+            <span style="position:absolute;top:-4px;left:-4px;background:#facc15;color:#fff;font-size:10px;border-radius:9999px;height:1rem;width:1rem;display:flex;align-items:center;justify-content:center;font-weight:700;">&#10003;</span>
+          </div>
+          <div style="height:2.5rem;width:2.5rem;border-radius:9999px;border:2px solid var(--color-bg);background:linear-gradient(135deg,#e0f2fe,#bae6fd);position:relative;">
+            <span style="position:absolute;top:-4px;left:-4px;background:#facc15;color:#fff;font-size:10px;border-radius:9999px;height:1rem;width:1rem;display:flex;align-items:center;justify-content:center;font-weight:700;">&#10003;</span>
+          </div>
+          <div style="height:2.5rem;width:2.5rem;border-radius:9999px;border:2px solid var(--color-bg);background:linear-gradient(135deg,#e0f2fe,#bae6fd);position:relative;">
+            <span style="position:absolute;top:-4px;left:-4px;background:#facc15;color:#fff;font-size:10px;border-radius:9999px;height:1rem;width:1rem;display:flex;align-items:center;justify-content:center;font-weight:700;">&#10003;</span>
+          </div>
+          <div style="height:2.5rem;width:2.5rem;border-radius:9999px;border:2px solid var(--color-bg);background:linear-gradient(135deg,#e0f2fe,#bae6fd);position:relative;">
+            <span style="position:absolute;top:-4px;left:-4px;background:#facc15;color:#fff;font-size:10px;border-radius:9999px;height:1rem;width:1rem;display:flex;align-items:center;justify-content:center;font-weight:700;">&#10003;</span>
+          </div>
+          <div style="height:2.5rem;width:2.5rem;border-radius:9999px;border:2px solid var(--color-bg);background:linear-gradient(135deg,#e0f2fe,#bae6fd);position:relative;">
+            <span style="position:absolute;top:-4px;left:-4px;background:#facc15;color:#fff;font-size:10px;border-radius:9999px;height:1rem;width:1rem;display:flex;align-items:center;justify-content:center;font-weight:700;">&#10003;</span>
+          </div>
         </div>
-      {%- endif -%}
-
-      {%- comment -%} ===== DIVIDER ===== {%- endcomment -%}
-      <div class="flex items-center gap-4">
-        <div class="h-px flex-1" style="background:var(--color-border);"></div>
-        <span class="text-sm font-bold">{{ section.settings.bundle_section_title | default: 'Choisis ton pack' }}</span>
-        <div class="h-px flex-1" style="background:var(--color-border);"></div>
+        <span style="background:var(--color-primary);color:var(--color-primary-fg);border-radius:9999px;padding:0.25rem 0.75rem;font-size:0.75rem;font-weight:700;">&#10024; Nouveau</span>
       </div>
 
-      {%- comment -%} ===== 7. BUNDLE PICKER (hardcoded — legacy mode) ===== {%- endcomment -%}
+      {%- comment -%} 2. Star rating {%- endcomment -%}
+      <a href="#reviews" class="flex items-center gap-2" style="text-decoration:none;color:inherit;cursor:pointer;">
+        <span class="star-rating" style="font-size:1.25rem;" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        <span class="text-sm font-bold" style="border-bottom:1px dashed var(--color-muted-fg);">4,8/5 &mdash; 150 avis</span>
+      </a>
+
+      {%- comment -%} 3. Title {%- endcomment -%}
+      <h1 class="text-2xl md:text-3xl font-bold leading-tight">Ventilateur LED Soufflo</h1>
+
+      {%- comment -%} 4. Subtitle {%- endcomment -%}
+      <p class="text-muted-foreground" style="margin-top:-0.5rem;">Fraicheur &amp; lumiere &mdash; en un clic.</p>
+
+      {%- comment -%} 5. Pill tags with emojis (from Lovable) {%- endcomment -%}
+      <div class="flex flex-wrap gap-1.5">
+        <span style="background:color-mix(in srgb, var(--color-primary) 15%, transparent);color:var(--color-primary);font-size:0.75rem;font-weight:600;border-radius:9999px;padding:0.125rem 0.5rem;">&#128161; LED 30W dimmable</span>
+        <span style="background:color-mix(in srgb, var(--color-primary) 15%, transparent);color:var(--color-primary);font-size:0.75rem;font-weight:600;border-radius:9999px;padding:0.125rem 0.5rem;">&#127788;&#65039; 3 vitesses silencieuses</span>
+        <span style="background:color-mix(in srgb, var(--color-primary) 15%, transparent);color:var(--color-primary);font-size:0.75rem;font-weight:600;border-radius:9999px;padding:0.125rem 0.5rem;">&#127902;&#65039; Telecommande incluse</span>
+      </div>
+
+      {%- comment -%} 6. Price display (Lovable shows total price prominently) {%- endcomment -%}
+      <div class="flex items-baseline gap-3 flex-wrap">
+        <span class="text-3xl font-bold" style="color:var(--color-primary);" data-hero-total>59,90 &euro;</span>
+        <span class="text-sm font-medium" style="color:#FF8A8A;">&#10024; Pack Duo : economise 9,90 &euro;</span>
+      </div>
+
+      {%- comment -%} 7. Benefits list with emojis + checkmarks {%- endcomment -%}
+      <ul class="space-y-1.5" style="list-style:none;padding:0;margin:0;">
+        <li class="flex items-start gap-2 text-sm text-muted-foreground">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:2px;"><path d="M20 6 9 17l-5-5"/></svg>
+          <span>&#128297; Se visse dans n'importe quelle douille E27 &mdash; 10 secondes</span>
+        </li>
+        <li class="flex items-start gap-2 text-sm text-muted-foreground">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:2px;"><path d="M20 6 9 17l-5-5"/></svg>
+          <span>&#127788;&#65039; 3 vitesses de ventilation silencieuse</span>
+        </li>
+        <li class="flex items-start gap-2 text-sm text-muted-foreground">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:2px;"><path d="M20 6 9 17l-5-5"/></svg>
+          <span>&#128161; LED dimmable &mdash; 3 temperatures (chaud / naturel / froid)</span>
+        </li>
+        <li class="flex items-start gap-2 text-sm text-muted-foreground">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:2px;"><path d="M20 6 9 17l-5-5"/></svg>
+          <span>&#127902;&#65039; Telecommande incluse &mdash; controle depuis le canape</span>
+        </li>
+      </ul>
+
+      {%- comment -%} 8. Divider — Choisis ton pack {%- endcomment -%}
+      <div class="flex items-center gap-3" style="padding-top:0.5rem;">
+        <div class="flex-1" style="height:1px;background:var(--color-border);"></div>
+        <span class="text-sm font-bold">Choisis ton pack</span>
+        <div class="flex-1" style="height:1px;background:var(--color-border);"></div>
+      </div>
+
+      {%- comment -%} 9. Countdown (Lovable: between divider and bundles, primary color) {%- endcomment -%}
+      <div style="background:color-mix(in srgb, var(--color-primary) 10%, transparent);border-radius:0.5rem;text-align:center;padding:0.5rem 1rem;" data-countdown>
+        <span style="font-size:0.875rem;font-weight:600;color:var(--color-primary);" data-countdown-text>&#9200; Offre de lancement &mdash; se termine dans 00:00:00</span>
+      </div>
+
+      {%- comment -%} 10. Bundle picker (upsells inside selected bundle — Lovable pattern) {%- endcomment -%}
       <div class="space-y-3" data-bundles>
 
-        {%- comment -%} --- Pack Essentiel (1x) --- {%- endcomment -%}
-        <div>
-          <button type="button" class="bundle-card" aria-pressed="false"
-            data-bundle data-bundle-id="bundle-1" data-bundle-variant="54010409353557"
-            data-bundle-quantity="1" data-bundle-price="34.9"
-            data-bundle-original="34.9" data-bundle-label="Pack Essentiel">
-            <div class="bundle-row">
-              <div class="bundle-info">
-                <div class="bundle-radio"></div>
-                <div class="bundle-label-group">
-                  <div class="bundle-label-line">
-                    <span class="font-semibold">Pack Essentiel</span>
-                  </div>
-                  <p class="text-xs text-muted-foreground">1 ventilateur</p>
+        {%- comment -%} Pack Essentiel {%- endcomment -%}
+        <div class="bundle-card-wrap" role="button" tabindex="0" aria-pressed="false"
+          data-bundle data-bundle-id="bundle-1" data-bundle-variant="54010409353557"
+          data-bundle-quantity="1" data-bundle-price="34.9"
+          data-bundle-original="34.9" data-bundle-save="0"
+          data-bundle-label="Pack Essentiel"
+          style="position:relative;border:2px solid var(--color-border);border-radius:0.75rem;padding:1rem;cursor:pointer;transition:all 0.15s;">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:0.75rem;">
+            <div style="display:flex;align-items:flex-start;gap:0.75rem;min-width:0;">
+              <div class="bundle-radio-circle" style="height:1.25rem;width:1.25rem;border-radius:9999px;border:2px solid var(--color-muted-fg);flex-shrink:0;display:flex;align-items:center;justify-content:center;margin-top:2px;"></div>
+              <div style="min-width:0;">
+                <div class="flex items-center gap-2 flex-wrap">
+                  <span class="font-semibold">Pack Essentiel</span>
                 </div>
-              </div>
-              <div class="bundle-price">
-                <span class="font-bold text-lg">34,90€</span>
+                <p class="text-xs text-muted-foreground">1 ventilateur &mdash; pour tester</p>
               </div>
             </div>
-          </button>
+            <div style="text-align:right;flex-shrink:0;">
+              <div class="font-bold text-lg">34,90 &euro;</div>
+            </div>
+          </div>
         </div>
 
-        {%- comment -%} --- Pack Duo (2x) — default selected --- {%- endcomment -%}
-        <div>
-          <button type="button" class="bundle-card" aria-pressed="true"
-            data-bundle data-bundle-id="bundle-2" data-bundle-variant="54010409386325"
-            data-bundle-quantity="2" data-bundle-price="59.9"
-            data-bundle-original="69.8" data-bundle-label="Pack Duo">
-            <span class="bundle-badge bundle-badge--popular">Populaire</span>
-            <div class="bundle-row">
-              <div class="bundle-info">
-                <div class="bundle-radio"></div>
-                <div class="bundle-label-group">
-                  <div class="bundle-label-line">
-                    <span class="font-semibold">Pack Duo</span>
-                    <span class="bundle-save text-xs font-semibold text-primary">ECONOMISEZ 9,90€</span>
-                  </div>
-                  <p class="text-xs text-muted-foreground">2 ventilateurs</p>
-                </div>
+        {%- comment -%} Pack Duo — default selected {%- endcomment -%}
+        <div class="bundle-card-wrap" role="button" tabindex="0" aria-pressed="true"
+          data-bundle data-bundle-id="bundle-2" data-bundle-variant="54010409386325"
+          data-bundle-quantity="2" data-bundle-price="59.9"
+          data-bundle-original="69.8" data-bundle-save="9.9"
+          data-bundle-label="Pack Duo"
+          style="position:relative;border:2px solid var(--color-primary);border-radius:0.75rem;padding:1rem;cursor:pointer;transition:all 0.15s;background:color-mix(in srgb, var(--color-primary) 5%, transparent);">
+          <span style="position:absolute;top:-0.625rem;right:0.75rem;background:var(--color-primary);color:var(--color-primary-fg);border-radius:9999px;padding:0.125rem 0.75rem;font-size:0.75rem;font-weight:700;">&#128293; Populaire</span>
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:0.75rem;">
+            <div style="display:flex;align-items:flex-start;gap:0.75rem;min-width:0;">
+              <div class="bundle-radio-circle" style="height:1.25rem;width:1.25rem;border-radius:9999px;border:2px solid var(--color-primary);flex-shrink:0;display:flex;align-items:center;justify-content:center;margin-top:2px;">
+                <div style="height:0.625rem;width:0.625rem;border-radius:9999px;background:var(--color-primary);"></div>
               </div>
-              <div class="bundle-price">
-                <span class="font-bold text-lg">59,90€</span>
-                <p class="text-xs line-through text-muted-foreground">69,80€</p>
+              <div style="min-width:0;">
+                <div class="flex items-center gap-2 flex-wrap">
+                  <span class="font-semibold">Pack Duo</span>
+                  <span style="border-radius:9999px;padding:0.125rem 0.5rem;font-size:0.75rem;font-weight:700;text-transform:uppercase;background:rgba(255,138,138,0.1);color:#FF8A8A;">Economise 9,90 &euro;</span>
+                </div>
+                <p class="text-xs text-muted-foreground">2 ventilateurs &mdash; salon + chambre</p>
               </div>
             </div>
-          </button>
+            <div style="text-align:right;flex-shrink:0;">
+              <div class="font-bold text-lg">59,90 &euro;</div>
+              <div class="text-xs text-muted-foreground" style="text-decoration:line-through;">69,80 &euro;</div>
+            </div>
+          </div>
+          {%- comment -%} Upsells inside selected bundle (Lovable pattern) {%- endcomment -%}
+          <div class="upsells-inside" data-upsells-inside style="margin-top:1rem;padding-top:1rem;border-top:1px solid var(--color-border);">
+            <label style="display:flex;justify-content:space-between;align-items:center;padding:0.25rem 0;cursor:pointer;font-size:0.875rem;" onclick="event.stopPropagation()">
+              <span class="flex items-center gap-2">
+                <input type="checkbox" data-upsell data-upsell-id="upsell-1" data-upsell-variant="54003242795349" data-upsell-price="4.95" data-upsell-label="Assurance colis (perte ou casse)" style="height:1rem;width:1rem;accent-color:var(--color-primary);cursor:pointer;">
+                <span>&#128230; + Assurance colis (perte ou casse)</span>
+              </span>
+              <span class="font-medium">4,95 &euro;</span>
+            </label>
+            <label style="display:flex;justify-content:space-between;align-items:center;padding:0.25rem 0;cursor:pointer;font-size:0.875rem;" onclick="event.stopPropagation()">
+              <span class="flex items-center gap-2">
+                <input type="checkbox" data-upsell data-upsell-id="upsell-2" data-upsell-variant="54003255869781" data-upsell-price="7.95" data-upsell-label="Extension garantie 24 mois" style="height:1rem;width:1rem;accent-color:var(--color-primary);cursor:pointer;">
+                <span>&#128737;&#65039; + Extension garantie 24 mois</span>
+              </span>
+              <span class="font-medium">7,95 &euro;</span>
+            </label>
+            <label style="display:flex;justify-content:space-between;align-items:center;padding:0.25rem 0;cursor:pointer;font-size:0.875rem;" onclick="event.stopPropagation()">
+              <span class="flex items-center gap-2">
+                <input type="checkbox" data-upsell data-upsell-id="upsell-3" data-upsell-variant="54003273662805" data-upsell-price="5.95" data-upsell-label="Expedition express 48h" style="height:1rem;width:1rem;accent-color:var(--color-primary);cursor:pointer;">
+                <span>&#9889; + Expedition express 48h</span>
+              </span>
+              <span class="font-medium">5,95 &euro;</span>
+            </label>
+          </div>
         </div>
 
-        {%- comment -%} --- Pack Maison (3x) --- {%- endcomment -%}
-        <div>
-          <button type="button" class="bundle-card" aria-pressed="false"
-            data-bundle data-bundle-id="bundle-3" data-bundle-variant="54010409419093"
-            data-bundle-quantity="3" data-bundle-price="79.9"
-            data-bundle-original="104.7" data-bundle-label="Pack Maison">
-            <span class="bundle-badge bundle-badge--best">Meilleure offre</span>
-            <div class="bundle-row">
-              <div class="bundle-info">
-                <div class="bundle-radio"></div>
-                <div class="bundle-label-group">
-                  <div class="bundle-label-line">
-                    <span class="font-semibold">Pack Maison</span>
-                    <span class="bundle-save text-xs font-semibold text-primary">ECONOMISEZ 24,80€</span>
-                  </div>
-                  <p class="text-xs text-muted-foreground">3 ventilateurs</p>
+        {%- comment -%} Pack Maison {%- endcomment -%}
+        <div class="bundle-card-wrap" role="button" tabindex="0" aria-pressed="false"
+          data-bundle data-bundle-id="bundle-3" data-bundle-variant="54010409419093"
+          data-bundle-quantity="3" data-bundle-price="79.9"
+          data-bundle-original="104.7" data-bundle-save="24.8"
+          data-bundle-label="Pack Maison"
+          style="position:relative;border:2px solid var(--color-border);border-radius:0.75rem;padding:1rem;cursor:pointer;transition:all 0.15s;">
+          <span style="position:absolute;top:-0.625rem;right:0.75rem;background:#FFD18A;color:#0B0F1E;border-radius:9999px;padding:0.125rem 0.75rem;font-size:0.75rem;font-weight:700;">&#128142; Meilleure offre</span>
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:0.75rem;">
+            <div style="display:flex;align-items:flex-start;gap:0.75rem;min-width:0;">
+              <div class="bundle-radio-circle" style="height:1.25rem;width:1.25rem;border-radius:9999px;border:2px solid var(--color-muted-fg);flex-shrink:0;display:flex;align-items:center;justify-content:center;margin-top:2px;"></div>
+              <div style="min-width:0;">
+                <div class="flex items-center gap-2 flex-wrap">
+                  <span class="font-semibold">Pack Maison</span>
+                  <span style="border-radius:9999px;padding:0.125rem 0.5rem;font-size:0.75rem;font-weight:700;text-transform:uppercase;background:rgba(255,138,138,0.1);color:#FF8A8A;">Economise 24,80 &euro;</span>
                 </div>
-              </div>
-              <div class="bundle-price">
-                <span class="font-bold text-lg">79,90€</span>
-                <p class="text-xs line-through text-muted-foreground">104,70€</p>
+                <p class="text-xs text-muted-foreground">3 ventilateurs &mdash; toute la maison</p>
               </div>
             </div>
-          </button>
+            <div style="text-align:right;flex-shrink:0;">
+              <div class="font-bold text-lg">79,90 &euro;</div>
+              <div class="text-xs text-muted-foreground" style="text-decoration:line-through;">104,70 &euro;</div>
+            </div>
+          </div>
         </div>
 
       </div>
 
-      {%- comment -%} ===== 8. UPSELLS (hardcoded — legacy mode) ===== {%- endcomment -%}
-      <div style="border:1px solid var(--color-border); border-radius:var(--radius); padding:0.75rem 1rem;" data-upsells-container>
-        <p class="text-xs font-semibold text-muted-foreground" style="margin-bottom:0.5rem; text-transform:uppercase; letter-spacing:0.05em;">Ajoutez a votre commande</p>
-
-        <label class="flex items-center justify-between cursor-pointer" style="padding:0.4rem 0; border-bottom:1px solid var(--color-border);">
-          <div class="flex items-center gap-2 min-w-0 flex-1">
-            <input type="checkbox" data-upsell data-upsell-id="upsell-1" data-upsell-variant="54003242795349" data-upsell-price="4.95" data-upsell-label="Assurance colis (perte ou casse)" style="width:1rem; height:1rem; accent-color:var(--color-primary); cursor:pointer;">
-            <span class="text-sm">Assurance colis (perte ou casse)</span>
-          </div>
-          <span class="text-sm font-semibold whitespace-nowrap" style="margin-left:0.5rem;">+4,95€</span>
-        </label>
-
-        <label class="flex items-center justify-between cursor-pointer" style="padding:0.4rem 0; border-bottom:1px solid var(--color-border);">
-          <div class="flex items-center gap-2 min-w-0 flex-1">
-            <input type="checkbox" data-upsell data-upsell-id="upsell-2" data-upsell-variant="54003255869781" data-upsell-price="7.95" data-upsell-label="Extension garantie 24 mois" style="width:1rem; height:1rem; accent-color:var(--color-primary); cursor:pointer;">
-            <span class="text-sm">Extension garantie 24 mois</span>
-          </div>
-          <span class="text-sm font-semibold whitespace-nowrap" style="margin-left:0.5rem;">+7,95€</span>
-        </label>
-
-        <label class="flex items-center justify-between cursor-pointer" style="padding:0.4rem 0;">
-          <div class="flex items-center gap-2 min-w-0 flex-1">
-            <input type="checkbox" data-upsell data-upsell-id="upsell-3" data-upsell-variant="54003273662805" data-upsell-price="5.95" data-upsell-label="Expedition express 48h" style="width:1rem; height:1rem; accent-color:var(--color-primary); cursor:pointer;">
-            <span class="text-sm">Expedition express 48h</span>
-          </div>
-          <span class="text-sm font-semibold whitespace-nowrap" style="margin-left:0.5rem;">+5,95€</span>
-        </label>
-      </div>
-
-      {%- comment -%} ===== 9. CTA BUTTON ===== {%- endcomment -%}
-      <button type="button" class="btn btn-block btn-lg" data-add-to-cart style="position:relative; overflow:hidden;">
-        <span data-cta-text>{{ section.settings.cta_label | default: 'Commander maintenant' }} &mdash; <span data-cta-price>59,90€</span></span>
+      {%- comment -%} 11. CTA Button — rounded-full like Lovable {%- endcomment -%}
+      <button type="button" data-add-to-cart style="width:100%;background:var(--color-primary);color:var(--color-primary-fg);padding:1rem 1.5rem;border-radius:9999px;font-weight:700;font-size:1.125rem;border:none;cursor:pointer;transition:all 0.15s;box-shadow:0 4px 14px rgba(56,189,248,0.4);">
+        <span data-cta-text>Commander maintenant &mdash; <span data-cta-price>59,90 &euro;</span></span>
       </button>
 
-      {%- comment -%} ===== 10. TRUST STRIP ===== {%- endcomment -%}
-      <div class="trust-badges">
-        <div class="trust-badge">
-          <span class="trust-icon">&#128737;&#65039;</span>
-          <span class="trust-label">Satisfait<br>30 jours</span>
+      {%- comment -%} 12. Trust badges — grid 4 cols like Lovable {%- endcomment -%}
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0.75rem;padding-top:0.5rem;">
+        <div style="text-align:center;font-size:0.75rem;">
+          <div style="font-size:1.5rem;margin-bottom:0.25rem;">&#128737;&#65039;</div>
+          <div class="text-muted-foreground" style="line-height:1.3;">Satisfait ou<br>rembourse 30j</div>
         </div>
-        <div class="trust-badge">
-          <span class="trust-icon">&#128666;</span>
-          <span class="trust-label">Livraison<br>offerte</span>
+        <div style="text-align:center;font-size:0.75rem;">
+          <div style="font-size:1.5rem;margin-bottom:0.25rem;">&#128666;</div>
+          <div class="text-muted-foreground" style="line-height:1.3;">Livraison<br>offerte</div>
         </div>
-        <div class="trust-badge">
-          <span class="trust-icon">&#128274;</span>
-          <span class="trust-label">Paiement<br>securise</span>
+        <div style="text-align:center;font-size:0.75rem;">
+          <div style="font-size:1.5rem;margin-bottom:0.25rem;">&#128274;</div>
+          <div class="text-muted-foreground" style="line-height:1.3;">Paiement<br>100% securise</div>
         </div>
-        <div class="trust-badge">
-          <span class="trust-icon" style="color:#facc15;">&#9733;</span>
-          <span class="trust-label">4,8/5<br>150 avis</span>
+        <div style="text-align:center;font-size:0.75rem;">
+          <div style="font-size:1.5rem;margin-bottom:0.25rem;color:#facc15;">&#9733;</div>
+          <div class="text-muted-foreground" style="line-height:1.3;">4,8/5<br>150 avis</div>
         </div>
       </div>
 
-      {%- comment -%} ===== 11. PAYMENT ICONS ===== {%- endcomment -%}
-      <div class="pt-1">{% render 'payment-icons' %}</div>
-
-      {%- comment -%} ===== 12. FEATURED REVIEW ===== {%- endcomment -%}
-      {%- if section.settings.show_featured_review -%}
-        <div class="flex items-start gap-3 rounded-xl border p-4" style="border-color:var(--color-border);">
-          <img src="{{ 'soufflo-7A-avatar-marie.jpg' | asset_url }}" alt="{{ section.settings.review_author | default: 'Marie T.' }}" class="h-10 w-10 shrink-0 rounded-full object-cover" width="40" height="40" loading="lazy">
-          <div class="flex-1 min-w-0">
-            <div class="flex items-center gap-2 flex-wrap">
-              <span class="text-sm font-semibold">{{ section.settings.review_author | default: 'Marie T., Lyon' }}</span>
-              <span class="text-xs star-rating" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-              <span style="display:inline-flex; align-items:center; gap:0.2rem; font-size:10px; color:var(--color-primary); font-weight:600;">
-                <svg width="10" height="10" viewBox="0 0 24 24" fill="var(--color-primary)" stroke="none"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-                Achat verifie
-              </span>
-            </div>
-            <p class="text-xs text-muted-foreground mt-1">{{ section.settings.review_text | default: "Installation ultra simple, je l'ai visse en 10 secondes dans ma douille E27. Les 3 vitesses sont vraiment silencieuses et la telecommande est super pratique. Parfait pour l'ete !" }}</p>
-          </div>
-        </div>
-      {%- endif -%}
-
-      {%- comment -%} ===== 13. COLLAPSIBLES (hardcoded — legacy mode) ===== {%- endcomment -%}
-      <details class="faq-item" style="border-top:1px solid var(--color-border); border-bottom:0;">
-        <summary class="flex items-center justify-between" style="padding:0.75rem 0;">
-          <span class="flex items-center gap-2">
-            <span>&#128737;&#65039;</span>
-            <span class="text-sm font-bold">Satisfait ou rembourse 30 jours</span>
-          </span>
-        </summary>
-        <div class="text-sm text-muted-foreground" style="padding:0 0 0.75rem;">
-          <p>Si le ventilateur ne vous convient pas dans les 30 jours suivant la reception, nous vous remboursons integralement. Pas de question, pas de justification — retour offert.</p>
-        </div>
-      </details>
-
-      <details class="faq-item" style="border-top:1px solid var(--color-border); border-bottom:0;">
-        <summary class="flex items-center justify-between" style="padding:0.75rem 0;">
-          <span class="flex items-center gap-2">
-            <span>&#128666;</span>
-            <span class="text-sm font-bold">Livraison offerte en France metropolitaine</span>
-          </span>
-        </summary>
-        <div class="text-sm text-muted-foreground" style="padding:0 0 0.75rem;">
-          <p>Livraison offerte en France metropolitaine. Vous recevez un lien de suivi par email des l'expedition de votre commande.</p>
-        </div>
-      </details>
-
-      {%- comment -%} ===== 14. SOCIAL COUNTER ===== {%- endcomment -%}
-      <div style="text-align:center; padding:0.6rem 0;">
-        <span class="flex items-center justify-center gap-2 text-sm font-medium text-muted-foreground">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-          <span data-social-counter>327 clients satisfaits ce mois-ci</span>
+      {%- comment -%} 13. Payment icons (Lovable SVG icons) {%- endcomment -%}
+      <div class="flex items-center gap-2 flex-wrap">
+        <span style="height:1.75rem;display:inline-flex;align-items:center;background:#fff;border-radius:0.375rem;padding:0.25rem 0.5rem;border:1px solid var(--color-border);" title="Visa">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 16" style="height:100%;width:auto;"><path fill="#1A1F71" d="M18.4 15.6h-3.9L17 .5h3.9zM32.8.9C32 .6 30.7.3 29.2.3c-3.9 0-6.6 2-6.6 4.8 0 2.1 2 3.3 3.5 4 1.5.7 2 1.2 2 1.9 0 1-1.3 1.5-2.4 1.5-1.6 0-2.5-.2-3.8-.8l-.5-.2-.6 3.4c1 .4 2.7.8 4.5.9 4.1 0 6.8-2 6.9-5 0-1.7-1-3-3.2-4-1.4-.7-2.2-1.1-2.2-1.8 0-.6.7-1.3 2.3-1.3 1.3 0 2.3.3 3 .6l.4.2zM38 10.3c.3-.9 1.6-4.2 1.6-4.2 0 0 .3-.9.5-1.4l.3 1.3.9 4.4H38zm4.9-9.8h-3c-.9 0-1.6.3-2 1.2L32 15.6h4.1l.8-2.3h5l.5 2.3H46zM11.6.5l-3.8 10.2-.4-2.1C6.7 6.2 4.5 3.6 2 2.3l3.5 13.3h4.2L15.8.5z"/><path fill="#F7B600" d="M4.5.5H.1L0 .8c3.4.9 5.7 3 6.7 5.6L5.6 1.7C5.4.8 4.8.5 4.5.5z"/></svg>
         </span>
+        <span style="height:1.75rem;display:inline-flex;align-items:center;background:#fff;border-radius:0.375rem;padding:0.25rem 0.5rem;border:1px solid var(--color-border);" title="Mastercard">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 20" style="height:100%;width:auto;"><circle cx="12" cy="10" r="8" fill="#EB001B"/><circle cx="20" cy="10" r="8" fill="#F79E1B"/><path fill="#FF5F00" d="M16 4.2a8 8 0 0 0 0 11.6 8 8 0 0 0 0-11.6z"/></svg>
+        </span>
+        <span style="height:1.75rem;display:inline-flex;align-items:center;background:#fff;border-radius:0.375rem;padding:0.25rem 0.5rem;border:1px solid var(--color-border);" title="CB">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 32" style="height:100%;width:auto;"><defs><linearGradient id="cb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0d9488"/><stop offset="1" stop-color="#15803d"/></linearGradient></defs><rect width="48" height="32" rx="3" fill="url(#cb)"/><text x="24" y="21" text-anchor="middle" font-family="Arial,sans-serif" font-weight="900" font-size="13" fill="#fff" letter-spacing="1">CB</text></svg>
+        </span>
+        <span style="height:1.75rem;display:inline-flex;align-items:center;background:#fff;border-radius:0.375rem;padding:0.25rem 0.5rem;border:1px solid var(--color-border);" title="Amex">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 32" style="height:100%;width:auto;"><rect width="48" height="32" rx="3" fill="#1F72CD"/><path fill="#fff" d="M7 20l2.3-5.4h2.7L14.4 20h-1.8l-.4-1H9.6l-.4 1zm3.3-4l-.7 1.8h1.4zm5.4 4v-5.4h2.8l1 2.6.9-2.6H23V20h-1.6v-3.7L20 20h-1l-1.4-3.7V20zm10.2 0v-5.4h4.5v1.2h-2.9v.8h2.8v1.2h-2.8v1h3v1.2zm5.2 0l2-2.7-2-2.7h2l1.2 1.7 1.2-1.7h2l-2 2.7 2 2.7h-2l-1.2-1.7-1.2 1.7z"/></svg>
+        </span>
+        <span style="height:1.75rem;display:inline-flex;align-items:center;background:#fff;border-radius:0.375rem;padding:0.25rem 0.5rem;border:1px solid var(--color-border);" title="PayPal">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" style="height:100%;width:auto;"><path fill="#003087" d="M9.5 27.5H6L9 4h7.2c3.6 0 6.1 1.9 5.7 5.4-.5 4.4-3.9 6.6-8 6.6h-2.5z"/><path fill="#0070E0" d="M22.5 9.3c-.5 4.4-3.9 6.6-8 6.6h-2.5l-1.2 8.6h4.5l.4-2.4h2.3c4 0 7.4-2 7.9-6.4.3-2.8-.9-5.3-3.4-6.4z"/><path fill="#001C64" d="M14.5 15.9h-2.5l-.6 4.2h2.5c4.1 0 7.5-2.2 8-6.6.1-.7.1-1.4 0-2-1.6 2.7-4.4 4.4-7.4 4.4z"/></svg>
+        </span>
+        <span style="height:1.75rem;display:inline-flex;align-items:center;background:#fff;border-radius:0.375rem;padding:0.25rem 0.5rem;border:1px solid var(--color-border);" title="Apple Pay">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 20" style="height:100%;width:auto;"><path fill="#000" d="M8.7 4c-.5.6-1.3 1-2.1 1-.1-.8.3-1.7.7-2.2.5-.6 1.4-1 2.1-1.1.1.8-.2 1.7-.7 2.3zm.7.8c-1.2 0-2.2.7-2.7.7s-1.4-.6-2.3-.6c-1.2 0-2.3.7-2.9 1.8-1.2 2.2-.3 5.4.9 7.1.6.9 1.3 1.8 2.2 1.7.9 0 1.2-.6 2.3-.6s1.4.6 2.3.6c1 0 1.6-.9 2.2-1.7.7-1 1-1.9 1-2-.1 0-2-.8-2-3.1 0-1.9 1.6-2.8 1.6-2.9-.9-1.3-2.3-1.4-2.6-1.4zM17 3v12h1.9v-4.1h2.6c2.4 0 4-1.6 4-4 0-2.3-1.6-3.9-3.9-3.9zm1.9 1.6h2.1c1.6 0 2.5.8 2.5 2.3s-.9 2.4-2.5 2.4h-2.1zm10.9 10.5c1.2 0 2.3-.6 2.8-1.5h.1V15h1.7V8.9c0-1.7-1.4-2.8-3.5-2.8-2 0-3.4 1.1-3.5 2.7h1.7c.1-.7.8-1.2 1.8-1.2 1.1 0 1.8.6 1.8 1.5v.7l-2.4.1c-2.2.1-3.4 1-3.4 2.6 0 1.6 1.2 2.6 2.9 2.6zm.5-1.4c-1 0-1.6-.5-1.6-1.2 0-.8.6-1.2 1.7-1.3l2.1-.1v.7c0 1.1-1 2-2.2 2zm6.2 4.3c1.8 0 2.7-.7 3.4-2.8L43 6.3h-1.9l-2.1 6.7-2.1-6.7H35l3 8.4-.2.5c-.3.8-.7 1.1-1.5 1.1h-.6V18z"/></svg>
+        </span>
+        <span style="height:1.75rem;display:inline-flex;align-items:center;background:#fff;border-radius:0.375rem;padding:0.25rem 0.5rem;border:1px solid var(--color-border);" title="Google Pay">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 20" style="height:100%;width:auto;"><path fill="#5F6368" d="M22.7 9.8v3.5h-1.1V4.6h3c.7 0 1.4.3 1.9.8s.8 1.1.8 1.9-.3 1.4-.8 1.9-1.1.7-1.9.7zm0-4.2v3.2h2c.4 0 .8-.2 1.1-.5s.5-.7.5-1.1c0-.4-.2-.8-.5-1.1s-.7-.5-1.1-.5zm7.6 1.4c.8 0 1.5.2 2 .7s.7 1 .7 1.8v3.7h-1V12.4c-.5.7-1.1 1-1.9 1-.7 0-1.3-.2-1.7-.6s-.7-.9-.7-1.5c0-.6.2-1.1.7-1.5s1.1-.6 1.8-.6c.7 0 1.2.1 1.6.4v-.2c0-.4-.2-.8-.5-1.1s-.7-.4-1.2-.4c-.7 0-1.2.3-1.6.9l-.9-.6c.5-.8 1.4-1.2 2.7-1.2zm-1.5 4.4c0 .3.1.6.4.7s.6.3 1 .3c.5 0 1-.2 1.4-.6s.6-.8.6-1.3c-.3-.3-.8-.4-1.4-.4-.5 0-.9.1-1.2.3s-.5.5-.5.8zm10-4.2l-3.7 8.6h-1.1l1.4-3-2.4-5.5h1.2l1.8 4.2 1.7-4.2z"/><path fill="#4285F4" d="M16 9.1c0-.4 0-.7-.1-1H11v1.9h2.8c-.1.6-.5 1.2-1 1.6v1.3h1.7c1-.9 1.5-2.2 1.5-3.8z"/><path fill="#34A853" d="M11 14.3c1.4 0 2.6-.5 3.5-1.3l-1.7-1.3c-.5.3-1.1.5-1.8.5-1.4 0-2.5-.9-2.9-2.2H6.4v1.4c.9 1.7 2.6 2.9 4.6 2.9z"/><path fill="#FBBC04" d="M8.1 10c-.1-.3-.2-.7-.2-1s.1-.7.2-1V6.5H6.4c-.4.7-.6 1.6-.6 2.5s.2 1.7.6 2.5z"/><path fill="#EA4335" d="M11 5.8c.8 0 1.5.3 2 .8L14.5 5C13.6 4.2 12.4 3.7 11 3.7c-2 0-3.7 1.2-4.6 2.9l1.7 1.4c.4-1.3 1.6-2.2 2.9-2.2z"/></svg>
+        </span>
+      </div>
+
+      {%- comment -%} 14. Shipping info (Lovable has this) {%- endcomment -%}
+      <div class="flex items-center justify-center gap-6 py-3 text-xs font-semibold text-muted-foreground flex-wrap">
+        <span>&#128230; Expedition sous 24-48h</span>
+        <span>&#128231; Suivi par email inclus</span>
+      </div>
+
+      {%- comment -%} 15. Featured review (Lovable: initials circle, not photo) {%- endcomment -%}
+      <div class="flex items-start gap-3 rounded-xl border p-4" style="border-color:var(--color-border);">
+        <div style="height:2.5rem;width:2.5rem;border-radius:9999px;background:var(--color-primary);color:var(--color-primary-fg);display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;font-size:0.875rem;">SM</div>
+        <div class="flex-1 min-w-0">
+          <div style="color:var(--color-primary);font-size:0.75rem;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="text-sm mt-1" style="font-style:italic;">&laquo; Incroyable, je l'ai visse en 10 secondes et ca change la vie en ete ! &raquo;</p>
+          <p class="text-xs text-muted-foreground mt-1">&mdash; Marie T., Lyon</p>
+        </div>
+      </div>
+
+      {%- comment -%} 16. Collapsibles / Accordion {%- endcomment -%}
+      <div style="border-top:1px solid var(--color-border);">
+        <details style="border-bottom:1px solid var(--color-border);">
+          <summary class="flex items-center justify-between text-sm font-semibold" style="padding:0.75rem 0;cursor:pointer;list-style:none;">
+            <span>&#128737;&#65039; Satisfait ou rembourse 30 jours</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;transition:transform 0.2s;"><path d="M6 9l6 6 6-6"/></svg>
+          </summary>
+          <div class="text-sm text-muted-foreground" style="padding:0 0 0.75rem;">
+            Si le ventilateur ne te convient pas dans les 30 jours suivant la reception, on te rembourse integralement. Pas de question, pas de justification &mdash; retour offert.
+          </div>
+        </details>
+        <details style="border-bottom:1px solid var(--color-border);">
+          <summary class="flex items-center justify-between text-sm font-semibold" style="padding:0.75rem 0;cursor:pointer;list-style:none;">
+            <span>&#128666; Livraison offerte en France metropolitaine</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;transition:transform 0.2s;"><path d="M6 9l6 6 6-6"/></svg>
+          </summary>
+          <div class="text-sm text-muted-foreground" style="padding:0 0 0.75rem;">
+            Livraison gratuite partout en France metropolitaine. Expedition sous 24-48h depuis notre entrepot. Delai de reception : 5 a 8 jours ouvres. Suivi par email inclus.
+          </div>
+        </details>
       </div>
 
     </div>{%- comment -%} /right col {%- endcomment -%}
@@ -321,6 +329,8 @@
       grid-template-columns: 1fr 1fr !important;
     }
   }
+  details summary::-webkit-details-marker { display: none; }
+  details[open] summary svg { transform: rotate(180deg); }
 </style>
 
 {%- comment -%} ===== JAVASCRIPT ===== {%- endcomment -%}
@@ -329,204 +339,148 @@
   var section = document.currentScript.closest('section') || document.getElementById('product');
   if (!section) return;
 
-  /* ------------------------------------------------
-     GALLERY: thumbnail clicks swap main image
-     ------------------------------------------------ */
+  /* ---- GALLERY ---- */
   var slides = section.querySelectorAll('[data-gallery-slide]');
   var thumbs = section.querySelectorAll('[data-gallery-thumb]');
-
   function showSlide(idx) {
-    slides.forEach(function(s) {
-      s.style.display = (s.getAttribute('data-gallery-slide') === String(idx)) ? '' : 'none';
-    });
-    thumbs.forEach(function(tb) {
-      var active = tb.getAttribute('data-gallery-thumb') === String(idx);
-      tb.classList.toggle('is-active', active);
-      tb.style.borderColor = active ? 'var(--color-primary)' : 'transparent';
-    });
+    slides.forEach(function(s) { s.style.display = s.getAttribute('data-gallery-slide') === String(idx) ? '' : 'none'; });
+    thumbs.forEach(function(t) { var a = t.getAttribute('data-gallery-thumb') === String(idx); t.style.borderColor = a ? 'var(--color-primary)' : 'transparent'; });
+  }
+  thumbs.forEach(function(t) { t.addEventListener('click', function() { showSlide(parseInt(t.getAttribute('data-gallery-thumb'), 10)); }); });
+  if (slides.length) slides[0].style.display = '';
+
+  /* ---- BUNDLES + UPSELLS INSIDE ---- */
+  var bundleCards = section.querySelectorAll('[data-bundle]');
+  var ctaPrice = section.querySelector('[data-cta-price]');
+  var heroTotal = section.querySelector('[data-hero-total]');
+
+  /* Build upsells HTML once (reused when moving between bundles) */
+  var upsellsHTML = '';
+  var upsellsContainer = section.querySelector('[data-upsells-inside]');
+  if (upsellsContainer) {
+    upsellsHTML = upsellsContainer.innerHTML;
   }
 
-  thumbs.forEach(function(t) {
-    t.addEventListener('click', function() {
-      var idx = parseInt(t.getAttribute('data-gallery-thumb'), 10);
-      showSlide(idx);
-    });
-  });
-
-  // Ensure first slide visible
-  if (slides.length > 0) slides[0].style.display = '';
-
-  /* ------------------------------------------------
-     BUNDLE PICKER: clicking a radio updates CTA price
-     ------------------------------------------------ */
-  var bundles = section.querySelectorAll('[data-bundle]');
-  var ctaPrice = section.querySelector('[data-cta-price]');
-  var ctaText = section.querySelector('[data-cta-text]');
-  var ctaLabel = '{{ section.settings.cta_label | default: "Commander maintenant" | escape }}';
+  function formatPrice(val) { return val.toFixed(2).replace('.', ',') + ' €'; }
 
   function getSelectedBundlePrice() {
     var sel = section.querySelector('[data-bundle][aria-pressed="true"]');
-    if (!sel) sel = bundles[0];
     return sel ? parseFloat(sel.getAttribute('data-bundle-price')) : 0;
   }
 
   function getUpsellsTotal() {
-    var total = 0;
-    var checked = section.querySelectorAll('[data-upsell]:checked');
-    checked.forEach(function(u) {
-      total += parseFloat(u.getAttribute('data-upsell-price') || '0');
-    });
-    return total;
-  }
-
-  function formatPrice(val) {
-    return val.toFixed(2).replace('.', ',') + '€';
+    var t = 0;
+    section.querySelectorAll('[data-upsell]:checked').forEach(function(u) { t += parseFloat(u.getAttribute('data-upsell-price') || '0'); });
+    return t;
   }
 
   function updateCTA() {
     var total = getSelectedBundlePrice() + getUpsellsTotal();
     if (ctaPrice) ctaPrice.textContent = formatPrice(total);
+    if (heroTotal) heroTotal.textContent = formatPrice(total);
   }
 
   function selectBundle(card) {
-    bundles.forEach(function(b) { b.setAttribute('aria-pressed', 'false'); });
+    /* Remove upsells from previously selected */
+    bundleCards.forEach(function(b) {
+      b.setAttribute('aria-pressed', 'false');
+      b.style.borderColor = 'var(--color-border)';
+      b.style.background = '';
+      /* Remove upsells inside */
+      var existing = b.querySelector('[data-upsells-inside]');
+      if (existing) existing.remove();
+      /* Reset radio */
+      var radio = b.querySelector('.bundle-radio-circle');
+      if (radio) { radio.style.borderColor = 'var(--color-muted-fg)'; radio.innerHTML = ''; }
+    });
+
+    /* Select this card */
     card.setAttribute('aria-pressed', 'true');
+    card.style.borderColor = 'var(--color-primary)';
+    card.style.background = 'color-mix(in srgb, var(--color-primary) 5%, transparent)';
+
+    /* Fill radio */
+    var radio = card.querySelector('.bundle-radio-circle');
+    if (radio) {
+      radio.style.borderColor = 'var(--color-primary)';
+      radio.innerHTML = '<div style="height:0.625rem;width:0.625rem;border-radius:9999px;background:var(--color-primary);"></div>';
+    }
+
+    /* Add upsells inside */
+    var div = document.createElement('div');
+    div.className = 'upsells-inside';
+    div.setAttribute('data-upsells-inside', '');
+    div.style.cssText = 'margin-top:1rem;padding-top:1rem;border-top:1px solid var(--color-border);';
+    div.innerHTML = upsellsHTML;
+    card.appendChild(div);
+
+    /* Rebind upsell checkboxes */
+    div.querySelectorAll('[data-upsell]').forEach(function(u) {
+      u.addEventListener('change', function() { updateCTA(); });
+    });
+
     updateCTA();
   }
 
-  bundles.forEach(function(b) {
+  bundleCards.forEach(function(b) {
     b.addEventListener('click', function(e) {
-      if (e.target.closest('[data-upsell]')) return;
+      if (e.target.closest('[data-upsell]') || e.target.closest('label')) return;
       selectBundle(b);
     });
-  });
-
-  /* ------------------------------------------------
-     UPSELLS: checking/unchecking updates total
-     ------------------------------------------------ */
-  var upsellCheckboxes = section.querySelectorAll('[data-upsell]');
-  upsellCheckboxes.forEach(function(u) {
-    u.addEventListener('change', function() {
-      updateCTA();
+    b.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); selectBundle(b); }
     });
   });
 
-  // Initialize CTA price on load
+  /* Initial upsell bindings */
+  section.querySelectorAll('[data-upsell]').forEach(function(u) {
+    u.addEventListener('change', function() { updateCTA(); });
+  });
+
   updateCTA();
 
-  /* ------------------------------------------------
-     COUNTDOWN TIMER: random 20-24h stored in localStorage
-     ------------------------------------------------ */
-  var countdownEl = section.querySelector('[data-countdown-text]');
-  if (countdownEl) {
-    var STORAGE_KEY = 'soufflo-hero-countdown-end';
-    var endTime = 0;
-
-    try {
-      var stored = localStorage.getItem(STORAGE_KEY);
-      if (stored) {
-        endTime = parseInt(stored, 10);
-      }
-    } catch (e) {}
-
-    // If no stored end time or it's in the past, create a new one (20-24h from now)
+  /* ---- COUNTDOWN ---- */
+  var cdEl = section.querySelector('[data-countdown-text]');
+  if (cdEl) {
+    var KEY = 'soufflo-hero-countdown-end', endTime = 0;
+    try { var s = localStorage.getItem(KEY); if (s) endTime = parseInt(s, 10); } catch(e){}
     if (!endTime || endTime <= Date.now()) {
-      var hoursMs = (20 + Math.random() * 4) * 60 * 60 * 1000; // 20-24 hours
-      endTime = Date.now() + hoursMs;
-      try {
-        localStorage.setItem(STORAGE_KEY, String(endTime));
-      } catch (e) {}
+      endTime = Date.now() + (20 + Math.random()*4)*3600000;
+      try { localStorage.setItem(KEY, String(endTime)); } catch(e){}
     }
-
-    var pad = function(n) { return String(n).padStart(2, '0'); };
-
-    function tickCountdown() {
-      var remaining = Math.max(0, endTime - Date.now());
-
-      if (remaining <= 0) {
-        // Reset with a new random 20-24h
-        var newHoursMs = (20 + Math.random() * 4) * 60 * 60 * 1000;
-        endTime = Date.now() + newHoursMs;
-        try { localStorage.setItem(STORAGE_KEY, String(endTime)); } catch (e) {}
-        remaining = endTime - Date.now();
-      }
-
-      var h = Math.floor(remaining / 3600000);
-      var m = Math.floor((remaining % 3600000) / 60000);
-      var s = Math.floor((remaining % 60000) / 1000);
-
-      countdownEl.textContent = 'Offre de lancement — se termine dans ' + pad(h) + ':' + pad(m) + ':' + pad(s);
+    var pad = function(n) { return String(n).padStart(2,'0'); };
+    function tick() {
+      var r = Math.max(0, endTime - Date.now());
+      if (r <= 0) { endTime = Date.now()+(20+Math.random()*4)*3600000; try{localStorage.setItem(KEY,String(endTime));}catch(e){} r = endTime-Date.now(); }
+      cdEl.textContent = '⏰ Offre de lancement — se termine dans '+pad(Math.floor(r/3600000))+':'+pad(Math.floor(r%3600000/60000))+':'+pad(Math.floor(r%60000/1000));
     }
-
-    tickCountdown();
-    setInterval(tickCountdown, 1000);
+    tick(); setInterval(tick, 1000);
   }
 
-  /* ------------------------------------------------
-     CTA: add to cart or scroll behavior
-     ------------------------------------------------ */
-  var atcButton = section.querySelector('[data-add-to-cart]');
-  if (atcButton) {
-    atcButton.addEventListener('click', function() {
-      var selectedBundle = section.querySelector('[data-bundle][aria-pressed="true"]') || bundles[0];
-      if (!selectedBundle) return;
-
-      var variantId = selectedBundle.getAttribute('data-bundle-variant');
-      var qty = parseInt(selectedBundle.getAttribute('data-bundle-quantity') || '1', 10);
-      var bundlePrice = parseFloat(selectedBundle.getAttribute('data-bundle-price'));
-      var unitPrice = +(bundlePrice / qty).toFixed(2);
-
-      var items = [{
-        id: 'main-product',
-        variantId: variantId,
-        title: selectedBundle.getAttribute('data-bundle-label') || 'Ventilateur LED Soufflo',
-        price: unitPrice,
-        quantity: qty,
-        image: ''
-      }];
-
-      // Add checked upsells
-      var checkedUpsells = section.querySelectorAll('[data-upsell]:checked');
-      checkedUpsells.forEach(function(u) {
-        items.push({
-          id: u.getAttribute('data-upsell-id'),
-          variantId: u.getAttribute('data-upsell-variant'),
-          title: u.getAttribute('data-upsell-label'),
-          price: parseFloat(u.getAttribute('data-upsell-price')),
-          quantity: 1
-        });
+  /* ---- ADD TO CART ---- */
+  var atcBtn = section.querySelector('[data-add-to-cart]');
+  if (atcBtn) {
+    atcBtn.addEventListener('click', function() {
+      var sel = section.querySelector('[data-bundle][aria-pressed="true"]') || bundleCards[0];
+      if (!sel) return;
+      var vid = sel.getAttribute('data-bundle-variant'), qty = parseInt(sel.getAttribute('data-bundle-quantity')||'1',10);
+      var bp = parseFloat(sel.getAttribute('data-bundle-price')), up = +(bp/qty).toFixed(2);
+      var items = [{ id:'main-product', variantId:vid, title:sel.getAttribute('data-bundle-label')||'Ventilateur LED Soufflo', price:up, quantity:qty }];
+      section.querySelectorAll('[data-upsell]:checked').forEach(function(u) {
+        items.push({ id:u.getAttribute('data-upsell-id'), variantId:u.getAttribute('data-upsell-variant'), title:u.getAttribute('data-upsell-label'), price:parseFloat(u.getAttribute('data-upsell-price')), quantity:1 });
       });
-
-      // Open cart drawer if available
-      if (window.SouffloCart) {
-        window.SouffloCart.openWith(items);
-      }
-
-      // Meta Pixel AddToCart
+      if (window.SouffloCart) window.SouffloCart.openWith(items);
       if (window.fbq) {
-        var cartValue = items.reduce(function(s, i) { return s + i.price * i.quantity; }, 0);
-        window.fbq('track', 'AddToCart', {
-          value: +cartValue.toFixed(2),
-          currency: 'EUR',
-          content_ids: items.map(function(i) { return i.variantId; }),
-          content_type: 'product',
-          num_items: items.reduce(function(s, i) { return s + i.quantity; }, 0)
-        });
+        var cv = items.reduce(function(s,i){return s+i.price*i.quantity;},0);
+        window.fbq('track','AddToCart',{value:+cv.toFixed(2),currency:'EUR',content_ids:items.map(function(i){return i.variantId;}),content_type:'product',num_items:items.reduce(function(s,i){return s+i.quantity;},0)});
       }
     });
   }
 
-  /* ------------------------------------------------
-     ViewContent pixel fire
-     ------------------------------------------------ */
+  /* ---- ViewContent pixel ---- */
   if (window.fbq) {
     setTimeout(function() {
-      window.fbq('track', 'ViewContent', {
-        content_ids: ['ventilateur-led-soufflo'],
-        content_type: 'product',
-        value: getSelectedBundlePrice(),
-        currency: 'EUR'
-      });
+      window.fbq('track','ViewContent',{content_ids:['ventilateur-led-soufflo'],content_type:'product',value:getSelectedBundlePrice(),currency:'EUR'});
     }, 800);
   }
 })();
@@ -539,348 +493,19 @@
   "class": "product-hero-section",
   "settings": [
     {
-      "type": "header",
-      "content": "Images"
-    },
-    {
-      "type": "image_picker",
-      "id": "hero_image",
-      "label": "Image principale"
-    },
-    {
-      "type": "image_picker",
-      "id": "gallery_images",
-      "label": "Images galerie (jusqu'a 4)"
-    },
-    {
-      "type": "header",
-      "content": "Titre et sous-titre"
-    },
-    {
       "type": "text",
       "id": "headline",
       "label": "Titre produit",
       "default": "Ventilateur LED Soufflo"
-    },
-    {
-      "type": "text",
-      "id": "subtitle",
-      "label": "Sous-titre",
-      "default": "Fraicheur & lumiere — en un clic."
-    },
-    {
-      "type": "header",
-      "content": "Selection de pack"
-    },
-    {
-      "type": "text",
-      "id": "bundle_section_title",
-      "label": "Titre du selecteur",
-      "default": "Choisis ton pack"
-    },
-    {
-      "type": "range",
-      "id": "default_bundle_index",
-      "label": "Bundle selectionne par defaut (1=premier, 2=deuxieme...)",
-      "min": 1,
-      "max": 5,
-      "step": 1,
-      "default": 2
-    },
-    {
-      "type": "header",
-      "content": "Countdown"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_countdown",
-      "label": "Afficher le countdown",
-      "default": true
-    },
-    {
-      "type": "header",
-      "content": "Bouton CTA"
-    },
-    {
-      "type": "text",
-      "id": "cta_label",
-      "label": "Libelle du bouton",
-      "default": "Commander maintenant"
-    },
-    {
-      "type": "header",
-      "content": "Mini-review featured"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_featured_review",
-      "label": "Afficher la mini-review",
-      "default": true
-    },
-    {
-      "type": "text",
-      "id": "review_initials",
-      "label": "Initiales",
-      "default": "MT"
-    },
-    {
-      "type": "text",
-      "id": "review_author",
-      "label": "Auteur",
-      "default": "Marie T., Lyon"
-    },
-    {
-      "type": "textarea",
-      "id": "review_text",
-      "label": "Texte de l'avis",
-      "default": "Installation ultra simple, je l'ai visse en 10 secondes dans ma douille E27. Les 3 vitesses sont vraiment silencieuses et la telecommande est super pratique. Parfait pour l'ete !"
     }
   ],
-  "blocks": [
-    {
-      "type": "bullet",
-      "name": "Bullet benefice",
-      "settings": [
-        {
-          "type": "text",
-          "id": "text",
-          "label": "Texte",
-          "default": "Se visse dans n'importe quelle douille E27 — 10 secondes"
-        }
-      ]
-    },
-    {
-      "type": "bundle",
-      "name": "Bundle",
-      "settings": [
-        {
-          "type": "text",
-          "id": "label",
-          "label": "Nom du pack",
-          "default": "Pack Essentiel"
-        },
-        {
-          "type": "text",
-          "id": "description",
-          "label": "Description courte",
-          "default": "1 ventilateur"
-        },
-        {
-          "type": "text",
-          "id": "variant_id",
-          "label": "Shopify Variant ID"
-        },
-        {
-          "type": "number",
-          "id": "quantity",
-          "label": "Quantite",
-          "default": 1
-        },
-        {
-          "type": "number",
-          "id": "price",
-          "label": "Prix total (centimes)",
-          "default": 3490,
-          "info": "En centimes (3490 = 34,90€)"
-        },
-        {
-          "type": "number",
-          "id": "original_price",
-          "label": "Prix barre (centimes)",
-          "default": 3490
-        },
-        {
-          "type": "number",
-          "id": "save_amount",
-          "label": "Economies (centimes)",
-          "default": 0
-        },
-        {
-          "type": "select",
-          "id": "badge",
-          "label": "Badge",
-          "options": [
-            { "value": "none", "label": "Aucun" },
-            { "value": "popular", "label": "Populaire" },
-            { "value": "best", "label": "Meilleure offre" }
-          ],
-          "default": "none"
-        },
-        {
-          "type": "text",
-          "id": "badge_text",
-          "label": "Texte du badge (override)"
-        }
-      ]
-    },
-    {
-      "type": "upsell",
-      "name": "Add-on / Upsell",
-      "settings": [
-        {
-          "type": "text",
-          "id": "label",
-          "label": "Nom",
-          "default": "Assurance colis (perte ou casse)"
-        },
-        {
-          "type": "text",
-          "id": "description",
-          "label": "Description (optionnel)"
-        },
-        {
-          "type": "text",
-          "id": "variant_id",
-          "label": "Shopify Variant ID"
-        },
-        {
-          "type": "number",
-          "id": "price",
-          "label": "Prix (centimes)",
-          "default": 495,
-          "info": "En centimes (495 = 4,95€)"
-        }
-      ]
-    },
-    {
-      "type": "collapsible",
-      "name": "Section depliante",
-      "settings": [
-        {
-          "type": "text",
-          "id": "emoji",
-          "label": "Emoji",
-          "default": "🛡️"
-        },
-        {
-          "type": "text",
-          "id": "title",
-          "label": "Titre",
-          "default": "Satisfait ou rembourse 30 jours"
-        },
-        {
-          "type": "richtext",
-          "id": "content",
-          "label": "Contenu",
-          "default": "<p>Si le produit ne vous convient pas dans les 30 jours, nous vous remboursons integralement.</p>"
-        }
-      ]
-    }
-  ],
+  "blocks": [],
   "presets": [
     {
       "name": "Hero Produit",
       "settings": {
-        "headline": "Ventilateur LED Soufflo",
-        "subtitle": "Fraicheur & lumiere — en un clic.",
-        "bundle_section_title": "Choisis ton pack",
-        "default_bundle_index": 2,
-        "show_countdown": true,
-        "cta_label": "Commander maintenant",
-        "show_featured_review": true,
-        "review_initials": "MT",
-        "review_author": "Marie T., Lyon",
-        "review_text": "Installation ultra simple, je l'ai visse en 10 secondes dans ma douille E27. Les 3 vitesses sont vraiment silencieuses et la telecommande est super pratique. Parfait pour l'ete !"
-      },
-      "blocks": [
-        {
-          "type": "bullet",
-          "settings": { "text": "Se visse dans n'importe quelle douille E27 — 10 secondes" }
-        },
-        {
-          "type": "bullet",
-          "settings": { "text": "3 vitesses de ventilation silencieuse" }
-        },
-        {
-          "type": "bullet",
-          "settings": { "text": "LED dimmable — 3 temperatures (chaud / naturel / froid)" }
-        },
-        {
-          "type": "bullet",
-          "settings": { "text": "Telecommande incluse — controle depuis le canape" }
-        },
-        {
-          "type": "bundle",
-          "settings": {
-            "label": "Pack Essentiel",
-            "description": "1 ventilateur",
-            "variant_id": "54010409353557",
-            "quantity": 1,
-            "price": 3490,
-            "original_price": 3490,
-            "save_amount": 0,
-            "badge": "none"
-          }
-        },
-        {
-          "type": "bundle",
-          "settings": {
-            "label": "Pack Duo",
-            "description": "2 ventilateurs",
-            "variant_id": "54010409386325",
-            "quantity": 2,
-            "price": 5990,
-            "original_price": 6980,
-            "save_amount": 990,
-            "badge": "popular",
-            "badge_text": "Populaire"
-          }
-        },
-        {
-          "type": "bundle",
-          "settings": {
-            "label": "Pack Maison",
-            "description": "3 ventilateurs",
-            "variant_id": "54010409419093",
-            "quantity": 3,
-            "price": 7990,
-            "original_price": 10470,
-            "save_amount": 2480,
-            "badge": "best",
-            "badge_text": "Meilleure offre"
-          }
-        },
-        {
-          "type": "upsell",
-          "settings": {
-            "label": "Assurance colis (perte ou casse)",
-            "variant_id": "54003242795349",
-            "price": 495
-          }
-        },
-        {
-          "type": "upsell",
-          "settings": {
-            "label": "Extension garantie 24 mois",
-            "variant_id": "54003255869781",
-            "price": 795
-          }
-        },
-        {
-          "type": "upsell",
-          "settings": {
-            "label": "Expedition express 48h",
-            "variant_id": "54003273662805",
-            "price": 595
-          }
-        },
-        {
-          "type": "collapsible",
-          "settings": {
-            "emoji": "🛡️",
-            "title": "Satisfait ou rembourse 30 jours",
-            "content": "<p>Si le ventilateur ne vous convient pas dans les 30 jours suivant la reception, nous vous remboursons integralement. Pas de question, pas de justification — retour offert.</p>"
-          }
-        },
-        {
-          "type": "collapsible",
-          "settings": {
-            "emoji": "🚚",
-            "title": "Livraison offerte en France metropolitaine",
-            "content": "<p>Livraison offerte en France metropolitaine. Vous recevez un lien de suivi par email des l'expedition de votre commande.</p>"
-          }
-        }
-      ]
+        "headline": "Ventilateur LED Soufflo"
+      }
     }
   ]
 }
