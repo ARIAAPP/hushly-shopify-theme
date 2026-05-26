@@ -26,7 +26,7 @@
         "upsell_2": { "type": "upsell", "settings": { "label": "Extension garantie 24 mois", "variant_id": "54003255869781", "price": 795 } },
         "upsell_3": { "type": "upsell", "settings": { "label": "Expedition express 48h", "variant_id": "54003273662805", "price": 595 } },
         "collap_1": { "type": "collapsible", "settings": { "emoji": "🛡️", "title": "Satisfait ou rembourse 30 jours", "content": "<p>Si le ventilateur ne vous convient pas dans les 30 jours suivant la reception, nous vous remboursons integralement. Pas de question, pas de justification — retour offert.</p>" } },
-        "collap_2": { "type": "collapsible", "settings": { "emoji": "🚚", "title": "Livraison offerte en France metropolitaine", "content": "<p>Livraison offerte en France metropolitaine. Expedition sous 48h depuis nos entrepots. Delai de reception : 5 a 10 jours ouvres. Vous recevez un lien de suivi par email des l'expedition.</p>" } }
+        "collap_2": { "type": "collapsible", "settings": { "emoji": "🚚", "title": "Livraison offerte en France metropolitaine", "content": "<p>Livraison offerte en France metropolitaine. Vous recevez un lien de suivi par email des l'expedition de votre commande.</p>" } }
       },
       "block_order": ["bullet_1","bullet_2","bullet_3","bullet_4","bundle_1","bundle_2","bundle_3","upsell_1","upsell_2","upsell_3","collap_1","collap_2"]
     },
@@ -59,7 +59,7 @@
         "b5": { "type": "benefit", "settings": { "icon": "📱", "title": "Télécommande incluse", "description": "Contrôle lumière + ventilateur sans se lever." } },
         "b6": { "type": "benefit", "settings": { "icon": "🔇", "title": "Ultra silencieux", "description": "Moteur brushless — aucun bruit perceptible." } },
         "b7": { "type": "benefit", "settings": { "icon": "💰", "title": "Économique", "description": "LED basse consommation, pas de clim, facture allégée." } },
-        "b8": { "type": "benefit", "settings": { "icon": "🚚", "title": "Livraison offerte", "description": "France métropolitaine, expédié sous 48h." } }
+        "b8": { "type": "benefit", "settings": { "icon": "🚚", "title": "Livraison offerte", "description": "France métropolitaine. Suivi inclus." } }
       },
       "block_order": ["b1","b2","b3","b4","b5","b6","b7","b8"]
     },
@@ -159,7 +159,7 @@
         "q4": { "type": "faq", "settings": { "question": "📱 Comment fonctionne la télécommande ?", "answer": "<p>La télécommande permet de contrôler la lumière (on/off, couleur, intensité) et le ventilateur (on/off, 3 vitesses). Elle fonctionne avec une pile bouton incluse. Portée d'environ 5 mètres.</p>" } },
         "q5": { "type": "faq", "settings": { "question": "🔇 Est-ce que c'est bruyant ?", "answer": "<p>Non. Le moteur brushless est conçu pour être silencieux. En vitesse 1, il est quasiment inaudible. Même en vitesse 3, le bruit reste très faible — bien en dessous d'un ventilateur sur pied classique.</p>" } },
         "q6": { "type": "faq", "settings": { "question": "💡 La lumière est-elle suffisante ?", "answer": "<p>Oui. La LED 30W équivaut à environ 200W en ampoule classique. C'est suffisant pour éclairer une pièce de 15 à 20 m². Vous pouvez choisir entre blanc chaud (2700K), neutre (4500K) et froid (6500K), et régler l'intensité avec la télécommande.</p>" } },
-        "q7": { "type": "faq", "settings": { "question": "🚚 Quel est le délai de livraison ?", "answer": "<p>5 à 10 jours ouvrés en France métropolitaine. Expédition sous 48h. Livraison gratuite. Vous recevez un lien de suivi par email.</p>" } },
+        "q7": { "type": "faq", "settings": { "question": "🚚 Quel est le délai de livraison ?", "answer": "<p>Livraison gratuite en France métropolitaine. Vous recevez un lien de suivi par email dès l'expédition de votre commande.</p>" } },
         "q8": { "type": "faq", "settings": { "question": "↩️ Quelle est la politique de retour ?", "answer": "<p>30 jours satisfait ou remboursé. Pas de question, pas de justification. Retour offert (étiquette prépayée fournie).</p>" } },
         "q9": { "type": "faq", "settings": { "question": "⚡ Est-ce que ça consomme beaucoup d'électricité ?", "answer": "<p>Non. La LED consomme 30W (beaucoup moins qu'une ampoule classique) et le ventilateur consomme très peu. C'est une alternative bien plus économique qu'un climatiseur.</p>" } }
       },
