@@ -1,0 +1,95 @@
+﻿{%- comment -%}
+  ============================================================
+  UGC Gallery — Client photos grid
+  Hushly — Ventilateur LED E27
+  ============================================================
+{%- endcomment -%}
+
+<section id="ugc-gallery" class="py-16 md:py-20">
+  <div class="container space-y-8">
+
+    <div class="text-center space-y-2">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="text-xs font-semibold uppercase tracking-wider" style="color: var(--color-primary); letter-spacing: 0.1em;">{{ section.settings.eyebrow }}</p>
+      {%- endif -%}
+      <h2 class="text-3xl md:text-4xl font-bold">{{ section.settings.title }}</h2>
+      <p class="text-muted-foreground">{{ section.settings.subtitle }}</p>
+    </div>
+
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3">
+      {%- for block in section.blocks -%}
+        <div class="rounded-xl overflow-hidden" {{ block.shopify_attributes }} style="aspect-ratio: 1; position: relative;">
+          {%- if block.settings.image != blank -%}
+            <img
+              src="{{ block.settings.image | image_url: width: 400 }}"
+              alt="{{ block.settings.caption | default: 'Photo client' | escape }}"
+              class="w-full h-full object-cover"
+              width="200" height="200"
+              loading="lazy" decoding="async">
+          {%- else -%}
+            <div class="w-full h-full flex flex-col items-center justify-center" style="background: var(--color-muted);">
+              <span style="font-size: 2rem;">🌀</span>
+            </div>
+          {%- endif -%}
+
+          {%- if block.settings.caption != blank -%}
+            <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 0.5rem; background: linear-gradient(transparent, rgba(0,0,0,0.6));">
+              <p style="color: #fff; font-size: 0.65rem; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ block.settings.caption }}</p>
+            </div>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+
+  </div>
+</section>
+
+<style>
+  #ugc-gallery .grid > div {
+    transition: transform 0.2s ease;
+  }
+  #ugc-gallery .grid > div:hover {
+    transform: scale(1.03);
+  }
+  @media (max-width: 639px) {
+    #ugc-gallery .grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Galerie UGC",
+  "tag": "section",
+  "class": "ugc-gallery-section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Sur-titre", "default": "Photos clients" },
+    { "type": "text", "id": "title", "label": "Titre", "default": "Ils l'ont installe chez eux" },
+    { "type": "text", "id": "subtitle", "label": "Sous-titre", "default": "Des vraies photos, postees par nos clients." }
+  ],
+  "blocks": [
+    {
+      "type": "ugc_photo",
+      "name": "Photo",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Photo" },
+        { "type": "text", "id": "caption", "label": "Legende", "default": "@client — installe chez moi" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Galerie UGC",
+      "blocks": [
+        { "type": "ugc_photo", "settings": { "caption": "@marie.l_ — installe dans ma cuisine" } },
+        { "type": "ugc_photo", "settings": { "caption": "@thomas.b — la lumiere est parfaite" } },
+        { "type": "ugc_photo", "settings": { "caption": "@sophie.d — salon rafraichi" } },
+        { "type": "ugc_photo", "settings": { "caption": "@julien.p — chambre fraiche cet ete" } },
+        { "type": "ugc_photo", "settings": { "caption": "@camille.r — design approuve" } },
+        { "type": "ugc_photo", "settings": { "caption": "@nicolas.m — 3 pieces equipees" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

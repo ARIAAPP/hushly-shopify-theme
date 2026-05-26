@@ -5,86 +5,25 @@
     "announcement-bar": {
       "type": "announcement-bar",
       "blocks": {
-        "msg-1": {
-          "type": "message",
-          "settings": {
-            "text": "🌙 Livraison offerte worldwide"
-          }
-        },
-        "msg-2": {
-          "type": "message",
-          "settings": {
-            "text": "↩️ Satisfait ou remboursé 30j"
-          }
-        },
-        "msg-3": {
-          "type": "message",
-          "settings": {
-            "text": "🔒 Paiement 100% sécurisé"
-          }
-        }
+        "msg1": { "type": "message", "settings": { "text": "🚚 Livraison offerte en France" } },
+        "msg2": { "type": "message", "settings": { "text": "✅ Satisfait ou remboursé 30 jours" } },
+        "msg3": { "type": "message", "settings": { "text": "⚡ Installation en 10 secondes" } },
+        "msg4": { "type": "message", "settings": { "text": "🎮 Télécommande incluse" } },
+        "msg5": { "type": "message", "settings": { "text": "📦 Expédition sous 24-48h" } }
       },
-      "block_order": [
-        "msg-1",
-        "msg-2",
-        "msg-3"
-      ],
-      "settings": {}
+      "block_order": ["msg1", "msg2", "msg3", "msg4", "msg5"]
     },
     "header": {
       "type": "header",
       "blocks": {
-        "link-1": {
-          "type": "link",
-          "settings": {
-            "label": "Accueil",
-            "url": "/"
-          }
-        },
-        "link-2": {
-          "type": "link",
-          "settings": {
-            "label": "FAQ",
-            "url": "/#faq"
-          }
-        },
-        "link-3": {
-          "type": "link",
-          "settings": {
-            "label": "Notre histoire",
-            "url": "/#story"
-          }
-        },
-        "link-4": {
-          "type": "link",
-          "settings": {
-            "label": "Contact",
-            "url": "/pages/contact"
-          }
-        },
-        "link-5": {
-          "type": "link",
-          "settings": {
-            "label": "Suivre ma commande",
-            "url": "/account",
-            "open_new_tab": true
-          }
-        }
+        "nav1": { "type": "nav_link", "settings": { "label": "Le produit", "url": "#product-hero" } },
+        "nav2": { "type": "nav_link", "settings": { "label": "Comment ça marche", "url": "#how" } },
+        "nav3": { "type": "nav_link", "settings": { "label": "Avis clients", "url": "#avis" } },
+        "nav4": { "type": "nav_link", "settings": { "label": "FAQ", "url": "#faq" } },
+        "nav5": { "type": "nav_link", "settings": { "label": "Contact", "url": "#contact" } }
       },
-      "block_order": [
-        "link-1",
-        "link-2",
-        "link-3",
-        "link-4",
-        "link-5"
-      ],
-      "settings": {
-        "account_url": "/account"
-      }
+      "block_order": ["nav1", "nav2", "nav3", "nav4", "nav5"]
     }
   },
-  "order": [
-    "announcement-bar",
-    "header"
-  ]
+  "order": ["announcement-bar", "header"]
 }

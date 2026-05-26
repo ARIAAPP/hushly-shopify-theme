@@ -1,14 +1,23 @@
-<section id="faq" class="relative overflow-hidden">
-  <div class="bg-primary" style="padding: 3.5rem 0 5rem;">
-    <div class="container max-w-2xl space-y-8">
-      <h2 class="text-3xl font-bold text-center text-primary-foreground uppercase tracking-wide">{{ section.settings.title }}</h2>
-    </div>
-  </div>
+{%- comment -%}
+  ============================================================
+  FAQ Accordion — Hushly Ventilateur Plafonnier LED E27
+  ID: "faq" — 8 questions, first open by default
+  ============================================================
+{%- endcomment -%}
 
-  <div class="container max-w-2xl -mt-12 relative z-10">
-    <div class="bg-background rounded-2xl shadow-lg" style="overflow:hidden;">
+<section id="faq" class="py-16 md:py-20">
+  <div class="container max-w-2xl space-y-8">
+
+    {%- comment -%} Header {%- endcomment -%}
+    <div class="text-center space-y-2">
+      <h2 class="text-3xl md:text-4xl font-bold">{{ section.settings.title }}</h2>
+      <p class="text-muted-foreground">{{ section.settings.subtitle }}</p>
+    </div>
+
+    {%- comment -%} Accordion {%- endcomment -%}
+    <div class="bg-background rounded-2xl shadow-sm" style="overflow: hidden; border: 1px solid var(--color-border);">
       {%- for block in section.blocks -%}
-        <details class="faq-item" {% if forloop.index <= 2 %}open{% endif %} {{ block.shopify_attributes }}>
+        <details class="faq-item" {% if forloop.first %}open{% endif %} {{ block.shopify_attributes }}>
           <summary>
             <span>{{ block.settings.question }}</span>
           </summary>
@@ -17,13 +26,13 @@
       {%- endfor -%}
     </div>
 
-    <div class="text-center" style="margin-top:2rem;">
-      <p class="text-sm text-muted-foreground" style="margin-bottom:0.85rem;">{{ section.settings.cta_text }}</p>
-      <a href="#product" class="inline-flex items-center justify-center" style="background:var(--color-primary); color:var(--color-primary-fg); padding:0.85rem 2rem; border-radius:9999px; font-size:0.95rem; font-weight:700; text-decoration:none; box-shadow:0 4px 14px rgba(45,27,105,.25); transition:transform 0.15s;" onmouseover="this.style.transform='translateY(-2px)';" onmouseout="this.style.transform='translateY(0)';">{{ section.settings.cta_label }}</a>
+    {%- comment -%} CTA {%- endcomment -%}
+    <div class="text-center space-y-3">
+      <p class="text-sm text-muted-foreground">{{ section.settings.cta_text }}</p>
+      <a href="#product-hero" class="btn btn-lg" style="min-width: 220px;">{{ section.settings.cta_label }}</a>
     </div>
-  </div>
 
-  <div class="h-16"></div>
+  </div>
 </section>
 
 {% schema %}
@@ -36,18 +45,24 @@
       "type": "text",
       "id": "title",
       "label": "Titre",
-      "default": "Questions frequentes"
+      "default": "Questions fréquentes"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Sous-titre",
+      "default": "Tout ce que vous voulez savoir avant de commander."
     },
     {
       "type": "text",
       "id": "cta_text",
       "label": "Texte au-dessus du CTA",
-      "default": "Toujours des doutes ? Ecris-nous."
+      "default": "Une autre question ? Écrivez-nous à support@hushly.fr"
     },
     {
       "type": "text",
       "id": "cta_label",
-      "label": "Libelle du bouton",
+      "label": "Libellé du bouton",
       "default": "Commander Hushly"
     }
   ],
@@ -60,20 +75,78 @@
           "type": "text",
           "id": "question",
           "label": "Question",
-          "default": "C'est quoi l'annulation active du bruit (ANC) ?"
+          "default": "Est-ce compatible avec ma douille ?"
         },
         {
           "type": "richtext",
           "id": "answer",
-          "label": "Reponse",
-          "default": "<p>Le bandeau Hushly integre un systeme ANC qui reduit activement les bruits ambiants.</p>"
+          "label": "Réponse",
+          "default": "<p>Oui, Hushly se visse sur une douille E27 standard, la plus répandue en France et en Europe.</p>"
         }
       ]
     }
   ],
   "presets": [
     {
-      "name": "FAQ"
+      "name": "FAQ",
+      "blocks": [
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Est-ce compatible avec ma douille ?",
+            "answer": "<p>Hushly utilise un culot <strong>E27 standard</strong>, le format le plus courant en France et en Europe. Vérifiez simplement que votre douille est bien une E27 (le grand format) et non une E14 (le petit format). En cas de doute, mesurez le diamètre : E27 = 27 mm.</p>"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Est-ce bruyant ?",
+            "answer": "<p>Hushly est <strong>ultra silencieux</strong> : moins de 40 dB en fonctionnement, soit l'équivalent d'une bibliothèque calme. Vous pouvez dormir, travailler ou regarder un film sans aucune gêne sonore, même en vitesse maximale.</p>"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "La lumière est-elle puissante ?",
+            "answer": "<p>Oui. Hushly intègre une LED de <strong>30W</strong>, équivalente à une ampoule classique de 200W. Vous disposez de <strong>3 températures de couleur</strong> (blanc chaud, neutre, froid) et d'un variateur d'intensité (dimmable) via la télécommande.</p>"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Quelle est la portée de la télécommande ?",
+            "answer": "<p>La télécommande infrarouge a une portée de <strong>10 mètres</strong> et fonctionne à travers les murs légers. Elle contrôle la vitesse du ventilateur (3 niveaux), la lumière (on/off, intensité, température) et le minuteur.</p>"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Est-ce que ça supporte le poids ?",
+            "answer": "<p>Hushly pèse environ <strong>800 g</strong>, soit le poids de 2 à 3 ampoules classiques. Toute douille E27 fixée au plafond selon les normes peut le supporter sans problème. Aucune installation spéciale nécessaire.</p>"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Quelle est la consommation électrique ?",
+            "answer": "<p><strong>30W maximum</strong> (ventilateur + lumière à plein régime). C'est moins qu'une ampoule à incandescence classique. Vous pouvez le laisser tourner toute la nuit sans impact notable sur votre facture.</p>"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Comment fonctionne la garantie ?",
+            "answer": "<p>Vous bénéficiez d'une <strong>garantie satisfait ou remboursé de 30 jours</strong> : si Hushly ne vous convient pas, renvoyez-le et on vous rembourse intégralement. En plus, une <strong>garantie constructeur de 12 mois</strong> couvre tout défaut de fabrication.</p>"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Quel est le délai de livraison ?",
+            "answer": "<p>La livraison est <strong>gratuite</strong> et prend en moyenne <strong>5 à 8 jours ouvrés</strong> en France métropolitaine. Un numéro de suivi vous est envoyé par email dès l'expédition.</p>"
+          }
+        }
+      ]
     }
   ]
 }

@@ -9,9 +9,9 @@
     isOpen: false,
     items: [],
     addons: [
-      { id: 'protection', variantId: '54003242795349', title: 'Assurance colis', price: 5.95, icon: '📦' },
-      { id: 'warranty',   variantId: '54003255869781', title: 'Garantie 90 jours', price: 9.95, icon: '🛡️' },
-      { id: 'priority',   variantId: '54003273662805', title: 'Traitement prioritaire', price: 7.95, icon: '⚡' }
+      { id: 'protection', variantId: '', title: 'Assurance colis', price: 4.95, icon: '📦' },
+      { id: 'warranty',   variantId: '', title: 'Extension garantie 24 mois', price: 7.95, icon: '🛡️' },
+      { id: 'priority',   variantId: '', title: 'Expédition express 48h', price: 5.95, icon: '⚡' }
     ]
   };
 
@@ -102,7 +102,7 @@
   function itemHtml(item) {
     var img = item.image
       ? '<img src="' + item.image + '" alt="' + item.title + '" width="80" height="80" loading="lazy" decoding="async" style="height:5rem; width:5rem; border-radius:8px; background:var(--color-muted); object-fit:contain; padding:4px;">'
-      : '<div style="height:5rem; width:5rem; border-radius:8px; background:var(--color-muted); display:flex; align-items:center; justify-content:center;"><span style="font-size:1.5rem;">🌙</span></div>';
+      : '<div style="height:5rem; width:5rem; border-radius:8px; background:var(--color-muted); display:flex; align-items:center; justify-content:center;"><span style="font-size:1.5rem;">💨</span></div>';
     return '<div class="cart-line-item" style="display:flex; gap:0.75rem; border-bottom:1px solid var(--color-border); padding-bottom:1rem;">' +
       img +
       '<div style="flex:1; min-width:0;">' +

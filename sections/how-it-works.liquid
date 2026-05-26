@@ -1,0 +1,83 @@
+﻿{%- comment -%}
+  ============================================================
+  How It Works — 3 steps with icons
+  Hushly — Ventilateur LED E27
+  ============================================================
+{%- endcomment -%}
+
+<section id="how-it-works" class="py-16 md:py-20" style="background: var(--color-muted);">
+  <div class="container" style="max-width: 960px;">
+
+    <div class="text-center space-y-2" style="margin-bottom: 3rem;">
+      <h2 class="text-3xl md:text-4xl font-bold">{{ section.settings.title }}</h2>
+      <p class="text-muted-foreground">{{ section.settings.subtitle }}</p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      {%- for block in section.blocks -%}
+        <div class="text-center space-y-4" {{ block.shopify_attributes }}>
+          <div style="width: 64px; height: 64px; border-radius: 50%; background: var(--color-primary); color: var(--color-primary-fg); display: flex; align-items: center; justify-content: center; margin: 0 auto; font-size: 1.5rem; font-weight: 800; box-shadow: 0 4px 16px rgba(56, 189, 248, 0.25);">
+            {{ block.settings.number }}
+          </div>
+          <div style="font-size: 2.5rem; line-height: 1;">{{ block.settings.icon }}</div>
+          <h3 class="text-lg font-bold">{{ block.settings.title }}</h3>
+          <p class="text-sm text-muted-foreground" style="max-width: 280px; margin-left: auto; margin-right: auto;">{{ block.settings.description }}</p>
+        </div>
+      {%- endfor -%}
+    </div>
+
+  </div>
+</section>
+
+<style>
+  @media (max-width: 767px) {
+    #how-it-works .grid {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Comment ca marche",
+  "tag": "section",
+  "class": "how-it-works-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Titre",
+      "default": "Installation en 3 etapes"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Sous-titre",
+      "default": "Pas de perceuse. Pas d'electricien. Juste une douille E27."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Etape",
+      "settings": [
+        { "type": "text", "id": "number", "label": "Numero", "default": "1" },
+        { "type": "text", "id": "icon", "label": "Emoji", "default": "💡" },
+        { "type": "text", "id": "title", "label": "Titre", "default": "Devissez votre ampoule" },
+        { "type": "text", "id": "description", "label": "Description", "default": "Retirez l'ampoule existante de votre douille E27 standard." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Comment ca marche",
+      "blocks": [
+        { "type": "step", "settings": { "number": "1", "icon": "💡", "title": "Devissez votre ampoule", "description": "Retirez l'ampoule existante de votre douille E27 standard." } },
+        { "type": "step", "settings": { "number": "2", "icon": "🔧", "title": "Vissez le ventilateur LED", "description": "Le culot E27 du ventilateur se visse directement dans la douille. Aucun outil necessaire." } },
+        { "type": "step", "settings": { "number": "3", "icon": "📱", "title": "Prenez la telecommande", "description": "Allumez, choisissez la couleur de lumiere et la vitesse du ventilateur. C'est pret." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

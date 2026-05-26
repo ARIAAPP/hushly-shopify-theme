@@ -1,15 +1,10 @@
-{%- comment -%}
-  Announcement bar / Ticker — scrolling messages
-{%- endcomment -%}
-
-<div class="bg-ticker overflow-hidden" style="padding: 0.875rem 0; font-size: 0.875rem; font-weight: 600; letter-spacing: 0.025em;">
-  <div class="animate-ticker flex w-max" style="gap: 3rem;">
+<div class="announcement-bar" aria-label="Informations boutique">
+  <div class="announcement-bar__track">
     {%- for block in section.blocks -%}
-      <span class="whitespace-nowrap">{{ block.settings.text }}</span>
+      <span class="announcement-bar__item">{{ block.settings.text }}</span>
     {%- endfor -%}
-    {%- comment -%} Duplicate for seamless scroll {%- endcomment -%}
     {%- for block in section.blocks -%}
-      <span class="whitespace-nowrap" aria-hidden="true">{{ block.settings.text }}</span>
+      <span class="announcement-bar__item">{{ block.settings.text }}</span>
     {%- endfor -%}
   </div>
 </div>
@@ -17,31 +12,29 @@
 {% schema %}
 {
   "name": "Barre d'annonce",
-  "tag": "div",
   "class": "announcement-bar-section",
+  "settings": [],
   "blocks": [
     {
       "type": "message",
       "name": "Message",
+      "limit": 8,
       "settings": [
-        {
-          "type": "text",
-          "id": "text",
-          "label": "Texte",
-          "default": "🌙 Livraison offerte worldwide"
-        }
+        { "type": "text", "id": "text", "label": "Texte", "default": "Message" }
       ]
     }
   ],
   "presets": [
     {
-      "name": "Barre d'annonce"
+      "name": "Barre d'annonce",
+      "blocks": [
+        { "type": "message", "settings": { "text": "🚚 Livraison offerte en France" } },
+        { "type": "message", "settings": { "text": "✅ Satisfait ou remboursé 30 jours" } },
+        { "type": "message", "settings": { "text": "⚡ Installation en 10 secondes" } },
+        { "type": "message", "settings": { "text": "🎮 Télécommande incluse" } },
+        { "type": "message", "settings": { "text": "📦 Expédition sous 24-48h" } }
+      ]
     }
-  ],
-  "enabled_on": {
-    "groups": [
-      "header"
-    ]
-  }
+  ]
 }
 {% endschema %}

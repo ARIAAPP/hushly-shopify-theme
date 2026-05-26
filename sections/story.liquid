@@ -1,26 +1,56 @@
-<section class="py-16 md:py-20">
-  <div class="container" style="max-width: 700px;">
-    <div class="rounded-2xl border bg-background" style="border-color: var(--color-border); padding: 2.5rem 2rem; text-align: center;">
-      <p class="text-sm font-semibold text-primary uppercase tracking-wider" style="margin-bottom: 0.75rem;">{{ section.settings.kicker }}</p>
-      <h2 class="text-2xl md:text-3xl font-bold" style="margin-bottom: 1.5rem;">{{ section.settings.title }}</h2>
+<section class="story-section py-16 md:py-24" style="background: var(--color-muted);">
+  <div class="container">
+    <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center" style="max-width: 960px; margin: 0 auto;">
+      {%- comment -%} Text column {%- endcomment -%}
+      <div>
+        <p class="text-xs font-semibold uppercase tracking-wider" style="color: var(--color-primary, #0B0F1E); margin-bottom: 0.75rem; letter-spacing: 0.1em;">{{ section.settings.kicker }}</p>
+        <h2 class="text-2xl md:text-3xl font-bold" style="margin-bottom: 1.5rem;">{{ section.settings.title }}</h2>
 
-      <div class="text-sm leading-relaxed text-muted-foreground space-y-4" style="text-align: left;">
-        {{ section.settings.text }}
+        <div class="text-sm leading-relaxed text-muted-foreground space-y-4">
+          {{ section.settings.text }}
+        </div>
+
+        {%- if section.settings.signoff != blank -%}
+          <div style="margin-top: 1.5rem; display: flex; align-items: center; gap: 0.5rem;">
+            <span style="font-size: 1.5rem;">🌀</span>
+            <div>
+              <div class="text-sm font-bold">{{ section.settings.signoff }}</div>
+            </div>
+          </div>
+        {%- endif -%}
       </div>
 
-      {%- if section.settings.italic_text != blank -%}
-        <p class="text-sm italic text-muted-foreground" style="margin-top: 1.5rem;">{{ section.settings.italic_text }}</p>
-      {%- endif -%}
-
-      <div style="margin-top: 1.5rem; display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
-        <span style="font-size: 1.5rem;">🌙</span>
-        <div>
-          <div class="text-sm font-bold">{{ section.settings.signoff }}</div>
-        </div>
+      {%- comment -%} Image column {%- endcomment -%}
+      <div class="rounded-2xl overflow-hidden" style="aspect-ratio: 4/3;">
+        {%- if section.settings.image != blank -%}
+          <img
+            src="{{ section.settings.image | image_url: width: 800 }}"
+            alt="{{ section.settings.title }}"
+            class="w-full h-full object-cover"
+            width="800" height="600"
+            loading="lazy" decoding="async"
+          >
+        {%- else -%}
+          <div class="w-full h-full flex flex-col items-center justify-center bg-background border rounded-2xl" style="border-color: var(--color-border);">
+            <span style="font-size: 4rem; margin-bottom: 0.75rem;">🌀</span>
+            <span class="text-sm text-muted-foreground">Photo a venir</span>
+          </div>
+        {%- endif -%}
       </div>
     </div>
   </div>
 </section>
+
+<style>
+  @media (max-width: 767px) {
+    .story-section .grid {
+      grid-template-columns: 1fr;
+    }
+    .story-section .grid > div:last-child {
+      order: -1;
+    }
+  }
+</style>
 
 {% schema %}
 {
@@ -28,17 +58,40 @@
   "tag": "section",
   "class": "story-section-wrapper",
   "settings": [
-    { "type": "text", "id": "kicker", "label": "Sur-titre", "default": "Notre histoire" },
-    { "type": "text", "id": "title", "label": "Titre", "default": "Pourquoi on a cree Hushly" },
+    {
+      "type": "text",
+      "id": "kicker",
+      "label": "Sur-titre",
+      "default": "NOTRE HISTOIRE"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Titre",
+      "default": "Pourquoi Hushly ?"
+    },
     {
       "type": "richtext",
       "id": "text",
       "label": "Texte",
-      "default": "<p>Tout a commence un soir d'hiver, vers 2h du matin.</p><p>Notre fondateur n'arrivait plus a s'endormir sans son podcast prefere. Le probleme ? Ses AirPods tombaient toutes les 20 minutes, lui faisaient mal aux oreilles, et il se reveillait avec des douleurs cervicales en se retournant dessus.</p><p>Il a cherche une alternative. Aucune marque ne combinait a la fois bandeau confortable pour dormir sur le cote, ecouteurs Bluetooth de qualite, ET — surtout — annulation active du bruit pour couper les ronflements et la rue.</p><p>Alors on l'a cree. On a passe 18 mois a tester 12 prototypes, a ecouter plus de 800 personnes nous dire ce qui les empechait de dormir. Le resultat : un bandeau 3-en-1 avec ANC, qui sert aussi de masque pour les yeux, avec 3 boutons physiques pour ne plus jamais avoir a rallumer ton telephone en pleine nuit.</p><p>Aujourd'hui, plus de 2 400 dormeurs utilisent Hushly chaque nuit. Pour leurs playlists, leurs podcasts, leurs meditations, leur ASMR. Pour s'endormir en douceur. Sans douleur.</p>"
+      "default": "<p>Tout a commence un ete caniculaire. Ventilateur sur pied bruyant qui pousse de l'air tiede, impossible de dormir. L'idee d'installer un vrai ventilateur de plafond ? Trop cher, trop complique — electricien, percage, demi-journee de travaux.</p><p>On s'est dit : et si la solution existait deja dans chaque piece ? Chaque plafond a une douille d'ampoule. Il suffisait de creer un ventilateur qui s'y visse directement — comme une ampoule classique.</p><p>C'est exactement ce qu'est Hushly : un ventilateur de plafond avec eclairage LED integre qui se visse en 10 secondes dans n'importe quelle douille E27. Pas de travaux. Pas d'electricien. Pas de fil. Juste de l'air frais et un bel eclairage, pilotes depuis votre canape avec la telecommande incluse.</p>"
     },
-    { "type": "text", "id": "italic_text", "label": "Texte en italique", "default": "Bienvenue chez les Hushlies." },
-    { "type": "text", "id": "signoff", "label": "Signature", "default": "— L'equipe Hushly" }
+    {
+      "type": "text",
+      "id": "signoff",
+      "label": "Signature",
+      "default": "— L'equipe Hushly"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    }
   ],
-  "presets": [{ "name": "Notre histoire" }]
+  "presets": [
+    {
+      "name": "Notre histoire"
+    }
+  ]
 }
 {% endschema %}

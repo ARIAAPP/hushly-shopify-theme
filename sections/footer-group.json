@@ -2,8 +2,17 @@
   "type": "footer",
   "name": "Footer group",
   "sections": {
-    "newsletter": { "type": "newsletter" },
-    "footer": { "type": "footer" }
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "heading": "5€ offerts sur votre 1ère commande",
+        "description": "Inscrivez-vous et recevez votre code par email."
+      }
+    },
+    "footer": {
+      "type": "footer",
+      "settings": {}
+    }
   },
   "order": ["newsletter", "footer"]
 }

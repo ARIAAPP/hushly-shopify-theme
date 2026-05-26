@@ -1,10 +1,63 @@
-<div class="flex flex-wrap justify-center gap-2">
-  {%- comment -%} Render Shopify-enabled payment icons natively {%- endcomment -%}
-  {%- for type in shop.enabled_payment_types -%}
-    <span class="inline-flex items-center justify-center" aria-label="{{ type | replace: '_', ' ' | capitalize }}">
-      {{ type | payment_type_svg_tag: class: 'payment-icon' }}
+{%- comment -%}
+  ============================================================
+  Payment Icons — SVG grid
+  Visa, Mastercard, Amex, CB, Apple Pay, Google Pay, Shop Pay, PayPal
+  ============================================================
+{%- endcomment -%}
+
+<div class="flex flex-wrap justify-center gap-2 items-center" style="padding: 0.25rem 0;">
+
+  {%- comment -%} Try native Shopify payment icons first {%- endcomment -%}
+  {%- if shop.enabled_payment_types.size > 0 -%}
+    {%- for type in shop.enabled_payment_types -%}
+      <span class="inline-flex items-center justify-center" aria-label="{{ type | replace: '_', ' ' | capitalize }}">
+        {{ type | payment_type_svg_tag: class: 'payment-icon' }}
+      </span>
+    {%- endfor -%}
+  {%- else -%}
+    {%- comment -%} Fallback SVG icons when no payment types configured {%- endcomment -%}
+
+    {%- comment -%} Visa {%- endcomment -%}
+    <span class="inline-flex items-center justify-center" aria-label="Visa" style="background: #fff; border: 1px solid #e5e7eb; border-radius: 4px; padding: 4px 6px;">
+      <svg width="38" height="24" viewBox="0 0 38 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="38" height="24" rx="3" fill="#fff"/><path d="M15.64 16.47h-2.34l1.46-9.05h2.34l-1.46 9.05z" fill="#00579F"/><path d="M24.84 7.62c-.46-.18-1.19-.38-2.1-.38-2.32 0-3.95 1.23-3.96 3-.01 1.3 1.17 2.03 2.06 2.46.92.44 1.23.72 1.22 1.12-.01.6-.73.88-1.4.88-.94 0-1.44-.14-2.2-.47l-.3-.15-.33 2.03c.55.25 1.56.47 2.61.48 2.46 0 4.06-1.22 4.08-3.1.01-1.03-.62-1.82-1.97-2.47-.82-.42-1.32-.7-1.32-1.13.01-.38.43-.78 1.35-.78.77-.01 1.33.16 1.76.35l.21.1.32-1.94z" fill="#00579F"/><path d="M28.67 7.42h-1.81c-.56 0-.98.16-1.23.75l-3.48 8.3h2.46s.4-1.12.49-1.36h3.01c.07.32.29 1.36.29 1.36h2.17l-1.9-9.05zm-2.89 5.83c.19-.52.94-2.52.94-2.52-.01.02.19-.53.31-.87l.16.79s.45 2.19.55 2.6h-1.96z" fill="#00579F"/><path d="M12.86 7.42l-2.3 6.17-.25-1.25c-.43-1.45-1.76-3.03-3.25-3.81l2.1 7.93h2.48l3.69-9.04h-2.47z" fill="#00579F"/><path d="M8.7 7.42H4.95l-.03.18c2.94.75 4.88 2.57 5.69 4.75l-.82-4.17c-.14-.57-.56-.74-1.09-.76z" fill="#FAA61A"/></svg>
     </span>
-  {%- endfor -%}
+
+    {%- comment -%} Mastercard {%- endcomment -%}
+    <span class="inline-flex items-center justify-center" aria-label="Mastercard" style="background: #fff; border: 1px solid #e5e7eb; border-radius: 4px; padding: 4px 6px;">
+      <svg width="38" height="24" viewBox="0 0 38 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="38" height="24" rx="3" fill="#fff"/><circle cx="15" cy="12" r="7" fill="#EB001B"/><circle cx="23" cy="12" r="7" fill="#F79E1B"/><path d="M19 6.78A6.98 6.98 0 0122 12a6.98 6.98 0 01-3 5.22A6.98 6.98 0 0116 12a6.98 6.98 0 013-5.22z" fill="#FF5F00"/></svg>
+    </span>
+
+    {%- comment -%} Amex {%- endcomment -%}
+    <span class="inline-flex items-center justify-center" aria-label="American Express" style="background: #016FD0; border: 1px solid #016FD0; border-radius: 4px; padding: 4px 6px;">
+      <svg width="38" height="24" viewBox="0 0 38 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="38" height="24" rx="3" fill="#016FD0"/><text x="5" y="15" font-family="Arial,sans-serif" font-size="8" font-weight="bold" fill="#fff">AMEX</text></svg>
+    </span>
+
+    {%- comment -%} CB {%- endcomment -%}
+    <span class="inline-flex items-center justify-center" aria-label="CB" style="background: #fff; border: 1px solid #e5e7eb; border-radius: 4px; padding: 4px 6px;">
+      <svg width="38" height="24" viewBox="0 0 38 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="38" height="24" rx="3" fill="#fff"/><rect x="4" y="4" width="30" height="8" rx="1" fill="#00539F"/><rect x="4" y="12" width="30" height="8" rx="1" fill="#96C11F"/><text x="9" y="11" font-family="Arial,sans-serif" font-size="7" font-weight="bold" fill="#fff">CB</text></svg>
+    </span>
+
+    {%- comment -%} Apple Pay {%- endcomment -%}
+    <span class="inline-flex items-center justify-center" aria-label="Apple Pay" style="background: #000; border: 1px solid #333; border-radius: 4px; padding: 4px 6px;">
+      <svg width="38" height="24" viewBox="0 0 38 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="38" height="24" rx="3" fill="#000"/><text x="4" y="15" font-family="system-ui,-apple-system,sans-serif" font-size="8" font-weight="600" fill="#fff"> Pay</text></svg>
+    </span>
+
+    {%- comment -%} Google Pay {%- endcomment -%}
+    <span class="inline-flex items-center justify-center" aria-label="Google Pay" style="background: #fff; border: 1px solid #e5e7eb; border-radius: 4px; padding: 4px 6px;">
+      <svg width="38" height="24" viewBox="0 0 38 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="38" height="24" rx="3" fill="#fff"/><text x="4" y="15" font-family="system-ui,sans-serif" font-size="7" font-weight="600" fill="#5F6368">G Pay</text></svg>
+    </span>
+
+    {%- comment -%} Shop Pay {%- endcomment -%}
+    <span class="inline-flex items-center justify-center" aria-label="Shop Pay" style="background: #5A31F4; border: 1px solid #5A31F4; border-radius: 4px; padding: 4px 6px;">
+      <svg width="38" height="24" viewBox="0 0 38 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="38" height="24" rx="3" fill="#5A31F4"/><text x="5" y="15" font-family="system-ui,sans-serif" font-size="7" font-weight="700" fill="#fff">Shop</text></svg>
+    </span>
+
+    {%- comment -%} PayPal {%- endcomment -%}
+    <span class="inline-flex items-center justify-center" aria-label="PayPal" style="background: #fff; border: 1px solid #e5e7eb; border-radius: 4px; padding: 4px 6px;">
+      <svg width="38" height="24" viewBox="0 0 38 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="38" height="24" rx="3" fill="#fff"/><text x="5" y="10" font-family="system-ui,sans-serif" font-size="7" font-weight="700" fill="#003087">Pay</text><text x="5" y="19" font-family="system-ui,sans-serif" font-size="7" font-weight="700" fill="#009CDE">Pal</text></svg>
+    </span>
+  {%- endif -%}
+
 </div>
 
 <style>

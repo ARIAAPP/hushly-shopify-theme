@@ -10,6 +10,11 @@
     },
     "currency": {
       "symbol": "€"
+    },
+    "pagination": {
+      "previous": "Précédent",
+      "next": "Suivant",
+      "page": "Page {{ number }}"
     }
   },
   "products": {
@@ -18,21 +23,21 @@
       "buy_now": "Commander maintenant",
       "sold_out": "Rupture de stock",
       "unavailable": "Indisponible",
-      "quantity": "Quantite",
+      "quantity": "Quantité",
       "price": "Prix",
       "regular_price": "Prix normal",
       "sale_price": "Prix promo",
-      "save": "Economise {{ savings }}",
-      "shipping_calculated": "Livraison calculee a l'etape suivante"
+      "save": "Économisez {{ savings }}",
+      "shipping_calculated": "Livraison calculée à l'étape suivante"
     }
   },
   "cart": {
     "general": {
-      "title": "Ton panier",
+      "title": "Votre panier",
       "subtotal": "Sous-total",
       "checkout": "Passer commande",
       "continue_shopping": "Continuer mes achats",
-      "empty": "Ton panier est vide.",
+      "empty": "Votre panier est vide.",
       "remove": "Retirer",
       "increase": "Augmenter",
       "decrease": "Diminuer",
@@ -40,7 +45,7 @@
         "one": "{{ count }} article",
         "other": "{{ count }} articles"
       },
-      "shipping_taxes_note": "Livraison et taxes calculees a l'etape suivante.",
+      "shipping_taxes_note": "Livraison et taxes calculées à l'étape suivante.",
       "express_checkout": "Paiement express",
       "or": "ou",
       "shop_pay": "Payer avec Shop Pay"
@@ -54,13 +59,13 @@
     "track_order": "Suivre ma commande"
   },
   "newsletter": {
-    "title": "Reste dans la nuit",
-    "subtitle": "Conseils sommeil, nouveautes, offres VIP. Un email par mois max.",
-    "email_placeholder": "ton@email.com",
-    "submit": "S'inscrire",
-    "success": "Merci ! On te contacte bientot."
+    "title": "5€ offerts sur votre 1ère commande",
+    "subtitle": "Inscrivez-vous et recevez votre code promo par email.",
+    "email_placeholder": "votre@email.com",
+    "submit": "Recevoir mon code",
+    "success": "Merci ! Vérifiez votre boîte mail."
   },
   "footer": {
-    "copyright": "© {{ year }} {{ shop_name }}. Tous droits reserves."
+    "copyright": "© {{ year }} {{ shop_name }}. Tous droits réservés."
   }
 }

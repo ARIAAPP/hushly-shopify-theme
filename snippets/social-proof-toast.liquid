@@ -1,19 +1,26 @@
+{%- comment -%}
+  ============================================================
+  Social Proof Toast — Bottom-left notification popup
+  Hushly — rotating buyer notifications, initially hidden
+  ============================================================
+{%- endcomment -%}
+
 <div class="social-proof-toast" data-social-proof-toast aria-live="polite">
   <div class="flex items-start gap-3 rounded-xl border bg-background shadow-lg" style="border-color: var(--color-border); padding: 1rem;">
-    <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary/10">
-      <span style="font-size: 1.1rem;">🌙</span>
+    <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full" style="background: color-mix(in srgb, var(--color-primary) 10%, transparent);">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
     </div>
     <div class="flex-1 min-w-0">
       <p class="text-sm font-medium" data-toast-name>&mdash;</p>
       <p class="text-xs text-muted-foreground" data-toast-message>&mdash;</p>
     </div>
-    <button type="button" class="shrink-0 text-muted-foreground" data-toast-close aria-label="Fermer">&times;</button>
+    <button type="button" class="shrink-0 text-muted-foreground" data-toast-close aria-label="Fermer" style="font-size: 1.2rem; line-height: 1; background: none; border: 0; cursor: pointer;">&times;</button>
   </div>
 </div>
 
 <script>
 (function() {
-  const buyers = [
+  var buyers = [
     { name: 'Sophie L.', city: 'Paris', time: 'il y a 2 min' },
     { name: 'Lucas P.', city: 'Lyon', time: 'il y a 5 min' },
     { name: 'Emma G.', city: 'Bruxelles', time: 'il y a 8 min' },
@@ -23,12 +30,12 @@
     { name: 'Clara B.', city: 'Geneve', time: 'il y a 22 min' },
     { name: 'Hugo T.', city: 'Toulouse', time: 'il y a 25 min' }
   ];
-  const toast = document.querySelector('[data-social-proof-toast]');
+  var toast = document.querySelector('[data-social-proof-toast]');
   if (!toast) return;
-  const nameEl = toast.querySelector('[data-toast-name]');
-  const msgEl = toast.querySelector('[data-toast-message]');
-  const closeBtn = toast.querySelector('[data-toast-close]');
-  let current = 0;
+  var nameEl = toast.querySelector('[data-toast-name]');
+  var msgEl = toast.querySelector('[data-toast-message]');
+  var closeBtn = toast.querySelector('[data-toast-close]');
+  var current = 0;
 
   function show(b) {
     nameEl.textContent = b.name + ' — ' + b.city;
@@ -38,9 +45,10 @@
   function hide() { toast.dataset.visible = 'false'; }
   if (closeBtn) closeBtn.addEventListener('click', hide);
 
-  setTimeout(() => show(buyers[0]), 8000);
+  /* First toast after 8s, then every 15s */
+  setTimeout(function() { show(buyers[0]); }, 8000);
   setTimeout(hide, 12000);
-  setInterval(() => {
+  setInterval(function() {
     current = (current + 1) % buyers.length;
     show(buyers[current]);
     setTimeout(hide, 4000);

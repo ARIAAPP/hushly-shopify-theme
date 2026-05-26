@@ -1,0 +1,78 @@
+﻿{%- comment -%}
+  ============================================================
+  Features / Benefits grid — Hushly Ventilateur LED E27
+  8 benefit cards in a 2x4 / 4x2 grid
+  ============================================================
+{%- endcomment -%}
+
+<section id="features" class="py-16 md:py-20">
+  <div class="container">
+    <div class="text-center space-y-2" style="margin-bottom: 2.5rem;">
+      <h2 class="text-3xl md:text-4xl font-bold">{{ section.settings.title }}</h2>
+      <p class="text-muted-foreground">{{ section.settings.subtitle }}</p>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+      {%- for block in section.blocks -%}
+        <div class="rounded-2xl border bg-background text-center" {{ block.shopify_attributes }} style="border-color: var(--color-border); padding: 1.5rem 1rem; transition: transform 0.2s ease, box-shadow 0.2s ease;">
+          <div style="font-size: 2rem; margin-bottom: 0.75rem;">{{ block.settings.icon }}</div>
+          <h3 class="text-sm font-bold" style="margin-bottom: 0.25rem;">{{ block.settings.title }}</h3>
+          <p class="text-xs text-muted-foreground">{{ block.settings.description }}</p>
+        </div>
+      {%- endfor -%}
+    </div>
+
+    {%- if section.settings.cta_label != blank -%}
+      <div class="text-center" style="margin-top: 2rem;">
+        <a href="{{ section.settings.cta_url }}" class="btn btn-lg">{{ section.settings.cta_label }}</a>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+<style>
+  #features .grid > div:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Avantages",
+  "tag": "section",
+  "class": "features-section",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Titre", "default": "Pourquoi les Francais adoptent le ventilateur LED Hushly" },
+    { "type": "text", "id": "subtitle", "label": "Sous-titre", "default": "Tout ce qu'il faut. Rien de superflu." },
+    { "type": "text", "id": "cta_label", "label": "Texte du bouton CTA", "default": "Decouvrir le ventilateur LED" },
+    { "type": "text", "id": "cta_url", "label": "URL du bouton CTA", "default": "#product-hero" }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Avantage",
+      "settings": [
+        { "type": "text", "id": "icon", "label": "Emoji", "default": "💡" },
+        { "type": "text", "id": "title", "label": "Titre", "default": "LED 30W dimmable" },
+        { "type": "text", "id": "description", "label": "Description", "default": "3 couleurs de lumiere : blanc chaud, neutre, froid." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Avantages",
+      "blocks": [
+        { "type": "benefit", "settings": { "icon": "💡", "title": "LED 30W dimmable", "description": "3 couleurs de lumiere : blanc chaud, neutre, froid. Intensite reglable." } },
+        { "type": "benefit", "settings": { "icon": "🌀", "title": "3 vitesses de ventilation", "description": "Du souffle leger a la brise fraiche. Silencieux a toutes les vitesses." } },
+        { "type": "benefit", "settings": { "icon": "🔌", "title": "Culot E27 standard", "description": "Se visse dans n'importe quelle douille E27 existante." } },
+        { "type": "benefit", "settings": { "icon": "⏱️", "title": "Installation 10 secondes", "description": "Pas de perceuse, pas de fils, pas d'electricien." } },
+        { "type": "benefit", "settings": { "icon": "📱", "title": "Telecommande incluse", "description": "Controle lumiere + ventilateur sans se lever." } },
+        { "type": "benefit", "settings": { "icon": "🔇", "title": "Ultra silencieux", "description": "Moteur brushless — aucun bruit perceptible." } },
+        { "type": "benefit", "settings": { "icon": "💰", "title": "Economique", "description": "LED basse consommation, pas de clim, facture allegee." } },
+        { "type": "benefit", "settings": { "icon": "🚚", "title": "Livraison offerte", "description": "France metropolitaine, expedie sous 48h." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

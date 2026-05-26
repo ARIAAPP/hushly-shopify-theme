@@ -10,6 +10,11 @@
     },
     "currency": {
       "symbol": "€"
+    },
+    "pagination": {
+      "previous": "Previous",
+      "next": "Next",
+      "page": "Page {{ number }}"
     }
   },
   "products": {
@@ -54,11 +59,11 @@
     "track_order": "Track my order"
   },
   "newsletter": {
-    "title": "Stay in the night",
-    "subtitle": "Sleep tips, new arrivals, VIP offers. One email per month max.",
+    "title": "Get 5€ off your first order",
+    "subtitle": "Sign up and receive your promo code by email.",
     "email_placeholder": "you@email.com",
-    "submit": "Subscribe",
-    "success": "Thanks! We'll be in touch soon."
+    "submit": "Get my code",
+    "success": "Thanks! Check your inbox."
   },
   "footer": {
     "copyright": "© {{ year }} {{ shop_name }}. All rights reserved."

@@ -1,29 +1,48 @@
+{%- comment -%}
+  ============================================================
+  Exit Intent Popup — Hushly
+  -10% code FRAIS10, desktop mouse-leave + mobile 30s idle
+  ============================================================
+{%- endcomment -%}
+
 <div class="exit-popup" data-exit-popup>
   <div class="exit-popup-card">
     <button type="button" class="exit-popup-close" aria-label="Fermer" data-exit-close>&times;</button>
-    <div class="exit-popup-emoji">🌙</div>
-    <h3>Tu pars deja ?</h3>
-    <p>Profite de <strong style="color:var(--color-primary); font-size:1.05em;">-10% sur ton 1er Hushly</strong><br><span style="font-size:0.9em;">avec le code <strong>NUIT10</strong></span></p>
-    <div class="exit-gift-badge">
-      <span style="font-size:1.5rem;">🎧</span>
-      <span style="font-weight:700;">-10% sur ta commande</span>
+
+    <div class="exit-popup-emoji">&#128168;</div>
+
+    <h3>Attendez&nbsp;!</h3>
+
+    <p>
+      Profitez de <strong style="color: var(--color-primary); font-size: 1.05em;">-10%</strong> sur votre 1&egrave;re commande<br>
+      <span style="font-size: 0.9em;">avec le code</span>
+    </p>
+
+    <div class="exit-code-box">
+      <span>FRAIS10</span>
+      <button type="button" data-copy-code style="background: none; border: 0; cursor: pointer; color: var(--color-primary); font-size: 0.75rem; font-weight: 600;" aria-label="Copier le code">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+      </button>
     </div>
-    <a href="/discount/NUIT10?redirect=/" class="btn btn-block btn-lg" data-exit-cta>J'en profite</a>
-    <button type="button" class="exit-popup-close-link" data-exit-close style="background:none; border:0; color:var(--color-muted-fg); font-size:0.75rem; margin-top:0.75rem; cursor:pointer; text-decoration:underline;">Non merci</button>
+
+    <a href="/discount/FRAIS10?redirect=/" class="btn btn-block btn-lg" data-exit-cta>J'en profite</a>
+
+    <button type="button" data-exit-close style="background: none; border: 0; color: var(--color-muted-fg); font-size: 0.75rem; margin-top: 0.75rem; cursor: pointer; text-decoration: underline; display: block; width: 100%; text-align: center;">Non merci</button>
   </div>
 </div>
 
 <script>
 (function() {
-  const popup = document.querySelector('[data-exit-popup]');
+  var popup = document.querySelector('[data-exit-popup]');
   if (!popup) return;
-  const STORAGE_KEY = 'hushly-exit-popup-shown';
-  const closeBtns = popup.querySelectorAll('[data-exit-close]');
+  var STORAGE_KEY = 'hushly-exit-popup-shown';
+  var closeBtns = popup.querySelectorAll('[data-exit-close]');
+  var copyBtn = popup.querySelector('[data-copy-code]');
 
-  // Don't show if already shown this session
+  /* Don't show if already shown this session */
   if (sessionStorage.getItem(STORAGE_KEY)) return;
 
-  let shown = false;
+  var shown = false;
 
   function show() {
     if (shown) return;
@@ -34,24 +53,48 @@
   }
   function hide() { popup.dataset.open = 'false'; }
 
-  closeBtns.forEach(b => b.addEventListener('click', hide));
-  popup.addEventListener('click', (e) => { if (e.target === popup) hide(); });
+  closeBtns.forEach(function(b) { b.addEventListener('click', hide); });
+  popup.addEventListener('click', function(e) { if (e.target === popup) hide(); });
 
-  // Desktop only: exit intent after 8s dwell time
-  const isMobile = !window.matchMedia('(min-width: 768px)').matches;
-  if (isMobile) return;
+  /* Copy code to clipboard */
+  if (copyBtn) {
+    copyBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText('FRAIS10');
+      }
+    });
+  }
 
-  const pageEnter = Date.now();
-  const DWELL_MS = 8000;
+  /* Desktop: trigger on mouse leave (top of viewport) */
+  var isMobile = !window.matchMedia('(min-width: 768px)').matches;
 
-  document.addEventListener('mouseleave', (e) => {
-    if (e.clientY <= 0 && (Date.now() - pageEnter) >= DWELL_MS) {
-      show();
+  if (!isMobile) {
+    var pageEnter = Date.now();
+    var DWELL_MS = 8000;
+    document.addEventListener('mouseleave', function(e) {
+      if (e.clientY <= 0 && (Date.now() - pageEnter) >= DWELL_MS) {
+        show();
+      }
+    });
+  } else {
+    /* Mobile: 30s idle */
+    var idleTimer = null;
+    var IDLE_MS = 30000;
+
+    function resetIdle() {
+      clearTimeout(idleTimer);
+      idleTimer = setTimeout(show, IDLE_MS);
     }
-  });
+    ['scroll', 'touchstart', 'click'].forEach(function(evt) {
+      document.addEventListener(evt, resetIdle, { passive: true });
+    });
+    resetIdle();
+  }
 
-  // Escape closes
-  document.addEventListener('keydown', (e) => {
+  /* Escape closes */
+  document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') hide();
   });
 })();

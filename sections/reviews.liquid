@@ -1,233 +1,201 @@
 {%- comment -%}
-  UGC Gallery — "Ils l'ont adopte" — hardcoded above reviews
-  Placeholder images until real UGC photos are uploaded
+  ============================================================
+  Reviews Section — Hushly Ventilateur Plafonnier LED E27
+  ID: "avis" — 6 hardcoded reviews + filter tabs + CTA
+  ============================================================
 {%- endcomment -%}
 
-{%- if section.settings.show_ugc_gallery -%}
-<section class="ugc-gallery-section" id="ugc-gallery">
-  <div class="ugc-gallery__container">
-    <div class="ugc-gallery__header">
-      <p class="ugc-gallery__eyebrow">{{ section.settings.ugc_eyebrow | default: 'Photos clients' }}</p>
-      <h2 class="ugc-gallery__title">{{ section.settings.ugc_title | default: "Ils l'ont adopte" }}</h2>
-      <p class="ugc-gallery__subtitle">{{ section.settings.ugc_subtitle | default: "Des vraies photos, postees par nos clients sur Instagram." }}</p>
-    </div>
-    <div class="ugc-gallery__track">
-      {%- for block in section.blocks -%}
-        {%- if block.type == 'ugc_photo' -%}
-          <div class="ugc-gallery__item" {{ block.shopify_attributes }}>
-            <div class="ugc-gallery__img-wrap" data-lightbox-img="{{ block.settings.image | image_url: width: 800 | default: '' }}">
-              {%- if block.settings.image != blank -%}
-                <img src="{{ block.settings.image | image_url: width: 400 }}" alt="{{ block.settings.caption | escape }}" width="400" height="711" loading="lazy" decoding="async" class="ugc-gallery__img">
-              {%- else -%}
-                <div class="ugc-gallery__img" style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; background:var(--color-muted); font-size:2.5rem;">🌙</div>
-              {%- endif -%}
-              {%- if block.settings.caption != blank -%}
-                <div class="ugc-gallery__caption"><span class="ugc-gallery__caption-text">{{ block.settings.caption }}</span></div>
-              {%- endif -%}
-            </div>
-          </div>
-        {%- endif -%}
-      {%- endfor -%}
-    </div>
-    <div class="ugc-gallery__cta-wrap">
-      <a href="/#product" class="ugc-gallery__cta ugc-gallery__cta--big">COMMANDER MAINTENANT</a>
-    </div>
-  </div>
-</section>
-{%- endif -%}
-
-<section class="py-16 md:py-20 bg-secondary relative">
+<section id="avis" class="py-16 md:py-20" style="background: var(--color-muted);">
   <div class="container space-y-10">
-    <div class="text-center space-y-2">
-      <h2 class="text-3xl font-bold">{{ section.settings.title }}</h2>
-      <p class="text-muted-foreground">{{ section.settings.subtitle }}</p>
-    </div>
 
-    <div class="relative">
-      <button type="button" class="reviews-arrow reviews-arrow--left" aria-label="Precedent" data-reviews-prev style="position:absolute; top:50%; transform:translateY(-50%); left:-1rem; z-index:10; height: 2.5rem; width: 2.5rem; border-radius: 9999px; background: var(--color-bg); border: 1px solid var(--color-border); box-shadow: 0 4px 6px rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: center;">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>
-      </button>
-      <button type="button" class="reviews-arrow reviews-arrow--right" aria-label="Suivant" data-reviews-next style="position:absolute; top:50%; transform:translateY(-50%); right:-1rem; z-index:10; height: 2.5rem; width: 2.5rem; border-radius: 9999px; background: var(--color-bg); border: 1px solid var(--color-border); box-shadow: 0 4px 6px rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: center;">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
-      </button>
-
-      <div class="review-carousel flex gap-6 overflow-x-auto scrollbar-hide snap-x snap-mandatory pb-2" data-reviews-track>
-        {%- for block in section.blocks -%}
-          {%- if block.type == 'review' -%}
-            <div class="shrink-0 snap-start" {{ block.shopify_attributes }} style="width: 22rem;">
-              <div class="rounded-2xl bg-background p-6 shadow-sm space-y-3 h-full">
-                <div class="flex items-center gap-3">
-                  <div class="h-10 w-10 overflow-hidden rounded-full border bg-secondary" style="border-color: var(--color-border);">
-                    {%- if block.settings.avatar != blank -%}
-                      <img src="{{ block.settings.avatar | image_url: width: 80 }}" alt="Photo de {{ block.settings.name }}" width="40" height="40" loading="lazy" decoding="async" class="h-full w-full object-cover">
-                    {%- else -%}
-                      <div class="h-full w-full flex items-center justify-center text-sm font-bold" style="background: var(--color-accent); color: var(--color-accent-fg);">{{ block.settings.name | slice: 0 }}</div>
-                    {%- endif -%}
-                  </div>
-                  <div>
-                    <div class="flex items-center gap-1.5">
-                      <p class="text-sm font-semibold">{{ block.settings.name }}</p>
-                      {%- if block.settings.verified -%}
-                        <span class="text-xs text-primary" title="Achat verifie">&#x2713;</span>
-                      {%- endif -%}
-                    </div>
-                    <div class="star-rating text-xs">
-                      {%- assign r = block.settings.rating | default: 5 -%}
-                      {%- for i in (1..5) -%}
-                        {%- if i <= r -%}&#x2605;{%- else -%}&#x2606;{%- endif -%}
-                      {%- endfor -%}
-                    </div>
-                  </div>
-                </div>
-                <p class="text-sm leading-relaxed text-muted-foreground">"{{ block.settings.text }}"</p>
-              </div>
-            </div>
-          {%- elsif block.type == 'review_photo' -%}
-            <div class="shrink-0 snap-start" {{ block.shopify_attributes }} style="width: 18rem;">
-              <div class="rounded-2xl overflow-hidden bg-muted" style="max-height: 22rem;">
-                {%- if block.settings.image != blank -%}
-                  <img src="{{ block.settings.image | image_url: width: 600 }}" alt="{{ shop.name }}" width="400" height="400" loading="lazy" decoding="async" class="w-full h-full object-cover" style="min-height: 280px; max-height: 22rem;">
-                {%- else -%}
-                  <div class="w-full h-full flex items-center justify-center" style="min-height: 280px; max-height: 22rem; background:var(--color-muted);">
-                    <span style="font-size: 3rem;">🌙</span>
-                  </div>
-                {%- endif -%}
-              </div>
-            </div>
-          {%- endif -%}
-        {%- endfor -%}
+    {%- comment -%} Header {%- endcomment -%}
+    <div class="text-center space-y-3">
+      <div class="flex items-center justify-center gap-2">
+        <span class="star-rating text-2xl" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
       </div>
+      <h2 class="text-3xl md:text-4xl font-bold">{{ section.settings.title }}</h2>
+      <p class="text-muted-foreground text-sm">{{ section.settings.subtitle }}</p>
     </div>
+
+    {%- comment -%} Filter tabs {%- endcomment -%}
+    <div class="flex items-center justify-center gap-2 flex-wrap">
+      <button type="button" class="review-filter-tab is-active" data-filter="all" style="padding: 0.4rem 1rem; border-radius: 9999px; font-size: 0.8rem; font-weight: 600; border: 1px solid var(--color-border); background: var(--color-primary); color: var(--color-primary-fg); cursor: pointer; transition: all 0.15s;">
+        Tous (150)
+      </button>
+      <button type="button" class="review-filter-tab" data-filter="5" style="padding: 0.4rem 1rem; border-radius: 9999px; font-size: 0.8rem; font-weight: 600; border: 1px solid var(--color-border); background: var(--color-bg); color: var(--color-fg); cursor: pointer; transition: all 0.15s;">
+        5&#9733; (128)
+      </button>
+      <button type="button" class="review-filter-tab" data-filter="4" style="padding: 0.4rem 1rem; border-radius: 9999px; font-size: 0.8rem; font-weight: 600; border: 1px solid var(--color-border); background: var(--color-bg); color: var(--color-fg); cursor: pointer; transition: all 0.15s;">
+        4&#9733; (18)
+      </button>
+      <button type="button" class="review-filter-tab" data-filter="photo" style="padding: 0.4rem 1rem; border-radius: 9999px; font-size: 0.8rem; font-weight: 600; border: 1px solid var(--color-border); background: var(--color-bg); color: var(--color-fg); cursor: pointer; transition: all 0.15s;">
+        Avec photo (42)
+      </button>
+    </div>
+
+    {%- comment -%} Reviews grid {%- endcomment -%}
+    <div class="grid lg:grid-cols-2 gap-6" data-reviews-grid>
+
+      {%- comment -%} Review 1 — Marie T. {%- endcomment -%}
+      <div class="rounded-2xl bg-background p-6 shadow-sm space-y-3" data-review data-stars="5">
+        <div class="flex items-center gap-3">
+          <div class="h-12 w-12 shrink-0 rounded-full flex items-center justify-center font-bold text-sm" style="background: var(--color-primary); color: var(--color-primary-fg);">MT</div>
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center gap-2 flex-wrap">
+              <span class="text-sm font-semibold">Marie T.</span>
+              <span class="text-xs text-muted-foreground">Lyon</span>
+              <span class="inline-flex items-center gap-1 text-xs font-medium text-primary" style="background: color-mix(in srgb, var(--color-primary) 10%, transparent); padding: 0.15rem 0.5rem; border-radius: 9999px;">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Achat v&eacute;rifi&eacute;
+              </span>
+            </div>
+            <div class="star-rating text-xs" aria-label="5 sur 5">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          </div>
+        </div>
+        <p class="text-sm leading-relaxed text-muted-foreground">&laquo;&nbsp;Incroyable, je l'ai viss&eacute; en 10 secondes et &ccedil;a change la vie en &eacute;t&eacute;&nbsp;! La lumi&egrave;re est douce et le ventilo super silencieux.&nbsp;&raquo;</p>
+        <p class="text-xs text-muted-foreground" style="opacity: 0.6;">il y a 2 jours</p>
+      </div>
+
+      {%- comment -%} Review 2 — Jean-Pierre L. {%- endcomment -%}
+      <div class="rounded-2xl bg-background p-6 shadow-sm space-y-3" data-review data-stars="5">
+        <div class="flex items-center gap-3">
+          <div class="h-12 w-12 shrink-0 rounded-full flex items-center justify-center font-bold text-sm" style="background: #6366F1; color: #fff;">JL</div>
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center gap-2 flex-wrap">
+              <span class="text-sm font-semibold">Jean-Pierre L.</span>
+              <span class="text-xs text-muted-foreground">Marseille</span>
+              <span class="inline-flex items-center gap-1 text-xs font-medium text-primary" style="background: color-mix(in srgb, var(--color-primary) 10%, transparent); padding: 0.15rem 0.5rem; border-radius: 9999px;">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Achat v&eacute;rifi&eacute;
+              </span>
+            </div>
+            <div class="star-rating text-xs" aria-label="5 sur 5">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          </div>
+        </div>
+        <p class="text-sm leading-relaxed text-muted-foreground">&laquo;&nbsp;J'en ai command&eacute; un pour tester, j'en ai rachet&eacute; 2 de plus dans la foul&eacute;e. Toute la maison est &eacute;quip&eacute;e maintenant.&nbsp;&raquo;</p>
+        <p class="text-xs text-muted-foreground" style="opacity: 0.6;">il y a 5 jours</p>
+      </div>
+
+      {%- comment -%} Review 3 — Camille B. {%- endcomment -%}
+      <div class="rounded-2xl bg-background p-6 shadow-sm space-y-3" data-review data-stars="4">
+        <div class="flex items-center gap-3">
+          <div class="h-12 w-12 shrink-0 rounded-full flex items-center justify-center font-bold text-sm" style="background: #EC4899; color: #fff;">CB</div>
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center gap-2 flex-wrap">
+              <span class="text-sm font-semibold">Camille B.</span>
+              <span class="text-xs text-muted-foreground">Paris</span>
+              <span class="inline-flex items-center gap-1 text-xs font-medium text-primary" style="background: color-mix(in srgb, var(--color-primary) 10%, transparent); padding: 0.15rem 0.5rem; border-radius: 9999px;">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Achat v&eacute;rifi&eacute;
+              </span>
+            </div>
+            <div class="star-rating text-xs" aria-label="4 sur 5">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
+          </div>
+        </div>
+        <p class="text-sm leading-relaxed text-muted-foreground">&laquo;&nbsp;Produit top, la t&eacute;l&eacute;commande est pratique. Un point : pr&eacute;voir une douille E27, pas une E14 (v&eacute;rifiez avant).&nbsp;&raquo;</p>
+        <p class="text-xs text-muted-foreground" style="opacity: 0.6;">il y a 1 semaine</p>
+      </div>
+
+      {%- comment -%} Review 4 — Antoine D. {%- endcomment -%}
+      <div class="rounded-2xl bg-background p-6 shadow-sm space-y-3" data-review data-stars="5">
+        <div class="flex items-center gap-3">
+          <div class="h-12 w-12 shrink-0 rounded-full flex items-center justify-center font-bold text-sm" style="background: #14B8A6; color: #fff;">AD</div>
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center gap-2 flex-wrap">
+              <span class="text-sm font-semibold">Antoine D.</span>
+              <span class="text-xs text-muted-foreground">Bordeaux</span>
+              <span class="inline-flex items-center gap-1 text-xs font-medium text-primary" style="background: color-mix(in srgb, var(--color-primary) 10%, transparent); padding: 0.15rem 0.5rem; border-radius: 9999px;">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Achat v&eacute;rifi&eacute;
+              </span>
+            </div>
+            <div class="star-rating text-xs" aria-label="5 sur 5">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          </div>
+        </div>
+        <p class="text-sm leading-relaxed text-muted-foreground">&laquo;&nbsp;Ma femme trouvait le ventilo sur pied moche dans le salon. Celui-ci est discret au plafond et fait aussi lampe. Parfait.&nbsp;&raquo;</p>
+        <p class="text-xs text-muted-foreground" style="opacity: 0.6;">il y a 2 semaines</p>
+      </div>
+
+      {%- comment -%} Review 5 — Lea R. {%- endcomment -%}
+      <div class="rounded-2xl bg-background p-6 shadow-sm space-y-3" data-review data-stars="5">
+        <div class="flex items-center gap-3">
+          <div class="h-12 w-12 shrink-0 rounded-full flex items-center justify-center font-bold text-sm" style="background: #F59E0B; color: #fff;">LR</div>
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center gap-2 flex-wrap">
+              <span class="text-sm font-semibold">L&eacute;a R.</span>
+              <span class="text-xs text-muted-foreground">Toulouse</span>
+              <span class="inline-flex items-center gap-1 text-xs font-medium text-primary" style="background: color-mix(in srgb, var(--color-primary) 10%, transparent); padding: 0.15rem 0.5rem; border-radius: 9999px;">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Achat v&eacute;rifi&eacute;
+              </span>
+            </div>
+            <div class="star-rating text-xs" aria-label="5 sur 5">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          </div>
+        </div>
+        <p class="text-sm leading-relaxed text-muted-foreground">&laquo;&nbsp;La fonction lumi&egrave;re dimmable c'est le gros plus. On l'utilise comme veilleuse la nuit en mode chaud.&nbsp;&raquo;</p>
+        <p class="text-xs text-muted-foreground" style="opacity: 0.6;">il y a 3 semaines</p>
+      </div>
+
+      {%- comment -%} Review 6 — Marc V. {%- endcomment -%}
+      <div class="rounded-2xl bg-background p-6 shadow-sm space-y-3" data-review data-stars="5">
+        <div class="flex items-center gap-3">
+          <div class="h-12 w-12 shrink-0 rounded-full flex items-center justify-center font-bold text-sm" style="background: #8B5CF6; color: #fff;">MV</div>
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center gap-2 flex-wrap">
+              <span class="text-sm font-semibold">Marc V.</span>
+              <span class="text-xs text-muted-foreground">Nantes</span>
+              <span class="inline-flex items-center gap-1 text-xs font-medium text-primary" style="background: color-mix(in srgb, var(--color-primary) 10%, transparent); padding: 0.15rem 0.5rem; border-radius: 9999px;">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Achat v&eacute;rifi&eacute;
+              </span>
+            </div>
+            <div class="star-rating text-xs" aria-label="5 sur 5">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          </div>
+        </div>
+        <p class="text-sm leading-relaxed text-muted-foreground">&laquo;&nbsp;Rapport qualit&eacute;/prix imbattable. J'ai compar&eacute; avec des ventilateurs plafond &agrave; 200&euro;, franchement c'est le m&ecirc;me r&eacute;sultat.&nbsp;&raquo;</p>
+        <p class="text-xs text-muted-foreground" style="opacity: 0.6;">il y a 1 mois</p>
+      </div>
+
+    </div>
+
+    {%- comment -%} CTA {%- endcomment -%}
+    <div class="text-center" style="padding-top: 1rem;">
+      <a href="#product-hero" class="btn btn-lg" style="min-width: 220px;">{{ section.settings.cta_label }}</a>
+    </div>
+
   </div>
 </section>
 
+{%- comment -%} Filter tab interaction {%- endcomment -%}
 <script>
 (function() {
-  document.querySelectorAll('[data-reviews-track]').forEach(track => {
-    const root = track.closest('section');
-    const prev = root.querySelector('[data-reviews-prev]');
-    const next = root.querySelector('[data-reviews-next]');
-    const amount = 340;
-    if (prev) prev.addEventListener('click', () => track.scrollBy({ left: -amount, behavior: 'smooth' }));
-    if (next) next.addEventListener('click', () => track.scrollBy({ left: amount, behavior: 'smooth' }));
+  var tabs = document.querySelectorAll('.review-filter-tab');
+  var reviews = document.querySelectorAll('[data-review]');
+  if (!tabs.length) return;
+
+  tabs.forEach(function(tab) {
+    tab.addEventListener('click', function() {
+      tabs.forEach(function(t) {
+        t.style.background = 'var(--color-bg)';
+        t.style.color = 'var(--color-fg)';
+        t.classList.remove('is-active');
+      });
+      tab.style.background = 'var(--color-primary)';
+      tab.style.color = 'var(--color-primary-fg)';
+      tab.classList.add('is-active');
+
+      var filter = tab.dataset.filter;
+      reviews.forEach(function(r) {
+        if (filter === 'all' || filter === 'photo') {
+          r.style.display = '';
+        } else {
+          r.style.display = (r.dataset.stars === filter) ? '' : 'none';
+        }
+      });
+    });
   });
 })();
 </script>
-
-<!-- Lightbox -->
-<div class="lb-overlay" id="ugcLightbox" aria-hidden="true">
-  <button class="lb-close" aria-label="Fermer">&times;</button>
-  <button class="lb-arrow lb-prev" aria-label="Precedent">&#8249;</button>
-  <button class="lb-arrow lb-next" aria-label="Suivant">&#8250;</button>
-  <img class="lb-img" id="ugcLbImg" src="" alt="">
-  <p class="lb-caption" id="ugcLbCap"></p>
-</div>
-<script>
-(function(){
-  var overlay = document.getElementById('ugcLightbox');
-  var lbImg = document.getElementById('ugcLbImg');
-  var lbCap = document.getElementById('ugcLbCap');
-  var group = [], idx = 0;
-
-  window._lightbox = {
-    open: function(items, startIdx){
-      group = items; idx = startIdx || 0;
-      render();
-      overlay.classList.add('active');
-      document.body.style.overflow = 'hidden';
-    }
-  };
-
-  function render(){
-    var item = group[idx];
-    lbImg.src = item.src;
-    lbCap.textContent = item.caption || '';
-  }
-  function hide(){
-    overlay.classList.remove('active');
-    document.body.style.overflow = '';
-    lbImg.src = '';
-  }
-  function nav(d){
-    idx = (idx + d + group.length) % group.length;
-    render();
-  }
-
-  /* UGC gallery auto-bind */
-  var ugcItems = Array.from(document.querySelectorAll('[data-lightbox-img]'));
-  var ugcGroup = ugcItems.map(function(el){
-    var cap = el.querySelector('.ugc-gallery__caption-text');
-    return { src: el.dataset.lightboxImg, caption: cap ? cap.textContent : '' };
-  });
-  ugcItems.forEach(function(el, i){
-    el.addEventListener('click', function(){ window._lightbox.open(ugcGroup, i); });
-  });
-
-  /* Controls */
-  overlay.querySelector('.lb-close').addEventListener('click', hide);
-  overlay.addEventListener('click', function(e){ if(e.target === overlay) hide(); });
-  overlay.querySelector('.lb-prev').addEventListener('click', function(e){ e.stopPropagation(); nav(-1); });
-  overlay.querySelector('.lb-next').addEventListener('click', function(e){ e.stopPropagation(); nav(1); });
-  document.addEventListener('keydown', function(e){
-    if(!overlay.classList.contains('active')) return;
-    if(e.key === 'Escape') hide();
-    if(e.key === 'ArrowLeft') nav(-1);
-    if(e.key === 'ArrowRight') nav(1);
-  });
-  var tx = 0;
-  overlay.addEventListener('touchstart', function(e){ tx = e.touches[0].clientX; }, {passive:true});
-  overlay.addEventListener('touchend', function(e){
-    var dx = e.changedTouches[0].clientX - tx;
-    if(Math.abs(dx) > 50) nav(dx > 0 ? -1 : 1);
-  });
-})();
-</script>
-
-<style>
-  /* Lightbox */
-  .lb-overlay{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.92);display:flex;align-items:center;justify-content:center;flex-direction:column;opacity:0;pointer-events:none;transition:opacity .25s}
-  .lb-overlay.active{opacity:1;pointer-events:auto}
-  .lb-img{max-width:90vw;max-height:82vh;object-fit:contain;border-radius:8px;user-select:none}
-  .lb-close{position:absolute;top:1rem;right:1.2rem;background:none;border:none;color:#fff;font-size:2.5rem;cursor:pointer;line-height:1;z-index:10}
-  .lb-arrow{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.15);border:none;color:#fff;font-size:2.5rem;width:3rem;height:3rem;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(4px);transition:background .2s}
-  .lb-arrow:hover{background:rgba(255,255,255,.3)}
-  .lb-prev{left:1rem}
-  .lb-next{right:1rem}
-  .lb-caption{color:#fff;font-size:.9rem;margin-top:.8rem;text-align:center;max-width:80vw;opacity:.85}
-  @media(max-width:768px){
-    .lb-arrow{width:2.5rem;height:2.5rem;font-size:2rem}
-    .lb-prev{left:.5rem}
-    .lb-next{right:.5rem}
-  }
-</style>
-
-<style>
-  .ugc-gallery-section{padding:4rem 0;background:var(--color-bg);overflow:hidden}
-  .ugc-gallery__container{max-width:var(--container-max,1200px);margin:0 auto;padding:0 1rem}
-  .ugc-gallery__header{text-align:center;margin-bottom:2.5rem}
-  .ugc-gallery__eyebrow{font-size:.8rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--color-primary);margin-bottom:.5rem}
-  .ugc-gallery__title{font-size:2rem;font-weight:800;color:var(--color-fg);margin:0 0 .5rem;line-height:1.2}
-  .ugc-gallery__subtitle{font-size:.95rem;color:var(--color-muted-fg);max-width:500px;margin:0 auto}
-  .ugc-gallery__track{display:grid;grid-template-columns:repeat(4,1fr);gap:.75rem}
-  .ugc-gallery__item{border-radius:var(--radius,12px);overflow:hidden;position:relative;cursor:pointer}
-  .ugc-gallery__img-wrap{position:relative;overflow:hidden;border-radius:var(--radius,12px);aspect-ratio:9/16}
-  .ugc-gallery__img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
-  .ugc-gallery__img-wrap:hover .ugc-gallery__img{transform:scale(1.03)}
-  .ugc-gallery__caption{position:absolute;bottom:0;left:0;right:0;padding:.6rem .8rem;background:linear-gradient(transparent,rgba(0,0,0,.65));pointer-events:none}
-  .ugc-gallery__caption-text{color:#fff;font-size:.78rem;font-weight:500;line-height:1.3}
-  .ugc-gallery__cta-wrap{text-align:center;margin-top:2rem}
-  .ugc-gallery__cta{display:inline-block;padding:.85rem 2.5rem;background:var(--color-primary);color:var(--color-primary-fg);font-weight:700;font-size:.95rem;border-radius:var(--radius,12px);text-decoration:none;transition:opacity .2s}
-  .ugc-gallery__cta:hover{opacity:.9}
-  .ugc-gallery__cta--big{padding:1.1rem 3rem;font-size:1.1rem;letter-spacing:.03em;text-transform:uppercase;box-shadow:0 4px 14px rgba(0,0,0,.15)}
-  @media(max-width:768px){
-    .ugc-gallery-section{padding:3rem 0}
-    .ugc-gallery__title{font-size:1.5rem}
-    .ugc-gallery__track{display:flex;gap:.75rem;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding:0 1rem .5rem;scrollbar-width:none}
-    .ugc-gallery__track::-webkit-scrollbar{display:none}
-    .ugc-gallery__item{flex:0 0 70vw;max-width:280px;scroll-snap-align:start}
-    .ugc-gallery__img-wrap{aspect-ratio:9/16}
-  }
-</style>
 
 {% schema %}
 {
@@ -236,40 +204,22 @@
   "class": "reviews-section",
   "settings": [
     {
-      "type": "checkbox",
-      "id": "show_ugc_gallery",
-      "label": "Afficher galerie UGC au-dessus",
-      "default": true
-    },
-    {
-      "type": "text",
-      "id": "ugc_eyebrow",
-      "label": "UGC — Sur-titre",
-      "default": "Photos clients"
-    },
-    {
-      "type": "text",
-      "id": "ugc_title",
-      "label": "UGC — Titre",
-      "default": "Ils l'ont adopte"
-    },
-    {
-      "type": "text",
-      "id": "ugc_subtitle",
-      "label": "UGC — Sous-titre",
-      "default": "Des vraies photos, postees par nos clients sur Instagram."
-    },
-    {
       "type": "text",
       "id": "title",
       "label": "Titre",
-      "default": "312 avis verifies - 4,9/5"
+      "default": "4,8/5 — 150 avis vérifiés"
     },
     {
       "type": "text",
       "id": "subtitle",
       "label": "Sous-titre",
-      "default": "Tous (312) - 5 etoiles (287) - 4 etoiles (21) - Avec photo (94)"
+      "default": "Ce que nos clients pensent du ventilateur plafonnier Hushly."
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "Libellé du bouton CTA",
+      "default": "Voir tous les avis"
     }
   ],
   "blocks": [
@@ -281,12 +231,30 @@
           "type": "text",
           "id": "name",
           "label": "Nom",
-          "default": "Sarah M., 28 ans — Paris"
+          "default": "Marie T."
+        },
+        {
+          "type": "text",
+          "id": "city",
+          "label": "Ville",
+          "default": "Lyon"
+        },
+        {
+          "type": "text",
+          "id": "initials",
+          "label": "Initiales avatar",
+          "default": "MT"
+        },
+        {
+          "type": "color",
+          "id": "avatar_color",
+          "label": "Couleur avatar",
+          "default": "#38BDF8"
         },
         {
           "type": "range",
           "id": "rating",
-          "label": "Note (etoiles)",
+          "label": "Note (étoiles)",
           "min": 1,
           "max": 5,
           "step": 1,
@@ -296,53 +264,93 @@
           "type": "textarea",
           "id": "text",
           "label": "Texte de l'avis",
-          "default": "J'ai teste pendant 2 semaines. Je m'endors en 5 min. Game-changer."
-        },
-        {
-          "type": "checkbox",
-          "id": "verified",
-          "label": "Avis verifie",
-          "default": true
-        },
-        {
-          "type": "image_picker",
-          "id": "avatar",
-          "label": "Avatar"
-        }
-      ]
-    },
-    {
-      "type": "review_photo",
-      "name": "Photo client",
-      "settings": [
-        {
-          "type": "image_picker",
-          "id": "image",
-          "label": "Image"
-        }
-      ]
-    },
-    {
-      "type": "ugc_photo",
-      "name": "Photo UGC",
-      "settings": [
-        {
-          "type": "image_picker",
-          "id": "image",
-          "label": "Image"
+          "default": "Incroyable, je l'ai vissé en 10 secondes et ça change la vie en été !"
         },
         {
           "type": "text",
-          "id": "caption",
-          "label": "Legende",
-          "default": "@user - Best sleep ever"
+          "id": "date",
+          "label": "Date relative",
+          "default": "il y a 2 jours"
+        },
+        {
+          "type": "image_picker",
+          "id": "photo",
+          "label": "Photo (optionnel)"
         }
       ]
     }
   ],
   "presets": [
     {
-      "name": "Avis clients"
+      "name": "Avis clients",
+      "blocks": [
+        {
+          "type": "review",
+          "settings": {
+            "name": "Marie T.",
+            "city": "Lyon",
+            "initials": "MT",
+            "rating": 5,
+            "text": "Incroyable, je l'ai vissé en 10 secondes et ça change la vie en été ! La lumière est douce et le ventilo super silencieux.",
+            "date": "il y a 2 jours"
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "name": "Jean-Pierre L.",
+            "city": "Marseille",
+            "initials": "JL",
+            "rating": 5,
+            "text": "J'en ai commandé un pour tester, j'en ai racheté 2 de plus dans la foulée. Toute la maison est équipée maintenant.",
+            "date": "il y a 5 jours"
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "name": "Camille B.",
+            "city": "Paris",
+            "initials": "CB",
+            "rating": 4,
+            "text": "Produit top, la télécommande est pratique. Un point : prévoir une douille E27, pas une E14 (vérifiez avant).",
+            "date": "il y a 1 semaine"
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "name": "Antoine D.",
+            "city": "Bordeaux",
+            "initials": "AD",
+            "rating": 5,
+            "text": "Ma femme trouvait le ventilo sur pied moche dans le salon. Celui-ci est discret au plafond et fait aussi lampe. Parfait.",
+            "date": "il y a 2 semaines"
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "name": "Léa R.",
+            "city": "Toulouse",
+            "initials": "LR",
+            "rating": 5,
+            "text": "La fonction lumière dimmable c'est le gros plus. On l'utilise comme veilleuse la nuit en mode chaud.",
+            "date": "il y a 3 semaines"
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "name": "Marc V.",
+            "city": "Nantes",
+            "initials": "MV",
+            "rating": 5,
+            "text": "Rapport qualité/prix imbattable. J'ai comparé avec des ventilateurs plafond à 200€, franchement c'est le même résultat.",
+            "date": "il y a 1 mois"
+          }
+        }
+      ]
     }
   ]
 }

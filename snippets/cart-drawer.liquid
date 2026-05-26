@@ -1,45 +1,61 @@
+{%- comment -%}
+  ============================================================
+  Cart Drawer — Slide-in from right
+  Hushly — overlay backdrop, empty state, footer with CTA
+  ============================================================
+{%- endcomment -%}
+
+{%- comment -%} Overlay backdrop {%- endcomment -%}
 <div class="cart-overlay" data-cart-overlay></div>
+
+{%- comment -%} Drawer {%- endcomment -%}
 <aside class="cart-drawer" data-cart-drawer aria-hidden="true" aria-label="Panier">
 
+  {%- comment -%} Header {%- endcomment -%}
   <header class="border-b" style="border-color: var(--color-border); padding: 1rem 1.25rem;">
     <div class="flex items-center justify-between">
       <h2 class="flex items-center gap-2 text-base font-semibold">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-        <span>Ton panier (<span data-cart-item-count>0</span>)</span>
+        <span>Votre panier (<span data-cart-item-count>0</span>)</span>
       </h2>
-      <button type="button" aria-label="Fermer" data-cart-close style="font-size: 1.5rem; line-height: 1;">&times;</button>
+      <button type="button" aria-label="Fermer" data-cart-close style="font-size: 1.5rem; line-height: 1; padding: 0.25rem;">&times;</button>
     </div>
   </header>
 
+  {%- comment -%} Body {%- endcomment -%}
   <div class="flex-1 overflow-y-auto" style="padding: 1rem 1.25rem;" data-cart-body>
-    <p class="text-sm text-muted-foreground text-center" data-cart-empty style="padding: 2.5rem 0;">Ton panier est vide. 🌙</p>
+    <p class="text-sm text-muted-foreground text-center" data-cart-empty style="padding: 2.5rem 0;">Votre panier est vide.</p>
     <div data-cart-items class="space-y-4"></div>
 
-    <div data-cart-upsells class="rounded-xl border" style="border-color: var(--color-border); padding: 1rem; margin-top: 1rem; background: color-mix(in srgb, var(--color-muted) 30%, transparent); display:none;">
-      <p class="text-sm font-bold">🌙 Complete ta commande</p>
-      <p class="text-xs text-muted-foreground" style="margin-top: 0.125rem;">Ajoute en 1 clic</p>
+    {%- comment -%} Cross-sell upsells area {%- endcomment -%}
+    <div data-cart-upsells class="rounded-xl border" style="border-color: var(--color-border); padding: 1rem; margin-top: 1rem; background: color-mix(in srgb, var(--color-muted) 30%, transparent); display: none;">
+      <p class="text-sm font-bold">&#128161; Compl&eacute;tez votre commande</p>
+      <p class="text-xs text-muted-foreground" style="margin-top: 0.125rem;">Ajoutez en 1 clic</p>
       <div class="space-y-2" style="margin-top: 0.75rem;" data-cart-upsells-list></div>
     </div>
   </div>
 
+  {%- comment -%} Footer {%- endcomment -%}
   <footer class="border-t bg-background space-y-3" style="border-color: var(--color-border); padding: 1rem 1.25rem;" data-cart-footer hidden>
     <div class="flex items-center justify-between">
       <span class="text-sm text-muted-foreground">Sous-total</span>
       <span class="text-lg font-bold" data-cart-subtotal>&euro;0,00</span>
     </div>
-    <p class="text-xs text-muted-foreground">Livraison et taxes calculees a l'etape suivante.</p>
+    <p class="text-xs text-muted-foreground">Livraison et taxes calcul&eacute;es &agrave; l'&eacute;tape suivante.</p>
 
+    {%- comment -%} Reassurance badges {%- endcomment -%}
     <div class="rounded-lg space-y-1.5" style="background: color-mix(in srgb, var(--color-muted) 50%, transparent); padding: 0.625rem 0.75rem;">
-      <div class="flex items-center gap-2 text-sm"><span class="text-primary">🚚</span> Livraison gratuite worldwide</div>
-      <div class="flex items-center gap-2 text-sm"><span class="text-primary">🔒</span> Paiement 100% securise</div>
-      <div class="flex items-center gap-2 text-sm"><span class="text-primary">↩️</span> Satisfait ou rembourse 30 jours</div>
-      <div class="flex items-center gap-2 text-sm"><span class="text-primary">&#x2605;</span> 4,9/5 — 312+ avis clients</div>
+      <div class="flex items-center gap-2 text-sm"><span style="color: var(--color-primary);">&#128666;</span> Livraison offerte</div>
+      <div class="flex items-center gap-2 text-sm"><span style="color: var(--color-primary);">&#128274;</span> Paiement 100% s&eacute;curis&eacute;</div>
+      <div class="flex items-center gap-2 text-sm"><span style="color: var(--color-primary);">&#8617;&#65039;</span> Satisfait ou rembours&eacute; 30 jours</div>
+      <div class="flex items-center gap-2 text-sm"><span style="color: var(--color-primary);">&#9733;</span> 4,8/5 &mdash; 150+ avis clients</div>
     </div>
 
+    {%- comment -%} Express checkout {%- endcomment -%}
     <div class="space-y-2">
       <p class="text-[11px] font-semibold uppercase tracking-wide text-muted-foreground text-center">Paiement express</p>
-      <button type="button" class="btn-shop-pay btn-block" data-shop-pay style="display:flex; align-items:center; justify-content:center; min-height:48px;">
-        <span style="font-weight:700; letter-spacing:-0.02em;">shop<span style="font-weight:800;">Pay</span></span>
+      <button type="button" class="btn-shop-pay btn-block" data-shop-pay style="display: flex; align-items: center; justify-content: center; min-height: 48px;">
+        <span style="font-weight: 700; letter-spacing: -0.02em;">shop<span style="font-weight: 800;">Pay</span></span>
       </button>
       <div class="flex items-center gap-3" style="padding: 0.25rem 0;">
         <div class="h-px flex-1" style="background: var(--color-border);"></div>
@@ -49,6 +65,6 @@
     </div>
 
     <button type="button" class="btn btn-block btn-lg" data-checkout>Passer commande</button>
-    <button type="button" class="text-center text-xs text-muted-foreground" data-cart-close style="display:block; width:100%;">Continuer mes achats</button>
+    <button type="button" class="text-center text-xs text-muted-foreground" data-cart-close style="display: block; width: 100%; background: none; border: 0; cursor: pointer; padding: 0.25rem;">Continuer mes achats</button>
   </footer>
 </aside>

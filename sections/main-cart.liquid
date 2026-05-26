@@ -1,6 +1,5 @@
-{%- comment -%}
-  The cart is a drawer (snippets/cart-drawer.liquid) opened from the header.
-  This template is a fallback if the user lands on /cart directly.
+﻿{%- comment -%}
+  Main Cart section — fallback cart page
 {%- endcomment -%}
 
 <section class="section" style="text-align:center;">
@@ -20,7 +19,7 @@
             {%- endif -%}
             <div style="flex: 1; text-align: left;">
               <p style="font-weight: 600; margin-bottom: 4px;">{{ item.title }}</p>
-              <p style="color: var(--color-muted-fg); font-size: 14px;">Qté : {{ item.quantity }} — {{ item.final_line_price | money }}</p>
+              <p style="color: var(--color-muted-fg); font-size: 14px;">Qte : {{ item.quantity }} — {{ item.final_line_price | money }}</p>
             </div>
             <a href="/cart/change?id={{ item.key }}&quantity=0" style="color: var(--color-muted-fg); font-size: 13px; text-decoration: underline;">Retirer</a>
           </div>
@@ -32,7 +31,7 @@
           <span>Sous-total</span>
           <span>{{ cart.total_price | money }}</span>
         </div>
-        <p style="color: var(--color-muted-fg); font-size: 13px; margin-top: 8px;">Livraison et taxes calculées à l'étape suivante.</p>
+        <p style="color: var(--color-muted-fg); font-size: 13px; margin-top: 8px;">Livraison et taxes calculees a l'etape suivante.</p>
       </div>
 
       <a class="btn btn-accent" href="/checkout" style="width: 100%; font-size: 1.1rem; padding: 16px 28px;">Passer commande</a>
@@ -48,3 +47,12 @@
     }
   });
 </script>
+
+{% schema %}
+{
+  "name": "Panier",
+  "tag": "section",
+  "class": "main-cart-section",
+  "settings": []
+}
+{% endschema %}

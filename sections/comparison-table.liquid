@@ -1,50 +1,41 @@
-<section class="comparison-table-section py-16 md:py-20">
-  <div class="container max-w-2xl">
-    <div class="text-center space-y-2" style="margin-bottom: 2.5rem;">
-      <h2 class="text-3xl font-bold">{{ section.settings.title }}</h2>
+<section class="comparison-section py-16 md:py-24">
+  <div class="container" style="max-width: 900px;">
+    <div class="text-center" style="margin-bottom: 2.5rem;">
+      <h2 class="text-3xl md:text-4xl font-bold" style="margin-bottom: 0.75rem;">{{ section.settings.title }}</h2>
       <p class="text-muted-foreground">{{ section.settings.subtitle }}</p>
     </div>
 
-    <div style="overflow-x:auto; -webkit-overflow-scrolling:touch;">
-      <table class="comparison-table" style="min-width:0;">
+    {%- comment -%} Desktop table {%- endcomment -%}
+    <div class="comparison-desktop" style="overflow-x: auto; -webkit-overflow-scrolling: touch;">
+      <table class="comparison-table" style="width: 100%; border-collapse: separate; border-spacing: 0; min-width: 600px;">
         <thead>
           <tr>
-            <th></th>
-            <th class="highlighted">{{ section.settings.col_a | default: 'Hushly' }}</th>
-            <th>{{ section.settings.col_b | default: 'Ecouteurs classiques' }}</th>
-            <th>{{ section.settings.col_c | default: "Bouchons d'oreilles" }}</th>
+            <th class="cmp-header-cell" style="text-align: left; padding: 1rem; font-size: 0.875rem; font-weight: 600; color: var(--color-muted-foreground, #6b7280); border-bottom: 2px solid var(--color-border);"></th>
+            <th class="cmp-header-cell cmp-col-highlight" style="text-align: center; padding: 1rem; font-size: 0.95rem; font-weight: 800; border-bottom: 2px solid var(--color-primary, #0B0F1E); background: var(--color-primary, #0B0F1E); color: var(--color-primary-fg, #fff); border-radius: 12px 12px 0 0;">
+              {{ section.settings.col_a }}
+            </th>
+            <th class="cmp-header-cell" style="text-align: center; padding: 1rem; font-size: 0.875rem; font-weight: 600; color: var(--color-muted-foreground, #6b7280); border-bottom: 2px solid var(--color-border);">
+              {{ section.settings.col_b }}
+            </th>
+            <th class="cmp-header-cell" style="text-align: center; padding: 1rem; font-size: 0.875rem; font-weight: 600; color: var(--color-muted-foreground, #6b7280); border-bottom: 2px solid var(--color-border);">
+              {{ section.settings.col_c }}
+            </th>
           </tr>
         </thead>
         <tbody>
           {%- for block in section.blocks -%}
             <tr {{ block.shopify_attributes }}>
-              <th scope="row">{{ block.settings.criteria }}</th>
-              <td class="highlighted-col">
-                {%- case block.settings.col_a -%}
-                  {%- when 'yes' -%}<span class="cmp-yes">&#x2713;</span>
-                  {%- when 'no' -%}<span class="cmp-no">&#x2717;</span>
-                  {%- when 'mid' -%}<span class="cmp-mid">~</span>
-                  {%- when 'na' -%}<span class="cmp-mid">n/a</span>
-                  {%- else -%}{{ block.settings.col_a }}
-                {%- endcase -%}
+              <td style="padding: 0.875rem 1rem; font-size: 0.875rem; font-weight: 600; border-bottom: 1px solid var(--color-border);">
+                {{ block.settings.criteria }}
               </td>
-              <td>
-                {%- case block.settings.col_b -%}
-                  {%- when 'yes' -%}<span class="cmp-yes">&#x2713;</span>
-                  {%- when 'no' -%}<span class="cmp-no">&#x2717;</span>
-                  {%- when 'mid' -%}<span class="cmp-mid">~</span>
-                  {%- when 'na' -%}<span class="cmp-mid">n/a</span>
-                  {%- else -%}{{ block.settings.col_b }}
-                {%- endcase -%}
+              <td class="cmp-col-highlight-body" style="text-align: center; padding: 0.875rem 1rem; font-size: 0.875rem; font-weight: 600; border-bottom: 1px solid var(--color-border); background: rgba(11, 15, 30, 0.04);">
+                {{ block.settings.val_a }}
               </td>
-              <td>
-                {%- case block.settings.col_c -%}
-                  {%- when 'yes' -%}<span class="cmp-yes">&#x2713;</span>
-                  {%- when 'no' -%}<span class="cmp-no">&#x2717;</span>
-                  {%- when 'mid' -%}<span class="cmp-mid">~</span>
-                  {%- when 'na' -%}<span class="cmp-mid">n/a</span>
-                  {%- else -%}{{ block.settings.col_c }}
-                {%- endcase -%}
+              <td style="text-align: center; padding: 0.875rem 1rem; font-size: 0.875rem; color: var(--color-muted-foreground, #6b7280); border-bottom: 1px solid var(--color-border);">
+                {{ block.settings.val_b }}
+              </td>
+              <td style="text-align: center; padding: 0.875rem 1rem; font-size: 0.875rem; color: var(--color-muted-foreground, #6b7280); border-bottom: 1px solid var(--color-border);">
+                {{ block.settings.val_c }}
               </td>
             </tr>
           {%- endfor -%}
@@ -52,73 +43,207 @@
       </table>
     </div>
 
+    {%- comment -%} Mobile card (Hushly only) {%- endcomment -%}
+    <div class="comparison-mobile">
+      <div class="rounded-2xl border overflow-hidden" style="border-color: var(--color-border);">
+        <div style="background: var(--color-primary, #0B0F1E); color: var(--color-primary-fg, #fff); padding: 1rem 1.25rem; text-align: center;">
+          <p class="text-lg font-bold">{{ section.settings.col_a }}</p>
+        </div>
+        <div class="bg-background">
+          {%- for block in section.blocks -%}
+            <div class="flex items-center justify-between" style="padding: 0.875rem 1.25rem; border-bottom: 1px solid var(--color-border);" {{ block.shopify_attributes }}>
+              <span class="text-sm font-medium">{{ block.settings.criteria }}</span>
+              <span class="text-sm font-bold" style="color: var(--color-primary, #0B0F1E);">{{ block.settings.val_a }}</span>
+            </div>
+          {%- endfor -%}
+        </div>
+      </div>
+    </div>
+
     {%- if section.settings.cta_label != blank -%}
-      <div class="text-center" style="margin-top: 2rem;">
+      <div class="text-center" style="margin-top: 2.5rem;">
         <a href="{{ section.settings.cta_url }}" class="btn btn-lg">{{ section.settings.cta_label }}</a>
       </div>
     {%- endif -%}
   </div>
 </section>
 
+<style>
+  .comparison-mobile {
+    display: none;
+  }
+  @media (max-width: 767px) {
+    .comparison-desktop {
+      display: none;
+    }
+    .comparison-mobile {
+      display: block;
+    }
+  }
+  .comparison-table tr:last-child td {
+    border-bottom: none;
+  }
+  .comparison-table tbody tr {
+    transition: background 0.15s ease;
+  }
+  .comparison-table tbody tr:hover {
+    background: var(--color-muted);
+  }
+  .comparison-table tbody tr:hover .cmp-col-highlight-body {
+    background: rgba(11, 15, 30, 0.08);
+  }
+</style>
+
 {% schema %}
 {
   "name": "Tableau comparatif",
   "tag": "section",
-  "class": "comparison-section",
+  "class": "comparison-section-wrapper",
   "settings": [
-    { "type": "text", "id": "title", "label": "Titre", "default": "Pourquoi Hushly, et pas autre chose ?" },
-    { "type": "text", "id": "subtitle", "label": "Sous-titre", "default": "On compare, tu decides." },
-    { "type": "text", "id": "col_a", "label": "Colonne A (highlight)", "default": "Hushly" },
-    { "type": "text", "id": "col_b", "label": "Colonne B", "default": "Ecouteurs classiques" },
-    { "type": "text", "id": "col_c", "label": "Colonne C", "default": "Bouchons d'oreilles" },
-    { "type": "text", "id": "cta_label", "label": "Texte du bouton CTA", "default": "Decouvrir Hushly" },
-    { "type": "text", "id": "cta_url", "label": "URL du bouton", "default": "/#product" }
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Titre",
+      "default": "Hushly vs les alternatives"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Sous-titre",
+      "default": "On compare, vous decidez."
+    },
+    {
+      "type": "text",
+      "id": "col_a",
+      "label": "Colonne A (highlight)",
+      "default": "Hushly"
+    },
+    {
+      "type": "text",
+      "id": "col_b",
+      "label": "Colonne B",
+      "default": "Ventilo plafond"
+    },
+    {
+      "type": "text",
+      "id": "col_c",
+      "label": "Colonne C",
+      "default": "Ventilo sur pied"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "Texte du bouton CTA",
+      "default": "Je veux mon Hushly"
+    },
+    {
+      "type": "text",
+      "id": "cta_url",
+      "label": "URL du bouton CTA",
+      "default": "#product-hero"
+    }
   ],
   "blocks": [
     {
       "type": "row",
       "name": "Ligne",
       "settings": [
-        { "type": "text", "id": "criteria", "label": "Critere", "default": "Confortable pour dormir" },
         {
-          "type": "select",
-          "id": "col_a",
-          "label": "Valeur colonne A",
-          "options": [
-            { "value": "yes", "label": "Oui" },
-            { "value": "no", "label": "Non" },
-            { "value": "mid", "label": "Moyen" },
-            { "value": "na", "label": "N/A" }
-          ],
-          "default": "yes"
+          "type": "text",
+          "id": "criteria",
+          "label": "Critere",
+          "default": "Installation"
         },
         {
-          "type": "select",
-          "id": "col_b",
+          "type": "text",
+          "id": "val_a",
+          "label": "Valeur Hushly",
+          "default": "10 secondes"
+        },
+        {
+          "type": "text",
+          "id": "val_b",
           "label": "Valeur colonne B",
-          "options": [
-            { "value": "yes", "label": "Oui" },
-            { "value": "no", "label": "Non" },
-            { "value": "mid", "label": "Moyen" },
-            { "value": "na", "label": "N/A" }
-          ],
-          "default": "no"
+          "default": "Electricien"
         },
         {
-          "type": "select",
-          "id": "col_c",
+          "type": "text",
+          "id": "val_c",
           "label": "Valeur colonne C",
-          "options": [
-            { "value": "yes", "label": "Oui" },
-            { "value": "no", "label": "Non" },
-            { "value": "mid", "label": "Moyen" },
-            { "value": "na", "label": "N/A" }
-          ],
-          "default": "mid"
+          "default": "Aucune"
         }
       ]
     }
   ],
-  "presets": [{ "name": "Tableau comparatif" }]
+  "presets": [
+    {
+      "name": "Tableau comparatif",
+      "blocks": [
+        {
+          "type": "row",
+          "settings": {
+            "criteria": "Installation",
+            "val_a": "10 secondes",
+            "val_b": "Electricien",
+            "val_c": "Aucune"
+          }
+        },
+        {
+          "type": "row",
+          "settings": {
+            "criteria": "Encombrement",
+            "val_a": "Zero",
+            "val_b": "Zero",
+            "val_c": "Au sol"
+          }
+        },
+        {
+          "type": "row",
+          "settings": {
+            "criteria": "Eclairage",
+            "val_a": "LED dimmable 3 couleurs",
+            "val_b": "Parfois",
+            "val_c": "Non"
+          }
+        },
+        {
+          "type": "row",
+          "settings": {
+            "criteria": "Telecommande",
+            "val_a": "Incluse",
+            "val_b": "Option 30-50€",
+            "val_c": "Rarement"
+          }
+        },
+        {
+          "type": "row",
+          "settings": {
+            "criteria": "Bruit",
+            "val_a": "Ultra silencieux",
+            "val_b": "Variable",
+            "val_c": "Souvent bruyant"
+          }
+        },
+        {
+          "type": "row",
+          "settings": {
+            "criteria": "Prix",
+            "val_a": "34,90€",
+            "val_b": "150-400€ + pose",
+            "val_c": "30-80€"
+          }
+        },
+        {
+          "type": "row",
+          "settings": {
+            "criteria": "Design",
+            "val_a": "Discret & moderne",
+            "val_b": "Imposant",
+            "val_c": "Encombrant"
+          }
+        }
+      ]
+    }
+  ]
 }
 {% endschema %}

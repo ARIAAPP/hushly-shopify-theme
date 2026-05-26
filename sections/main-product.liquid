@@ -1,6 +1,5 @@
-{%- comment -%}
-  Single-product store: redirect product page to homepage which contains
-  the full ProductSection. The homepage IS the product page.
+﻿{%- comment -%}
+  Main Product section — single-product store redirect to homepage
 {%- endcomment -%}
 
 <script>
@@ -15,3 +14,12 @@
     <a class="btn btn-primary" href="{{ routes.root_url }}#product" style="margin-top:1rem;">Voir le produit</a>
   </div>
 </section>
+
+{% schema %}
+{
+  "name": "Produit principal",
+  "tag": "section",
+  "class": "main-product-section",
+  "settings": []
+}
+{% endschema %}
