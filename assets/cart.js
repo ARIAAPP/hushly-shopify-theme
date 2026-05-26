@@ -1,5 +1,5 @@
 /* ============================================================
-   Hushly — cart.js
+   Soufflo — cart.js
    Cart state management, drawer UI, add-to-cart from
    product hero (bundle + upsells), Shopify checkout redirect.
    ============================================================ */
@@ -10,7 +10,7 @@
   /* ----------------------------------------------------------
      CONFIG
      ---------------------------------------------------------- */
-  var SHOP_DOMAIN = (window.hushlyTheme && window.hushlyTheme.shopDomain)
+  var SHOP_DOMAIN = (window.souffloTheme && window.souffloTheme.shopDomain)
     || (window.Shopify && window.Shopify.shop)
     || window.location.hostname;
 
@@ -165,7 +165,7 @@
     }
 
     /* Dispatch state event */
-    document.dispatchEvent(new CustomEvent('hushly:cart-state', {
+    document.dispatchEvent(new CustomEvent('soufflo:cart-state', {
       detail: { isOpen: state.isOpen, items: state.items }
     }));
   }
@@ -212,7 +212,7 @@
   /* ----------------------------------------------------------
      PUBLIC API
      ---------------------------------------------------------- */
-  window.HushlyCart = {
+  window.SouffloCart = {
     open: function () {
       state.isOpen = true;
       render();
@@ -291,7 +291,7 @@
     var toggle = e.target.closest('[data-cart-toggle]') || e.target.closest('[data-open-cart]');
     if (toggle) {
       e.preventDefault();
-      window.HushlyCart.toggle();
+      window.SouffloCart.toggle();
       return;
     }
 
@@ -299,21 +299,21 @@
     var close = e.target.closest('[data-cart-close]');
     if (close) {
       e.preventDefault();
-      window.HushlyCart.close();
+      window.SouffloCart.close();
       return;
     }
 
     /* Click overlay to close */
     var overlayClick = e.target.closest('[data-cart-overlay]') || e.target.closest('.cart-overlay');
     if (overlayClick && e.target === overlayClick) {
-      window.HushlyCart.close();
+      window.SouffloCart.close();
       return;
     }
 
     /* Remove item */
     var remove = e.target.closest('[data-remove]');
     if (remove) {
-      window.HushlyCart.removeItem(remove.dataset.remove || remove.getAttribute('data-remove-id'));
+      window.SouffloCart.removeItem(remove.dataset.remove || remove.getAttribute('data-remove-id'));
       return;
     }
 
@@ -325,9 +325,9 @@
       if (!item) return;
       var newQty = qtyBtn.dataset.qty === 'inc' ? item.quantity + 1 : item.quantity - 1;
       if (newQty <= 0) {
-        window.HushlyCart.removeItem(id);
+        window.SouffloCart.removeItem(id);
       } else {
-        window.HushlyCart.setQuantity(id, newQty);
+        window.SouffloCart.setQuantity(id, newQty);
       }
       return;
     }
@@ -337,7 +337,7 @@
     if (addAddon) {
       var addon = state.addons.find(function (a) { return a.id === addAddon.dataset.addAddon; });
       if (addon) {
-        window.HushlyCart.addItem({
+        window.SouffloCart.addItem({
           id: addon.id,
           variantId: addon.variantId,
           title: addon.title,
@@ -477,7 +477,7 @@
     var imageSrc = mainImg ? mainImg.getAttribute('src') : '';
 
     /* Add bundle to cart */
-    window.HushlyCart.addItem({
+    window.SouffloCart.addItem({
       id: 'bundle-' + bundle.variantId,
       variantId: bundle.variantId,
       title: bundle.title,
@@ -493,7 +493,7 @@
     for (var i = 0; i < upsells.length; i++) {
       var up = upsells[i];
       if (up.variantId) {
-        window.HushlyCart.addItem({
+        window.SouffloCart.addItem({
           id: 'upsell-' + up.variantId,
           variantId: up.variantId,
           title: up.title,
@@ -518,7 +518,7 @@
     }
 
     /* Open the drawer */
-    window.HushlyCart.open();
+    window.SouffloCart.open();
   });
 
   /* Sticky bottom bar CTA triggers the main add-to-cart */
@@ -536,7 +536,7 @@
      ---------------------------------------------------------- */
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape' && state.isOpen) {
-      window.HushlyCart.close();
+      window.SouffloCart.close();
     }
   });
 

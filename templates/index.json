@@ -3,7 +3,7 @@
     "product_hero": {
       "type": "product-hero",
       "settings": {
-        "headline": "Ventilateur LED Hushly",
+        "headline": "Ventilateur LED Soufflo",
         "subtitle": "Fraicheur & lumiere — en un clic.",
         "bundle_section_title": "Choisis ton pack",
         "default_bundle_index": 2,
@@ -46,7 +46,7 @@
     "features": {
       "type": "features",
       "settings": {
-        "title": "Pourquoi les Français adoptent le ventilateur LED Hushly",
+        "title": "Pourquoi les Français adoptent le ventilateur LED Soufflo",
         "subtitle": "Tout ce qu'il faut. Rien de superflu.",
         "cta_label": "Découvrir le ventilateur LED",
         "cta_url": "/#product"
@@ -76,12 +76,12 @@
     "comparison": {
       "type": "comparison-table",
       "settings": {
-        "title": "Pourquoi Hushly, et pas autre chose ?",
+        "title": "Pourquoi Soufflo, et pas autre chose ?",
         "subtitle": "On compare, vous décidez.",
-        "col_a": "Hushly LED E27",
+        "col_a": "Soufflo LED E27",
         "col_b": "Ventilateur de plafond classique",
         "col_c": "Ventilateur sur pied",
-        "cta_label": "Découvrir Hushly",
+        "cta_label": "Découvrir Soufflo",
         "cta_url": "/#product"
       },
       "blocks": {
@@ -128,7 +128,7 @@
         "rp3": { "type": "review_photo" },
         "r4": { "type": "review", "settings": { "name": "Julien P., 29 ans — Paris", "rating": 4, "text": "Le produit est bien pensé. J'enlève une étoile car la télécommande est un peu petite, facile à perdre. Sinon le ventilateur et la lumière fonctionnent parfaitement.", "verified": true } },
         "rp4": { "type": "review_photo" },
-        "r5": { "type": "review", "settings": { "name": "Camille R., 45 ans — Nantes", "rating": 5, "text": "Génial pour un studio. Pas de place pour un ventilateur sur pied, pas envie de payer un électricien. Le Hushly se visse en 10s. Lumière agréable, souffle suffisant.", "verified": true } },
+        "r5": { "type": "review", "settings": { "name": "Camille R., 45 ans — Nantes", "rating": 5, "text": "Génial pour un studio. Pas de place pour un ventilateur sur pied, pas envie de payer un électricien. Le Soufflo se visse en 10s. Lumière agréable, souffle suffisant.", "verified": true } },
         "rp5": { "type": "review_photo" },
         "r6": { "type": "review", "settings": { "name": "Nicolas M., 52 ans — Marseille", "rating": 5, "text": "J'ai équipé 3 pièces. Le plus gros avantage : aucun travail. Pas de trou, pas de fil, pas d'électricien. Et la facture d'électricité n'a pas bougé.", "verified": true } },
         "rp6": { "type": "review_photo" }
@@ -139,10 +139,10 @@
       "type": "story",
       "settings": {
         "kicker": "Notre histoire",
-        "title": "Pourquoi on a créé Hushly",
-        "text": "<p>Tout a commencé un été caniculaire, dans un appartement sans climatisation.</p><p>Notre fondateur cherchait un ventilateur de plafond. Le problème : pas de prise au plafond, devis d'électricien à 300 euros, et un ventilateur sur pied qui prenait la moitié du salon.</p><p>Il s'est dit : pourquoi ne pas utiliser la douille d'ampoule déjà au plafond ? On y visse un truc tous les jours. Pourquoi pas un ventilateur ?</p><p>On a passé des mois à chercher la bonne combinaison : un moteur silencieux, une LED puissante et dimmable, un culot E27 standard, et une télécommande pour tout contrôler sans se lever. Le tout à un prix raisonnable.</p><p>Aujourd'hui, plus de 150 foyers français utilisent le ventilateur LED Hushly. Dans leur cuisine, leur chambre, leur salon. Sans travaux, sans électricien, sans se ruiner.</p>",
+        "title": "Pourquoi on a créé Soufflo",
+        "text": "<p>Tout a commencé un été caniculaire, dans un appartement sans climatisation.</p><p>Notre fondateur cherchait un ventilateur de plafond. Le problème : pas de prise au plafond, devis d'électricien à 300 euros, et un ventilateur sur pied qui prenait la moitié du salon.</p><p>Il s'est dit : pourquoi ne pas utiliser la douille d'ampoule déjà au plafond ? On y visse un truc tous les jours. Pourquoi pas un ventilateur ?</p><p>On a passé des mois à chercher la bonne combinaison : un moteur silencieux, une LED puissante et dimmable, un culot E27 standard, et une télécommande pour tout contrôler sans se lever. Le tout à un prix raisonnable.</p><p>Aujourd'hui, plus de 150 foyers français utilisent le ventilateur LED Soufflo. Dans leur cuisine, leur chambre, leur salon. Sans travaux, sans électricien, sans se ruiner.</p>",
         "italic_text": "L'air frais, simplement.",
-        "signoff": "— L'équipe Hushly"
+        "signoff": "— L'équipe Soufflo"
       }
     },
     "faq": {
@@ -155,7 +155,7 @@
       "blocks": {
         "q1": { "type": "faq", "settings": { "question": "💡 C'est quoi exactement ce produit ?", "answer": "<p>C'est un ventilateur de plafond avec LED intégrée (30W) qui se visse directement dans une douille E27 standard — la même que vos ampoules classiques. Il remplace votre ampoule et ajoute un ventilateur au plafond, sans aucun travaux.</p>" } },
         "q2": { "type": "faq", "settings": { "question": "🔌 Est-ce compatible avec ma douille ?", "answer": "<p>Si votre ampoule actuelle a un culot E27 (le gros culot à vis standard en France), oui. C'est le culot le plus courant dans les foyers français. En cas de doute, regardez le culot de votre ampoule actuelle : s'il fait environ 27mm de diamètre et se visse, c'est un E27.</p>" } },
-        "q3": { "type": "faq", "settings": { "question": "⏱️ L'installation prend vraiment 10 secondes ?", "answer": "<p>Oui. Vous dévissez votre ampoule, vous vissez le ventilateur LED Hushly à la place. C'est tout. Pas de perceuse, pas de fils à brancher, pas d'électricien. La télécommande est prête à l'emploi.</p>" } },
+        "q3": { "type": "faq", "settings": { "question": "⏱️ L'installation prend vraiment 10 secondes ?", "answer": "<p>Oui. Vous dévissez votre ampoule, vous vissez le ventilateur LED Soufflo à la place. C'est tout. Pas de perceuse, pas de fils à brancher, pas d'électricien. La télécommande est prête à l'emploi.</p>" } },
         "q4": { "type": "faq", "settings": { "question": "📱 Comment fonctionne la télécommande ?", "answer": "<p>La télécommande permet de contrôler la lumière (on/off, couleur, intensité) et le ventilateur (on/off, 3 vitesses). Elle fonctionne avec une pile bouton incluse. Portée d'environ 5 mètres.</p>" } },
         "q5": { "type": "faq", "settings": { "question": "🔇 Est-ce que c'est bruyant ?", "answer": "<p>Non. Le moteur brushless est conçu pour être silencieux. En vitesse 1, il est quasiment inaudible. Même en vitesse 3, le bruit reste très faible — bien en dessous d'un ventilateur sur pied classique.</p>" } },
         "q6": { "type": "faq", "settings": { "question": "💡 La lumière est-elle suffisante ?", "answer": "<p>Oui. La LED 30W équivaut à environ 200W en ampoule classique. C'est suffisant pour éclairer une pièce de 15 à 20 m². Vous pouvez choisir entre blanc chaud (2700K), neutre (4500K) et froid (6500K), et régler l'intensité avec la télécommande.</p>" } },

@@ -1,5 +1,5 @@
 /* ============================================================
-   Hushly — base.css
+   Soufflo — base.css
    Complete Shopify theme stylesheet
    CSS custom properties are defined in theme.liquid:
      --color-primary (#38BDF8), --color-primary-fg (#fff)
@@ -1396,7 +1396,7 @@ select {
   border-bottom: 0;
 }
 
-/* Highlighted Hushly column */
+/* Highlighted Soufflo column */
 .comparison-table th.is-highlight,
 .comparison-table thead th.highlighted {
   background: var(--color-primary);

@@ -54,7 +54,7 @@
       "name": "{{ shop.name }}",
       "url": "{{ shop.url }}",
       "logo": "{% if settings.logo != blank %}{{ settings.logo | image_url: width: 400 }}{% endif %}",
-      "email": "support@hushly.fr",
+      "email": "support@soufflo.fr",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "42 rue des Mousses",
@@ -72,11 +72,11 @@
     {
       "@context": "https://schema.org",
       "@type": "Product",
-      "name": "Ventilateur LED Hushly",
+      "name": "Ventilateur LED Soufflo",
       "description": "Ventilateur de plafond LED 30W avec télécommande. Se visse directement dans une douille E27 standard. Installation en 10 secondes sans outils. LED dimmable 3 couleurs (blanc chaud, neutre, froid). 3 vitesses de ventilation. Silencieux et économique.",
       "brand": {
         "@type": "Brand",
-        "name": "Hushly"
+        "name": "Soufflo"
       },
       "sku": "HUSH-VENT-E27-001",
       "mpn": "HL-VENT-01",
@@ -223,7 +223,7 @@
     {% render 'exit-intent-popup' %}
 
     <script>
-      window.hushlyTheme = {
+      window.souffloTheme = {
         shopDomain: {{ shop.permanent_domain | json }},
         shopName: {{ shop.name | json }},
         currency: {{ shop.currency | json }},

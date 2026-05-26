@@ -1,5 +1,5 @@
 /* ============================================================
-   Hushly — global.js
+   Soufflo — global.js
    Core JavaScript: sticky header, mobile menu, FAQ accordion,
    social proof toast, exit intent popup, scroll-to-top,
    sticky bottom bar, fade-in animations, gallery & bundles.
@@ -293,7 +293,7 @@
      ---------------------------------------------------------- */
   var exitOverlay = document.querySelector('.exit-popup-overlay') || document.querySelector('.exit-popup');
   var exitShown = false;
-  var EXIT_KEY = 'hushly_exit_popup_shown';
+  var EXIT_KEY = 'soufflo_exit_popup_shown';
 
   function showExitPopup() {
     if (!exitOverlay || exitShown) return;
@@ -430,7 +430,7 @@
       if (radio) radio.checked = true;
 
       /* Dispatch custom event for cart.js to listen */
-      document.dispatchEvent(new CustomEvent('hushly:bundle-changed', {
+      document.dispatchEvent(new CustomEvent('soufflo:bundle-changed', {
         detail: {
           variantId: radio ? radio.value : null,
           title: card.querySelector('.bundle-card__title') ? card.querySelector('.bundle-card__title').textContent.trim() : '',
@@ -451,7 +451,7 @@
       var checkbox = item.querySelector('input[type="checkbox"]');
       if (checkbox) checkbox.checked = item.classList.contains('is-checked');
 
-      document.dispatchEvent(new CustomEvent('hushly:upsell-changed'));
+      document.dispatchEvent(new CustomEvent('soufflo:upsell-changed'));
     });
   });
 
