@@ -1,11 +1,7 @@
 <header class="header" data-header>
   <div class="header__inner">
-    <a href="/" class="header__brand" aria-label="{{ settings.brand_text | default: 'Soufflo' }} — accueil">
-      {%- if settings.logo != blank -%}
-        {{ settings.logo | image_url: width: settings.logo_max_width | image_tag: loading: 'lazy' }}
-      {%- else -%}
-        <span class="header__brand-text">Soufflo</span>
-      {%- endif -%}
+    <a href="/" class="header__brand" aria-label="Soufflo — accueil">
+      <img src="{{ 'soufflo-1A-logo-wordmark.jpg' | asset_url }}" alt="Soufflo" width="160" height="40" loading="lazy" style="max-width: {{ settings.logo_max_width | default: 160 }}px; height: auto;">
     </a>
 
     <nav class="header__nav">

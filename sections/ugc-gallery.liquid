@@ -26,6 +26,18 @@
               class="w-full h-full object-cover"
               width="200" height="200"
               loading="lazy" decoding="async">
+          {%- elsif forloop.index == 1 -%}
+            <img src="{{ 'soufflo-11A-ugc-femme-ravie.jpg' | asset_url }}" alt="{{ block.settings.caption | default: 'Photo client' | escape }}" class="w-full h-full object-cover" width="200" height="200" loading="lazy" decoding="async">
+          {%- elsif forloop.index == 2 -%}
+            <img src="{{ 'soufflo-11B-ugc-homme-installation.jpg' | asset_url }}" alt="{{ block.settings.caption | default: 'Photo client' | escape }}" class="w-full h-full object-cover" width="200" height="200" loading="lazy" decoding="async">
+          {%- elsif forloop.index == 3 -%}
+            <img src="{{ 'soufflo-11C-ugc-couple-canape.jpg' | asset_url }}" alt="{{ block.settings.caption | default: 'Photo client' | escape }}" class="w-full h-full object-cover" width="200" height="200" loading="lazy" decoding="async">
+          {%- elsif forloop.index == 4 -%}
+            <img src="{{ 'soufflo-11D-ugc-comparaison-split.jpg' | asset_url }}" alt="{{ block.settings.caption | default: 'Photo client' | escape }}" class="w-full h-full object-cover" width="200" height="200" loading="lazy" decoding="async">
+          {%- elsif forloop.index == 5 -%}
+            <img src="{{ 'soufflo-11E-ugc-temoignage-v1.jpg' | asset_url }}" alt="{{ block.settings.caption | default: 'Photo client' | escape }}" class="w-full h-full object-cover" width="200" height="200" loading="lazy" decoding="async">
+          {%- elsif forloop.index == 6 -%}
+            <img src="{{ 'soufflo-11F-ugc-unboxing.jpg' | asset_url }}" alt="{{ block.settings.caption | default: 'Photo client' | escape }}" class="w-full h-full object-cover" width="200" height="200" loading="lazy" decoding="async">
           {%- else -%}
             <div class="w-full h-full flex flex-col items-center justify-center" style="background: var(--color-muted);">
               <span style="font-size: 2rem;">🌀</span>

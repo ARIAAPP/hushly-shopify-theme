@@ -11,6 +11,12 @@
               <div class="h-10 w-10 overflow-hidden rounded-full border bg-secondary" style="border-color: var(--color-border);">
                 {%- if block.settings.avatar != blank -%}
                   <img src="{{ block.settings.avatar | image_url: width: 80 }}" alt="Photo de profil de {{ block.settings.name }}" width="40" height="40" loading="lazy" decoding="async" class="h-full w-full object-cover">
+                {%- elsif forloop.index == 1 -%}
+                  <img src="{{ 'soufflo-7A-avatar-marie.jpg' | asset_url }}" alt="Photo de profil de {{ block.settings.name }}" width="40" height="40" loading="lazy" decoding="async" class="h-full w-full object-cover">
+                {%- elsif forloop.index == 2 -%}
+                  <img src="{{ 'soufflo-7C-avatar-laurent.jpg' | asset_url }}" alt="Photo de profil de {{ block.settings.name }}" width="40" height="40" loading="lazy" decoding="async" class="h-full w-full object-cover">
+                {%- elsif forloop.index == 3 -%}
+                  <img src="{{ 'soufflo-7E-avatar-sophie.jpg' | asset_url }}" alt="Photo de profil de {{ block.settings.name }}" width="40" height="40" loading="lazy" decoding="async" class="h-full w-full object-cover">
                 {%- else -%}
                   <div class="h-full w-full flex items-center justify-center text-sm font-bold" style="background: var(--color-accent); color: var(--color-accent-fg);">{{ block.settings.name | slice: 0 }}</div>
                 {%- endif -%}
@@ -37,6 +43,12 @@
           <div class="bg-secondary" style="aspect-ratio: 4/3;">
             {%- if block.settings.image != blank -%}
               <img src="{{ block.settings.image | image_url: width: 800 }}" alt="{{ shop.name }}" class="w-full h-full object-cover" width="400" height="300" loading="lazy" decoding="async">
+            {%- elsif forloop.index == 1 -%}
+              <img src="{{ 'soufflo-7B-post-marie-cuisine.jpg' | asset_url }}" alt="Soufflo installe en cuisine" class="w-full h-full object-cover" width="400" height="300" loading="lazy" decoding="async">
+            {%- elsif forloop.index == 2 -%}
+              <img src="{{ 'soufflo-7D-post-laurent-enfant.jpg' | asset_url }}" alt="Soufflo dans chambre enfant" class="w-full h-full object-cover" width="400" height="300" loading="lazy" decoding="async">
+            {%- elsif forloop.index == 3 -%}
+              <img src="{{ 'soufflo-7F-post-sophie-bureau.jpg' | asset_url }}" alt="Soufflo dans bureau" class="w-full h-full object-cover" width="400" height="300" loading="lazy" decoding="async">
             {%- else -%}
               <div class="w-full h-full flex items-center justify-center" style="background: var(--color-muted);">
                 <span style="font-size: 3rem;">🌀</span>

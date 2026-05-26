@@ -5,11 +5,6 @@
   ============================================================
 {%- endcomment -%}
 
-{%- liquid
-  assign hero_img = section.settings.hero_image
-  assign gallery_images = section.settings.gallery_images
--%}
-
 <section id="product" class="py-8 md:py-14">
   <div class="container" style="display:grid; grid-template-columns:1fr; gap:2.5rem; align-items:start;">
 
@@ -24,82 +19,32 @@
         Nouveau
       </div>
 
-      {%- comment -%} Main image display {%- endcomment -%}
+      {%- comment -%} Main image display — hardcoded from theme assets {%- endcomment -%}
       <div class="hero-gallery-container bg-secondary rounded-2xl overflow-hidden flex items-center justify-center relative" data-product-gallery-main>
-        {%- if hero_img != blank -%}
-          <img
-            data-gallery-slide="0"
-            src="{{ hero_img | image_url: width: 800 }}"
-            srcset="{{ hero_img | image_url: width: 400 }} 400w, {{ hero_img | image_url: width: 800 }} 800w, {{ hero_img | image_url: width: 1200 }} 1200w"
-            sizes="(max-width:640px) 100vw, 560px"
-            alt="{{ section.settings.headline | default: 'Ventilateur LED Soufflo' }}"
-            class="w-full h-full object-cover"
-            width="800" height="800"
-            decoding="async">
-        {%- else -%}
-          <img
-            data-gallery-slide="0"
-            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='800' viewBox='0 0 800 800'%3E%3Crect fill='%23e8e0f0' width='800' height='800'/%3E%3Ctext x='400' y='380' text-anchor='middle' fill='%239b8ec4' font-size='48' font-family='system-ui'%3E%F0%9F%92%A8%3C/text%3E%3Ctext x='400' y='440' text-anchor='middle' fill='%239b8ec4' font-size='20' font-family='system-ui'%3EVentilateur LED Soufflo%3C/text%3E%3C/svg%3E"
-            alt="Ventilateur LED Soufflo"
-            class="w-full h-full object-cover"
-            width="800" height="800"
-            decoding="async">
-        {%- endif -%}
-
-        {%- comment -%} Gallery slides (hidden by default) {%- endcomment -%}
-        {%- if gallery_images != blank -%}
-          {%- for img in gallery_images -%}
-            <img
-              data-gallery-slide="{{ forloop.index }}"
-              src="{{ img | image_url: width: 800 }}"
-              srcset="{{ img | image_url: width: 400 }} 400w, {{ img | image_url: width: 800 }} 800w, {{ img | image_url: width: 1200 }} 1200w"
-              sizes="(max-width:640px) 100vw, 560px"
-              alt="{{ section.settings.headline | default: 'Ventilateur LED Soufflo' }} - photo {{ forloop.index | plus: 1 }}"
-              class="w-full h-full object-cover"
-              width="800" height="800"
-              loading="lazy" decoding="async"
-              style="display:none;">
-          {%- endfor -%}
-        {%- else -%}
-          {%- comment -%} Placeholder slides when no images uploaded {%- endcomment -%}
-          {%- for i in (1..4) -%}
-            <img
-              data-gallery-slide="{{ i }}"
-              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='800' viewBox='0 0 800 800'%3E%3Crect fill='%23e8e0f0' width='800' height='800'/%3E%3Ctext x='400' y='400' text-anchor='middle' fill='%239b8ec4' font-size='22' font-family='system-ui'%3EPhoto {{ i | plus: 1 }}%3C/text%3E%3C/svg%3E"
-              alt="Photo {{ i | plus: 1 }}"
-              class="w-full h-full object-cover"
-              width="800" height="800"
-              loading="lazy" decoding="async"
-              style="display:none;">
-          {%- endfor -%}
-        {%- endif -%}
+        <img data-gallery-slide="0" src="{{ 'soufflo-3A-hero-product.jpg' | asset_url }}" alt="Ventilateur LED Soufflo — vue principale" class="w-full h-full object-cover" width="800" height="800" decoding="async">
+        <img data-gallery-slide="1" src="{{ 'soufflo-3C-telecommande.jpg' | asset_url }}" alt="Ventilateur LED Soufflo — telecommande incluse" class="w-full h-full object-cover" width="800" height="800" loading="lazy" decoding="async" style="display:none;">
+        <img data-gallery-slide="2" src="{{ 'soufflo-3D-chambre-nuit.jpg' | asset_url }}" alt="Ventilateur LED Soufflo — ambiance chambre" class="w-full h-full object-cover" width="800" height="800" loading="lazy" decoding="async" style="display:none;">
+        <img data-gallery-slide="3" src="{{ 'soufflo-10D-vue-dessous.jpg' | asset_url }}" alt="Ventilateur LED Soufflo — vue de dessous pales" class="w-full h-full object-cover" width="800" height="800" loading="lazy" decoding="async" style="display:none;">
+        <img data-gallery-slide="4" src="{{ 'soufflo-10E-produit-telecommande.jpg' | asset_url }}" alt="Ventilateur LED Soufflo — produit et telecommande" class="w-full h-full object-cover" width="800" height="800" loading="lazy" decoding="async" style="display:none;">
       </div>
 
       {%- comment -%} Thumbnails row — 5 slots {%- endcomment -%}
       <div class="flex gap-3 justify-center flex-wrap">
-        {%- comment -%} Thumb 0: hero image {%- endcomment -%}
         <button type="button" class="gallery-thumb is-active" data-gallery-thumb="0" aria-label="Image principale" style="position:relative; height:5rem; width:5rem; border-radius:var(--radius); overflow:hidden; border:2px solid var(--color-primary); cursor:pointer; transition:border-color 0.15s; flex-shrink:0;">
-          {%- if hero_img != blank -%}
-            <img src="{{ hero_img | image_url: width: 160 }}" alt="" class="h-full w-full object-cover" width="80" height="80" loading="lazy">
-          {%- else -%}
-            <div style="width:100%;height:100%;background:#e8e0f0;display:flex;align-items:center;justify-content:center;font-size:1.2rem;">1</div>
-          {%- endif -%}
+          <img src="{{ 'soufflo-3A-hero-product.jpg' | asset_url }}" alt="" class="h-full w-full object-cover" width="80" height="80" loading="lazy">
         </button>
-
-        {%- comment -%} Thumbs 1..4: gallery images or placeholders {%- endcomment -%}
-        {%- if gallery_images != blank -%}
-          {%- for img in gallery_images limit:4 -%}
-            <button type="button" class="gallery-thumb" data-gallery-thumb="{{ forloop.index }}" aria-label="Image {{ forloop.index | plus: 1 }}" style="position:relative; height:5rem; width:5rem; border-radius:var(--radius); overflow:hidden; border:2px solid transparent; cursor:pointer; transition:border-color 0.15s; flex-shrink:0;">
-              <img src="{{ img | image_url: width: 160 }}" alt="" class="h-full w-full object-cover" width="80" height="80" loading="lazy">
-            </button>
-          {%- endfor -%}
-        {%- else -%}
-          {%- for i in (1..4) -%}
-            <button type="button" class="gallery-thumb" data-gallery-thumb="{{ i }}" aria-label="Image {{ i | plus: 1 }}" style="position:relative; height:5rem; width:5rem; border-radius:var(--radius); overflow:hidden; border:2px solid transparent; cursor:pointer; transition:border-color 0.15s; flex-shrink:0;">
-              <div style="width:100%;height:100%;background:#e8e0f0;display:flex;align-items:center;justify-content:center;font-size:1.2rem;color:#9b8ec4;">{{ i | plus: 1 }}</div>
-            </button>
-          {%- endfor -%}
-        {%- endif -%}
+        <button type="button" class="gallery-thumb" data-gallery-thumb="1" aria-label="Telecommande" style="position:relative; height:5rem; width:5rem; border-radius:var(--radius); overflow:hidden; border:2px solid transparent; cursor:pointer; transition:border-color 0.15s; flex-shrink:0;">
+          <img src="{{ 'soufflo-3C-telecommande.jpg' | asset_url }}" alt="" class="h-full w-full object-cover" width="80" height="80" loading="lazy">
+        </button>
+        <button type="button" class="gallery-thumb" data-gallery-thumb="2" aria-label="Ambiance chambre" style="position:relative; height:5rem; width:5rem; border-radius:var(--radius); overflow:hidden; border:2px solid transparent; cursor:pointer; transition:border-color 0.15s; flex-shrink:0;">
+          <img src="{{ 'soufflo-3D-chambre-nuit.jpg' | asset_url }}" alt="" class="h-full w-full object-cover" width="80" height="80" loading="lazy">
+        </button>
+        <button type="button" class="gallery-thumb" data-gallery-thumb="3" aria-label="Vue de dessous" style="position:relative; height:5rem; width:5rem; border-radius:var(--radius); overflow:hidden; border:2px solid transparent; cursor:pointer; transition:border-color 0.15s; flex-shrink:0;">
+          <img src="{{ 'soufflo-10D-vue-dessous.jpg' | asset_url }}" alt="" class="h-full w-full object-cover" width="80" height="80" loading="lazy">
+        </button>
+        <button type="button" class="gallery-thumb" data-gallery-thumb="4" aria-label="Produit et telecommande" style="position:relative; height:5rem; width:5rem; border-radius:var(--radius); overflow:hidden; border:2px solid transparent; cursor:pointer; transition:border-color 0.15s; flex-shrink:0;">
+          <img src="{{ 'soufflo-10E-produit-telecommande.jpg' | asset_url }}" alt="" class="h-full w-full object-cover" width="80" height="80" loading="lazy">
+        </button>
       </div>
     </div>
 
@@ -109,17 +54,11 @@
       {%- comment -%} 1. Avatar stack + rating {%- endcomment -%}
       <div class="flex items-center gap-3 flex-wrap">
         <div class="flex items-center -space-x-2">
-          {%- for i in (1..5) -%}
-            <div style="width:28px; height:28px; border-radius:9999px; background:var(--color-primary); border:2px solid var(--color-bg); display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:700; color:var(--color-primary-fg);">
-              {%- case i -%}
-                {%- when 1 -%}MT
-                {%- when 2 -%}SL
-                {%- when 3 -%}PD
-                {%- when 4 -%}CR
-                {%- when 5 -%}JB
-              {%- endcase -%}
-            </div>
-          {%- endfor -%}
+          <img src="{{ 'soufflo-7A-avatar-marie.jpg' | asset_url }}" alt="" width="28" height="28" loading="lazy" style="width:28px; height:28px; border-radius:9999px; border:2px solid var(--color-bg); object-fit:cover;">
+          <img src="{{ 'soufflo-7C-avatar-laurent.jpg' | asset_url }}" alt="" width="28" height="28" loading="lazy" style="width:28px; height:28px; border-radius:9999px; border:2px solid var(--color-bg); object-fit:cover;">
+          <img src="{{ 'soufflo-8B-avatar-camille.jpg' | asset_url }}" alt="" width="28" height="28" loading="lazy" style="width:28px; height:28px; border-radius:9999px; border:2px solid var(--color-bg); object-fit:cover;">
+          <img src="{{ 'soufflo-8A-avatar-thomas.jpg' | asset_url }}" alt="" width="28" height="28" loading="lazy" style="width:28px; height:28px; border-radius:9999px; border:2px solid var(--color-bg); object-fit:cover;">
+          <img src="{{ 'soufflo-8C-avatar-marc.jpg' | asset_url }}" alt="" width="28" height="28" loading="lazy" style="width:28px; height:28px; border-radius:9999px; border:2px solid var(--color-bg); object-fit:cover;">
         </div>
         <a href="#reviews" class="flex items-center gap-1.5" style="text-decoration:none; color:inherit;">
           <span class="star-rating text-base" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
@@ -313,9 +252,7 @@
       {%- comment -%} ===== 12. FEATURED REVIEW ===== {%- endcomment -%}
       {%- if section.settings.show_featured_review -%}
         <div class="flex items-start gap-3 rounded-xl border p-4" style="border-color:var(--color-border);">
-          <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">
-            {{ section.settings.review_initials | default: 'MT' }}
-          </div>
+          <img src="{{ 'soufflo-7A-avatar-marie.jpg' | asset_url }}" alt="{{ section.settings.review_author | default: 'Marie T.' }}" class="h-10 w-10 shrink-0 rounded-full object-cover" width="40" height="40" loading="lazy">
           <div class="flex-1 min-w-0">
             <div class="flex items-center gap-2 flex-wrap">
               <span class="text-sm font-semibold">{{ section.settings.review_author | default: 'Marie T., Lyon' }}</span>
