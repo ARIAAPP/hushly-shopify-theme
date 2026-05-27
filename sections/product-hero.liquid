@@ -158,6 +158,7 @@
           data-bundle-quantity="1" data-bundle-price="34.9"
           data-bundle-original="34.9" data-bundle-save="0"
           data-bundle-label="Pack Essentiel"
+          data-bundle-image="{{ 'soufflo-9A-pack-essentiel-1x.jpg' | asset_url }}"
           style="position:relative;border:2px solid var(--color-border);border-radius:0.75rem;padding:1rem;cursor:pointer;transition:all 0.15s;">
           <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:0.75rem;">
             <div style="display:flex;align-items:flex-start;gap:0.75rem;min-width:0;">
@@ -181,6 +182,7 @@
           data-bundle-quantity="2" data-bundle-price="59.9"
           data-bundle-original="69.8" data-bundle-save="9.9"
           data-bundle-label="Pack Duo"
+          data-bundle-image="{{ 'soufflo-9B-pack-duo-2x.jpg' | asset_url }}"
           style="position:relative;border:2px solid var(--color-primary);border-radius:0.75rem;padding:1rem;cursor:pointer;transition:all 0.15s;background:color-mix(in srgb, var(--color-primary) 5%, transparent);">
           <span style="position:absolute;top:-0.625rem;right:0.75rem;background:var(--color-primary);color:var(--color-primary-fg);border-radius:9999px;padding:0.125rem 0.75rem;font-size:0.75rem;font-weight:700;">&#128293; Populaire</span>
           <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:0.75rem;">
@@ -233,6 +235,7 @@
           data-bundle-quantity="3" data-bundle-price="79.9"
           data-bundle-original="104.7" data-bundle-save="24.8"
           data-bundle-label="Pack Maison"
+          data-bundle-image="{{ 'soufflo-9C-pack-maison-3x.jpg' | asset_url }}"
           style="position:relative;border:2px solid var(--color-border);border-radius:0.75rem;padding:1rem;cursor:pointer;transition:all 0.15s;">
           <span style="position:absolute;top:-0.625rem;right:0.75rem;background:#FFD18A;color:#0B0F1E;border-radius:9999px;padding:0.125rem 0.75rem;font-size:0.75rem;font-weight:700;">&#128142; Meilleure offre</span>
           <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:0.75rem;">
@@ -498,7 +501,7 @@
       if (!sel) return;
       var vid = sel.getAttribute('data-bundle-variant'), qty = parseInt(sel.getAttribute('data-bundle-quantity')||'1',10);
       var bp = parseFloat(sel.getAttribute('data-bundle-price')), up = +(bp/qty).toFixed(2);
-      var items = [{ id:'main-product', variantId:vid, title:sel.getAttribute('data-bundle-label')||'Ventilateur LED Soufflo', price:up, quantity:qty }];
+      var items = [{ id:'main-product', variantId:vid, title:sel.getAttribute('data-bundle-label')||'Ventilateur LED Soufflo', price:up, quantity:qty, image:sel.getAttribute('data-bundle-image')||'' }];
       section.querySelectorAll('[data-upsell]:checked').forEach(function(u) {
         items.push({ id:u.getAttribute('data-upsell-id'), variantId:u.getAttribute('data-upsell-variant'), title:u.getAttribute('data-upsell-label'), price:parseFloat(u.getAttribute('data-upsell-price')), quantity:1 });
       });
