@@ -121,7 +121,7 @@
       var div = document.createElement('div');
       div.className = 'cart-item';
       div.innerHTML =
-        '<div class="cart-item__image"></div>' +
+        '<div class="cart-item__image">' + (item.image ? '<img src="' + item.image + '" alt="' + item.product_title + '" width="64" height="64" style="width:100%;height:100%;object-fit:cover;border-radius:0.5rem;">' : '') + '</div>' +
         '<div class="cart-item__details">' +
           '<p class="cart-item__name">' + item.product_title + '</p>' +
           (item.variant_title ? '<p class="cart-item__variant">' + item.variant_title + '</p>' : '') +
