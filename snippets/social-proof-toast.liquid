@@ -2,21 +2,18 @@
   ============================================================
   Social Proof Toast — Bottom-left notification popup
   Soufflo — periodic fake recent order notifications
-  Desktop only (hidden on mobile via CSS)
   ============================================================
 {%- endcomment -%}
 
 <div class="social-proof-toast" data-social-proof-toast aria-live="polite">
-  <div class="social-proof-toast__inner">
-    <img src="{{ 'soufflo-3A-hero-product.jpg' | asset_url }}" alt="Soufflo" width="40" height="40" class="social-proof-toast__avatar" style="width:40px;height:40px;border-radius:0.5rem;object-fit:cover;flex-shrink:0;">
-    <div class="social-proof-toast__content">
-      <p class="social-proof-toast__name" data-toast-name></p>
-      <p class="social-proof-toast__message" data-toast-message></p>
-    </div>
-    <button type="button" class="social-proof-toast__close" data-toast-close aria-label="Fermer">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-    </button>
+  <img src="{{ 'soufflo-3A-hero-product.jpg' | asset_url }}" alt="Soufflo" width="40" height="40" class="social-proof-toast__icon" style="border-radius:0.5rem;object-fit:cover;background:none;">
+  <div class="social-proof-toast__text">
+    <p class="social-proof-toast__name" data-toast-name style="margin:0;"></p>
+    <p class="social-proof-toast__time" data-toast-message style="margin:0;"></p>
   </div>
+  <button type="button" class="social-proof-toast__close" data-toast-close aria-label="Fermer">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
 </div>
 
 <script>

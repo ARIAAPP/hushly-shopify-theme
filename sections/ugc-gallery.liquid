@@ -1,6 +1,6 @@
 {%- comment -%}
   ============================================================
-  UGC Gallery — Masonry-style customer photos
+  UGC Gallery — Customer photos grid
   Soufflo — Ventilateur LED E27
   ============================================================
 {%- endcomment -%}
@@ -14,69 +14,54 @@
       <p class="text-muted-foreground">Ils ont &eacute;quip&eacute; leur int&eacute;rieur avec Soufflo.</p>
     </div>
 
-    {%- comment -%} Masonry grid {%- endcomment -%}
-    <div class="ugc-masonry" style="column-count:2; column-gap:1rem;">
+    {%- comment -%} Grid — uses existing CSS .ugc-gallery__grid {%- endcomment -%}
+    <div class="ugc-gallery__grid">
 
-      {%- comment -%} 1 — Sophie (square) {%- endcomment -%}
-      <div style="border-radius:1rem; overflow:hidden; margin-bottom:1rem; position:relative; break-inside:avoid;" class="bg-surface">
-        <img src="{{ 'soufflo-11A-ugc-femme-ravie.jpg' | asset_url }}" alt="Cliente ravie avec Soufflo" width="400" height="400" loading="lazy" style="width:100%; aspect-ratio:1/1; object-fit:cover; display:block;">
-        <div style="position:absolute; bottom:0; left:0; right:0; padding:0.75rem 1rem; background:linear-gradient(to top, rgba(0,0,0,0.7), transparent);">
-          <p style="color:#fff; font-size:0.8125rem; font-style:italic; margin:0;">@sophie.deco &middot; &laquo; Mon salon a chang&eacute; &raquo;</p>
+      <div class="ugc-item">
+        <img src="{{ 'soufflo-11A-ugc-femme-ravie.jpg' | asset_url }}" alt="Cliente ravie avec Soufflo" width="400" height="400" loading="lazy">
+        <div class="ugc-item__overlay">
+          <span class="ugc-item__caption">@sophie.deco &middot; &laquo; Mon salon a chang&eacute; &raquo;</span>
         </div>
       </div>
 
-      {%- comment -%} 2 — Maman Lulu (tall 3/4) {%- endcomment -%}
-      <div style="border-radius:1rem; overflow:hidden; margin-bottom:1rem; position:relative; break-inside:avoid;" class="bg-surface">
-        <img src="{{ 'soufflo-11B-ugc-homme-installation.jpg' | asset_url }}" alt="Installation du Soufflo" width="400" height="533" loading="lazy" style="width:100%; aspect-ratio:3/4; object-fit:cover; display:block;">
-        <div style="position:absolute; bottom:0; left:0; right:0; padding:0.75rem 1rem; background:linear-gradient(to top, rgba(0,0,0,0.7), transparent);">
-          <p style="color:#fff; font-size:0.8125rem; font-style:italic; margin:0;">@maman.lulu &middot; &laquo; B&eacute;b&eacute; dort enfin &raquo;</p>
+      <div class="ugc-item">
+        <img src="{{ 'soufflo-11B-ugc-homme-installation.jpg' | asset_url }}" alt="Installation du Soufflo" width="400" height="400" loading="lazy">
+        <div class="ugc-item__overlay">
+          <span class="ugc-item__caption">@maman.lulu &middot; &laquo; B&eacute;b&eacute; dort enfin &raquo;</span>
         </div>
       </div>
 
-      {%- comment -%} 3 — Thomas (square) {%- endcomment -%}
-      <div style="border-radius:1rem; overflow:hidden; margin-bottom:1rem; position:relative; break-inside:avoid;" class="bg-surface">
-        <img src="{{ 'soufflo-11C-ugc-couple-canape.jpg' | asset_url }}" alt="Couple profitant du Soufflo" width="400" height="400" loading="lazy" style="width:100%; aspect-ratio:1/1; object-fit:cover; display:block;">
-        <div style="position:absolute; bottom:0; left:0; right:0; padding:0.75rem 1rem; background:linear-gradient(to top, rgba(0,0,0,0.7), transparent);">
-          <p style="color:#fff; font-size:0.8125rem; font-style:italic; margin:0;">@thomas.r &middot; &laquo; 10 sec chrono &raquo;</p>
+      <div class="ugc-item">
+        <img src="{{ 'soufflo-11C-ugc-couple-canape.jpg' | asset_url }}" alt="Couple profitant du Soufflo" width="400" height="400" loading="lazy">
+        <div class="ugc-item__overlay">
+          <span class="ugc-item__caption">@thomas.r &middot; &laquo; 10 sec chrono &raquo;</span>
         </div>
       </div>
 
-      {%- comment -%} 4 — Cocooning (tall 3/4) {%- endcomment -%}
-      <div style="border-radius:1rem; overflow:hidden; margin-bottom:1rem; position:relative; break-inside:avoid;" class="bg-surface">
-        <img src="{{ 'soufflo-11E-ugc-temoignage-v1.jpg' | asset_url }}" alt="Témoignage client Soufflo" width="400" height="533" loading="lazy" style="width:100%; aspect-ratio:3/4; object-fit:cover; display:block;">
-        <div style="position:absolute; bottom:0; left:0; right:0; padding:0.75rem 1rem; background:linear-gradient(to top, rgba(0,0,0,0.7), transparent);">
-          <p style="color:#fff; font-size:0.8125rem; font-style:italic; margin:0;">@cocooning.fr &middot; &laquo; Lumi&egrave;re douce parfaite &raquo;</p>
+      <div class="ugc-item">
+        <img src="{{ 'soufflo-11E-ugc-temoignage-v1.jpg' | asset_url }}" alt="Témoignage client Soufflo" width="400" height="400" loading="lazy">
+        <div class="ugc-item__overlay">
+          <span class="ugc-item__caption">@cocooning.fr &middot; &laquo; Lumi&egrave;re douce parfaite &raquo;</span>
         </div>
       </div>
 
-      {%- comment -%} 5 — Nathalie (square) {%- endcomment -%}
-      <div style="border-radius:1rem; overflow:hidden; margin-bottom:1rem; position:relative; break-inside:avoid;" class="bg-surface">
-        <img src="{{ 'soufflo-11D-ugc-comparaison-split.jpg' | asset_url }}" alt="Comparaison avant/après Soufflo" width="400" height="400" loading="lazy" style="width:100%; aspect-ratio:1/1; object-fit:cover; display:block;">
-        <div style="position:absolute; bottom:0; left:0; right:0; padding:0.75rem 1rem; background:linear-gradient(to top, rgba(0,0,0,0.7), transparent);">
-          <p style="color:#fff; font-size:0.8125rem; font-style:italic; margin:0;">@nathalie.d &middot; &laquo; Tout depuis le canap&eacute; &raquo;</p>
+      <div class="ugc-item">
+        <img src="{{ 'soufflo-11D-ugc-comparaison-split.jpg' | asset_url }}" alt="Comparaison avant/après Soufflo" width="400" height="400" loading="lazy">
+        <div class="ugc-item__overlay">
+          <span class="ugc-item__caption">@nathalie.d &middot; &laquo; Tout depuis le canap&eacute; &raquo;</span>
         </div>
       </div>
 
-      {%- comment -%} 6 — Maison Moderne (square) {%- endcomment -%}
-      <div style="border-radius:1rem; overflow:hidden; margin-bottom:1rem; position:relative; break-inside:avoid;" class="bg-surface">
-        <img src="{{ 'soufflo-11F-ugc-unboxing.jpg' | asset_url }}" alt="Unboxing Soufflo" width="400" height="400" loading="lazy" style="width:100%; aspect-ratio:1/1; object-fit:cover; display:block;">
-        <div style="position:absolute; bottom:0; left:0; right:0; padding:0.75rem 1rem; background:linear-gradient(to top, rgba(0,0,0,0.7), transparent);">
-          <p style="color:#fff; font-size:0.8125rem; font-style:italic; margin:0;">@maison.moderne &middot; &laquo; Discret au plafond &raquo;</p>
+      <div class="ugc-item">
+        <img src="{{ 'soufflo-11F-ugc-unboxing.jpg' | asset_url }}" alt="Unboxing Soufflo" width="400" height="400" loading="lazy">
+        <div class="ugc-item__overlay">
+          <span class="ugc-item__caption">@maison.moderne &middot; &laquo; Discret au plafond &raquo;</span>
         </div>
       </div>
 
     </div>
   </div>
 </section>
-
-<style>
-  @media (min-width: 768px) {
-    .ugc-masonry { column-count: 3 !important; }
-  }
-  @media (min-width: 1024px) {
-    .ugc-masonry { column-count: 4 !important; }
-  }
-</style>
 
 {% schema %}
 {
