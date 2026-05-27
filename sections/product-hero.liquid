@@ -12,39 +12,43 @@
     {%- comment -%} ========== LEFT: IMAGE GALLERY ========== {%- endcomment -%}
     <div>
       <div class="rounded-2xl overflow-hidden relative" style="aspect-ratio:1/1; background:linear-gradient(135deg, #e0f2fe 0%, #bae6fd 50%, #e0f7fa 100%); display:flex; align-items:center; justify-content:center;">
-        <img data-gallery-slide="0" src="{{ 'soufflo-3F-kreavo-e27-closeup.jpg' | asset_url }}" alt="Soufflo visse dans une douille E27 au plafond" class="w-full h-full object-cover" width="800" height="800" decoding="async" style="position:absolute;inset:0;">
-        <img data-gallery-slide="1" src="{{ 'soufflo-3E-detail-e27-socket.jpg' | asset_url }}" alt="Detail LED et culot E27 filete" class="w-full h-full object-cover" width="800" height="800" loading="lazy" decoding="async" style="display:none;position:absolute;inset:0;">
-        <img data-gallery-slide="2" src="{{ 'soufflo-10E-produit-telecommande.jpg' | asset_url }}" alt="Ventilateur LED Soufflo avec telecommande" class="w-full h-full object-cover" width="800" height="800" loading="lazy" decoding="async" style="display:none;position:absolute;inset:0;">
-        <img data-gallery-slide="3" src="{{ 'soufflo-5A-avant-ampoule-nue.jpg' | asset_url }}" alt="Avant — douille E27 classique" class="w-full h-full object-cover" width="800" height="800" loading="lazy" decoding="async" style="display:none;position:absolute;inset:0;">
-        <img data-gallery-slide="4" src="{{ 'soufflo-5B-apres-soufflo-installe.jpg' | asset_url }}" alt="Apres — Soufflo installe au plafond" class="w-full h-full object-cover" width="800" height="800" loading="lazy" decoding="async" style="display:none;position:absolute;inset:0;">
-        <img data-gallery-slide="5" src="{{ 'soufflo-3D-chambre-nuit.jpg' | asset_url }}" alt="Ambiance chambre de nuit" class="w-full h-full object-cover" width="800" height="800" loading="lazy" decoding="async" style="display:none;position:absolute;inset:0;">
-        <img data-gallery-slide="6" src="{{ 'soufflo-4A-salon-moderne.jpg' | asset_url }}" alt="Soufflo dans un salon moderne" class="w-full h-full object-cover" width="800" height="800" loading="lazy" decoding="async" style="display:none;position:absolute;inset:0;">
-        <img data-gallery-slide="7" src="{{ 'soufflo-6A-3-temperatures.jpg' | asset_url }}" alt="3 temperatures de couleur LED" class="w-full h-full object-cover" width="800" height="800" loading="lazy" decoding="async" style="display:none;position:absolute;inset:0;">
+        <video data-gallery-slide="0" src="{{ 'soufflo-hero-video.mp4' | asset_url }}" autoplay loop muted playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"></video>
+        <img data-gallery-slide="1" src="{{ 'soufflo-3F-kreavo-e27-closeup.jpg' | asset_url }}" alt="Soufflo visse dans une douille E27 au plafond" class="w-full h-full object-cover" width="800" height="800" loading="lazy" decoding="async" style="display:none;position:absolute;inset:0;">
+        <img data-gallery-slide="2" src="{{ 'soufflo-3E-detail-e27-socket.jpg' | asset_url }}" alt="Detail LED et culot E27 filete" class="w-full h-full object-cover" width="800" height="800" loading="lazy" decoding="async" style="display:none;position:absolute;inset:0;">
+        <img data-gallery-slide="3" src="{{ 'soufflo-10E-produit-telecommande.jpg' | asset_url }}" alt="Ventilateur LED Soufflo avec telecommande" class="w-full h-full object-cover" width="800" height="800" loading="lazy" decoding="async" style="display:none;position:absolute;inset:0;">
+        <img data-gallery-slide="4" src="{{ 'soufflo-5A-avant-ampoule-nue.jpg' | asset_url }}" alt="Avant — douille E27 classique" class="w-full h-full object-cover" width="800" height="800" loading="lazy" decoding="async" style="display:none;position:absolute;inset:0;">
+        <img data-gallery-slide="5" src="{{ 'soufflo-5B-apres-soufflo-installe.jpg' | asset_url }}" alt="Apres — Soufflo installe au plafond" class="w-full h-full object-cover" width="800" height="800" loading="lazy" decoding="async" style="display:none;position:absolute;inset:0;">
+        <img data-gallery-slide="6" src="{{ 'soufflo-3D-chambre-nuit.jpg' | asset_url }}" alt="Ambiance chambre de nuit" class="w-full h-full object-cover" width="800" height="800" loading="lazy" decoding="async" style="display:none;position:absolute;inset:0;">
+        <img data-gallery-slide="7" src="{{ 'soufflo-4A-salon-moderne.jpg' | asset_url }}" alt="Soufflo dans un salon moderne" class="w-full h-full object-cover" width="800" height="800" loading="lazy" decoding="async" style="display:none;position:absolute;inset:0;">
+        <img data-gallery-slide="8" src="{{ 'soufflo-6A-3-temperatures.jpg' | asset_url }}" alt="3 temperatures de couleur LED" class="w-full h-full object-cover" width="800" height="800" loading="lazy" decoding="async" style="display:none;position:absolute;inset:0;">
       </div>
 
       <div class="flex gap-3 flex-wrap justify-center mt-4">
-        <button type="button" data-gallery-thumb="0" aria-label="Douille E27 au plafond" class="gallery-thumb" style="height:5rem;width:5rem;border-radius:0.5rem;border:2px solid var(--color-primary);overflow:hidden;position:relative;background:linear-gradient(135deg,#e0f2fe,#bae6fd);cursor:pointer;flex-shrink:0;">
+        <button type="button" data-gallery-thumb="0" aria-label="Video produit" class="gallery-thumb" style="height:5rem;width:5rem;border-radius:0.5rem;border:2px solid var(--color-primary);overflow:hidden;position:relative;background:#0C4A6E;cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center;">
+          <span style="color:#fff;font-size:1.5rem;line-height:1;">&#9654;</span>
+        </button>
+        <button type="button" data-gallery-thumb="1" aria-label="Douille E27 au plafond" class="gallery-thumb" style="height:5rem;width:5rem;border-radius:0.5rem;border:2px solid transparent;overflow:hidden;position:relative;background:linear-gradient(135deg,#e0f2fe,#bae6fd);cursor:pointer;flex-shrink:0;">
           <img src="{{ 'soufflo-3F-kreavo-e27-closeup.jpg' | asset_url }}" alt="" class="h-full w-full object-cover" width="80" height="80" loading="lazy">
         </button>
-        <button type="button" data-gallery-thumb="1" aria-label="Detail LED et culot E27" class="gallery-thumb" style="height:5rem;width:5rem;border-radius:0.5rem;border:2px solid transparent;overflow:hidden;position:relative;background:linear-gradient(135deg,#e0f2fe,#bae6fd);cursor:pointer;flex-shrink:0;">
+        <button type="button" data-gallery-thumb="2" aria-label="Detail LED et culot E27" class="gallery-thumb" style="height:5rem;width:5rem;border-radius:0.5rem;border:2px solid transparent;overflow:hidden;position:relative;background:linear-gradient(135deg,#e0f2fe,#bae6fd);cursor:pointer;flex-shrink:0;">
           <img src="{{ 'soufflo-3E-detail-e27-socket.jpg' | asset_url }}" alt="" class="h-full w-full object-cover" width="80" height="80" loading="lazy">
         </button>
-        <button type="button" data-gallery-thumb="2" aria-label="Produit et telecommande" class="gallery-thumb" style="height:5rem;width:5rem;border-radius:0.5rem;border:2px solid transparent;overflow:hidden;position:relative;background:linear-gradient(135deg,#e0f2fe,#bae6fd);cursor:pointer;flex-shrink:0;">
+        <button type="button" data-gallery-thumb="3" aria-label="Produit et telecommande" class="gallery-thumb" style="height:5rem;width:5rem;border-radius:0.5rem;border:2px solid transparent;overflow:hidden;position:relative;background:linear-gradient(135deg,#e0f2fe,#bae6fd);cursor:pointer;flex-shrink:0;">
           <img src="{{ 'soufflo-10E-produit-telecommande.jpg' | asset_url }}" alt="" class="h-full w-full object-cover" width="80" height="80" loading="lazy">
         </button>
-        <button type="button" data-gallery-thumb="3" aria-label="Avant — douille E27" class="gallery-thumb" style="height:5rem;width:5rem;border-radius:0.5rem;border:2px solid transparent;overflow:hidden;position:relative;background:linear-gradient(135deg,#e0f2fe,#bae6fd);cursor:pointer;flex-shrink:0;">
+        <button type="button" data-gallery-thumb="4" aria-label="Avant — douille E27" class="gallery-thumb" style="height:5rem;width:5rem;border-radius:0.5rem;border:2px solid transparent;overflow:hidden;position:relative;background:linear-gradient(135deg,#e0f2fe,#bae6fd);cursor:pointer;flex-shrink:0;">
           <img src="{{ 'soufflo-5A-avant-ampoule-nue.jpg' | asset_url }}" alt="" class="h-full w-full object-cover" width="80" height="80" loading="lazy">
         </button>
-        <button type="button" data-gallery-thumb="4" aria-label="Apres — installe" class="gallery-thumb" style="height:5rem;width:5rem;border-radius:0.5rem;border:2px solid transparent;overflow:hidden;position:relative;background:linear-gradient(135deg,#e0f2fe,#bae6fd);cursor:pointer;flex-shrink:0;">
+        <button type="button" data-gallery-thumb="5" aria-label="Apres — installe" class="gallery-thumb" style="height:5rem;width:5rem;border-radius:0.5rem;border:2px solid transparent;overflow:hidden;position:relative;background:linear-gradient(135deg,#e0f2fe,#bae6fd);cursor:pointer;flex-shrink:0;">
           <img src="{{ 'soufflo-5B-apres-soufflo-installe.jpg' | asset_url }}" alt="" class="h-full w-full object-cover" width="80" height="80" loading="lazy">
         </button>
-        <button type="button" data-gallery-thumb="5" aria-label="Chambre de nuit" class="gallery-thumb" style="height:5rem;width:5rem;border-radius:0.5rem;border:2px solid transparent;overflow:hidden;position:relative;background:linear-gradient(135deg,#e0f2fe,#bae6fd);cursor:pointer;flex-shrink:0;">
+        <button type="button" data-gallery-thumb="6" aria-label="Chambre de nuit" class="gallery-thumb" style="height:5rem;width:5rem;border-radius:0.5rem;border:2px solid transparent;overflow:hidden;position:relative;background:linear-gradient(135deg,#e0f2fe,#bae6fd);cursor:pointer;flex-shrink:0;">
           <img src="{{ 'soufflo-3D-chambre-nuit.jpg' | asset_url }}" alt="" class="h-full w-full object-cover" width="80" height="80" loading="lazy">
         </button>
-        <button type="button" data-gallery-thumb="6" aria-label="Salon moderne" class="gallery-thumb" style="height:5rem;width:5rem;border-radius:0.5rem;border:2px solid transparent;overflow:hidden;position:relative;background:linear-gradient(135deg,#e0f2fe,#bae6fd);cursor:pointer;flex-shrink:0;">
+        <button type="button" data-gallery-thumb="7" aria-label="Salon moderne" class="gallery-thumb" style="height:5rem;width:5rem;border-radius:0.5rem;border:2px solid transparent;overflow:hidden;position:relative;background:linear-gradient(135deg,#e0f2fe,#bae6fd);cursor:pointer;flex-shrink:0;">
           <img src="{{ 'soufflo-4A-salon-moderne.jpg' | asset_url }}" alt="" class="h-full w-full object-cover" width="80" height="80" loading="lazy">
         </button>
-        <button type="button" data-gallery-thumb="7" aria-label="3 temperatures LED" class="gallery-thumb" style="height:5rem;width:5rem;border-radius:0.5rem;border:2px solid transparent;overflow:hidden;position:relative;background:linear-gradient(135deg,#e0f2fe,#bae6fd);cursor:pointer;flex-shrink:0;">
+        <button type="button" data-gallery-thumb="8" aria-label="3 temperatures LED" class="gallery-thumb" style="height:5rem;width:5rem;border-radius:0.5rem;border:2px solid transparent;overflow:hidden;position:relative;background:linear-gradient(135deg,#e0f2fe,#bae6fd);cursor:pointer;flex-shrink:0;">
           <img src="{{ 'soufflo-6A-3-temperatures.jpg' | asset_url }}" alt="" class="h-full w-full object-cover" width="80" height="80" loading="lazy">
         </button>
       </div>
@@ -361,7 +365,14 @@
   var slides = section.querySelectorAll('[data-gallery-slide]');
   var thumbs = section.querySelectorAll('[data-gallery-thumb]');
   function showSlide(idx) {
-    slides.forEach(function(s) { s.style.display = s.getAttribute('data-gallery-slide') === String(idx) ? '' : 'none'; });
+    slides.forEach(function(s) {
+      var active = s.getAttribute('data-gallery-slide') === String(idx);
+      s.style.display = active ? '' : 'none';
+      /* Pause/play video slides */
+      if (s.tagName === 'VIDEO') {
+        if (active) { s.play(); } else { s.pause(); }
+      }
+    });
     thumbs.forEach(function(t) { var a = t.getAttribute('data-gallery-thumb') === String(idx); t.style.borderColor = a ? 'var(--color-primary)' : 'transparent'; });
   }
   thumbs.forEach(function(t) { t.addEventListener('click', function() { showSlide(parseInt(t.getAttribute('data-gallery-thumb'), 10)); }); });
