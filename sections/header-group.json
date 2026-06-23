@@ -6,7 +6,7 @@
       "type": "announcement-bar",
       "blocks": {
         "msg1": { "type": "message", "settings": { "text": "🚚 Livraison offerte en France" } },
-        "msg2": { "type": "message", "settings": { "text": "✅ Satisfait ou remboursé 30 jours" } },
+        "msg2": { "type": "message", "settings": { "text": "🔒 Paiement 100% sécurisé" } },
         "msg3": { "type": "message", "settings": { "text": "⚡ Installation en 10 secondes" } },
         "msg4": { "type": "message", "settings": { "text": "🎮 Télécommande incluse" } },
         "msg5": { "type": "message", "settings": { "text": "📦 Expédition rapide + suivi" } }
