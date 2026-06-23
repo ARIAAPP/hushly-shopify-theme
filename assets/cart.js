@@ -10,8 +10,7 @@
     items: [],
     addons: [
       { id: 'protection', variantId: '54003242795349', title: 'Assurance colis', price: 4.95, icon: '📦' },
-      { id: 'warranty',   variantId: '54003255869781', title: 'Extension garantie 24 mois', price: 7.95, icon: '🛡️' },
-      { id: 'priority',   variantId: '54003273662805', title: 'Expedition express 48h', price: 5.95, icon: '🚚' }
+      { id: 'warranty',   variantId: '54003255869781', title: 'Extension garantie 24 mois', price: 7.95, icon: '🛡️' }
     ]
   };
 
