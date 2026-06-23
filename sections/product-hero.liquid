@@ -491,9 +491,11 @@
     atcBtn.addEventListener('click', function() {
       var sel = section.querySelector('[data-bundle][aria-pressed="true"]') || bundleCards[0];
       if (!sel) return;
-      var vid = sel.getAttribute('data-bundle-variant'), qty = parseInt(sel.getAttribute('data-bundle-quantity')||'1',10);
-      var bp = parseFloat(sel.getAttribute('data-bundle-price')), up = +(bp/qty).toFixed(2);
-      var items = [{ id:'main-product', variantId:vid, title:sel.getAttribute('data-bundle-label')||'Ventilateur LED Soufflo', price:up, quantity:qty, image:sel.getAttribute('data-bundle-image')||'' }];
+      // FIX panier : la variante du pack EST deja le prix complet (Duo=59,90 / Maison=79,90) -> TOUJOURS quantite 1.
+      // data-bundle-quantity (1/2/3) = nb de ventilateurs (affichage + mapping DSers BOGO), PAS la quantite panier.
+      var vid = sel.getAttribute('data-bundle-variant');
+      var bp = parseFloat(sel.getAttribute('data-bundle-price'));
+      var items = [{ id:'main-product', variantId:vid, title:sel.getAttribute('data-bundle-label')||'Ventilateur LED Soufflo', price:bp, quantity:1, image:sel.getAttribute('data-bundle-image')||'' }];
       section.querySelectorAll('[data-upsell]:checked').forEach(function(u) {
         items.push({ id:u.getAttribute('data-upsell-id'), variantId:u.getAttribute('data-upsell-variant'), title:u.getAttribute('data-upsell-label'), price:parseFloat(u.getAttribute('data-upsell-price')), quantity:1 });
       });
