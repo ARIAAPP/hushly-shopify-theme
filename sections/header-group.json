@@ -16,11 +16,11 @@
     "header": {
       "type": "header",
       "blocks": {
-        "nav1": { "type": "nav_link", "settings": { "label": "Le produit", "url": "#product-hero" } },
-        "nav2": { "type": "nav_link", "settings": { "label": "Comment ça marche", "url": "#how" } },
-        "nav3": { "type": "nav_link", "settings": { "label": "Avis clients", "url": "#avis" } },
-        "nav4": { "type": "nav_link", "settings": { "label": "FAQ", "url": "#faq" } },
-        "nav5": { "type": "nav_link", "settings": { "label": "Contact", "url": "#contact" } }
+        "nav1": { "type": "nav_link", "settings": { "label": "Le produit", "url": "/#product" } },
+        "nav2": { "type": "nav_link", "settings": { "label": "Comment ça marche", "url": "/#how" } },
+        "nav3": { "type": "nav_link", "settings": { "label": "Avis clients", "url": "/#reviews" } },
+        "nav4": { "type": "nav_link", "settings": { "label": "FAQ", "url": "/#faq" } },
+        "nav5": { "type": "nav_link", "settings": { "label": "Contact", "url": "/#contact" } }
       },
       "block_order": ["nav1", "nav2", "nav3", "nav4", "nav5"]
     }
