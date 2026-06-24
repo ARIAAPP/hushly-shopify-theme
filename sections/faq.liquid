@@ -114,28 +114,12 @@
   #faq .faq-item.is-open .faq-item__toggle { transform: rotate(45deg); }
 </style>
 
-<script>
-(function() {
-  /* Délégation d'événement : robuste même si la section est re-rendue / le script chargé tôt */
-  document.addEventListener('click', function(e) {
-    var btn = e.target.closest('.faq-item__question');
-    if (!btn) return;
-    var item = btn.closest('.faq-item');
-    if (!item) return;
-    var container = btn.closest('#faq') || document;
-    var isOpen = item.classList.contains('is-open');
-    container.querySelectorAll('.faq-item').forEach(function(i) {
-      i.classList.remove('is-open');
-      var b = i.querySelector('.faq-item__question');
-      if (b) b.setAttribute('aria-expanded', 'false');
-    });
-    if (!isOpen) {
-      item.classList.add('is-open');
-      btn.setAttribute('aria-expanded', 'true');
-    }
-  });
-})();
-</script>
+{%- comment -%}
+  Accordéon géré UNIQUEMENT par assets/global.js (handler unique).
+  Le script inline a été retiré (24/06) : il faisait DOUBLON avec global.js
+  → global.js ouvrait la réponse, le script inline la refermait aussitôt
+  (les deux s'annulaient) → l'accordéon ne se déroulait jamais.
+{%- endcomment -%}
 
 {% schema %}
 {
