@@ -106,28 +106,33 @@
     background-color: var(--color-primary) !important;
     color: #fff !important;
   }
+  /* Accordéon : déroulé de la réponse au clic (rétabli 24/06 — CSS perdu à la conversion) */
+  #faq .faq-item__answer { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+  #faq .faq-item.is-open .faq-item__answer { max-height: 600px; }
+  #faq .faq-item.is-open .faq-item__answer-inner { padding-bottom: 1.25rem; }
+  #faq .faq-item__toggle { transition: transform 0.25s ease; }
+  #faq .faq-item.is-open .faq-item__toggle { transform: rotate(45deg); }
 </style>
 
 <script>
 (function() {
-  var items = document.querySelectorAll('#faq .faq-item');
-  items.forEach(function(item) {
-    var btn = item.querySelector('.faq-item__question');
+  /* Délégation d'événement : robuste même si la section est re-rendue / le script chargé tôt */
+  document.addEventListener('click', function(e) {
+    var btn = e.target.closest('.faq-item__question');
     if (!btn) return;
-    btn.addEventListener('click', function() {
-      var isOpen = item.classList.contains('is-open');
-      // Close all
-      items.forEach(function(i) {
-        i.classList.remove('is-open');
-        var b = i.querySelector('.faq-item__question');
-        if (b) b.setAttribute('aria-expanded', 'false');
-      });
-      // Toggle current
-      if (!isOpen) {
-        item.classList.add('is-open');
-        btn.setAttribute('aria-expanded', 'true');
-      }
+    var item = btn.closest('.faq-item');
+    if (!item) return;
+    var container = btn.closest('#faq') || document;
+    var isOpen = item.classList.contains('is-open');
+    container.querySelectorAll('.faq-item').forEach(function(i) {
+      i.classList.remove('is-open');
+      var b = i.querySelector('.faq-item__question');
+      if (b) b.setAttribute('aria-expanded', 'false');
     });
+    if (!isOpen) {
+      item.classList.add('is-open');
+      btn.setAttribute('aria-expanded', 'true');
+    }
   });
 })();
 </script>
