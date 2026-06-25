@@ -51,7 +51,7 @@
         "cta_url": "/#product"
       },
       "blocks": {
-        "b1": { "type": "benefit", "settings": { "icon": "💡", "title": "LED 40W dimmable", "description": "3 couleurs de lumière : blanc chaud, neutre, froid. Intensité réglable." } },
+        "b1": { "type": "benefit", "settings": { "icon": "💡", "title": "LED dimmable, 3 couleurs", "description": "3 couleurs de lumière : blanc chaud, neutre, froid. Intensité réglable." } },
         "b2": { "type": "benefit", "settings": { "icon": "🌀", "title": "3 vitesses de ventilation", "description": "Du souffle léger à la brise fraîche. Silencieux à toutes les vitesses." } },
         "b3": { "type": "benefit", "settings": { "icon": "🔌", "title": "Culot E27 standard", "description": "Se visse dans n'importe quelle douille E27 existante." } },
         "b4": { "type": "benefit", "settings": { "icon": "⏱️", "title": "Installation 10 secondes", "description": "Pas de perceuse, pas de fils, pas d'électricien." } },
@@ -152,15 +152,15 @@
         "cta_label": "Commander le ventilateur LED"
       },
       "blocks": {
-        "q1": { "type": "faq", "settings": { "question": "💡 C'est quoi exactement ce produit ?", "answer": "<p>C'est un ventilateur de plafond avec LED intégrée (40W) qui se visse directement dans une douille E27 standard — la même que vos ampoules classiques. Il remplace votre ampoule et ajoute un ventilateur au plafond, sans aucun travaux.</p>" } },
+        "q1": { "type": "faq", "settings": { "question": "💡 C'est quoi exactement ce produit ?", "answer": "<p>C'est un ventilateur de plafond avec LED intégrée qui se visse directement dans une douille E27 standard — la même que vos ampoules classiques. Il remplace votre ampoule et ajoute un ventilateur au plafond, sans aucun travaux.</p>" } },
         "q2": { "type": "faq", "settings": { "question": "🔌 Est-ce compatible avec ma douille ?", "answer": "<p>Si votre ampoule actuelle a un culot E27 (le gros culot à vis standard en France), oui. C'est le culot le plus courant dans les foyers français. En cas de doute, regardez le culot de votre ampoule actuelle : s'il fait environ 27mm de diamètre et se visse, c'est un E27.</p>" } },
         "q3": { "type": "faq", "settings": { "question": "⏱️ L'installation prend vraiment 10 secondes ?", "answer": "<p>Oui. Vous dévissez votre ampoule, vous vissez le ventilateur LED Soufflo à la place. C'est tout. Pas de perceuse, pas de fils à brancher, pas d'électricien. La télécommande est prête à l'emploi.</p>" } },
         "q4": { "type": "faq", "settings": { "question": "📱 Comment fonctionne la télécommande ?", "answer": "<p>La télécommande permet de contrôler la lumière (on/off, couleur, intensité) et le ventilateur (on/off, 3 vitesses). Elle fonctionne avec une pile bouton incluse. Portée d'environ 5 mètres.</p>" } },
         "q5": { "type": "faq", "settings": { "question": "🔇 Est-ce que c'est bruyant ?", "answer": "<p>Non. Le moteur brushless est conçu pour être silencieux. En vitesse 1, il est quasiment inaudible. Même en vitesse 3, le bruit reste très faible — bien en dessous d'un ventilateur sur pied classique.</p>" } },
-        "q6": { "type": "faq", "settings": { "question": "💡 La lumière est-elle suffisante ?", "answer": "<p>Oui. La LED 40W équivaut à environ 300W en ampoule classique. C'est suffisant pour éclairer une pièce de 15 à 20 m². Vous pouvez choisir entre blanc chaud (2700K), neutre (4500K) et froid (6500K), et régler l'intensité avec la télécommande.</p>" } },
+        "q6": { "type": "faq", "settings": { "question": "💡 La lumière est-elle suffisante ?", "answer": "<p>Oui, la LED éclaire largement une pièce de 15 à 20 m². Vous pouvez choisir entre blanc chaud (2700K), neutre (4500K) et froid (6500K), et régler l'intensité avec la télécommande.</p>" } },
         "q7": { "type": "faq", "settings": { "question": "🚚 Quel est le délai de livraison ?", "answer": "<p>Livraison gratuite en France métropolitaine. Vous recevez un lien de suivi par email dès l'expédition de votre commande.</p>" } },
         "q8": { "type": "faq", "settings": { "question": "↩️ Quelle est la politique de retour ?", "answer": "<p>Vous disposez d'un droit de rétractation de 14 jours après réception. Les frais de retour sont à votre charge. Voir notre politique de remboursement pour les détails.</p>" } },
-        "q9": { "type": "faq", "settings": { "question": "⚡ Est-ce que ça consomme beaucoup d'électricité ?", "answer": "<p>Non. La LED consomme 40W (beaucoup moins qu'une ampoule classique) et le ventilateur consomme très peu. C'est une alternative bien plus économique qu'un climatiseur.</p>" } }
+        "q9": { "type": "faq", "settings": { "question": "⚡ Est-ce que ça consomme beaucoup d'électricité ?", "answer": "<p>Non. La LED consomme très peu (beaucoup moins qu'une ampoule classique) et le ventilateur consomme très peu. C'est une alternative bien plus économique qu'un climatiseur.</p>" } }
       },
       "block_order": ["q1","q2","q3","q4","q5","q6","q7","q8","q9"]
     },
