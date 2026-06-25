@@ -326,15 +326,22 @@
     });
   }
 
-  /* Desktop: mouseleave on document top edge */
+  /* Desktop: mouseleave on document top edge (vraie intention de sortie),
+     armé seulement après 12s sur la page → évite le pop à l'arrivée
+     (sinon on offre la remise à des gens qui allaient acheter). */
   if (exitOverlay && !sessionStorage.getItem(EXIT_KEY)) {
-    document.addEventListener('mouseleave', function (e) {
-      if (e.clientY <= 0) {
-        showExitPopup();
-      }
-    });
+    var EXIT_ARM_DELAY = 12000; /* ne rien déclencher dans les 12 premières secondes */
 
-    /* Mobile: show after 30 seconds of inactivity */
+    setTimeout(function () {
+      document.addEventListener('mouseleave', function (e) {
+        if (e.clientY <= 0) {
+          showExitPopup();
+        }
+      });
+    }, EXIT_ARM_DELAY);
+
+    /* Mobile: pas de "mouseleave" possible → on attend 60s d'inactivité
+       (au lieu de 30s) pour ne pas interrompre un visiteur encore engagé. */
     var mobileIdleTimer = null;
     var isMobile = window.innerWidth < 769;
 
@@ -342,7 +349,7 @@
       clearTimeout(mobileIdleTimer);
       mobileIdleTimer = setTimeout(function () {
         showExitPopup();
-      }, 30000);
+      }, 60000);
     }
 
     if (isMobile) {
