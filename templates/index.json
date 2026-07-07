@@ -1,10 +1,10 @@
-﻿{
+{
   "sections": {
     "product_hero": {
       "type": "product-hero",
       "settings": {
         "headline": "Ventilateur LED Soufflo",
-        "subtitle": "Fraicheur & lumiere â€” en un clic.",
+        "subtitle": "Fraicheur & lumiere — en un clic.",
         "bundle_section_title": "Choisis ton pack",
         "default_bundle_index": 2,
         "show_countdown": true,
@@ -15,50 +15,50 @@
         "review_text": "Installation ultra simple, je l'ai visse en 10 secondes dans ma douille E27. Les 3 vitesses sont vraiment silencieuses et la telecommande est super pratique. Parfait pour l'ete !"
       },
       "blocks": {
-        "bullet_1": { "type": "bullet", "settings": { "text": "Se visse dans n'importe quelle douille E27 â€” 10 secondes" } },
+        "bullet_1": { "type": "bullet", "settings": { "text": "Se visse dans n'importe quelle douille E27 — 10 secondes" } },
         "bullet_2": { "type": "bullet", "settings": { "text": "3 vitesses de ventilation silencieuse" } },
-        "bullet_3": { "type": "bullet", "settings": { "text": "LED dimmable â€” 3 temperatures (chaud / naturel / froid)" } },
-        "bullet_4": { "type": "bullet", "settings": { "text": "Telecommande incluse â€” controle depuis le canape" } },
+        "bullet_3": { "type": "bullet", "settings": { "text": "LED dimmable — 3 temperatures (chaud / naturel / froid)" } },
+        "bullet_4": { "type": "bullet", "settings": { "text": "Telecommande incluse — controle depuis le canape" } },
         "bundle_1": { "type": "bundle", "settings": { "label": "Pack Essentiel", "description": "1 ventilateur", "variant_id": "54010409353557", "quantity": 1, "price": 3490, "original_price": 3490, "save_amount": 0, "badge": "none" } },
         "bundle_2": { "type": "bundle", "settings": { "label": "Pack Duo", "description": "2 ventilateurs", "variant_id": "54010409386325", "quantity": 2, "price": 5990, "original_price": 6980, "save_amount": 990, "badge": "popular", "badge_text": "Populaire" } },
         "bundle_3": { "type": "bundle", "settings": { "label": "Pack Maison", "description": "3 ventilateurs", "variant_id": "54010409419093", "quantity": 3, "price": 7990, "original_price": 10470, "save_amount": 2480, "badge": "best", "badge_text": "Meilleure offre" } },
         "upsell_1": { "type": "upsell", "settings": { "label": "Assurance colis (perte ou casse)", "variant_id": "54003242795349", "price": 495 } },
         "upsell_2": { "type": "upsell", "settings": { "label": "Extension garantie 24 mois", "variant_id": "54003255869781", "price": 795 } },
-        "collap_1": { "type": "collapsible", "settings": { "emoji": "â†©ï¸", "title": "Retractation 14 jours", "content": "<p>Vous disposez de 14 jours apres reception pour exercer votre droit de retractation. Les frais de retour sont a votre charge. Details dans notre politique de remboursement.</p>" } },
-        "collap_2": { "type": "collapsible", "settings": { "emoji": "ðŸšš", "title": "Livraison offerte en France metropolitaine", "content": "<p>Livraison offerte en France metropolitaine. Vous recevez un lien de suivi par email des l'expedition de votre commande.</p>" } }
+        "collap_1": { "type": "collapsible", "settings": { "emoji": "↩️", "title": "Retractation 14 jours", "content": "<p>Vous disposez de 14 jours apres reception pour exercer votre droit de retractation. Les frais de retour sont a votre charge. Details dans notre politique de remboursement.</p>" } },
+        "collap_2": { "type": "collapsible", "settings": { "emoji": "🚚", "title": "Livraison offerte en France metropolitaine", "content": "<p>Livraison offerte en France metropolitaine. Vous recevez un lien de suivi par email des l'expedition de votre commande.</p>" } }
       },
       "block_order": ["bullet_1","bullet_2","bullet_3","bullet_4","bundle_1","bundle_2","bundle_3","upsell_1","upsell_2","collap_1","collap_2"]
     },
     "how_it_works": {
       "type": "how-it-works",
       "settings": {
-        "title": "Installation en 3 Ã©tapes",
-        "subtitle": "Pas de perceuse. Pas d'Ã©lectricien. Juste une douille E27."
+        "title": "Installation en 3 étapes",
+        "subtitle": "Pas de perceuse. Pas d'électricien. Juste une douille E27."
       },
       "blocks": {
-        "step_1": { "type": "step", "settings": { "number": "1", "icon": "ðŸ’¡", "title": "DÃ©vissez votre ampoule", "description": "Retirez l'ampoule existante de votre douille E27 standard." } },
-        "step_2": { "type": "step", "settings": { "number": "2", "icon": "ðŸ”§", "title": "Vissez le ventilateur LED", "description": "Le culot E27 du ventilateur se visse directement dans la douille. Aucun outil nÃ©cessaire." } },
-        "step_3": { "type": "step", "settings": { "number": "3", "icon": "ðŸ“±", "title": "Prenez la tÃ©lÃ©commande", "description": "Allumez, choisissez la couleur de lumiÃ¨re et la vitesse du ventilateur. C'est prÃªt." } }
+        "step_1": { "type": "step", "settings": { "number": "1", "icon": "💡", "title": "Dévissez votre ampoule", "description": "Retirez l'ampoule existante de votre douille E27 standard." } },
+        "step_2": { "type": "step", "settings": { "number": "2", "icon": "🔧", "title": "Vissez le ventilateur LED", "description": "Le culot E27 du ventilateur se visse directement dans la douille. Aucun outil nécessaire." } },
+        "step_3": { "type": "step", "settings": { "number": "3", "icon": "📱", "title": "Prenez la télécommande", "description": "Allumez, choisissez la couleur de lumière et la vitesse du ventilateur. C'est prêt." } }
       },
       "block_order": ["step_1", "step_2", "step_3"]
     },
     "features": {
       "type": "features",
       "settings": {
-        "title": "Pourquoi les FranÃ§ais adoptent le ventilateur LED Soufflo",
+        "title": "Pourquoi les Français adoptent le ventilateur LED Soufflo",
         "subtitle": "Tout ce qu'il faut. Rien de superflu.",
-        "cta_label": "DÃ©couvrir le ventilateur LED",
+        "cta_label": "Découvrir le ventilateur LED",
         "cta_url": "/#product"
       },
       "blocks": {
-        "b1": { "type": "benefit", "settings": { "icon": "ðŸ’¡", "title": "LED dimmable, 3 couleurs", "description": "3 couleurs de lumiÃ¨re : blanc chaud, neutre, froid. IntensitÃ© rÃ©glable." } },
-        "b2": { "type": "benefit", "settings": { "icon": "ðŸŒ€", "title": "3 vitesses de ventilation", "description": "Du souffle lÃ©ger Ã  la brise fraÃ®che. Silencieux Ã  toutes les vitesses." } },
-        "b3": { "type": "benefit", "settings": { "icon": "ðŸ”Œ", "title": "Culot E27 standard", "description": "Se visse dans n'importe quelle douille E27 existante." } },
-        "b4": { "type": "benefit", "settings": { "icon": "â±ï¸", "title": "Installation 10 secondes", "description": "Pas de perceuse, pas de fils, pas d'Ã©lectricien." } },
-        "b5": { "type": "benefit", "settings": { "icon": "ðŸ“±", "title": "TÃ©lÃ©commande incluse", "description": "ContrÃ´le lumiÃ¨re + ventilateur sans se lever." } },
-        "b6": { "type": "benefit", "settings": { "icon": "ðŸ”‡", "title": "Ultra silencieux", "description": "Moteur brushless â€” aucun bruit perceptible." } },
-        "b7": { "type": "benefit", "settings": { "icon": "ðŸ’°", "title": "Ã‰conomique", "description": "LED basse consommation, pas de clim, facture allÃ©gÃ©e." } },
-        "b8": { "type": "benefit", "settings": { "icon": "ðŸšš", "title": "Livraison offerte", "description": "France mÃ©tropolitaine. Suivi inclus." } }
+        "b1": { "type": "benefit", "settings": { "icon": "💡", "title": "LED dimmable, 3 couleurs", "description": "3 couleurs de lumière : blanc chaud, neutre, froid. Intensité réglable." } },
+        "b2": { "type": "benefit", "settings": { "icon": "🌀", "title": "3 vitesses de ventilation", "description": "Du souffle léger à la brise fraîche. Silencieux à toutes les vitesses." } },
+        "b3": { "type": "benefit", "settings": { "icon": "🔌", "title": "Culot E27 standard", "description": "Se visse dans n'importe quelle douille E27 existante." } },
+        "b4": { "type": "benefit", "settings": { "icon": "⏱️", "title": "Installation 10 secondes", "description": "Pas de perceuse, pas de fils, pas d'électricien." } },
+        "b5": { "type": "benefit", "settings": { "icon": "📱", "title": "Télécommande incluse", "description": "Contrôle lumière + ventilateur sans se lever." } },
+        "b6": { "type": "benefit", "settings": { "icon": "🔇", "title": "Ultra silencieux", "description": "Moteur brushless — aucun bruit perceptible." } },
+        "b7": { "type": "benefit", "settings": { "icon": "💰", "title": "Économique", "description": "LED basse consommation, pas de clim, facture allégée." } },
+        "b8": { "type": "benefit", "settings": { "icon": "🚚", "title": "Livraison offerte", "description": "France métropolitaine. Suivi inclus." } }
       },
       "block_order": ["b1","b2","b3","b4","b5","b6","b7","b8"]
     },
@@ -66,32 +66,36 @@
       "type": "facebook-community",
       "settings": { "title": "Ils en parlent dans nos groupes Facebook" },
       "blocks": {
-        "post_1": { "type": "post", "settings": { "name": "Marie L.", "time": "il y a 3 jours", "text": "Je cherchais un ventilateur de plafond mais je ne voulais pas payer un Ã©lectricien. Je l'ai vissÃ© dans ma cuisine en 10 secondes. La lumiÃ¨re est super, le ventilateur silencieux. Je recommande.", "likes": "142", "comments": "38" } },
-        "post_2": { "type": "post", "settings": { "name": "Thomas B.", "time": "il y a 1 semaine", "text": "CommandÃ© 2 pour la chambre et le salon. La tÃ©lÃ©commande marche nickel. 3 couleurs de lumiÃ¨re c'est top. Ma femme a validÃ© le design. Rapport qualitÃ©/prix imbattable.", "likes": "276", "comments": "54" } },
-        "post_3": { "type": "post", "settings": { "name": "Sophie D.", "time": "il y a 2 semaines", "text": "Parfait pour l'Ã©tÃ© sans clim. Ã‡a brasse l'air en silence, la LED remplace mon ampoule classique. Mon mari Ã©tait sceptique, maintenant il en veut un dans chaque piÃ¨ce.", "likes": "198", "comments": "47" } }
+        "post_1": { "type": "post", "settings": { "name": "Marie L.", "time": "il y a 3 jours", "text": "Je cherchais un ventilateur de plafond mais je ne voulais pas payer un électricien. Je l'ai vissé dans ma cuisine en 10 secondes. La lumière est super, le ventilateur silencieux. Je recommande.", "likes": "142", "comments": "38" } },
+        "post_2": { "type": "post", "settings": { "name": "Thomas B.", "time": "il y a 1 semaine", "text": "Commandé 2 pour la chambre et le salon. La télécommande marche nickel. 3 couleurs de lumière c'est top. Ma femme a validé le design. Rapport qualité/prix imbattable.", "likes": "276", "comments": "54" } },
+        "post_3": { "type": "post", "settings": { "name": "Sophie D.", "time": "il y a 2 semaines", "text": "Parfait pour l'été sans clim. Ça brasse l'air en silence, la LED remplace mon ampoule classique. Mon mari était sceptique, maintenant il en veut un dans chaque pièce.", "likes": "198", "comments": "47" } }
       },
       "block_order": ["post_1","post_2","post_3"]
     },
-    "why_soufflo": { "type": "why-soufflo", "settings": {} },
+    "why_soufflo": {
+      "type": "why-soufflo",
+      "settings": {
+      }
+    },
     "comparison": {
       "type": "comparison-table",
       "settings": {
         "title": "Pourquoi Soufflo, et pas autre chose ?",
-        "subtitle": "On compare, vous dÃ©cidez.",
+        "subtitle": "On compare, vous décidez.",
         "col_a": "Soufflo LED E27",
         "col_b": "Ventilateur de plafond classique",
         "col_c": "Ventilateur sur pied",
-        "cta_label": "DÃ©couvrir Soufflo",
+        "cta_label": "Découvrir Soufflo",
         "cta_url": "/#product"
       },
       "blocks": {
-        "r1": { "type": "row", "settings": { "criteria": "Installation sans Ã©lectricien", "col_a": "yes", "col_b": "no", "col_c": "yes" } },
-        "r2": { "type": "row", "settings": { "criteria": "FixÃ© au plafond (gain de place)", "col_a": "yes", "col_b": "yes", "col_c": "no" } },
-        "r3": { "type": "row", "settings": { "criteria": "LED intÃ©grÃ©e (lumiÃ¨re + ventilateur)", "col_a": "yes", "col_b": "mid", "col_c": "no" } },
-        "r4": { "type": "row", "settings": { "criteria": "TÃ©lÃ©commande incluse", "col_a": "yes", "col_b": "mid", "col_c": "mid" } },
+        "r1": { "type": "row", "settings": { "criteria": "Installation sans électricien", "col_a": "yes", "col_b": "no", "col_c": "yes" } },
+        "r2": { "type": "row", "settings": { "criteria": "Fixé au plafond (gain de place)", "col_a": "yes", "col_b": "yes", "col_c": "no" } },
+        "r3": { "type": "row", "settings": { "criteria": "LED intégrée (lumière + ventilateur)", "col_a": "yes", "col_b": "mid", "col_c": "no" } },
+        "r4": { "type": "row", "settings": { "criteria": "Télécommande incluse", "col_a": "yes", "col_b": "mid", "col_c": "mid" } },
         "r5": { "type": "row", "settings": { "criteria": "Silencieux (moteur brushless)", "col_a": "yes", "col_b": "mid", "col_c": "no" } },
         "r6": { "type": "row", "settings": { "criteria": "Prix abordable (< 40 euros)", "col_a": "yes", "col_b": "no", "col_c": "mid" } },
-        "r7": { "type": "row", "settings": { "criteria": "Pas de travaux / perÃ§age", "col_a": "yes", "col_b": "no", "col_c": "yes" } }
+        "r7": { "type": "row", "settings": { "criteria": "Pas de travaux / perçage", "col_a": "yes", "col_b": "no", "col_c": "yes" } }
       },
       "block_order": ["r1","r2","r3","r4","r5","r6","r7"]
     },
@@ -99,16 +103,16 @@
       "type": "ugc-gallery",
       "settings": {
         "eyebrow": "Photos clients",
-        "title": "Ils l'ont installÃ© chez eux",
-        "subtitle": "Des vraies photos, postÃ©es par nos clients."
+        "title": "Ils l'ont installé chez eux",
+        "subtitle": "Des vraies photos, postées par nos clients."
       },
       "blocks": {
-        "ug1": { "type": "ugc_photo", "settings": { "caption": "@marie.l_ â€” installÃ© dans ma cuisine" } },
-        "ug2": { "type": "ugc_photo", "settings": { "caption": "@thomas.b â€” la lumiÃ¨re est parfaite" } },
-        "ug3": { "type": "ugc_photo", "settings": { "caption": "@sophie.d â€” salon rafraÃ®chi" } },
-        "ug4": { "type": "ugc_photo", "settings": { "caption": "@julien.p â€” chambre fraÃ®che cet Ã©tÃ©" } },
-        "ug5": { "type": "ugc_photo", "settings": { "caption": "@camille.r â€” design approuvÃ©" } },
-        "ug6": { "type": "ugc_photo", "settings": { "caption": "@nicolas.m â€” 3 piÃ¨ces Ã©quipÃ©es" } }
+        "ug1": { "type": "ugc_photo", "settings": { "caption": "@marie.l_ — installé dans ma cuisine" } },
+        "ug2": { "type": "ugc_photo", "settings": { "caption": "@thomas.b — la lumière est parfaite" } },
+        "ug3": { "type": "ugc_photo", "settings": { "caption": "@sophie.d — salon rafraîchi" } },
+        "ug4": { "type": "ugc_photo", "settings": { "caption": "@julien.p — chambre fraîche cet été" } },
+        "ug5": { "type": "ugc_photo", "settings": { "caption": "@camille.r — design approuvé" } },
+        "ug6": { "type": "ugc_photo", "settings": { "caption": "@nicolas.m — 3 pièces équipées" } }
       },
       "block_order": ["ug1","ug2","ug3","ug4","ug5","ug6"]
     },
@@ -116,21 +120,21 @@
       "type": "reviews",
       "settings": {
         "show_ugc_gallery": false,
-        "title": "150 avis vÃ©rifiÃ©s â€” 4,8/5",
-        "subtitle": "Tous (150) â€” 5 Ã©toiles (128) â€” 4 Ã©toiles (18) â€” Avec photo (42)"
+        "title": "150 avis vérifiés — 4,8/5",
+        "subtitle": "Tous (150) — 5 étoiles (128) — 4 étoiles (18) — Avec photo (42)"
       },
       "blocks": {
-        "r1": { "type": "review", "settings": { "name": "Marie L., 42 ans â€” Lyon", "rating": 5, "text": "InstallÃ© en 10 secondes dans ma cuisine. La lumiÃ¨re est top, 3 couleurs c'est pratique. Le ventilateur est silencieux, mÃªme en vitesse max. Je recommande.", "verified": true } },
+        "r1": { "type": "review", "settings": { "name": "Marie L., 42 ans — Lyon", "rating": 5, "text": "Installé en 10 secondes dans ma cuisine. La lumière est top, 3 couleurs c'est pratique. Le ventilateur est silencieux, même en vitesse max. Je recommande.", "verified": true } },
         "rp1": { "type": "review_photo" },
-        "r2": { "type": "review", "settings": { "name": "Thomas B., 38 ans â€” Toulouse", "rating": 5, "text": "CommandÃ© 2, un pour le salon et un pour la chambre. La tÃ©lÃ©commande fonctionne bien. Rapport qualitÃ©/prix imbattable. Ma femme adore le design.", "verified": true } },
+        "r2": { "type": "review", "settings": { "name": "Thomas B., 38 ans — Toulouse", "rating": 5, "text": "Commandé 2, un pour le salon et un pour la chambre. La télécommande fonctionne bien. Rapport qualité/prix imbattable. Ma femme adore le design.", "verified": true } },
         "rp2": { "type": "review_photo" },
-        "r3": { "type": "review", "settings": { "name": "Sophie D., 35 ans â€” Bordeaux", "rating": 5, "text": "Alternative parfaite Ã  la clim. Brasse l'air en silence, la LED remplace mon ampoule. Mon mari en veut un dans chaque piÃ¨ce maintenant.", "verified": true } },
+        "r3": { "type": "review", "settings": { "name": "Sophie D., 35 ans — Bordeaux", "rating": 5, "text": "Alternative parfaite à la clim. Brasse l'air en silence, la LED remplace mon ampoule. Mon mari en veut un dans chaque pièce maintenant.", "verified": true } },
         "rp3": { "type": "review_photo" },
-        "r4": { "type": "review", "settings": { "name": "Julien P., 29 ans â€” Paris", "rating": 4, "text": "Le produit est bien pensÃ©. J'enlÃ¨ve une Ã©toile car la tÃ©lÃ©commande est un peu petite, facile Ã  perdre. Sinon le ventilateur et la lumiÃ¨re fonctionnent parfaitement.", "verified": true } },
+        "r4": { "type": "review", "settings": { "name": "Julien P., 29 ans — Paris", "rating": 4, "text": "Le produit est bien pensé. J'enlève une étoile car la télécommande est un peu petite, facile à perdre. Sinon le ventilateur et la lumière fonctionnent parfaitement.", "verified": true } },
         "rp4": { "type": "review_photo" },
-        "r5": { "type": "review", "settings": { "name": "Camille R., 45 ans â€” Nantes", "rating": 5, "text": "GÃ©nial pour un studio. Pas de place pour un ventilateur sur pied, pas envie de payer un Ã©lectricien. Le Soufflo se visse en 10s. LumiÃ¨re agrÃ©able, souffle suffisant.", "verified": true } },
+        "r5": { "type": "review", "settings": { "name": "Camille R., 45 ans — Nantes", "rating": 5, "text": "Génial pour un studio. Pas de place pour un ventilateur sur pied, pas envie de payer un électricien. Le Soufflo se visse en 10s. Lumière agréable, souffle suffisant.", "verified": true } },
         "rp5": { "type": "review_photo" },
-        "r6": { "type": "review", "settings": { "name": "Nicolas M., 52 ans â€” Marseille", "rating": 5, "text": "J'ai Ã©quipÃ© 3 piÃ¨ces. Le plus gros avantage : aucun travail. Pas de trou, pas de fil, pas d'Ã©lectricien. Et la facture d'Ã©lectricitÃ© n'a pas bougÃ©.", "verified": true } },
+        "r6": { "type": "review", "settings": { "name": "Nicolas M., 52 ans — Marseille", "rating": 5, "text": "J'ai équipé 3 pièces. Le plus gros avantage : aucun travail. Pas de trou, pas de fil, pas d'électricien. Et la facture d'électricité n'a pas bougé.", "verified": true } },
         "rp6": { "type": "review_photo" }
       },
       "block_order": ["r1","rp1","r2","rp2","r3","rp3","r4","rp4","r5","rp5","r6","rp6"]
@@ -139,29 +143,29 @@
       "type": "story",
       "settings": {
         "kicker": "Notre histoire",
-        "title": "Pourquoi on a crÃ©Ã© Soufflo",
-        "text": "<p>Tout a commencÃ© un Ã©tÃ© caniculaire, dans un appartement sans climatisation.</p><p>Notre fondateur cherchait un ventilateur de plafond. Le problÃ¨me : pas de prise au plafond, devis d'Ã©lectricien Ã  300 euros, et un ventilateur sur pied qui prenait la moitiÃ© du salon.</p><p>Il s'est dit : pourquoi ne pas utiliser la douille d'ampoule dÃ©jÃ  au plafond ? On y visse un truc tous les jours. Pourquoi pas un ventilateur ?</p><p>On a passÃ© des mois Ã  chercher la bonne combinaison : un moteur silencieux, une LED puissante et dimmable, un culot E27 standard, et une tÃ©lÃ©commande pour tout contrÃ´ler sans se lever. Le tout Ã  un prix raisonnable.</p><p>Aujourd'hui, plus de 150 foyers franÃ§ais utilisent le ventilateur LED Soufflo. Dans leur cuisine, leur chambre, leur salon. Sans travaux, sans Ã©lectricien, sans se ruiner.</p>",
+        "title": "Pourquoi on a créé Soufflo",
+        "text": "<p>Tout a commencé un été caniculaire, dans un appartement sans climatisation.</p><p>Notre fondateur cherchait un ventilateur de plafond. Le problème : pas de prise au plafond, devis d'électricien à 300 euros, et un ventilateur sur pied qui prenait la moitié du salon.</p><p>Il s'est dit : pourquoi ne pas utiliser la douille d'ampoule déjà au plafond ? On y visse un truc tous les jours. Pourquoi pas un ventilateur ?</p><p>On a passé des mois à chercher la bonne combinaison : un moteur silencieux, une LED puissante et dimmable, un culot E27 standard, et une télécommande pour tout contrôler sans se lever. Le tout à un prix raisonnable.</p><p>Aujourd'hui, plus de 150 foyers français utilisent le ventilateur LED Soufflo. Dans leur cuisine, leur chambre, leur salon. Sans travaux, sans électricien, sans se ruiner.</p>",
         "italic_text": "L'air frais, simplement.",
-        "signoff": "â€” L'Ã©quipe Soufflo"
+        "signoff": "— L'équipe Soufflo"
       }
     },
     "faq": {
       "type": "faq",
       "settings": {
-        "title": "Questions frÃ©quentes",
-        "cta_text": "Toujours des doutes ? Ã‰crivez-nous.",
+        "title": "Questions fréquentes",
+        "cta_text": "Toujours des doutes ? Écrivez-nous.",
         "cta_label": "Commander le ventilateur LED"
       },
       "blocks": {
-        "q1": { "type": "faq", "settings": { "question": "ðŸ’¡ C'est quoi exactement ce produit ?", "answer": "<p>C'est un ventilateur de plafond avec LED intÃ©grÃ©e qui se visse directement dans une douille E27 standard â€” la mÃªme que vos ampoules classiques. Il remplace votre ampoule et ajoute un ventilateur au plafond, sans aucun travaux.</p>" } },
-        "q2": { "type": "faq", "settings": { "question": "ðŸ”Œ Est-ce compatible avec ma douille ?", "answer": "<p>Si votre ampoule actuelle a un culot E27 (le gros culot Ã  vis standard en France), oui. C'est le culot le plus courant dans les foyers franÃ§ais. En cas de doute, regardez le culot de votre ampoule actuelle : s'il fait environ 27mm de diamÃ¨tre et se visse, c'est un E27.</p>" } },
-        "q3": { "type": "faq", "settings": { "question": "â±ï¸ L'installation prend vraiment 10 secondes ?", "answer": "<p>Oui. Vous dÃ©vissez votre ampoule, vous vissez le ventilateur LED Soufflo Ã  la place. C'est tout. Pas de perceuse, pas de fils Ã  brancher, pas d'Ã©lectricien. La tÃ©lÃ©commande est prÃªte Ã  l'emploi.</p>" } },
-        "q4": { "type": "faq", "settings": { "question": "ðŸ“± Comment fonctionne la tÃ©lÃ©commande ?", "answer": "<p>La tÃ©lÃ©commande permet de contrÃ´ler la lumiÃ¨re (on/off, couleur, intensitÃ©) et le ventilateur (on/off, 3 vitesses). Elle fonctionne avec une pile bouton incluse. PortÃ©e d'environ 5 mÃ¨tres.</p>" } },
-        "q5": { "type": "faq", "settings": { "question": "ðŸ”‡ Est-ce que c'est bruyant ?", "answer": "<p>Non. Le moteur brushless est conÃ§u pour Ãªtre silencieux. En vitesse 1, il est quasiment inaudible. MÃªme en vitesse 3, le bruit reste trÃ¨s faible â€” bien en dessous d'un ventilateur sur pied classique.</p>" } },
-        "q6": { "type": "faq", "settings": { "question": "ðŸ’¡ La lumiÃ¨re est-elle suffisante ?", "answer": "<p>Oui, la LED Ã©claire largement une piÃ¨ce de 15 Ã  20 mÂ². Vous pouvez choisir entre blanc chaud (2700K), neutre (4500K) et froid (6500K), et rÃ©gler l'intensitÃ© avec la tÃ©lÃ©commande.</p>" } },
-        "q7": { "type": "faq", "settings": { "question": "ðŸšš Quel est le dÃ©lai de livraison ?", "answer": "<p>Livraison gratuite en France mÃ©tropolitaine. Vous recevez un lien de suivi par email dÃ¨s l'expÃ©dition de votre commande.</p>" } },
-        "q8": { "type": "faq", "settings": { "question": "â†©ï¸ Quelle est la politique de retour ?", "answer": "<p>Vous disposez d'un droit de rÃ©tractation de 14 jours aprÃ¨s rÃ©ception. Les frais de retour sont Ã  votre charge. Voir notre politique de remboursement pour les dÃ©tails.</p>" } },
-        "q9": { "type": "faq", "settings": { "question": "âš¡ Est-ce que Ã§a consomme beaucoup d'Ã©lectricitÃ© ?", "answer": "<p>Non. La LED consomme trÃ¨s peu (beaucoup moins qu'une ampoule classique) et le ventilateur consomme trÃ¨s peu. C'est une alternative bien plus Ã©conomique qu'un climatiseur.</p>" } }
+        "q1": { "type": "faq", "settings": { "question": "💡 C'est quoi exactement ce produit ?", "answer": "<p>C'est un ventilateur de plafond avec LED intégrée qui se visse directement dans une douille E27 standard — la même que vos ampoules classiques. Il remplace votre ampoule et ajoute un ventilateur au plafond, sans aucun travaux.</p>" } },
+        "q2": { "type": "faq", "settings": { "question": "🔌 Est-ce compatible avec ma douille ?", "answer": "<p>Si votre ampoule actuelle a un culot E27 (le gros culot à vis standard en France), oui. C'est le culot le plus courant dans les foyers français. En cas de doute, regardez le culot de votre ampoule actuelle : s'il fait environ 27mm de diamètre et se visse, c'est un E27.</p>" } },
+        "q3": { "type": "faq", "settings": { "question": "⏱️ L'installation prend vraiment 10 secondes ?", "answer": "<p>Oui. Vous dévissez votre ampoule, vous vissez le ventilateur LED Soufflo à la place. C'est tout. Pas de perceuse, pas de fils à brancher, pas d'électricien. La télécommande est prête à l'emploi.</p>" } },
+        "q4": { "type": "faq", "settings": { "question": "📱 Comment fonctionne la télécommande ?", "answer": "<p>La télécommande permet de contrôler la lumière (on/off, couleur, intensité) et le ventilateur (on/off, 3 vitesses). Elle fonctionne avec une pile bouton incluse. Portée d'environ 5 mètres.</p>" } },
+        "q5": { "type": "faq", "settings": { "question": "🔇 Est-ce que c'est bruyant ?", "answer": "<p>Non. Le moteur brushless est conçu pour être silencieux. En vitesse 1, il est quasiment inaudible. Même en vitesse 3, le bruit reste très faible — bien en dessous d'un ventilateur sur pied classique.</p>" } },
+        "q6": { "type": "faq", "settings": { "question": "💡 La lumière est-elle suffisante ?", "answer": "<p>Oui, la LED éclaire largement une pièce de 15 à 20 m². Vous pouvez choisir entre blanc chaud (2700K), neutre (4500K) et froid (6500K), et régler l'intensité avec la télécommande.</p>" } },
+        "q7": { "type": "faq", "settings": { "question": "🚚 Quel est le délai de livraison ?", "answer": "<p>Livraison gratuite en France métropolitaine. Vous recevez un lien de suivi par email dès l'expédition de votre commande.</p>" } },
+        "q8": { "type": "faq", "settings": { "question": "↩️ Quelle est la politique de retour ?", "answer": "<p>Vous disposez d'un droit de rétractation de 14 jours après réception. Les frais de retour sont à votre charge. Voir notre politique de remboursement pour les détails.</p>" } },
+        "q9": { "type": "faq", "settings": { "question": "⚡ Est-ce que ça consomme beaucoup d'électricité ?", "answer": "<p>Non. La LED consomme très peu (beaucoup moins qu'une ampoule classique) et le ventilateur consomme très peu. C'est une alternative bien plus économique qu'un climatiseur.</p>" } }
       },
       "block_order": ["q1","q2","q3","q4","q5","q6","q7","q8","q9"]
     },
