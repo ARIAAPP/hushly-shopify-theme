@@ -1,6 +1,42 @@
 <section class="section-padding" style="background:#fff;">
   <div class="container" style="max-width:56rem;">
-    <h2 class="section-title" style="color:#0C4A6E;">Soufflo vs les alternatives</h2>
+
+    <div style="max-width:44rem;margin-left:auto;margin-right:auto;">
+      <h2 class="section-title" style="color:#0C4A6E;">Le confort d'une pi&egrave;ce fra&icirc;che, pour 34,90&nbsp;&euro;</h2>
+      <p class="section-subtitle">Cet &eacute;t&eacute;, vous avez trois options. Une seule ne demande ni travaux, ni gros budget.</p>
+    </div>
+
+    <div class="why-soufflo__grid">
+
+      <div class="feature-card" style="text-align:left;">
+        <div style="font-size:2rem;margin-bottom:0.75rem;">&#129397;</div>
+        <h3 class="feature-card__title" style="color:#0C4A6E;">La climatisation</h3>
+        <p class="feature-card__text">300 &agrave; 800&nbsp;&euro; d'achat, la pose par un professionnel, une consommation qui fait grimper la facture et un entretien r&eacute;gulier. Efficace&hellip; mais &agrave; quel prix.</p>
+      </div>
+
+      <div class="feature-card" style="text-align:left;">
+        <div style="font-size:2rem;margin-bottom:0.75rem;">&#127788;&#65039;</div>
+        <h3 class="feature-card__title" style="color:#0C4A6E;">Le ventilateur sur pied</h3>
+        <p class="feature-card__text">Il occupe une prise et un coin de la pi&egrave;ce, souffle au niveau du sol, se renverse facilement&hellip; et passe l'hiver dans un placard.</p>
+      </div>
+
+      <div class="feature-card glow-hover why-soufflo__winner" style="text-align:left;">
+        <div style="font-size:2rem;margin-bottom:0.75rem;">&#9989;</div>
+        <h3 class="feature-card__title" style="color:#0C4A6E;">Soufflo</h3>
+        <p class="feature-card__text">34,90&nbsp;&euro;, viss&eacute; dans votre douille en 10 secondes. Il remplace votre ampoule, brasse l'air de toute la pi&egrave;ce depuis le plafond et se pilote &agrave; la t&eacute;l&eacute;commande. L'&eacute;lectricit&eacute;&nbsp;? Quelques centimes par nuit.</p>
+      </div>
+
+    </div>
+
+    <div class="why-soufflo__band">
+      <span>0&nbsp;&euro; d'installation</span>
+      <span aria-hidden="true">&middot;</span>
+      <span>0&nbsp;cm&sup2; au sol</span>
+      <span aria-hidden="true">&middot;</span>
+      <span>Quelques centimes d'&eacute;lectricit&eacute; par nuit</span>
+    </div>
+
+    <h2 class="section-title" style="color:#0C4A6E;margin-top:3.5rem;">Soufflo vs les alternatives</h2>
     <p class="section-subtitle">On compare, vous d&eacute;cidez.</p>
 
     <div class="comparison-table-wrap">
@@ -76,10 +112,36 @@
     </div>
 
     <div class="text-center" style="margin-top:2.5rem;">
-      <a href="/#product" class="cta-glow">Je veux mon Soufflo &rarr;</a>
+      <a href="/#product" class="cta-glow">J'am&eacute;liore mon confort pour 34,90&nbsp;&euro; &rarr;</a>
     </div>
   </div>
 </section>
+
+<style>
+  .why-soufflo__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    margin-top: 2rem;
+  }
+  .why-soufflo__winner {
+    border: 2px solid #0C4A6E;
+    background: #F0F9FF;
+  }
+  .why-soufflo__band {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.6rem 0.9rem;
+    margin-top: 2rem;
+    font-weight: 600;
+    color: #0C4A6E;
+    text-align: center;
+  }
+  @media (max-width: 767px) {
+    .why-soufflo__grid { grid-template-columns: 1fr; }
+  }
+</style>
 
 {% schema %}
 {
