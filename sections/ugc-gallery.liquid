@@ -27,6 +27,10 @@
             poster="{{ vid | append: '-poster.jpg' | asset_url }}"
             muted loop playsinline preload="none"
             width="270" height="480"></video>
+          <button type="button" class="svid-sound" data-svid-sound aria-label="Activer le son">
+            <span class="svid-sound__off">&#128263;</span>
+            <span class="svid-sound__on" hidden>&#128266;</span>
+          </button>
         </div>
         {%- endfor -%}
       </div>
@@ -102,6 +106,25 @@
   .svid-item {
     flex: 0 0 auto;
     scroll-snap-align: center;
+    position: relative;
+  }
+  .svid-sound {
+    position: absolute;
+    bottom: 0.75rem;
+    right: 0.75rem;
+    z-index: 2;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 50%;
+    border: none;
+    background: rgba(12, 74, 110, 0.75);
+    color: #fff;
+    font-size: 1.05rem;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   .svid-item video {
     display: block;
@@ -148,6 +171,28 @@
   var scroller = carousel.querySelector('[data-svid-scroller]');
   var videos = carousel.querySelectorAll('[data-svid-video]');
 
+  /* Son : un seul deverrouille a la fois */
+  function setSound(video, on) {
+    video.muted = !on;
+    var btn = video.parentElement.querySelector('[data-svid-sound]');
+    if (!btn) return;
+    btn.querySelector('.svid-sound__off').hidden = on;
+    btn.querySelector('.svid-sound__on').hidden = !on;
+    btn.setAttribute('aria-label', on ? 'Couper le son' : 'Activer le son');
+  }
+
+  carousel.querySelectorAll('[data-svid-sound]').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var video = btn.parentElement.querySelector('[data-svid-video]');
+      var turnOn = video.muted;
+      videos.forEach(function(v) { setSound(v, false); });
+      if (turnOn) {
+        setSound(video, true);
+        video.play().catch(function() {});
+      }
+    });
+  });
+
   /* Autoplay/pause au scroll */
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function(entries) {
@@ -157,6 +202,7 @@
           v.play().catch(function() {});
         } else {
           v.pause();
+          if (!v.muted) setSound(v, false);
         }
       });
     }, { threshold: [0, 0.4] });
