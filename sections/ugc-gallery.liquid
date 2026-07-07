@@ -14,6 +14,25 @@
       <p class="text-muted-foreground">Ils ont &eacute;quip&eacute; leur int&eacute;rieur avec Soufflo.</p>
     </div>
 
+    {%- comment -%} Carrousel videos UGC (autoplay au scroll, snap) {%- endcomment -%}
+    {%- assign svid_list = 'soufflo-video-1|soufflo-video-2|soufflo-video-3|soufflo-video-4|soufflo-video-5' | split: '|' -%}
+    <div class="svid-carousel" data-svid-carousel>
+      <button type="button" class="svid-arrow svid-arrow--prev" aria-label="Vid&eacute;o pr&eacute;c&eacute;dente" data-svid-prev>&#8249;</button>
+      <div class="svid-scroller" data-svid-scroller>
+        {%- for vid in svid_list -%}
+        <div class="svid-item">
+          <video
+            data-svid-video
+            src="{{ vid | append: '.mp4' | asset_url }}"
+            poster="{{ vid | append: '-poster.jpg' | asset_url }}"
+            muted loop playsinline preload="none"
+            width="270" height="480"></video>
+        </div>
+        {%- endfor -%}
+      </div>
+      <button type="button" class="svid-arrow svid-arrow--next" aria-label="Vid&eacute;o suivante" data-svid-next>&#8250;</button>
+    </div>
+
     {%- comment -%} Grid — uses existing CSS .ugc-gallery__grid {%- endcomment -%}
     <div class="ugc-gallery__grid">
 
@@ -62,6 +81,96 @@
     </div>
   </div>
 </section>
+
+<style>
+  .svid-carousel {
+    position: relative;
+    margin: 0 auto 3rem;
+    max-width: 62rem;
+  }
+  .svid-scroller {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 0.25rem;
+  }
+  .svid-scroller::-webkit-scrollbar { display: none; }
+  .svid-scroller:has(> :only-child) { justify-content: center; }
+  .svid-item {
+    flex: 0 0 auto;
+    scroll-snap-align: center;
+  }
+  .svid-item video {
+    display: block;
+    width: 240px;
+    height: auto;
+    aspect-ratio: 9 / 16;
+    object-fit: cover;
+    border-radius: 1rem;
+    background: #0C4A6E;
+    box-shadow: 0 8px 24px rgba(12, 74, 110, 0.15);
+  }
+  .svid-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    border: none;
+    background: #0C4A6E;
+    color: #fff;
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(12, 74, 110, 0.3);
+  }
+  .svid-arrow--prev { left: -1rem; }
+  .svid-arrow--next { right: -1rem; }
+  @media (min-width: 768px) {
+    .svid-arrow { display: flex; }
+    .svid-item video { width: 270px; }
+  }
+</style>
+
+<script>
+(function() {
+  var carousel = document.querySelector('[data-svid-carousel]');
+  if (!carousel) return;
+
+  var scroller = carousel.querySelector('[data-svid-scroller]');
+  var videos = carousel.querySelectorAll('[data-svid-video]');
+
+  /* Autoplay/pause au scroll */
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        var v = entry.target;
+        if (entry.intersectionRatio >= 0.4) {
+          v.play().catch(function() {});
+        } else {
+          v.pause();
+        }
+      });
+    }, { threshold: [0, 0.4] });
+    videos.forEach(function(v) { io.observe(v); });
+  }
+
+  /* Fleches desktop */
+  var step = 286;
+  var prev = carousel.querySelector('[data-svid-prev]');
+  var next = carousel.querySelector('[data-svid-next]');
+  if (prev) prev.addEventListener('click', function() { scroller.scrollBy({ left: -step, behavior: 'smooth' }); });
+  if (next) next.addEventListener('click', function() { scroller.scrollBy({ left: step, behavior: 'smooth' }); });
+})();
+</script>
 
 {% schema %}
 {
