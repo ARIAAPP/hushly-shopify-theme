@@ -72,6 +72,10 @@
       },
       "block_order": ["post_1","post_2","post_3"]
     },
+    "why_soufflo": {
+      "type": "why-soufflo",
+      "settings": {}
+    },
     "comparison": {
       "type": "comparison-table",
       "settings": {
@@ -169,5 +173,5 @@
       "settings": {}
     }
   },
-  "order": ["product_hero","how_it_works","features","facebook_community","comparison","ugc_gallery","reviews","story","faq","newsletter"]
+  "order": ["product_hero","how_it_works","features","facebook_community","why_soufflo","comparison","ugc_gallery","reviews","story","faq","newsletter"]
 }
