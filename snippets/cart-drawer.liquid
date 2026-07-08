@@ -22,37 +22,45 @@
     </div>
   </div>
 
-  <footer class="border-t bg-background space-y-3" style="border-color: var(--color-border); padding: 1rem 1.25rem;" data-cart-footer hidden>
+  <footer class="border-t bg-background space-y-2" style="border-color: var(--color-border); padding: 0.75rem 1.25rem;" data-cart-footer hidden>
     <div class="flex items-center justify-between">
       <span class="text-sm text-muted-foreground">Sous-total</span>
       <span class="text-lg font-bold" data-cart-subtotal>&euro;0,00</span>
     </div>
-    <p class="text-xs text-muted-foreground">Livraison et taxes calculees a l'etape suivante.</p>
 
-    <div class="rounded-lg space-y-1.5" style="background: color-mix(in srgb, var(--color-muted) 50%, transparent); padding: 0.625rem 0.75rem;">
-      <div class="flex items-center gap-2 text-sm"><span class="text-primary">&#x1F69A;</span> Livraison gratuite en France</div>
-      <div class="flex items-center gap-2 text-sm"><span class="text-primary">&#x1F512;</span> Paiement 100% s&eacute;curis&eacute;</div>
-      <div class="flex items-center gap-2 text-sm"><span class="text-primary">&#x1F4AC;</span> Service client r&eacute;actif</div>
-      <div class="flex items-center gap-2 text-sm"><span class="text-primary">&#x2605;</span> 4,8/5 &mdash; 150+ avis clients</div>
+    <div class="cart-drawer__trust text-xs text-muted-foreground">
+      <span>&#x1F69A; Livraison offerte</span>
+      <span aria-hidden="true">&middot;</span>
+      <span>&#x1F512; Paiement s&eacute;curis&eacute;</span>
+      <span aria-hidden="true">&middot;</span>
+      <span>&#x2605; 4,8/5 &mdash; 150+ avis</span>
     </div>
 
-    <div class="space-y-2">
-      <p class="text-[11px] font-semibold uppercase tracking-wide text-muted-foreground text-center">Paiement express</p>
-      <button type="button" class="btn-shop-pay btn-block" data-shop-pay style="display:flex; align-items:center; justify-content:center; min-height:48px;">
-        <span style="font-weight:700; letter-spacing:-0.02em;">shop<span style="font-weight:800;">Pay</span></span>
-      </button>
-      <div class="flex items-center gap-3" style="padding: 0.25rem 0;">
-        <div class="h-px flex-1" style="background: var(--color-border);"></div>
-        <span class="text-[10px] uppercase tracking-wider text-muted-foreground">ou</span>
-        <div class="h-px flex-1" style="background: var(--color-border);"></div>
-      </div>
+    <button type="button" class="btn-shop-pay btn-block" data-shop-pay style="display:flex; align-items:center; justify-content:center; min-height:48px;">
+      <span style="font-weight:700; letter-spacing:-0.02em;">shop<span style="font-weight:800;">Pay</span></span>
+    </button>
+    <div class="flex items-center gap-3">
+      <div class="h-px flex-1" style="background: var(--color-border);"></div>
+      <span class="text-[10px] uppercase tracking-wider text-muted-foreground">ou</span>
+      <div class="h-px flex-1" style="background: var(--color-border);"></div>
     </div>
-
     <button type="button" class="btn btn-block btn-lg" data-checkout>Finaliser la commande</button>
-    <button type="button" class="text-center text-xs text-muted-foreground" data-cart-close style="display:block; width:100%;">Continuer mes achats</button>
 
-    <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:0.25rem; padding-top:0.25rem;">
+    <div class="cart-drawer__payicons" style="display:flex; flex-wrap:wrap; justify-content:center; gap:0.25rem;">
       {% render 'payment-icons' %}
     </div>
   </footer>
+
+  <style>
+    .cart-drawer__trust {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.25rem 0.5rem;
+      text-align: center;
+    }
+    @media (max-width: 767px) {
+      .cart-drawer__payicons { display: none !important; }
+    }
+  </style>
 </aside>
