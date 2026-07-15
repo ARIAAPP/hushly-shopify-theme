@@ -39,7 +39,7 @@
         </div>
         <p class="text-sm leading-relaxed text-muted-foreground mb-3">Incroyable, je l'ai viss&eacute; en 10 secondes et &ccedil;a change la vie en &eacute;t&eacute;&nbsp;! La lumi&egrave;re est douce et le ventilo super silencieux.</p>
         <div class="flex gap-2">
-          <img src="{{ 'soufflo-4A-salon-moderne.jpg' | asset_url }}" alt="Photo avis client" width="64" height="64" loading="lazy" style="width:64px; height:64px; border-radius:0.5rem; flex-shrink:0; object-fit:cover;">
+          <img src="{{ 'soufflo-4A-salon-moderne.jpg' | asset_url }}" alt="Photo avis client" width="64" height="64" loading="lazy" class="review-photo" style="width:64px; height:64px; border-radius:0.5rem; flex-shrink:0; object-fit:cover; cursor:pointer;">
         </div>
       </div>
 
@@ -61,7 +61,13 @@
             <p class="text-xs text-muted-foreground mb-0" style="opacity:0.6;">il y a 5 jours</p>
           </div>
         </div>
-        <p class="text-sm leading-relaxed text-muted-foreground mb-0">J'en ai command&eacute; un pour tester, j'en ai rachet&eacute; 2 de plus dans la foul&eacute;e. Toute la maison est &eacute;quip&eacute;e maintenant.</p>
+        <p class="text-sm leading-relaxed text-muted-foreground mb-3">J'en ai command&eacute; un pour tester, j'en ai rachet&eacute; 2 de plus dans la foul&eacute;e. Toute la maison est &eacute;quip&eacute;e maintenant.</p>
+        <div class="flex gap-2" style="flex-wrap:wrap;">
+          <img src="{{ 'soufflo-ugc-review-1.jpg' | asset_url }}" alt="Photo avis client" width="64" height="64" loading="lazy" class="review-photo" style="width:64px; height:64px; border-radius:0.5rem; flex-shrink:0; object-fit:cover; cursor:pointer;">
+          <img src="{{ 'soufflo-ugc-review-2.jpg' | asset_url }}" alt="Photo avis client" width="64" height="64" loading="lazy" class="review-photo" style="width:64px; height:64px; border-radius:0.5rem; flex-shrink:0; object-fit:cover; cursor:pointer;">
+          <img src="{{ 'soufflo-ugc-review-3.jpg' | asset_url }}" alt="Photo avis client" width="64" height="64" loading="lazy" class="review-photo" style="width:64px; height:64px; border-radius:0.5rem; flex-shrink:0; object-fit:cover; cursor:pointer;">
+          <img src="{{ 'soufflo-ugc-review-4.jpg' | asset_url }}" alt="Photo avis client" width="64" height="64" loading="lazy" class="review-photo" style="width:64px; height:64px; border-radius:0.5rem; flex-shrink:0; object-fit:cover; cursor:pointer;">
+        </div>
       </div>
 
       {%- comment -%} Review 3 — Camille B. — 4★ — 0 photos {%- endcomment -%}
@@ -105,7 +111,7 @@
         </div>
         <p class="text-sm leading-relaxed text-muted-foreground mb-3">Ma femme trouvait le ventilo sur pied moche dans le salon. Celui-ci est discret au plafond et fait aussi lampe. Parfait.</p>
         <div class="flex gap-2">
-          <img src="{{ 'soufflo-5B-apres-soufflo-installe.jpg' | asset_url }}" alt="Photo avis client" width="64" height="64" loading="lazy" style="width:64px; height:64px; border-radius:0.5rem; flex-shrink:0; object-fit:cover;">
+          <img src="{{ 'soufflo-5B-apres-soufflo-installe.jpg' | asset_url }}" alt="Photo avis client" width="64" height="64" loading="lazy" class="review-photo" style="width:64px; height:64px; border-radius:0.5rem; flex-shrink:0; object-fit:cover; cursor:pointer;">
         </div>
       </div>
 
@@ -160,6 +166,67 @@
 
   </div>
 </section>
+
+{%- comment -%} Lightbox modal {%- endcomment -%}
+<div id="review-lightbox" style="display:none; position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.85); align-items:center; justify-content:center; cursor:zoom-out;">
+  <button type="button" id="review-lb-close" aria-label="Fermer" style="position:absolute; top:1rem; right:1.25rem; background:none; border:none; color:#fff; font-size:2rem; cursor:pointer; z-index:2; line-height:1;">&times;</button>
+  <button type="button" id="review-lb-prev" aria-label="Pr&eacute;c&eacute;dent" style="position:absolute; left:1rem; top:50%; transform:translateY(-50%); background:rgba(255,255,255,0.15); border:none; color:#fff; font-size:2rem; width:3rem; height:3rem; border-radius:50%; cursor:pointer; display:none;">&#8249;</button>
+  <button type="button" id="review-lb-next" aria-label="Suivant" style="position:absolute; right:1rem; top:50%; transform:translateY(-50%); background:rgba(255,255,255,0.15); border:none; color:#fff; font-size:2rem; width:3rem; height:3rem; border-radius:50%; cursor:pointer; display:none;">&#8250;</button>
+  <img id="review-lb-img" src="" alt="Photo agrandie" style="max-width:90vw; max-height:85vh; border-radius:0.75rem; object-fit:contain; box-shadow:0 8px 32px rgba(0,0,0,0.5);">
+</div>
+
+<script>
+(function(){
+  var lb = document.getElementById('review-lightbox');
+  var lbImg = document.getElementById('review-lb-img');
+  var btnClose = document.getElementById('review-lb-close');
+  var btnPrev = document.getElementById('review-lb-prev');
+  var btnNext = document.getElementById('review-lb-next');
+  if (!lb) return;
+
+  var siblings = [];
+  var currentIdx = 0;
+
+  function open(img) {
+    var parent = img.closest('.flex, .review-card');
+    var group = parent ? parent.querySelectorAll('.review-photo') : [img];
+    siblings = Array.prototype.slice.call(group);
+    currentIdx = siblings.indexOf(img);
+    if (currentIdx < 0) currentIdx = 0;
+    show(currentIdx);
+    lb.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+
+  function show(idx) {
+    lbImg.src = siblings[idx].src;
+    btnPrev.style.display = siblings.length > 1 && idx > 0 ? 'block' : 'none';
+    btnNext.style.display = siblings.length > 1 && idx < siblings.length - 1 ? 'block' : 'none';
+    currentIdx = idx;
+  }
+
+  function close() {
+    lb.style.display = 'none';
+    document.body.style.overflow = '';
+    lbImg.src = '';
+  }
+
+  document.querySelectorAll('#reviews .review-photo').forEach(function(img){
+    img.addEventListener('click', function(){ open(img); });
+  });
+
+  btnClose.addEventListener('click', close);
+  btnPrev.addEventListener('click', function(e){ e.stopPropagation(); if(currentIdx > 0) show(currentIdx - 1); });
+  btnNext.addEventListener('click', function(e){ e.stopPropagation(); if(currentIdx < siblings.length - 1) show(currentIdx + 1); });
+  lb.addEventListener('click', function(e){ if(e.target === lb) close(); });
+  document.addEventListener('keydown', function(e){
+    if(lb.style.display !== 'flex') return;
+    if(e.key === 'Escape') close();
+    if(e.key === 'ArrowLeft' && currentIdx > 0) show(currentIdx - 1);
+    if(e.key === 'ArrowRight' && currentIdx < siblings.length - 1) show(currentIdx + 1);
+  });
+})();
+</script>
 
 {% schema %}
 {

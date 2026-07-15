@@ -37,21 +37,6 @@
       <button type="button" class="svid-arrow svid-arrow--next" aria-label="Vid&eacute;o suivante" data-svid-next>&#8250;</button>
     </div>
 
-    {%- comment -%} Avis client avec photos {%- endcomment -%}
-    <div class="ugc-review-card">
-      <div class="ugc-review-card__header">
-        <div class="ugc-review-card__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <span class="ugc-review-card__author">Sandrine M. &middot; <span style="color:var(--color-muted-fg);font-weight:400;">Client v&eacute;rifi&eacute;</span></span>
-        <p class="ugc-review-card__text">&laquo; Super contente, 2&egrave;me commande pour ma fille ! S'installe facilement, bonne lumi&egrave;re et le ventilo est vraiment silencieux. Je recommande &raquo;</p>
-      </div>
-      <div class="ugc-review-card__photos">
-        <img src="{{ 'soufflo-ugc-review-1.jpg' | asset_url }}" alt="Photo client Soufflo" width="300" height="300" loading="lazy">
-        <img src="{{ 'soufflo-ugc-review-2.jpg' | asset_url }}" alt="Photo client Soufflo" width="300" height="300" loading="lazy">
-        <img src="{{ 'soufflo-ugc-review-3.jpg' | asset_url }}" alt="Photo client Soufflo installé" width="300" height="300" loading="lazy">
-        <img src="{{ 'soufflo-ugc-review-4.jpg' | asset_url }}" alt="Photo client Soufflo installé" width="300" height="300" loading="lazy">
-      </div>
-    </div>
-
     {%- comment -%} Grid — uses existing CSS .ugc-gallery__grid {%- endcomment -%}
     <div class="ugc-gallery__grid">
 
@@ -102,52 +87,6 @@
 </section>
 
 <style>
-  .ugc-review-card {
-    max-width: 48rem;
-    margin: 0 auto 3rem;
-    background: #f8fafc;
-    border-radius: 1rem;
-    padding: 1.5rem;
-    box-shadow: 0 2px 12px rgba(12,74,110,0.08);
-  }
-  .ugc-review-card__stars {
-    color: #f59e0b;
-    font-size: 1.25rem;
-    letter-spacing: 0.1em;
-  }
-  .ugc-review-card__author {
-    display: block;
-    font-weight: 600;
-    font-size: 0.95rem;
-    margin-top: 0.35rem;
-    color: #0C4A6E;
-  }
-  .ugc-review-card__text {
-    font-size: 0.9rem;
-    color: #334155;
-    margin-top: 0.5rem;
-    line-height: 1.5;
-    font-style: italic;
-  }
-  .ugc-review-card__photos {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0.75rem;
-    margin-top: 1rem;
-  }
-  .ugc-review-card__photos img {
-    width: 100%;
-    aspect-ratio: 1;
-    object-fit: cover;
-    border-radius: 0.5rem;
-  }
-  @media (max-width: 600px) {
-    .ugc-review-card__photos {
-      grid-template-columns: repeat(2, 1fr);
-    }
-    .ugc-review-card { padding: 1rem; }
-  }
-
   .svid-carousel {
     position: relative;
     margin: 0 auto 3rem;
