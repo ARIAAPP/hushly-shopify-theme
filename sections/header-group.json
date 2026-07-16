@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "type": "header",
   "name": "Header group",
@@ -5,25 +14,97 @@
     "announcement-bar": {
       "type": "announcement-bar",
       "blocks": {
-        "msg1": { "type": "message", "settings": { "text": "🚚 Livraison offerte dans le monde entier" } },
-        "msg2": { "type": "message", "settings": { "text": "🔒 Paiement 100% sécurisé" } },
-        "msg3": { "type": "message", "settings": { "text": "⚡ Installation en 10 secondes" } },
-        "msg4": { "type": "message", "settings": { "text": "🎮 Télécommande incluse" } },
-        "msg5": { "type": "message", "settings": { "text": "📦 Expédition rapide + suivi" } }
+        "msg1": {
+          "type": "message",
+          "settings": {
+            "text": "🚚 Livraison offerte dans le monde entier"
+          }
+        },
+        "msg2": {
+          "type": "message",
+          "settings": {
+            "text": "🔒 Paiement 100% sécurisé"
+          }
+        },
+        "msg3": {
+          "type": "message",
+          "settings": {
+            "text": "⚡ Installation en 10 secondes"
+          }
+        },
+        "msg4": {
+          "type": "message",
+          "settings": {
+            "text": "🎮 Télécommande incluse"
+          }
+        },
+        "msg5": {
+          "type": "message",
+          "settings": {
+            "text": "📦 Expédition rapide + suivi"
+          }
+        }
       },
-      "block_order": ["msg1", "msg2", "msg3", "msg4", "msg5"]
+      "block_order": [
+        "msg1",
+        "msg2",
+        "msg3",
+        "msg4",
+        "msg5"
+      ],
+      "settings": {}
     },
     "header": {
       "type": "header",
       "blocks": {
-        "nav1": { "type": "nav_link", "settings": { "label": "Le produit", "url": "/#product" } },
-        "nav2": { "type": "nav_link", "settings": { "label": "Comment ça marche", "url": "/#how" } },
-        "nav3": { "type": "nav_link", "settings": { "label": "Avis clients", "url": "/#reviews" } },
-        "nav4": { "type": "nav_link", "settings": { "label": "FAQ", "url": "/#faq" } },
-        "nav5": { "type": "nav_link", "settings": { "label": "Contact", "url": "/#contact" } }
+        "nav1": {
+          "type": "nav_link",
+          "settings": {
+            "label": "Le produit",
+            "url": "/#product"
+          }
+        },
+        "nav2": {
+          "type": "nav_link",
+          "settings": {
+            "label": "Comment ça marche",
+            "url": "/#how"
+          }
+        },
+        "nav3": {
+          "type": "nav_link",
+          "settings": {
+            "label": "Avis clients",
+            "url": "/#reviews"
+          }
+        },
+        "nav4": {
+          "type": "nav_link",
+          "settings": {
+            "label": "FAQ",
+            "url": "/#faq"
+          }
+        },
+        "nav5": {
+          "type": "nav_link",
+          "settings": {
+            "label": "Contact",
+            "url": "/#contact"
+          }
+        }
       },
-      "block_order": ["nav1", "nav2", "nav3", "nav4", "nav5"]
+      "block_order": [
+        "nav1",
+        "nav2",
+        "nav3",
+        "nav4",
+        "nav5"
+      ],
+      "settings": {}
     }
   },
-  "order": ["announcement-bar", "header"]
+  "order": [
+    "announcement-bar",
+    "header"
+  ]
 }

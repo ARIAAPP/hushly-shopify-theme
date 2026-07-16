@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "current": {
     "color_primary": "#38BDF8",
@@ -19,7 +28,58 @@
     "clarity_id": "",
     "container_max_width": 1400,
     "border_radius": 14,
-    "content_for_index": []
+    "sections": {
+      "product-hero": {
+        "type": "product-hero",
+        "settings": {
+          "headline": "Ventilateur LED Soufflo"
+        }
+      },
+      "how-it-works": {
+        "type": "how-it-works",
+        "settings": {}
+      },
+      "features": {
+        "type": "features",
+        "settings": {}
+      },
+      "facebook-community": {
+        "type": "facebook-community",
+        "settings": {}
+      },
+      "comparison-table": {
+        "type": "comparison-table",
+        "settings": {}
+      },
+      "ugc-gallery": {
+        "type": "ugc-gallery",
+        "settings": {}
+      },
+      "reviews": {
+        "type": "reviews",
+        "settings": {}
+      },
+      "story": {
+        "type": "story",
+        "settings": {}
+      },
+      "faq": {
+        "type": "faq",
+        "settings": {}
+      },
+      "newsletter": {
+        "type": "newsletter",
+        "settings": {}
+      }
+    },
+    "content_for_index": [],
+    "blocks": {
+      "6987625696575125306": {
+        "type": "shopify://apps/weglot-translate-your-store/blocks/weglot/3097482a-fafe-42ff-bc33-ea19e35c4a20",
+        "disabled": true,
+        "settings": {}
+      }
+    }
   },
   "presets": {
     "Default": {
