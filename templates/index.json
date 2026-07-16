@@ -25,7 +25,7 @@
         "upsell_1": { "type": "upsell", "settings": { "label": "Assurance colis (perte ou casse)", "variant_id": "54003242795349", "price": 495 } },
         "upsell_2": { "type": "upsell", "settings": { "label": "Extension garantie 24 mois", "variant_id": "54003255869781", "price": 795 } },
         "collap_1": { "type": "collapsible", "settings": { "emoji": "↩️", "title": "Retractation 14 jours", "content": "<p>Vous disposez de 14 jours apres reception pour exercer votre droit de retractation. Les frais de retour sont a votre charge. Details dans notre politique de remboursement.</p>" } },
-        "collap_2": { "type": "collapsible", "settings": { "emoji": "🚚", "title": "Livraison offerte en France metropolitaine", "content": "<p>Livraison offerte en France metropolitaine. Vous recevez un lien de suivi par email des l'expedition de votre commande.</p>" } }
+        "collap_2": { "type": "collapsible", "settings": { "emoji": "🚚", "title": "Livraison offerte dans le monde entier", "content": "<p>Livraison offerte dans le monde entier. Vous recevez un lien de suivi par email des l'expedition de votre commande.</p>" } }
       },
       "block_order": ["bullet_1","bullet_2","bullet_3","bullet_4","bundle_1","bundle_2","bundle_3","upsell_1","upsell_2","collap_1","collap_2"]
     },
@@ -58,7 +58,7 @@
         "b5": { "type": "benefit", "settings": { "icon": "📱", "title": "Télécommande incluse", "description": "Contrôle lumière + ventilateur sans se lever." } },
         "b6": { "type": "benefit", "settings": { "icon": "🔇", "title": "Ultra silencieux", "description": "Moteur brushless — aucun bruit perceptible." } },
         "b7": { "type": "benefit", "settings": { "icon": "💰", "title": "Économique", "description": "LED basse consommation, pas de clim, facture allégée." } },
-        "b8": { "type": "benefit", "settings": { "icon": "🚚", "title": "Livraison offerte", "description": "France métropolitaine. Suivi inclus." } }
+        "b8": { "type": "benefit", "settings": { "icon": "🚚", "title": "Livraison offerte", "description": "Dans le monde entier. Suivi inclus." } }
       },
       "block_order": ["b1","b2","b3","b4","b5","b6","b7","b8"]
     },
@@ -158,7 +158,7 @@
         "q4": { "type": "faq", "settings": { "question": "📱 Comment fonctionne la télécommande ?", "answer": "<p>La télécommande permet de contrôler la lumière (on/off, couleur, intensité) et le ventilateur (on/off, 3 vitesses). Elle fonctionne avec une pile bouton incluse. Portée d'environ 5 mètres.</p>" } },
         "q5": { "type": "faq", "settings": { "question": "🔇 Est-ce que c'est bruyant ?", "answer": "<p>Non. Le moteur brushless est conçu pour être silencieux. En vitesse 1, il est quasiment inaudible. Même en vitesse 3, le bruit reste très faible — bien en dessous d'un ventilateur sur pied classique.</p>" } },
         "q6": { "type": "faq", "settings": { "question": "💡 La lumière est-elle suffisante ?", "answer": "<p>Oui, la LED éclaire largement une pièce de 15 à 20 m². Vous pouvez choisir entre blanc chaud (2700K), neutre (4500K) et froid (6500K), et régler l'intensité avec la télécommande.</p>" } },
-        "q7": { "type": "faq", "settings": { "question": "🚚 Quel est le délai de livraison ?", "answer": "<p>Livraison gratuite en France métropolitaine. Vous recevez un lien de suivi par email dès l'expédition de votre commande.</p>" } },
+        "q7": { "type": "faq", "settings": { "question": "🚚 Quel est le délai de livraison ?", "answer": "<p>Livraison gratuite dans le monde entier. Vous recevez un lien de suivi par email dès l'expédition de votre commande.</p>" } },
         "q8": { "type": "faq", "settings": { "question": "↩️ Quelle est la politique de retour ?", "answer": "<p>Vous disposez d'un droit de rétractation de 14 jours après réception. Les frais de retour sont à votre charge. Voir notre politique de remboursement pour les détails.</p>" } },
         "q9": { "type": "faq", "settings": { "question": "⚡ Est-ce que ça consomme beaucoup d'électricité ?", "answer": "<p>Non. La LED consomme très peu (beaucoup moins qu'une ampoule classique) et le ventilateur consomme très peu. C'est une alternative bien plus économique qu'un climatiseur.</p>" } }
       },

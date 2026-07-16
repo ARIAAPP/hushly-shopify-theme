@@ -5,7 +5,7 @@
     "announcement-bar": {
       "type": "announcement-bar",
       "blocks": {
-        "msg1": { "type": "message", "settings": { "text": "🚚 Livraison offerte en France" } },
+        "msg1": { "type": "message", "settings": { "text": "🚚 Livraison offerte dans le monde entier" } },
         "msg2": { "type": "message", "settings": { "text": "🔒 Paiement 100% sécurisé" } },
         "msg3": { "type": "message", "settings": { "text": "⚡ Installation en 10 secondes" } },
         "msg4": { "type": "message", "settings": { "text": "🎮 Télécommande incluse" } },
