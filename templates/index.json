@@ -24,10 +24,9 @@
         "bundle_3": { "type": "bundle", "settings": { "label": "Pack Maison", "description": "3 ventilateurs", "variant_id": "54010409419093", "quantity": 3, "price": 7990, "original_price": 10470, "save_amount": 2480, "badge": "best", "badge_text": "Meilleure offre" } },
         "upsell_1": { "type": "upsell", "settings": { "label": "Assurance colis (perte ou casse)", "variant_id": "54003242795349", "price": 495 } },
         "upsell_2": { "type": "upsell", "settings": { "label": "Extension garantie 24 mois", "variant_id": "54003255869781", "price": 795 } },
-        "collap_1": { "type": "collapsible", "settings": { "emoji": "↩️", "title": "Retractation 14 jours", "content": "<p>Vous disposez de 14 jours apres reception pour exercer votre droit de retractation. Les frais de retour sont a votre charge. Details dans notre politique de remboursement.</p>" } },
         "collap_2": { "type": "collapsible", "settings": { "emoji": "🚚", "title": "Livraison offerte dans le monde entier", "content": "<p>Livraison offerte dans le monde entier. Vous recevez un lien de suivi par email des l'expedition de votre commande.</p>" } }
       },
-      "block_order": ["bullet_1","bullet_2","bullet_3","bullet_4","bundle_1","bundle_2","bundle_3","upsell_1","upsell_2","collap_1","collap_2"]
+      "block_order": ["bullet_1","bullet_2","bullet_3","bullet_4","bundle_1","bundle_2","bundle_3","upsell_1","upsell_2","collap_2"]
     },
     "how_it_works": {
       "type": "how-it-works",
