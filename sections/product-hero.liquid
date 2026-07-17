@@ -5,6 +5,26 @@
   ============================================================
 {%- endcomment -%}
 
+{%- assign _p = all_products['bandeau-de-sommeil-bluetooth-hushly'] -%}
+{%- assign _p_ins = all_products['assurance-colis'] -%}
+{%- assign _p_war = all_products['garantie-90-jours'] -%}
+{%- assign _cc = cart.currency.iso_code | default: 'EUR' -%}
+{%- assign _cs = cart.currency.symbol | default: '€' -%}
+
+{%- for v in _p.variants -%}
+  {%- if v.id == 54010409353557 -%}{%- assign _v1 = v -%}
+  {%- elsif v.id == 54010409386325 -%}{%- assign _v2 = v -%}
+  {%- elsif v.id == 54010409419093 -%}{%- assign _v3 = v -%}
+  {%- endif -%}
+{%- endfor -%}
+{%- assign _vi = _p_ins.variants | first -%}
+{%- assign _vw = _p_war.variants | first -%}
+
+{%- assign _orig2 = _v1.price | times: 2 -%}
+{%- assign _save2 = _orig2 | minus: _v2.price -%}
+{%- assign _orig3 = _v1.price | times: 3 -%}
+{%- assign _save3 = _orig3 | minus: _v3.price -%}
+
 <section id="product" class="py-8 md:py-14">
   <div class="container mx-auto px-4" style="display:grid; grid-template-columns:1fr; gap:2.5rem; align-items:start;">
     <div class="product-hero-grid" style="display:grid; grid-template-columns:1fr; gap:2.5rem; align-items:start;">
@@ -113,8 +133,8 @@
 
       {%- comment -%} 6. Price display (Lovable shows total price prominently) {%- endcomment -%}
       <div class="flex items-baseline gap-3 flex-wrap">
-        <span class="text-3xl font-bold" style="color:var(--color-primary);" data-hero-total>59,90 &euro;</span>
-        <span class="text-sm font-medium" style="color:#FF8A8A;">&#10024; Pack Duo : economise 9,90 &euro;</span>
+        <span class="text-3xl font-bold" style="color:var(--color-primary);" data-hero-total>{{ _v2.price | money }}</span>
+        <span class="text-sm font-medium" style="color:#FF8A8A;">&#10024; Pack Duo : economise {{ _save2 | money }}</span>
       </div>
 
       {%- comment -%} 7. Benefits list with emojis + checkmarks {%- endcomment -%}
@@ -155,8 +175,8 @@
         {%- comment -%} Pack Essentiel {%- endcomment -%}
         <div class="bundle-card-wrap" role="button" tabindex="0" aria-pressed="false"
           data-bundle data-bundle-id="bundle-1" data-bundle-variant="54010409353557"
-          data-bundle-quantity="1" data-bundle-price="34.9"
-          data-bundle-original="34.9" data-bundle-save="0"
+          data-bundle-quantity="1" data-bundle-price="{{ _v1.price | divided_by: 100.0 }}"
+          data-bundle-original="{{ _v1.price | divided_by: 100.0 }}" data-bundle-save="0"
           data-bundle-label="Pack Essentiel"
           data-bundle-image="{{ 'soufflo-9A-pack-essentiel-1x.jpg' | asset_url }}"
           style="position:relative;border:2px solid var(--color-border);border-radius:0.75rem;padding:1rem;cursor:pointer;transition:all 0.15s;">
@@ -171,7 +191,7 @@
               </div>
             </div>
             <div style="text-align:right;flex-shrink:0;">
-              <div class="font-bold text-lg">34,90 &euro;</div>
+              <div class="font-bold text-lg">{{ _v1.price | money }}</div>
             </div>
           </div>
         </div>
@@ -179,8 +199,8 @@
         {%- comment -%} Pack Duo — default selected {%- endcomment -%}
         <div class="bundle-card-wrap" role="button" tabindex="0" aria-pressed="true"
           data-bundle data-bundle-id="bundle-2" data-bundle-variant="54010409386325"
-          data-bundle-quantity="2" data-bundle-price="59.9"
-          data-bundle-original="69.8" data-bundle-save="9.9"
+          data-bundle-quantity="2" data-bundle-price="{{ _v2.price | divided_by: 100.0 }}"
+          data-bundle-original="{{ _orig2 | divided_by: 100.0 }}" data-bundle-save="{{ _save2 | divided_by: 100.0 }}"
           data-bundle-label="Pack Duo"
           data-bundle-image="{{ 'soufflo-9B-pack-duo-2x.jpg' | asset_url }}"
           style="position:relative;border:2px solid var(--color-primary);border-radius:0.75rem;padding:1rem;cursor:pointer;transition:all 0.15s;background:color-mix(in srgb, var(--color-primary) 5%, transparent);">
@@ -193,39 +213,39 @@
               <div style="min-width:0;">
                 <div class="flex items-center gap-2 flex-wrap">
                   <span class="font-semibold">Pack Duo</span>
-                  <span style="border-radius:9999px;padding:0.125rem 0.5rem;font-size:0.75rem;font-weight:700;text-transform:uppercase;background:rgba(255,138,138,0.1);color:#FF8A8A;">Economise 9,90 &euro;</span>
+                  <span style="border-radius:9999px;padding:0.125rem 0.5rem;font-size:0.75rem;font-weight:700;text-transform:uppercase;background:rgba(255,138,138,0.1);color:#FF8A8A;">Economise {{ _save2 | money }}</span>
                 </div>
                 <p class="text-xs text-muted-foreground">2 ventilateurs &mdash; salon + chambre</p>
               </div>
             </div>
             <div style="text-align:right;flex-shrink:0;">
-              <div class="font-bold text-lg">59,90 &euro;</div>
-              <div class="text-xs text-muted-foreground" style="text-decoration:line-through;">69,80 &euro;</div>
+              <div class="font-bold text-lg">{{ _v2.price | money }}</div>
+              <div class="text-xs text-muted-foreground" style="text-decoration:line-through;">{{ _orig2 | money }}</div>
             </div>
           </div>
           {%- comment -%} Upsells inside selected bundle (Lovable pattern) {%- endcomment -%}
           <div class="upsells-inside" data-upsells-inside style="margin-top:1rem;padding-top:1rem;border-top:1px solid var(--color-border);">
             <label style="display:flex;justify-content:space-between;align-items:center;padding:0.25rem 0;cursor:pointer;font-size:0.875rem;" onclick="event.stopPropagation()">
               <span class="flex items-center gap-2">
-                <input type="checkbox" data-upsell data-upsell-id="upsell-1" data-upsell-variant="54003242795349" data-upsell-price="4.95" data-upsell-label="Assurance colis (perte ou casse)" style="height:1rem;width:1rem;accent-color:var(--color-primary);cursor:pointer;">
+                <input type="checkbox" data-upsell data-upsell-id="upsell-1" data-upsell-variant="54003242795349" data-upsell-price="{{ _vi.price | divided_by: 100.0 }}" data-upsell-label="Assurance colis (perte ou casse)" style="height:1rem;width:1rem;accent-color:var(--color-primary);cursor:pointer;">
                 <span>&#128230; + Assurance colis (perte ou casse)</span>
               </span>
-              <span class="font-medium">4,95 &euro;</span>
+              <span class="font-medium">{{ _vi.price | money }}</span>
             </label>
             <label style="display:flex;justify-content:space-between;align-items:center;padding:0.25rem 0;cursor:pointer;font-size:0.875rem;" onclick="event.stopPropagation()">
               <span class="flex items-center gap-2">
-                <input type="checkbox" data-upsell data-upsell-id="upsell-2" data-upsell-variant="54003255869781" data-upsell-price="7.95" data-upsell-label="Extension garantie 24 mois" style="height:1rem;width:1rem;accent-color:var(--color-primary);cursor:pointer;">
+                <input type="checkbox" data-upsell data-upsell-id="upsell-2" data-upsell-variant="54003255869781" data-upsell-price="{{ _vw.price | divided_by: 100.0 }}" data-upsell-label="Extension garantie 24 mois" style="height:1rem;width:1rem;accent-color:var(--color-primary);cursor:pointer;">
                 <span>&#128737;&#65039; + Extension garantie 24 mois</span>
               </span>
-              <span class="font-medium">7,95 &euro;</span>
+              <span class="font-medium">{{ _vw.price | money }}</span>
             </label>          </div>
         </div>
 
         {%- comment -%} Pack Maison {%- endcomment -%}
         <div class="bundle-card-wrap" role="button" tabindex="0" aria-pressed="false"
           data-bundle data-bundle-id="bundle-3" data-bundle-variant="54010409419093"
-          data-bundle-quantity="3" data-bundle-price="79.9"
-          data-bundle-original="104.7" data-bundle-save="24.8"
+          data-bundle-quantity="3" data-bundle-price="{{ _v3.price | divided_by: 100.0 }}"
+          data-bundle-original="{{ _orig3 | divided_by: 100.0 }}" data-bundle-save="{{ _save3 | divided_by: 100.0 }}"
           data-bundle-label="Pack Maison"
           data-bundle-image="{{ 'soufflo-9C-pack-maison-3x.jpg' | asset_url }}"
           style="position:relative;border:2px solid var(--color-border);border-radius:0.75rem;padding:1rem;cursor:pointer;transition:all 0.15s;">
@@ -236,14 +256,14 @@
               <div style="min-width:0;">
                 <div class="flex items-center gap-2 flex-wrap">
                   <span class="font-semibold">Pack Maison</span>
-                  <span style="border-radius:9999px;padding:0.125rem 0.5rem;font-size:0.75rem;font-weight:700;text-transform:uppercase;background:rgba(255,138,138,0.1);color:#FF8A8A;">Economise 24,80 &euro;</span>
+                  <span style="border-radius:9999px;padding:0.125rem 0.5rem;font-size:0.75rem;font-weight:700;text-transform:uppercase;background:rgba(255,138,138,0.1);color:#FF8A8A;">Economise {{ _save3 | money }}</span>
                 </div>
                 <p class="text-xs text-muted-foreground">3 ventilateurs &mdash; toute la maison</p>
               </div>
             </div>
             <div style="text-align:right;flex-shrink:0;">
-              <div class="font-bold text-lg">79,90 &euro;</div>
-              <div class="text-xs text-muted-foreground" style="text-decoration:line-through;">104,70 &euro;</div>
+              <div class="font-bold text-lg">{{ _v3.price | money }}</div>
+              <div class="text-xs text-muted-foreground" style="text-decoration:line-through;">{{ _orig3 | money }}</div>
             </div>
           </div>
         </div>
@@ -252,7 +272,7 @@
 
       {%- comment -%} 11. CTA Button — rounded-full like Lovable {%- endcomment -%}
       <button type="button" data-add-to-cart style="width:100%;background:var(--color-primary);color:var(--color-primary-fg);padding:1rem 1.5rem;border-radius:9999px;font-weight:700;font-size:1.125rem;border:none;cursor:pointer;transition:all 0.15s;box-shadow:0 4px 14px rgba(56,189,248,0.4);">
-        <span data-cta-text>Commander maintenant &mdash; <span data-cta-price>59,90 &euro;</span></span>
+        <span data-cta-text>Commander maintenant &mdash; <span data-cta-price>{{ _v2.price | money }}</span></span>
       </button>
 
       {%- comment -%} 12. Trust badges — grid 4 cols like Lovable {%- endcomment -%}
@@ -398,7 +418,12 @@
     upsellsHTML = upsellsContainer.innerHTML;
   }
 
-  function formatPrice(val) { return val.toFixed(2).replace('.', ',') + ' €'; }
+  var __cc = {{ _cc | json }};
+  var __cs = {{ _cs | json }};
+  function formatPrice(val) {
+    if (__cc === 'EUR') return val.toFixed(2).replace('.', ',') + ' €';
+    return __cs + val.toFixed(2);
+  }
 
   function getSelectedBundlePrice() {
     var sel = section.querySelector('[data-bundle][aria-pressed="true"]');
@@ -511,7 +536,7 @@
       if (window.SouffloCart) window.SouffloCart.openWith(items);
       if (window.fbq) {
         var cv = items.reduce(function(s,i){return s+i.price*i.quantity;},0);
-        window.fbq('track','AddToCart',{value:+cv.toFixed(2),currency:'EUR',content_ids:items.map(function(i){return i.variantId;}),content_type:'product',num_items:items.reduce(function(s,i){return s+i.quantity;},0)});
+        window.fbq('track','AddToCart',{value:+cv.toFixed(2),currency:__cc,content_ids:items.map(function(i){return i.variantId;}),content_type:'product',num_items:items.reduce(function(s,i){return s+i.quantity;},0)});
       }
     });
   }
@@ -519,7 +544,7 @@
   /* ---- ViewContent pixel ---- */
   if (window.fbq) {
     setTimeout(function() {
-      window.fbq('track','ViewContent',{content_ids:['ventilateur-led-soufflo'],content_type:'product',value:getSelectedBundlePrice(),currency:'EUR'});
+      window.fbq('track','ViewContent',{content_ids:['ventilateur-led-soufflo'],content_type:'product',value:getSelectedBundlePrice(),currency:__cc});
     }, 800);
   }
 })();
