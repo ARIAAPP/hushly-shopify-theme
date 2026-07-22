@@ -166,7 +166,7 @@
 
       {%- comment -%} 9. Countdown (Lovable: between divider and bundles, primary color) {%- endcomment -%}
       <div style="background:color-mix(in srgb, var(--color-primary) 10%, transparent);border-radius:0.5rem;text-align:center;padding:0.5rem 1rem;" data-countdown>
-        <span style="font-size:0.875rem;font-weight:600;color:var(--color-primary);" data-countdown-text>&#9200; Offre de lancement &mdash; se termine dans 00:00:00</span>
+        <span style="font-size:0.875rem;font-weight:600;color:var(--color-primary);" data-countdown-text>&#9200; <span data-countdown-label>Offre de lancement &mdash; se termine dans</span> <span data-countdown-timer>00:00:00</span></span>
       </div>
 
       {%- comment -%} 10. Bundle picker (upsells inside selected bundle — Lovable pattern) {%- endcomment -%}
@@ -502,7 +502,7 @@
   updateCTA();
 
   /* ---- COUNTDOWN ---- */
-  var cdEl = section.querySelector('[data-countdown-text]');
+  var cdEl = section.querySelector('[data-countdown-timer]');
   if (cdEl) {
     var KEY = 'soufflo-hero-countdown-end', endTime = 0;
     try { var s = localStorage.getItem(KEY); if (s) endTime = parseInt(s, 10); } catch(e){}
@@ -514,7 +514,8 @@
     function tick() {
       var r = Math.max(0, endTime - Date.now());
       if (r <= 0) { endTime = Date.now()+(20+Math.random()*4)*3600000; try{localStorage.setItem(KEY,String(endTime));}catch(e){} r = endTime-Date.now(); }
-      cdEl.textContent = '⏰ Offre de lancement — se termine dans '+pad(Math.floor(r/3600000))+':'+pad(Math.floor(r%3600000/60000))+':'+pad(Math.floor(r%60000/1000));
+      // Seul le timer est mis a jour : le libelle reste un noeud statique traduisible par Weglot.
+      cdEl.textContent = pad(Math.floor(r/3600000))+':'+pad(Math.floor(r%3600000/60000))+':'+pad(Math.floor(r%60000/1000));
     }
     tick(); setInterval(tick, 1000);
   }
