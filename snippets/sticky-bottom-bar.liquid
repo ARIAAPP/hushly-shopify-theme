@@ -5,6 +5,20 @@
   ============================================================
 {%- endcomment -%}
 
+{%- comment -%}
+  Le switcher Weglot est en position:fixed bottom:0 right:20px avec
+  z-index:2147483647 (maximum absolu) : sur mobile il se superpose a la
+  sticky bar et masque le bouton Commander. soufflo.fr etant en francais
+  uniquement, le selecteur n'a aucune utilite ici.
+{%- endcomment -%}
+<style>
+  @media (max-width: 767px) {
+    #weglot-switcher-1,
+    .weglot-container,
+    aside.weglot_switcher { display: none !important; }
+  }
+</style>
+
 <div class="sticky-bottom-bar" data-sticky-bar>
   <div class="sticky-bottom-bar__inner">
     <div class="sticky-bottom-bar__left">
