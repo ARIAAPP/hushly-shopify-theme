@@ -387,6 +387,12 @@
     Les 10 vignettes de 5rem s'empilaient sur 4 rangees (~356px) avant le titre.
   {%- endcomment -%}
   @media (max-width: 767px) {
+    /* 0. Les enfants de grid ont min-width:auto par defaut : ils s'etirent au
+       contenu et debordent horizontalement. Indispensable pour que la rangee
+       de vignettes scrollable reste contenue dans le viewport. */
+    #product .product-hero-grid,
+    #product .product-hero-grid > div { min-width: 0 !important; }
+
     /* 1. Haut de section resserre */
     #product { padding-top: 0.75rem !important; }
 
@@ -399,6 +405,7 @@
     [data-gallery-thumbs] {
       flex-wrap: nowrap !important;
       justify-content: flex-start !important;
+      max-width: 100%;
       overflow-x: auto;
       margin-top: 0.75rem !important;
       padding-bottom: 0.25rem;
