@@ -396,9 +396,11 @@
     /* 1. Haut de section resserre */
     #product { padding-top: 0.75rem !important; }
 
-    /* 2. Visuel principal : carre -> 4/5 */
+    /* 2. Visuel principal : carre -> 5/4 (hauteur = 0,8 x largeur, soit
+       274px au lieu de 343px sur un viewport 375). Attention au sens du
+       ratio : 4/5 donnerait une image PLUS HAUTE que large. */
     #product .product-hero-grid > div:first-child > div:first-child {
-      aspect-ratio: 4 / 5 !important;
+      aspect-ratio: 5 / 4 !important;
     }
 
     /* 3. Vignettes : une seule rangee scrollable au lieu de 4 rangees empilees */
