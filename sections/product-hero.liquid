@@ -44,7 +44,7 @@
         <img data-gallery-slide="9" src="{{ 'soufflo-6A-3-temperatures.jpg' | asset_url }}" alt="3 temperatures de couleur LED" class="w-full h-full object-cover" width="800" height="800" loading="lazy" decoding="async" style="display:none;position:absolute;inset:0;">
       </div>
 
-      <div class="flex gap-3 flex-wrap justify-center mt-4">
+      <div class="flex gap-3 flex-wrap justify-center mt-4" data-gallery-thumbs>
         <button type="button" data-gallery-thumb="0" aria-label="Video produit" class="gallery-thumb" style="height:5rem;width:5rem;border-radius:0.5rem;border:2px solid var(--color-primary);overflow:hidden;position:relative;background:#0C4A6E;cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center;">
           <span style="color:#fff;font-size:1.5rem;line-height:1;">&#9654;</span>
         </button>
@@ -379,6 +379,42 @@
       grid-template-columns: 1fr 1fr !important;
     }
   }
+
+  {%- comment -%}
+    ===== MOBILE : titre + prix au-dessus de la ligne de flottaison =====
+    95 % du trafic est mobile. Avant : H1 a 1004px, prix a 1175px (viewport 812px)
+    -> il fallait scroller 1,4 ecran pour voir un prix.
+    Les 10 vignettes de 5rem s'empilaient sur 4 rangees (~356px) avant le titre.
+  {%- endcomment -%}
+  @media (max-width: 767px) {
+    /* 1. Haut de section resserre */
+    #product { padding-top: 0.75rem !important; }
+
+    /* 2. Visuel principal : carre -> 4/5 */
+    #product .product-hero-grid > div:first-child > div:first-child {
+      aspect-ratio: 4 / 5 !important;
+    }
+
+    /* 3. Vignettes : une seule rangee scrollable au lieu de 4 rangees empilees */
+    [data-gallery-thumbs] {
+      flex-wrap: nowrap !important;
+      justify-content: flex-start !important;
+      overflow-x: auto;
+      margin-top: 0.75rem !important;
+      padding-bottom: 0.25rem;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    [data-gallery-thumbs]::-webkit-scrollbar { display: none; }
+    [data-gallery-thumbs] .gallery-thumb {
+      height: 3.25rem !important;
+      width: 3.25rem !important;
+    }
+
+    /* 4. Bloc infos : espacements resserres */
+    #product .space-y-5 > * + * { margin-top: 0.75rem !important; }
+  }
+
   details summary::-webkit-details-marker { display: none; }
   details[open] summary svg { transform: rotate(180deg); }
 </style>
